@@ -126,7 +126,7 @@ main {
    non-clickable text titles (library) have none. */
 a.entry-title {
   text-decoration: underline;
-  text-decoration-color: var(--rule);
+  text-decoration-color: color-mix(in srgb, var(--text) 42%, transparent);
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
   transition: color 0.2s, text-decoration-color 0.2s;
@@ -134,15 +134,6 @@ a.entry-title {
 a.entry-title:hover { text-decoration-color: var(--text); }
 
 .entry-title--text { cursor: default; }
-
-/* External finds get a forward arrow (kept clear of the underline). */
-.entry--find .entry-title::after {
-  content: '\2192';
-  display: inline-block;
-  margin-left: 0.3em;
-  font-size: 0.85em;
-  color: var(--muted);
-}
 
 /* —— Library row: title + author share one line. Title matches every other
    entry's title (same size/family); only the layout is inline. —— */
