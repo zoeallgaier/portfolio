@@ -18,11 +18,11 @@ main {
   min-height: 100vh;
 }
 
-/* —— Feed (editorial masonry: shortest-column, up to 3 cols, built in JS) —— */
+/* —— Feed (editorial masonry: shortest-column, up to 4 cols, built in JS) —— */
 .feed {
-  max-width: 1400px;         /* room for three columns on desktop (~430px each) */
+  max-width: min(1760px, 96vw); /* fill most of the screen; thin side margins */
   margin: 0 auto;
-  padding-inline: 1.5rem;
+  padding-inline: 1rem;
   margin-block: 2.5rem;      /* breathing room below the nav, and above the footer */
   display: flex;
   gap: 2rem;
