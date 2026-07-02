@@ -1,0 +1,43 @@
+name: Pull content from live
+
+# Downloads the live marginalia/content.json (including anything you've posted
+# from your phone) and commits it to the repo, so your local copy is up to date
+# before you edit copy or take down a post. Run this, then `git pull`, then edit.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  pull-content:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download live content.json over FTPS
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_SERVER_DIR: ${{ secrets.FTP_SERVER_DIR }}
+        run: |
+          set -e
+          curl -s --ssl-reqd \
+            --user "$FTP_USERNAME:$FTP_PASSWORD" \
+            "ftp://${FTP_SERVER}${FTP_SERVER_DIR}marginalia/content.json" \
+            -o marginalia/content.json
+          echo "Downloaded live content.json."
+
+      - name: Commit if it changed
+        run: |
+          git config user.name "content-sync"
+          git config user.email "noreply@github.com"
+          if git diff --quiet -- marginalia/content.json; then
+            echo "Already up to date — nothing to commit."
+          else
+            git add marginalia/content.json
+            git commit -m "Sync content.json from live server"
+            git push
+            echo "✅ Repo updated. Run 'git pull' locally to get the latest before editing."
+          fi
