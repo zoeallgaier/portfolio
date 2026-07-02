@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zoe Allgaier — HIPOWER</title>
+  <link rel="stylesheet" href="/css/project.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav>
+    <a href="/" class="nav-logo"><img src="/Zmono-dark.png" alt="Zoe Allgaier — Home"></a>
+    <div class="nav-links">
+      <a href="/#work">Selected work</a>
+      <a href="/about.html">About</a>
+    </div>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+
+    <!-- ── Project title ── -->
+    <div class="project-title" style="--g1: rgba(220, 10, 10, 0.22); --g2: rgba(255, 30, 20, 0.2);">
+      <canvas class="project-canvas" aria-hidden="true"></canvas>
+      <div class="project-title-bg" aria-hidden="true"></div>
+      <div class="project-name-clip">
+        <h1 class="project-name">HIPOWER Systems</h1>
+      </div>
+      <p class="project-role">Graphic Designer</p>
+    </div>
+
+    <!-- ── Resume / Toggle ── -->
+    <div class="resume">
+      <div class="toggle" role="tablist" aria-label="Project details">
+        <button role="tab" aria-selected="true"  aria-controls="panel-scope"   id="tab-scope"   tabindex="0">Scope</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-results" id="tab-results" tabindex="-1">Results</button>
+      </div>
+
+      <div class="toggle-panels">
+        <div class="toggle-panel active" role="tabpanel" id="panel-scope" aria-labelledby="tab-scope" tabindex="0">
+          <p>HIPOWER Systems builds generators for construction, city infrastructure, and emergency response. The challenge: a product that's deeply technical, but <b>the people who use it aren't engineers</b>. To close the gap, <b>I worked closely with the Director of Marketing and the engineering team</b> to craft informative manuals, social campaigns, and digital/print collateral.</p>
+        </div>
+        <div class="toggle-panel" role="tabpanel" id="panel-results" aria-labelledby="tab-results" tabindex="0" hidden>
+          <p>LinkedIn grew to <b>6,000+ followers</b> through my cross-platform strategy, and I designed <b>10+ technical manuals</b> – turning dense engineering documentation into useful references for the people who need them.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Gallery ── -->
+    <div class="gallery">
+      <img loading="lazy" decoding="async" src="/_assets/HIPOWER/Manual-mockup2.jpg" alt="HIPOWER Systems manual mockup">
+      <img loading="lazy" decoding="async" src="/_assets/HIPOWER/EHR-3060_City04.jpeg" alt="HIPOWER Systems generator">
+      <img loading="lazy" decoding="async" src="/_assets/HIPOWER/Manual-mockup1.jpg" alt="HIPOWER Systems manual mockup">
+      <img loading="lazy" decoding="async" src="/_assets/HIPOWER/EHR-2040_Construction01.jpeg" alt="HIPOWER Systems generator">
+    </div>
+
+    <!-- ── Next project ── -->
+    <a href="/recursia.html" class="next-project" style="--g1: rgba(70, 90, 255, 0.22); --g2: rgba(150, 60, 255, 0.2);">
+      <canvas class="project-canvas" aria-hidden="true"></canvas>
+      <div class="project-title-bg" aria-hidden="true"></div>
+      <p class="next-eyebrow">Next project</p>
+      <h2 class="next-name">Recursia</h2>
+      <span class="next-cta">View project →</span>
+    </a>
+
+    <footer id="contact">
+      <p class="footer-prompt">If you've got a project where graphic, motion, and web all need to show up as one thing, I'd love to hear about it.</p>
+      <a href="mailto:zoeallgaier@gmail.com" class="footer-email">zoeallgaier@gmail.com</a>
+      <div class="footer-bottom">
+        <span>Zoe Allgaier</span>
+        <span>© 2026</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="/js/canvas.js"></script>
+  <script src="/js/footer.js"></script>
+
+  <script src="/js/tabs.js"></script>
+  <script src="/js/reveal.js"></script>
+
+</body>
+</html>

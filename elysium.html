@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zoe Allgaier — Elysium Black Diamond</title>
+  <link rel="stylesheet" href="/css/project.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav>
+    <a href="/" class="nav-logo"><img src="/Zmono-dark.png" alt="Zoe Allgaier — Home"></a>
+    <div class="nav-links">
+      <a href="/#work">Selected work</a>
+      <a href="/about.html">About</a>
+    </div>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+
+    <!-- ── Project title ── -->
+    <div class="project-title" style="--g1: rgba(80, 161, 255, 0.20); --g2: rgba(75, 240, 255, 0.20);">
+      <canvas class="project-canvas" aria-hidden="true"></canvas>
+      <div class="project-title-bg" aria-hidden="true"></div>
+      <div class="project-name-clip">
+        <h1 class="project-name">Elysium Black Diamond</h1>
+      </div>
+      <p class="project-role">Creative Director &nbsp;·&nbsp; $300K revenue</p>
+    </div>
+
+    <!-- ── Resume / Toggle ── -->
+    <div class="resume">
+      <div class="toggle" role="tablist" aria-label="Project details">
+        <button role="tab" aria-selected="true"  aria-controls="panel-scope"    id="tab-scope"    tabindex="0">Scope</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-results"  id="tab-results"  tabindex="-1">Results</button>
+      </div>
+
+      <div class="toggle-panels">
+        <div class="toggle-panel active" role="tabpanel" id="panel-scope"    aria-labelledby="tab-scope"    tabindex="0">
+          <p>Elysium had a great product but no brand, site, content, or shop. <b>As Creative Director</b>, I built an identity, Shopify, email, social, packaging, product photography, then <b>launched it into the market as one piece</b>.</p>
+          <p>To move fast without losing the plot, I built an asset library of product shots, ad templates, and brand guidelines. Enough runway that <b>one person could run like a full design team</b>. Then I documented everything so the brand could keep running after I handed it off.</p>
+        </div>
+        <div class="toggle-panel" role="tabpanel" id="panel-results"  aria-labelledby="tab-results"  tabindex="0" hidden>
+          <p>ElysiumBlack.com cleared <b>$300K</b> in it's first eight months. ElysiumHope.com hit <b>$10K+ monthly</b>. Combined social grew to <b>80K+ followers</b> on the back of <b>500+ assets</b> I designed, shot, and shipped myself.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Gallery ── -->
+    <div class="gallery">
+      <img loading="lazy" decoding="async" src="/_assets/Elysium/mens1.JPG"             alt="Mens product">
+      <img loading="lazy" decoding="async" src="/_assets/Elysium/elysiumblacksite.jpg"  alt="Elysium desktop">
+      <img loading="lazy" decoding="async" src="/_assets/Elysium/elysiumopemockup.jpg"  alt="Elysium mobile">
+      <img loading="lazy" decoding="async" src="/_assets/Elysium/womens2.JPG"           alt="Womens product">
+      <img loading="lazy" decoding="async" src="/_assets/Elysium/ad2.jpg"               alt="Womens newsletter">
+      <img loading="lazy" decoding="async" src="/_assets/Elysium/catalog.jpg"           alt="Catalog">
+      <img loading="lazy" decoding="async" src="/_assets/Elysium/mens4.png"             alt="Mens product">
+      <img loading="lazy" decoding="async" src="/_assets/Elysium/ad1.JPG"               alt="Mens product">
+    </div>
+
+    <!-- ── Next project ── -->
+    <a href="/psb.html" class="next-project" style="--g1: rgba(223, 140, 24, 0.2); --g2: rgba(16, 186, 132, 0.2);">
+      <canvas class="project-canvas" aria-hidden="true"></canvas>
+      <div class="project-title-bg" aria-hidden="true"></div>
+      <p class="next-eyebrow">Next project</p>
+      <h2 class="next-name">President's Scholarship Ball</h2>
+      <span class="next-cta">View project →</span>
+    </a>
+
+    <footer id="contact">
+      <p class="footer-prompt">If you've got a project where graphic, motion, and web all need to show up as one thing, I'd love to hear about it.</p>
+      <a href="mailto:zoeallgaier@gmail.com" class="footer-email">zoeallgaier@gmail.com</a>
+      <div class="footer-bottom">
+        <span>Zoe Allgaier</span>
+        <span>© 2026</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="/js/canvas.js"></script>
+  <script src="/js/footer.js"></script>
+
+  <script src="/js/tabs.js"></script>
+  <script src="/js/reveal.js"></script>
+
+</body>
+</html>

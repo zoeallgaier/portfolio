@@ -1,0 +1,229 @@
+@import 'base.css';
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 3rem 4.5rem;
+  background: var(--bg);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 109% 138% at 95% 0%, rgba(255, 110, 70, 0.2) 0%, transparent 70%),
+    radial-gradient(ellipse 109% 86% at 70% 0%, rgba(235, 80, 120, 0.2) 0%, transparent 70%);
+  animation: hueShift 60s linear infinite;
+}
+
+@keyframes hueShift {
+  from { filter: hue-rotate(0deg); }
+  to   { filter: hue-rotate(360deg); }
+}
+
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero-eyebrow {
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+  animation: fadeUp 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.05s both;
+}
+
+.hero-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(5rem, 11vw, 13rem);
+  line-height: .88;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+  margin-bottom: 3rem;
+}
+
+/* Where JS is available, hide the name until the inline splitter has run,
+   so the plain text never flashes before the animation. The script sets
+   inline opacity:1 once built (and immediately for reduced-motion). */
+@media (scripting: enabled) {
+  .hero-name { opacity: 0; }
+}
+
+.hero-name .word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.char-mask {
+  display: inline-block;
+  padding-bottom: 0.25em;
+  margin-bottom: -0.25em;
+  vertical-align: bottom;
+}
+
+.char {
+  display: inline-block;
+  animation: charReveal 1s cubic-bezier(0.15, 1, 0.3, 1) both;
+}
+
+@keyframes charReveal {
+  from { opacity: 0; transform: translateY(110%); filter: blur(8px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
+
+.hero-tagline {
+  font-size: clamp(1rem, 1.6vw, 1.375rem);
+  line-height: 1.45;
+  color: var(--muted);
+  max-width: 32ch;
+  text-wrap: balance;
+  animation: fadeUp 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) 0.68s both;
+}
+
+/* ── Work ── */
+.work {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background-color: var(--rule);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.section-label {
+  grid-column: 1 / -1;
+  background: var(--bg);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 4rem 3rem 2rem;
+}
+
+.work-item {
+  display: block;
+  background: var(--bg);
+  padding: 2rem;
+}
+
+.work-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 1.25rem;
+}
+
+.work-media img,
+.work-media video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+/* Second image stacked over the first; cross-fades in on hover/focus. */
+.work-media-alt {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.work-item:hover .work-media-alt,
+.work-item:focus-visible .work-media-alt {
+  opacity: 1;
+}
+
+.work-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.work-num {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.work-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+
+.work-role {
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+/* ── About blurb ── */
+.about-blurb {
+  padding: 10rem 3rem;
+  max-width: 72ch;
+}
+
+.about-blurb p {
+  font-size: clamp(1.2rem, 2.2vw, 1.625rem);
+  line-height: 1.5;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.about-link {
+  display: inline-block;
+  font-size: 0.8125rem;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.2rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.about-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .hero {
+    padding: 5rem 1.5rem 3rem;
+  }
+
+  .work {
+    grid-template-columns: 1fr;
+  }
+
+  .section-label {
+    padding: 3rem 1.5rem 1.5rem;
+  }
+
+  .work-item {
+    padding: 1.5rem;
+  }
+
+  .about-blurb {
+    padding: 6rem 1.5rem;
+    max-width: 100%;
+  }
+}

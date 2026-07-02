@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marginalia</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav>
+    <a href="/" class="nav-logo"><img src="/Zmono-dark.png" alt="Zoe Allgaier — Home"></a>
+    <div class="nav-links">
+      <a href="/marginalia/">All</a>
+      <a href="/marginalia/?filter=posts">Posts</a>
+      <a href="/marginalia/?filter=finds">Finds</a>
+      <a href="/marginalia/?filter=photos">Photos</a>
+      <a href="/marginalia/?filter=library">Library</a>
+    </div>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+    <!-- add new entries to content.json to update the feed -->
+    <div id="feed" class="feed"></div>
+  </main>
+
+  <footer id="contact">
+    <p class="footer-prompt">If you've got a project where graphic, motion, and web all need to show up as one thing, I'd love to hear about it.</p>
+    <a href="mailto:zoeallgaier@gmail.com" class="footer-email">zoeallgaier@gmail.com</a>
+    <div class="footer-bottom">
+      <span>Zoe Allgaier</span>
+      <span>© 2026</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+
+  <script src="/js/footer.js"></script>
+</body>
+</html>

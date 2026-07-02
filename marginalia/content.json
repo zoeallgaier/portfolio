@@ -1,0 +1,668 @@
+[
+    {
+        "type": "photo",
+        "image": "/_assets/marginalia/2025-12-13-photo-e29c.jpg",
+        "note": "Reading at the coffee shop is unparalleled",
+        "date": "2025-12-13",
+        "tags": [
+            "book",
+            "design",
+            "life"
+        ]
+    },
+    {
+        "type": "photo",
+        "image": "/_assets/marginalia/2026-03-10-photo-aa6d.jpg",
+        "note": "You know the vibe.",
+        "date": "2026-03-10",
+        "tags": [
+            "funny",
+            "design",
+            "poster"
+        ]
+    },
+    {
+        "type": "photo",
+        "image": "/_assets/marginalia/birthday.jpg",
+        "note": "Birthday brunch! I love my friends so much 🥺",
+        "date": "2026-06-28",
+        "tags": [
+            "life"
+        ]
+    },
+    {
+        "type": "photo",
+        "image": "/_assets/marginalia/doodle.jpg",
+        "note": "A doodle.",
+        "date": "2026-06-07",
+        "tags": [
+            "art",
+            "sketch"
+        ]
+    },
+    {
+        "type": "photo",
+        "image": "/_assets/marginalia/metalheart.jpg",
+        "note": "Metalheart.",
+        "date": "2026-02-26",
+        "tags": [
+            "art",
+            "design"
+        ]
+    },
+    {
+        "type": "post",
+        "title": "Challengers: The Points That Matter",
+        "url": "posts/challengers.html",
+        "note": "8/10. Bold and energetic art direction, with a back-and-forth narrative mirroring tennis and relationships.",
+        "date": "2026-06-26",
+        "tags": [
+            "film",
+            "review"
+        ]
+    },
+    {
+        "type": "post",
+        "title": "Obsession: What Is Love?",
+        "url": "posts/obsession.html",
+        "note": "10/10. An unsettling, visceral exploration of obsession and its consequences.",
+        "date": "2026-06-24",
+        "tags": [
+            "rant",
+            "film",
+            "review"
+        ]
+    },
+    {
+        "type": "find",
+        "title": "A New Spinosaurus?!",
+        "url": "https://www.science.org/doi/10.1126/science.adx5486",
+        "note": "Spinosaurus mirabilis! A literal Heron from Hell. The diversity of prehistoric life is genuinely astounding.",
+        "date": "2026-06-24",
+        "tags": [
+            "paleontology",
+            "science"
+        ]
+    },
+    {
+        "type": "post",
+        "title": "The Band Name Generator",
+        "url": "/marginalia/bandnames/generator.html",
+        "note": "At long last.",
+        "date": "2026-06-23",
+        "tags": [
+            "funny",
+            "creative",
+            "website"
+        ]
+    },
+    {
+        "type": "find",
+        "title": "A Post-American, Enshittification-Resistant Internet",
+        "url": "https://www.youtube.com/watch?v=39jsstmmUUs&list=PL4LnAs9Yxm_6Hd9PyGderORHwtIGydFih&index=62",
+        "note": "Cory Doctorow. Need I say more?",
+        "date": "2026-05-07",
+        "tags": [
+            "tech",
+            "politics",
+            "video"
+        ]
+    },
+    {
+        "type": "find",
+        "title": "Dysphoria Mundi – Paul B. Preciado",
+        "url": "https://www.youtube.com/watch?v=SomTT3n5hjQ&list=PL4LnAs9Yxm_6Hd9PyGderORHwtIGydFih&index=83&t=196s",
+        "note": "One of the most insightful contemporary philosophers, Preciado expertly wields syntax to explore politics, subjectivation, and experience. Dysphoria Mundi, his latest book, is a must read.",
+        "date": "2026-05-07",
+        "tags": [
+            "theory",
+            "trans",
+            "politics",
+            "video"
+        ]
+    },
+    {
+        "type": "find",
+        "title": "Solar Charged Cyberdeck Build",
+        "url": "https://www.youtube.com/watch?v=sVnjyTWPwnc",
+        "note": "Computers don't have to be boring. This is what a computer is supposed to be — custom, meaningful, beautiful.",
+        "date": "2026-05-07",
+        "tags": [
+            "video",
+            "tech"
+        ]
+    },
+    {
+        "type": "post",
+        "title": "Eidolon",
+        "url": "https://bitter-voice-1fe2.zoeallgaier.workers.dev/",
+        "image": "/_assets/marginalia/eidolon.jpg",
+        "note": "A sci-fi universe I've been building. Sentient 'silica-bio' weapons, an isolated Alaskan research facility, and a Coast Guard evacuation. Prototype playable.",
+        "date": "2026-05-05",
+        "tags": [
+            "fiction",
+            "creative"
+        ]
+    },
+    {
+        "type": "find",
+        "title": "The Nature of the Last Universal Common Ancestor and Its Impact on the Early Earth System",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11383801/",
+        "note": "Research on LUCA — the hydrothermal vent origin of life, 4.2 billion years ago. The science that opens Recursia.",
+        "date": "2026-05-05",
+        "tags": [
+            "biology",
+            "science"
+        ]
+    },
+    {
+        "type": "find",
+        "title": "Earliest Octopuses Were Giant Top Predators in Cretaceous Oceans",
+        "url": "https://www.science.org/doi/10.1126/science.aea6285",
+        "note": "New evidence placing giant octopuses as apex predators of Cretaceous seas. Of course they were.",
+        "date": "2026-05-05",
+        "tags": [
+            "biology",
+            "paleontology"
+        ]
+    },
+    {
+        "type": "find",
+        "title": "A Cyborg Manifesto",
+        "url": "https://archive.org/details/anarchy_Cyborg_Manifesto_Harroway/page/n5/mode/2up",
+        "note": "Donna Haraway's foundational text on cyborgs as metaphor for the collapse of boundaries between human, animal, and machine. Required reading.",
+        "date": "2026-05-05",
+        "tags": [
+            "theory",
+            "feminism"
+        ]
+    },
+    {
+        "type": "post",
+        "title": "Symbioticism",
+        "url": "posts/symbioticism.html",
+        "note": "On the interdependence of all life — extinction events past and present, the Holocene crisis unfolding now, and why the systems we use, not humanity itself, are the problem.",
+        "date": "2025-03-27",
+        "tags": [
+            "essay",
+            "climate",
+            "science",
+            "politics"
+        ]
+    },
+    {
+        "type": "post",
+        "title": "Is Homelessness Is a Choice?",
+        "url": "posts/homelessness.html",
+        "note": "On the moral failures of reducing homelessness to personal choice — what the data actually says, and why empathy is where any real solution has to start.",
+        "date": "2024-01-19",
+        "tags": [
+            "essay",
+            "politics"
+        ]
+    },
+    {
+        "type": "post",
+        "title": "How to Reinvent the Internet",
+        "url": "posts/reinvent-internet.html",
+        "note": "A history of the web, a diagnosis of what killed it, and an argument for what comes next. Decentralized infrastructure, community ownership, and why it matters.",
+        "date": "2025-06-20",
+        "tags": [
+            "essay",
+            "tech",
+            "politics"
+        ]
+    },
+    {
+        "type": "post",
+        "title": "Chimera",
+        "url": "posts/chimera.html",
+        "note": "On the chimera as metaphor for being a trans woman — 'a misunderstood mess of different identities, bodies, ideologies and spiritualities housed in one being.' Beauty and difficulty, both.",
+        "date": "2026-02-10",
+        "tags": [
+            "essay",
+            "identity",
+            "trans"
+        ]
+    },
+    {
+        "type": "post",
+        "title": "Apathy Toward Nuance: A Rant",
+        "url": "posts/apathy.html",
+        "note": "On algorithmic culture, the tyranny of trending content, and why it feels impossible to have a real conversation about anything that actually matters.",
+        "date": "2026-02-09",
+        "tags": [
+            "rant",
+            "culture"
+        ]
+    },
+    {
+        "type": "post",
+        "title": "\"Wow, Crazy. Weird Weather Everywhere.\"",
+        "url": "posts/wowcrazy.html",
+        "note": "Everyone keeps saying 'huh, that's funny' while the planet does what the planet does. A note on climate, prehistory, and cautious optimism.",
+        "date": "2026-02-08",
+        "tags": [
+            "rant",
+            "climate"
+        ]
+    },
+    {
+        "type": "post",
+        "title": "Sports!",
+        "url": "posts/sports.html",
+        "note": "At the Jazz game. Maybe I'm too marketing-brained, but all I see is commerce, logos, and ads. Writing this from just outside the stadium.",
+        "date": "2026-02-12",
+        "tags": [
+            "note",
+            "culture"
+        ]
+    },
+    {
+        "type": "post",
+        "title": "Notes on Becoming",
+        "url": "posts/becoming.html",
+        "note": "A meeting with the VP, a gifted book, and a question about how much of your life is authored by the narrative you tell yourself.",
+        "date": "2026-01-07",
+        "tags": [
+            "essay",
+            "design",
+            "career"
+        ]
+    },
+    {
+        "type": "find",
+        "title": "The Post-Futurist Manifesto",
+        "url": "https://www.generation-online.org/p/fp_bifo5.htm",
+        "note": "Franco Berardi (Bifo), 2009. Eleven points against futurism, capitalism, and speed. For autonomy, tenderness, and the body. Read it slowly.",
+        "date": "2025-12-15",
+        "tags": [
+            "theory",
+            "politics",
+            "manifestos"
+        ]
+    },
+    {
+        "type": "post",
+        "title": "Jurassic World Rebirth: \"One Big Pile of Sh*t\"",
+        "url": "posts/jurassic-world.html",
+        "note": "2/10. Great visual effects, squandered everything else. A rant about franchise filmmaking and thematic cowardice.",
+        "date": "2025-07-17",
+        "tags": [
+            "rant",
+            "film",
+            "review"
+        ]
+    },
+    {
+        "type": "post",
+        "title": "I'm Creating My Own Social Media",
+        "url": "posts/social-media.html",
+        "note": "Three reasons I left Instagram, TikTok, and everything else — and what I'm doing instead. This post lives on my website now. It might get less attention, but it's mine.",
+        "date": "2025-07-07",
+        "tags": [
+            "essay",
+            "tech"
+        ]
+    },
+    {
+        "type": "post",
+        "title": "Physical Media Is So Back",
+        "url": "posts/physical-media.html",
+        "note": "Two weeks without the apps. What replaced them, why it worked, and a small argument for choosing your media rather than letting an algorithm choose for you.",
+        "date": "2025-01-25",
+        "tags": [
+            "essay",
+            "media",
+            "tech"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Behave",
+        "note": "Robert Sapolsky (2017)",
+        "date": "2026-06-09",
+        "tags": [
+            "books",
+            "science",
+            "biology"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Where Do We Go from Here: Chaos or Community?",
+        "note": "Martin Luther King Jr. (1967)",
+        "date": "2026-05-20",
+        "tags": [
+            "books",
+            "politics"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Dysphoria Mundi",
+        "note": "Paul B. Preciado (2022)",
+        "date": "2026-05-06",
+        "tags": [
+            "books",
+            "theory",
+            "political"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Life Between the Tides",
+        "note": "Adam Nicolson (2021)",
+        "date": "2026-04-12",
+        "tags": [
+            "books",
+            "science",
+            "biology"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Enshittification",
+        "note": "Cory Doctorow (2025)",
+        "date": "2026-02-03",
+        "tags": [
+            "books",
+            "tech",
+            "politics"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "The Art of Direction",
+        "note": "Vincent Wagna (2023)",
+        "date": "2026-01-20",
+        "tags": [
+            "books",
+            "design",
+            "film"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Design for Belonging",
+        "note": "Susie Wise (2022)",
+        "date": "2025-12-03",
+        "tags": [
+            "books",
+            "design"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "The Rise and Fall of the Dinosaurs",
+        "note": "Steve Brusatte (2017)",
+        "date": "2025-11-08",
+        "tags": [
+            "books",
+            "science",
+            "paleontology"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Girlhood",
+        "note": "Melissa Febos (2021)",
+        "date": "2025-10-16",
+        "tags": [
+            "books",
+            "memoir"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Digital Design Theory",
+        "note": "Helen Armstrong (2016)",
+        "date": "2025-09-23",
+        "tags": [
+            "books",
+            "design"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Careless People",
+        "note": "Sarah Wynn-Williams (2025)",
+        "date": "2025-09-01",
+        "tags": [
+            "books",
+            "memoir"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Chaos",
+        "note": "James Gleick (1987)",
+        "date": "2025-08-09",
+        "tags": [
+            "books",
+            "science"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "You Are Not a Gadget",
+        "note": "Jaron Lanier (2010)",
+        "date": "2025-07-22",
+        "tags": [
+            "books",
+            "tech"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Stone Blind",
+        "note": "Natalie Haynes (2022)",
+        "date": "2025-06-25",
+        "tags": [
+            "books",
+            "fiction"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Authority",
+        "note": "Jeff VanderMeer (2014)",
+        "date": "2025-05-14",
+        "tags": [
+            "books",
+            "fiction"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Metazoa",
+        "note": "Peter Godfrey-Smith (2020)",
+        "date": "2025-04-26",
+        "tags": [
+            "books",
+            "science",
+            "biology"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "The Lost World",
+        "note": "Michael Crichton (1995)",
+        "date": "2025-04-05",
+        "tags": [
+            "books",
+            "fiction"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Jurassic Park",
+        "note": "Michael Crichton (1990)",
+        "date": "2025-02-22",
+        "tags": [
+            "books",
+            "fiction"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Ten Arguments for Deleting Your Social Media Right Now",
+        "note": "Jaron Lanier (2018)",
+        "date": "2025-02-14",
+        "tags": [
+            "books",
+            "tech"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Frankenstein",
+        "note": "Mary Shelley (1818)",
+        "date": "2025-01-29",
+        "tags": [
+            "books",
+            "fiction"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Staying with the Trouble",
+        "note": "Donna Haraway (2016)",
+        "date": "2025-01-10",
+        "tags": [
+            "books",
+            "theory",
+            "science"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Simians, Cyborgs, and Women",
+        "note": "Donna Haraway (1991)",
+        "date": "2024-11-17",
+        "tags": [
+            "books",
+            "theory",
+            "feminism"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "How We Became Posthuman",
+        "note": "N. Katherine Hayles (1999)",
+        "date": "2024-09-05",
+        "tags": [
+            "books",
+            "theory",
+            "tech"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Sapiens",
+        "note": "Yuval Noah Harari (2011)",
+        "date": "2024-06-22",
+        "tags": [
+            "books",
+            "science",
+            "history"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "The Wretched of the Earth",
+        "note": "Frantz Fanon (1961)",
+        "date": "2024-04-09",
+        "tags": [
+            "books",
+            "theory",
+            "politics"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "The Autobiography of Malcolm X",
+        "note": "Alex Haley (1965)",
+        "date": "2024-02-18",
+        "tags": [
+            "books",
+            "politics",
+            "memoir"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Feminism Is For Everybody",
+        "note": "bell hooks (2000)",
+        "date": "2023-11-03",
+        "tags": [
+            "books",
+            "theory",
+            "feminism"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Capitalist Realism",
+        "note": "Mark Fisher (2009)",
+        "date": "2023-08-27",
+        "tags": [
+            "books",
+            "theory",
+            "politics"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "The Creative Act",
+        "note": "Rick Rubin (2023)",
+        "date": "2023-05-14",
+        "tags": [
+            "books",
+            "creative",
+            "design"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "No Longer Human",
+        "note": "Osamu Dazai (1948)",
+        "date": "2023-02-08",
+        "tags": [
+            "books",
+            "fiction"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Annihilation",
+        "note": "Jeff VanderMeer (2014)",
+        "date": "2022-11-20",
+        "tags": [
+            "books",
+            "fiction"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "The Way of Zen",
+        "note": "Alan Watts (1957)",
+        "date": "2022-08-15",
+        "tags": [
+            "books",
+            "theory"
+        ]
+    },
+    {
+        "type": "library",
+        "title": "Living on Earth",
+        "note": "Peter Godfrey-Smith",
+        "date": "2026-06-27",
+        "reading": true,
+        "tags": [
+            "books",
+            "science",
+            "biology"
+        ]
+    }
+]

@@ -1,0 +1,38 @@
+name: Deploy to SiteGround
+
+# Every push to main uploads the changed files to your SiteGround hosting.
+# You can also trigger it by hand from the Actions tab (Run workflow).
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the site
+        uses: actions/checkout@v4
+
+      - name: Upload to SiteGround over FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server:    ${{ secrets.FTP_SERVER }}
+          username:  ${{ secrets.FTP_USERNAME }}
+          password:  ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          protocol: ftps
+          port: 21
+          # The phone form writes these ON THE SERVER, so we never overwrite
+          # them from git — that would wipe posts/photos made from your phone.
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/.DS_Store
+            **/.claude/**
+            **/node_modules/**
+            marginalia/content.json
+            _assets/marginalia/**
+            marginalia/publish/config.php
+            marginalia/publish/DEPLOY.txt

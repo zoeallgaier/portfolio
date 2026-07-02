@@ -1,0 +1,491 @@
+@import '../css/base.css';
+
+:root {
+  /* Type palette drawn from the site's warm gradient (orange / teal / magenta).
+     Two tiers: badge text stays legible (~AA-large) on the light bg, while the
+     left stripe runs brighter to carry the vividness across the board. */
+  --type-post: #c2410c;           /* rust orange */
+  --type-find: #0f766e;           /* teal        */
+  --type-library: #c02a74;        /* magenta     */
+  --type-post-stripe: #f0651f;
+  --type-find-stripe: #14a88a;
+  --type-library-stripe: #e2478f;
+}
+
+/* —— Main —— */
+main {
+  padding-top: 9rem; /* overridden by JS */
+  min-height: 100vh;
+}
+
+/* —— Feed (editorial two-up: shortest-column masonry, columns built in JS) —— */
+.feed {
+  max-width: 1240px;         /* two generous columns, less dead space on the sides */
+  margin: 0 auto;
+  padding-inline: 1.5rem;
+  margin-block: 2.5rem;      /* breathing room below the nav, and above the footer */
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;   /* columns size to their own content */
+}
+
+.feed-col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;                 /* vertical spacing between cards */
+}
+
+.feed-error {
+  padding: 2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* —— Entry cards —— */
+.entry {
+  padding: 2.2rem 2.3rem 1.9rem 2.5rem;
+  border: 1px solid var(--rule);
+  border-left: 3px solid transparent;   /* type stripe (color set per type) */
+  border-radius: 3px;
+  transition: background-color 0.15s, border-color 0.2s;
+  animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Muted default, full-strength on hover — stripe (border-left) left intact.
+   Tint derives from --text, so it adapts to light/dark without a separate rule. */
+.entry:hover {
+  background-color: color-mix(in srgb, var(--text) 4%, transparent);
+  border-top-color: var(--muted);
+  border-right-color: var(--muted);
+  border-bottom-color: var(--muted);
+}
+
+/* Type cue on the left stripe — brighter tier for a more vivid board. */
+.entry--post    { border-left-color: var(--type-post-stripe); }
+.entry--find    { border-left-color: var(--type-find-stripe); }
+.entry--library { border-left-color: var(--type-library-stripe); }
+/* Photo tiles get a uniform thin frame, not a colored stripe (see photo section). */
+.entry--photo   { border-left-color: var(--rule); }
+
+.entry-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.entry-badge {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 2px;
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Badge label carries the type hue over a neutral tint. */
+.entry--post .entry-badge    { color: var(--type-post); }
+.entry--find .entry-badge    { color: var(--type-find); }
+.entry--library .entry-badge { color: var(--type-library); }
+
+/* On a media tile the badge rides on the image itself — dark pill, light text. */
+.entry--media .entry-badge {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  z-index: 1;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.entry-domain {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+.entry-title {
+  display: block;
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.75rem, 2.6vw, 2.15rem);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 0.6rem;
+  transition: color 0.2s;
+}
+
+/* Clickable titles carry a quiet underline so they read as links;
+   non-clickable text titles (library) have none. */
+a.entry-title {
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+a.entry-title:hover { text-decoration-color: var(--text); }
+
+.entry-title--text { cursor: default; }
+
+/* External finds get a forward arrow (kept clear of the underline). */
+.entry--find .entry-title::after {
+  content: '\2192';
+  display: inline-block;
+  margin-left: 0.3em;
+  font-size: 0.85em;
+  color: var(--muted);
+}
+
+/* —— Library row: title + author share one line. Title matches every other
+   entry's title (same size/family); only the layout is inline. —— */
+.entry-libline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.entry--library .entry-title {
+  display: inline;
+  margin-bottom: 0;
+}
+
+.entry-author {
+  font-size: clamp(1.02rem, 1.4vw, 1.14rem);   /* matches .entry-note */
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.entry-note {
+  font-size: clamp(1.02rem, 1.4vw, 1.14rem);
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 1.1rem;
+  font-weight: 300;
+}
+
+.entry-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.entry-date {
+  font-size: 0.82rem;
+  color: var(--muted);
+  opacity: 0.75;
+}
+
+/* —— Tags —— */
+.tags {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.22rem 0.7rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  background: none;
+  font-family: 'Oxygen', sans-serif;
+  line-height: 1.5;
+}
+
+.tag:hover,
+.tag.active {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* —— Photo entries —— */
+.entry-image {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+  background: var(--rule);   /* quiet tint while the image lazy-loads */
+  cursor: zoom-in;
+}
+
+/* A linked image (e.g. a post that opens externally) navigates, not zooms. */
+.entry-image-link { display: block; }
+.entry-image-link .entry-image { cursor: pointer; }
+
+/* —— Media tile: any entry with an image (photo, or a post/find with an image).
+   The image fills the card; the badge rides on it and the title + caption + meta
+   overlay the bottom over a scrim. —— */
+.entry--media {
+  padding: 0;
+  overflow: hidden;            /* clip the image to the card radius */
+  border-left-width: 1px;      /* uniform frame, no colored stripe */
+  border-left-color: var(--rule);
+}
+.entry--media:hover { border-left-color: var(--muted); }
+
+.entry-media { position: relative; display: block; }
+
+.entry--media .entry-image {
+  aspect-ratio: 1 / 1;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+.entry-media-overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 3.25rem 1.15rem 1.05rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.88), rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.12) 78%, transparent);
+  pointer-events: none;        /* clicks fall through to the image (zoom or link) */
+}
+.entry-media-overlay .entry-title {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  pointer-events: auto;        /* a linked title (e.g. Eidolon) stays clickable */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+.entry-media-overlay a.entry-title { text-decoration-color: rgba(255, 255, 255, 0.5); }
+.entry-media-overlay a.entry-title:hover { text-decoration-color: #fff; }
+.entry-media-overlay .entry-note {
+  color: rgba(255, 255, 255, 0.96);
+  margin-bottom: 0.55rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+.entry-media-overlay .entry-date {
+  color: rgba(255, 255, 255, 0.82);
+  opacity: 1;
+}
+.entry-media-overlay .tag {
+  color: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.45);
+  pointer-events: auto;        /* tags stay clickable */
+}
+.entry-media-overlay .tag:hover,
+.entry-media-overlay .tag.active { color: #fff; border-color: #fff; }
+
+/* —— Lightbox (photo zoom) —— */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;             /* above nav (100) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  cursor: zoom-out;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 3px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* —— Post article —— */
+.post-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 5rem 2rem 6rem;
+}
+
+.post-eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+  animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+}
+
+.post-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.post-meta {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 3rem;
+  animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+.post-date {
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.post-body {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+.post-body p { margin-bottom: 1.5em; }
+
+.post-body b,
+.post-body strong { font-weight: 700; color: var(--text); }
+
+.post-body blockquote b,
+.post-body blockquote strong { color: inherit; }
+
+.post-body > *:nth-child(1) { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.50s both; }
+.post-body > *:nth-child(2) { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.59s both; }
+.post-body > *:nth-child(3) { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.68s both; }
+.post-body > *:nth-child(4) { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.77s both; }
+
+.post-body h1 {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  font-weight: 400;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+}
+
+.post-body a {
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 3px;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+
+.post-body a:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+.post-body ul,
+.post-body ol {
+  padding-left: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.post-body li { margin-bottom: 0.5em; }
+
+.post-body blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.2rem;
+  margin-bottom: 2.5rem;
+  transition: color 0.2s, border-color 0.2s;
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.back-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* —— Animations (marginalia uses a blur-in variant of fadeUp) —— */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); filter: blur(5px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; filter: blur(4px); }
+  to   { opacity: 1; filter: blur(0); }
+}
+
+/* —— Dark mode (type palette + entry surfaces; base handles tokens & nav) —— */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Lifted warm palette — bright on the dark bg; both tiers share it. */
+    --type-post: #f0965a;    /* orange  */
+    --type-find: #4fd1ac;    /* teal    */
+    --type-library: #e08cc0; /* magenta */
+    --type-post-stripe: #f0965a;
+    --type-find-stripe: #4fd1ac;
+    --type-library-stripe: #e08cc0;
+  }
+
+  .entry-badge { background: rgba(255, 255, 255, 0.07); }
+}
+
+/* —— Mobile (nav handled by base) —— */
+@media (max-width: 680px) {
+  main {
+    padding-top: 5rem;
+  }
+
+  /* Lighter touch on phones — the feed gutter + card padding were stacking. */
+  .feed {
+    padding-inline: 1rem;
+    margin-block: 1.5rem;
+  }
+
+  .feed-col { gap: 1.25rem; }
+
+  /* Media tiles keep their zero padding (image fills the card); only text
+     cards get the tighter mobile padding. */
+  .entry:not(.entry--media) {
+    padding: 1.4rem 1.35rem 1.2rem 1.6rem;
+  }
+
+  /* Smaller type on phones. */
+  .entry-title { font-size: 1.5rem; }
+  .entry-note,
+  .entry-author { font-size: 0.95rem; }
+  .entry-date { font-size: 0.75rem; }
+  .tag { font-size: 0.72rem; }
+  .entry-badge { font-size: 0.65rem; }
+
+  .post-wrap {
+    padding: 3.5rem 1.5rem 4rem;
+  }
+}
