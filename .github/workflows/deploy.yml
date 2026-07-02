@@ -14,6 +14,14 @@ jobs:
       - name: Checkout the site
         uses: actions/checkout@v4
 
+      # Recreate the publish password file from a secret, so it lives on the
+      # server without the password ever being committed to git.
+      - name: Write publish config
+        env:
+          PUBLISH_PASSWORD: ${{ secrets.PUBLISH_PASSWORD }}
+        run: |
+          printf "<?php\n\$PUBLISH_PASSWORD = '%s';\n" "$PUBLISH_PASSWORD" > marginalia/publish/config.php
+
       - name: Upload to SiteGround over FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -34,5 +42,4 @@ jobs:
             **/node_modules/**
             marginalia/content.json
             _assets/marginalia/**
-            marginalia/publish/config.php
             marginalia/publish/DEPLOY.txt
