@@ -1,6 +1,35 @@
 [
     {
         "type": "photo",
+        "image": "/_assets/marginalia/2026-06-05-photo-a0b8.jpg",
+        "note": "Met some new friends at Wendy’s 🦆",
+        "date": "2026-06-05",
+        "tags": [
+            "life"
+        ]
+    },
+    {
+        "type": "photo",
+        "image": "/_assets/marginalia/2025-09-27-photo-b247.jpg",
+        "note": "Bridal Veil Falls",
+        "date": "2025-09-27",
+        "tags": [
+            "life"
+        ]
+    },
+    {
+        "type": "photo",
+        "image": "/_assets/marginalia/2026-04-22-photo-e244.jpg",
+        "note": "U of U art museum",
+        "date": "2026-04-22",
+        "tags": [
+            "art",
+            "museum",
+            "life"
+        ]
+    },
+    {
+        "type": "photo",
         "image": "/_assets/marginalia/2025-12-13-photo-e29c.jpg",
         "note": "Reading at the coffee shop is unparalleled",
         "date": "2025-12-13",
