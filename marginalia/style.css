@@ -405,6 +405,17 @@ a.entry-title:hover { text-decoration-color: var(--text); }
   font-style: italic;
 }
 
+/* Litany stanzas (e.g. the grievance refrains in "The Sound of Freedom") — set
+   in the display serif, italic, so they read as refrains against the sans body. */
+.post-body .litany {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  line-height: 1.4;
+  color: var(--text);
+  margin: 2rem 0;
+}
+
 .post-body figure { margin: 2.5rem 0; }
 
 .post-body img {
