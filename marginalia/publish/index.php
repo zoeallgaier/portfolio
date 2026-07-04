@@ -432,18 +432,20 @@ $csrf = $_SESSION['csrf'];
   .topbar { display: flex; justify-content: space-between; align-items: baseline; }
   .topbar a { color: var(--muted); font-size: .85rem; text-decoration: none; }
 
-  /* Markdown toolbar */
+  /* Markdown toolbar — formatting buttons read as a squared toolbar; the Preview
+     toggle is a distinct round outlined chip that inverts (fills) when active. */
   .md-tools-row { display: flex; justify-content: space-between; align-items: center; margin-top: 1.1rem; margin-bottom: .55rem; }
   .md-tools-row label { margin: 0; }
   .md-preview-toggle {
-    font: inherit; font-size: .78rem; letter-spacing: .02em; padding: .32rem .85rem; cursor: pointer;
-    color: var(--muted); background: var(--field); border: 1px solid var(--rule); border-radius: 999px;
+    font: inherit; font-size: .78rem; letter-spacing: .02em; padding: .34rem .9rem; cursor: pointer;
+    color: var(--muted); background: none; border: 1px solid var(--rule); border-radius: 999px;
   }
   .md-preview-toggle:active { opacity: .8; }
+  .md-preview-toggle[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
   .md-toolbar { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .65rem; }
   .md-toolbar button {
-    font: inherit; font-size: .82rem; line-height: 1.35; padding: .4rem .75rem; cursor: pointer;
-    color: var(--text); background: var(--field); border: 1px solid var(--rule); border-radius: 999px;
+    font: inherit; font-size: .82rem; line-height: 1.35; padding: .38rem .7rem; cursor: pointer;
+    color: var(--text); background: var(--field); border: 1px solid var(--rule); border-radius: 8px;
   }
   .md-toolbar button:active { opacity: .8; }
 
@@ -530,7 +532,7 @@ $csrf = $_SESSION['csrf'];
     <div class="field-group" data-show="post">
       <div class="md-tools-row">
         <label for="body" style="margin:0">Write the post</label>
-        <button type="button" class="md-preview-toggle" id="previewToggle">Preview</button>
+        <button type="button" class="md-preview-toggle" id="previewToggle" aria-pressed="false">Preview</button>
       </div>
       <div class="md-toolbar" aria-label="Formatting">
         <button type="button" data-md="h2">Statement</button>
@@ -643,6 +645,7 @@ $csrf = $_SESSION['csrf'];
       previewOpen = !previewOpen;
       preview.hidden = !previewOpen;
       toggle.textContent = previewOpen ? 'Hide preview' : 'Preview';
+      toggle.setAttribute('aria-pressed', previewOpen ? 'true' : 'false');
       if (previewOpen) refreshPreview();
     });
     body.addEventListener('input', () => {
