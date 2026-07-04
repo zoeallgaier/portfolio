@@ -55,7 +55,7 @@
   let colCount = 0;
 
   function columnsForWidth(w) {
-    return Math.max(1, Math.min(4, Math.floor(w / 420)));
+    return Math.max(1, Math.min(3, Math.floor(w / 420)));
   }
 
   /* Distribute the currently-visible cards into N columns, always appending
