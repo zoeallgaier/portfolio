@@ -4,11 +4,11 @@
   /* Type palette drawn from the site's warm gradient (orange / teal / magenta).
      Two tiers: badge text stays legible (~AA-large) on the light bg, while the
      left stripe runs brighter to carry the vividness across the board. */
-  --type-post: #c2410c;           /* rust orange */
-  --type-find: #0f766e;           /* teal        */
+  --type-post: #0f766e;           /* teal        */
+  --type-find: #c2410c;           /* rust orange */
   --type-library: #c02a74;        /* magenta     */
-  --type-post-stripe: #f0651f;
-  --type-find-stripe: #14a88a;
+  --type-post-stripe: #14a88a;
+  --type-find-stripe: #f0651f;
   --type-library-stripe: #e2478f;
 }
 
@@ -465,11 +465,11 @@ a.entry-title:hover { text-decoration-color: var(--text); }
 @media (prefers-color-scheme: dark) {
   :root {
     /* Lifted warm palette — bright on the dark bg; both tiers share it. */
-    --type-post: #f0965a;    /* orange  */
-    --type-find: #4fd1ac;    /* teal    */
+    --type-post: #4fd1ac;    /* teal    */
+    --type-find: #f0965a;    /* orange  */
     --type-library: #e08cc0; /* magenta */
-    --type-post-stripe: #f0965a;
-    --type-find-stripe: #4fd1ac;
+    --type-post-stripe: #4fd1ac;
+    --type-find-stripe: #f0965a;
     --type-library-stripe: #e08cc0;
   }
 
