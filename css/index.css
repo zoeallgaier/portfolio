@@ -67,7 +67,7 @@
 }
 
 .hero-name .word {
-  display: inline-block;
+  display: block;          /* each name word on its own line: Zoe / Allgaier */
   white-space: nowrap;
 }
 

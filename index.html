@@ -142,8 +142,13 @@
     (function () {
       const heroName = document.querySelector('.hero-name');
       if (!heroName) return;
-      // Reduced motion: skip the split, just reveal the plain name.
+      // Reduced motion: skip the char animation, but still wrap each word so the
+      // name breaks onto its own line (Zoe / Allgaier) like the animated version.
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        heroName.innerHTML = heroName.textContent.trim()
+          .split(' ')
+          .map(w => `<span class="word">${w}</span>`)
+          .join(' ');
         heroName.style.opacity = '1';
         return;
       }
