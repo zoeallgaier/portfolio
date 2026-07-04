@@ -377,6 +377,17 @@ a.entry-title:hover { text-decoration-color: var(--text); }
   color: var(--text);
 }
 
+/* Section heading — upright serif, medium; distinct from the big italic h2
+   statement/pull-quote. (Used by written posts composed on the publish page.) */
+.post-body h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 2.5rem 0 1rem;
+  color: var(--text);
+}
+
 .post-body a {
   text-decoration: underline;
   text-decoration-color: var(--rule);

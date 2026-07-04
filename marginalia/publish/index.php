@@ -18,10 +18,12 @@ if ($PUBLISH_PASSWORD === '') {
 }
 
 /* ── Paths (relative to this file, so they work wherever the site lives) ── */
-$CONTENT_JSON = __DIR__ . '/../content.json';          // the feed data
-$IMAGE_DIR    = __DIR__ . '/../../_assets/marginalia';  // where photos are saved
+$CONTENT_JSON  = __DIR__ . '/../content.json';          // the feed data
+$IMAGE_DIR     = __DIR__ . '/../../_assets/marginalia';  // where photos are saved
 $IMAGE_WEBBASE = '/_assets/marginalia';                 // how the feed references them
-$MAX_WIDTH    = 1600;                                    // resize big phone photos down to this
+$POSTS_DIR     = __DIR__ . '/../posts';                  // where written posts are generated
+$SITE          = 'https://zoeallgaier.com';             // for absolute og: URLs
+$MAX_WIDTH     = 1600;                                   // resize big phone photos down to this
 
 /* ───────────────────────────── plumbing ───────────────────────────────── */
 session_start();
@@ -45,6 +47,13 @@ if (($_POST['action'] ?? '') === 'login') {
 
 $authed = !empty($_SESSION['auth']);
 
+/* Live Markdown preview (AJAX) — session-authed, renders without saving. */
+if ($authed && ($_POST['action'] ?? '') === 'preview') {
+  header('Content-Type: text/html; charset=utf-8');
+  echo md_to_html($_POST['body'] ?? '');
+  exit;
+}
+
 /* ───────────────────────── handle a new entry ─────────────────────────── */
 if ($authed && ($_POST['action'] ?? '') === 'publish') {
   if (!hash_equals($_SESSION['csrf'], $_POST['csrf'] ?? '')) {
@@ -56,10 +65,10 @@ if ($authed && ($_POST['action'] ?? '') === 'publish') {
   }
 }
 
-/* Build one entry, save any image, and prepend it to content.json.
-   Returns the entry array on success, or an error string. */
+/* Build one entry, save any image, optionally generate a full post page, and
+   prepend the entry to content.json. Returns the entry array, or an error. */
 function handle_publish() {
-  global $CONTENT_JSON, $IMAGE_DIR, $IMAGE_WEBBASE, $MAX_WIDTH;
+  global $CONTENT_JSON, $POSTS_DIR;
 
   $type = $_POST['type'] ?? '';
   if (!in_array($type, ['post', 'find', 'photo', 'library'], true)) return 'Pick a type.';
@@ -70,7 +79,6 @@ function handle_publish() {
   $note  = $clean($_POST['note'] ?? '');
   $date  = trim((string)($_POST['date'] ?? '')) ?: date('Y-m-d');
 
-  // Basic per-type requirements
   if ($type !== 'photo' && $title === '') return 'This type needs a title.';
 
   // Tags: comma-separated → lowercase slugs
@@ -89,7 +97,7 @@ function handle_publish() {
     return 'A photo entry needs an image.';
   }
 
-  // Assemble entry in the same shape the feed expects
+  // Assemble the feed entry
   $entry = ['type' => $type];
   if ($title)   $entry['title'] = $title;
   if ($url)     $entry['url']   = $url;
@@ -98,6 +106,21 @@ function handle_publish() {
   if ($type === 'library' && !empty($_POST['reading'])) $entry['reading'] = true;
   $entry['date'] = $date;
   if ($tags)    $entry['tags'] = $tags;
+
+  // A written post generates its own page; the feed card links to it.
+  if ($type === 'post') {
+    $body = trim((string)($_POST['body'] ?? ''));
+    if ($body !== '') {
+      $eyebrow = $clean($_POST['eyebrow'] ?? '') ?: 'Essay';
+      $desc    = $note !== '' ? $note : plain_excerpt($body);
+      $res = write_post_page($title, $eyebrow, $date, $tags, md_to_html($body), $desc, $imageWeb);
+      if (isset($res['error'])) return $res['error'];
+      $entry['url'] = $res['url'];
+      if (!$note) $entry['note'] = $desc;   // give the feed card a teaser
+    } elseif ($url === '') {
+      return 'Write the post below, or paste a link.';
+    }
+  }
 
   // Read → prepend → write, with a lock so nothing is clobbered
   if (!is_writable($CONTENT_JSON)) return 'content.json is not writable on the server (check file permissions).';
@@ -113,6 +136,167 @@ function handle_publish() {
   flock($fp, LOCK_UN); fclose($fp);
 
   return $entry;
+}
+
+/* ── Markdown → post-body HTML (a small subset mapped to the site's styles) ── */
+function md_to_html($md) {
+  $md = str_replace(["\r\n", "\r"], "\n", (string)$md);
+  $blocks = preg_split('/\n{2,}/', trim($md));
+  $out = [];
+  foreach ($blocks as $block) {
+    $block = rtrim($block);
+    if ($block === '') continue;
+    $lines = explode("\n", $block);
+    $all = fn($re) => !in_array(false, array_map(fn($l) => (bool)preg_match($re, $l), $lines), true);
+
+    if (count($lines) === 1 && preg_match('/^###\s+(.*)$/', $lines[0], $m)) {
+      $out[] = '<h3>' . md_inline($m[1]) . '</h3>';
+    } elseif (count($lines) === 1 && preg_match('/^#{1,2}\s+(.*)$/', $lines[0], $m)) {
+      $out[] = '<h2>' . md_inline($m[1]) . '</h2>';
+    } elseif (count($lines) === 1 && preg_match('/^(---|\*\*\*)$/', $lines[0])) {
+      $out[] = '<hr>';
+    } elseif ($all('/^>\s?/')) {
+      $inner = array_map(fn($l) => md_inline(preg_replace('/^>\s?/', '', $l)), $lines);
+      $out[] = '<blockquote>' . implode('<br>', $inner) . '</blockquote>';
+    } elseif ($all('/^[-*]\s+/')) {
+      $items = array_map(fn($l) => '<li>' . md_inline(preg_replace('/^[-*]\s+/', '', $l)) . '</li>', $lines);
+      $out[] = '<ul>' . implode('', $items) . '</ul>';
+    } elseif ($all('/^~\s+/')) {                       // ~ → litany refrain (italic serif)
+      $inner = array_map(fn($l) => md_inline(preg_replace('/^~\s+/', '', $l)), $lines);
+      $out[] = '<p class="litany">' . implode('<br>', $inner) . '</p>';
+    } else {
+      $out[] = '<p>' . implode('<br>', array_map('md_inline', $lines)) . '</p>';
+    }
+  }
+  return implode("\n\n", $out);
+}
+
+/* Inline formatting. Escapes first, then applies markdown, so raw HTML is safe. */
+function md_inline($t) {
+  $t = htmlspecialchars($t, ENT_QUOTES, 'UTF-8');
+  $t = preg_replace_callback('/\[([^\]]+)\]\(([^)\s]+)\)/', function ($m) {
+    $ext = preg_match('#^https?://#', html_entity_decode($m[2])) ? ' target="_blank" rel="noopener noreferrer"' : '';
+    return '<a href="' . $m[2] . '"' . $ext . '>' . $m[1] . '</a>';
+  }, $t);
+  $t = preg_replace('/\*\*(.+?)\*\*/', '<strong>$1</strong>', $t);
+  $t = preg_replace('/(?<!\*)\*(?!\*)([^*\n]+?)\*(?!\*)/', '<em>$1</em>', $t);
+  $t = preg_replace('/(?<!\w)_([^_\n]+?)_(?!\w)/', '<em>$1</em>', $t);
+  return $t;
+}
+
+/* Plain-text excerpt for the feed teaser / meta description when none is given. */
+function plain_excerpt($md, $len = 160) {
+  $t = preg_replace('/\[([^\]]+)\]\([^)]*\)/', '$1', $md);      // links → text
+  $t = preg_replace('/[#>*_~`]|^[-]\s+/m', '', $t);            // strip markers
+  $t = trim(preg_replace('/\s+/', ' ', $t));
+  if (mb_strlen($t) > $len) $t = mb_substr($t, 0, $len - 1) . '…';
+  return $t;
+}
+
+function make_slug($title) {
+  global $POSTS_DIR;
+  $base = trim(preg_replace('/[^a-z0-9]+/', '-', strtolower($title)), '-') ?: 'post';
+  $slug = $base; $i = 2;
+  while (file_exists("$POSTS_DIR/$slug.html")) { $slug = "$base-$i"; $i++; }
+  return $slug;
+}
+
+/* Generate a full static post page from the essay template. Returns
+   ['url' => 'posts/<slug>.html'] or ['error' => '…']. */
+function write_post_page($title, $eyebrow, $date, $tags, $bodyHtml, $desc, $imageWeb) {
+  global $POSTS_DIR, $SITE;
+  if (!is_dir($POSTS_DIR))      return ['error' => 'posts/ folder not found on the server.'];
+  if (!is_writable($POSTS_DIR)) return ['error' => 'posts/ folder is not writable (check permissions).'];
+
+  $slug   = make_slug($title);
+  $url    = "posts/$slug.html";
+  $urlAbs = "$SITE/marginalia/$url";
+  $imgAbs = $imageWeb ? $SITE . $imageWeb : '';
+  $dateFmt = date('F j, Y', strtotime($date) ?: time());
+  $e = fn($s) => htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8');
+
+  $tagHtml = '';
+  foreach ($tags as $t) $tagHtml .= '          <span class="tag" style="pointer-events:none">' . $e($t) . "</span>\n";
+
+  $ogImg = $imgAbs ? '  <meta property="og:image" content="' . $e($imgAbs) . "\" />\n" : '';
+  $card  = $imgAbs ? 'summary_large_image' : 'summary';
+
+  $html = '<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>' . $e($title) . ' — Marginalia</title>
+  <meta name="description" content="' . $e($desc) . '" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="' . $e($title) . ' — Marginalia" />
+  <meta property="og:description" content="' . $e($desc) . '" />
+  <meta property="og:url" content="' . $e($urlAbs) . '" />
+' . $ogImg . '  <meta name="twitter:card" content="' . $card . '" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav>
+    <a href="/" class="nav-logo"><img src="/Zmono-dark.png" alt="Zoe Allgaier — Home"></a>
+    <div class="nav-links">
+      <a href="/marginalia/">All</a>
+      <a href="/marginalia/?filter=posts">Posts</a>
+      <a href="/marginalia/?filter=finds">Finds</a>
+      <a href="/marginalia/?filter=photos">Photos</a>
+      <a href="/marginalia/?filter=library">Library</a>
+    </div>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+    <article class="post-wrap">
+
+      <a href="../" class="back-link">← All entries</a>
+
+      <span class="post-eyebrow">' . $e($eyebrow) . '</span>
+      <h1 class="post-title">' . $e($title) . '</h1>
+
+      <div class="post-meta">
+        <span class="post-date">' . $e($dateFmt) . '</span>
+        <div class="tags">
+' . $tagHtml . '      </div>
+    </div>
+
+      <div class="post-body">
+
+' . $bodyHtml . '
+
+    </div>
+
+    </article>
+  </main>
+
+  <footer id="contact">
+    <p class="footer-prompt">If you\'ve got a project where graphic, motion, and web all need to show up as one thing, I\'d love to hear about it.</p>
+    <a href="mailto:zoeallgaier@gmail.com" class="footer-email">zoeallgaier@gmail.com</a>
+    <div class="footer-bottom">
+      <span>Zoe Allgaier</span>
+      <span>© 2026</span>
+    </div>
+  </footer>
+
+  <script src="../main.js"></script>
+
+  <script src="/js/footer.js"></script>
+</body>
+</html>
+';
+
+  if (file_put_contents("$POSTS_DIR/$slug.html", $html) === false)
+    return ['error' => 'Could not write the post page.'];
+  return ['url' => $url];
 }
 
 /* Save an uploaded image: fix rotation, downscale, re-encode. Returns web path or error. */
@@ -205,8 +389,7 @@ $csrf = $_SESSION['csrf'];
     background: var(--field); border: 1px solid var(--rule); border-radius: 8px;
   }
   textarea { min-height: 5.5rem; resize: vertical; }
-  /* iOS gives date inputs their own native box; normalize it so the padding
-     matches every other field and the value isn't shoved off-center. */
+  #body { min-height: 14rem; line-height: 1.6; }
   input[type=date] { -webkit-appearance: none; appearance: none; min-height: 2.9rem; }
   input[type=date]::-webkit-date-and-time-value { margin: 0; text-align: left; }
   input[type=date]::-webkit-calendar-picker-indicator { margin-left: auto; }
@@ -236,6 +419,35 @@ $csrf = $_SESSION['csrf'];
   a { color: var(--text); }
   .topbar { display: flex; justify-content: space-between; align-items: baseline; }
   .topbar a { color: var(--muted); font-size: .85rem; text-decoration: none; }
+
+  /* Markdown toolbar */
+  .md-toolbar { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .4rem; }
+  .md-toolbar button {
+    font: inherit; font-size: .82rem; padding: .35rem .6rem; cursor: pointer;
+    color: var(--text); background: var(--field); border: 1px solid var(--rule); border-radius: 7px;
+  }
+  .md-toolbar button:active { opacity: .8; }
+  .md-tools-row { display: flex; justify-content: space-between; align-items: baseline; margin-top: 1.1rem; }
+  .md-tools-row label { margin: 0; }
+  .md-preview-toggle { font-size: .8rem; color: var(--muted); background: none; border: 0; cursor: pointer; text-decoration: underline; }
+
+  /* Live preview — approximates the post-body styles */
+  .preview { margin-top: .6rem; padding: 1rem 1.1rem; border: 1px dashed var(--rule); border-radius: 8px; }
+  .preview:empty::before { content: 'Nothing to preview yet.'; color: var(--muted); font-size: .85rem; }
+  .preview p { margin: 0 0 1em; }
+  .preview h2 { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+                font-size: 1.7rem; line-height: 1.15; margin: 1.4rem 0 .8rem; }
+  .preview h3 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 1.35rem;
+                margin: 1.4rem 0 .6rem; }
+  .preview blockquote { border-left: 3px solid var(--text); padding-left: 1rem; margin: 1.2rem 0;
+                        color: var(--muted); font-style: italic; }
+  .preview .litany { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.25rem;
+                     line-height: 1.4; margin: 1.2rem 0; }
+  .preview ul { padding-left: 1.3em; margin: 0 0 1em; }
+  .preview a { text-decoration: underline; }
+  .cheat { font-size: .82rem; color: var(--muted); margin-top: .5rem; }
+  .cheat code { background: var(--field); padding: .05rem .3rem; border-radius: 4px; }
+  .cheat div { margin: .2rem 0; }
 </style>
 </head>
 <body>
@@ -256,7 +468,9 @@ $csrf = $_SESSION['csrf'];
 
   <?php if ($success): ?>
     <div class="msg ok"><strong><?= htmlspecialchars($success) ?></strong>
-      &nbsp;<a href="/marginalia/" target="_blank">View feed →</a></div>
+      &nbsp;<a href="/marginalia/" target="_blank">View feed →</a>
+      <?php if (!empty($added['url'])): ?>&nbsp;·&nbsp;<a href="/marginalia/<?= htmlspecialchars($added['url']) ?>" target="_blank">Open post →</a><?php endif; ?>
+    </div>
     <details><summary class="hint">What was added</summary>
       <pre><?= htmlspecialchars(json_encode($added, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)) ?></pre>
     </details>
@@ -280,16 +494,56 @@ $csrf = $_SESSION['csrf'];
       <input id="title" type="text" name="title" autocomplete="off">
     </div>
 
-    <div class="field-group" data-show="post,find,library">
+    <div class="field-group" data-show="post">
+      <label for="eyebrow">Kind</label>
+      <select id="eyebrow" name="eyebrow">
+        <option>Essay</option>
+        <option>Rant</option>
+        <option>Review</option>
+        <option>Note</option>
+        <option>Project</option>
+      </select>
+    </div>
+
+    <div class="field-group" data-show="find,library">
       <label for="url" id="url-label">Link</label>
       <input id="url" type="url" name="url" placeholder="https://…" autocomplete="off">
-      <p class="hint" id="url-hint">External link for finds; the post's page for posts.</p>
+      <p class="hint" id="url-hint">External link for finds.</p>
+    </div>
+
+    <div class="field-group" data-show="post">
+      <div class="md-tools-row">
+        <label for="body" style="margin:0">Write the post</label>
+        <button type="button" class="md-preview-toggle" id="previewToggle">Preview</button>
+      </div>
+      <div class="md-toolbar" aria-label="Formatting">
+        <button type="button" data-md="h2">Statement</button>
+        <button type="button" data-md="h3">Heading</button>
+        <button type="button" data-md="bold"><b>B</b></button>
+        <button type="button" data-md="italic"><i>I</i></button>
+        <button type="button" data-md="quote">❝ Quote</button>
+        <button type="button" data-md="litany">Litany</button>
+        <button type="button" data-md="list">• List</button>
+        <button type="button" data-md="link">Link</button>
+      </div>
+      <textarea id="body" name="body" placeholder="Write in Markdown. Blank line = new paragraph."></textarea>
+      <div class="preview" id="preview" hidden></div>
+      <details class="cheat">
+        <summary class="hint">Formatting cheatsheet</summary>
+        <div><code>## Big statement</code> — oversized italic pull-quote</div>
+        <div><code>### Section heading</code></div>
+        <div><code>**bold**</code> · <code>*italic*</code></div>
+        <div><code>&gt; a quote</code></div>
+        <div><code>~ line one</code> / <code>~ line two</code> — litany refrain</div>
+        <div><code>- a list item</code></div>
+        <div><code>[link text](https://…)</code></div>
+      </details>
     </div>
 
     <div class="field-group" data-show="photo,post,find,library">
       <label for="image" id="image-label">Photo</label>
       <input id="image" type="file" name="image" accept="image/*">
-      <p class="hint">Big phone photos get resized automatically. Optional for posts &amp; finds.</p>
+      <p class="hint" id="image-hint">Big phone photos get resized automatically. Optional.</p>
     </div>
 
     <div class="field-group" data-show="photo,post,find,library">
@@ -317,12 +571,68 @@ $csrf = $_SESSION['csrf'];
       const t = document.querySelector('input[name=type]:checked').value;
       groups.forEach(g => g.hidden = !g.dataset.show.split(',').includes(t));
       document.getElementById('note-label').textContent =
-        t === 'library' ? 'Author / year' : t === 'photo' ? 'Caption' : 'Note';
-      document.getElementById('url-label').textContent = t === 'library' ? 'Link (optional)' : 'Link';
+        t === 'library' ? 'Author / year' : t === 'photo' ? 'Caption'
+        : t === 'post' ? 'Feed summary (optional)' : 'Note';
+      document.getElementById('image-hint').textContent =
+        t === 'post' ? 'Optional cover image (also used as the feed thumbnail).'
+        : 'Big phone photos get resized automatically. Optional.';
       document.getElementById('title-label').textContent = t === 'library' ? 'Book title' : 'Title';
     }
     document.querySelectorAll('input[name=type]').forEach(r => r.addEventListener('change', sync));
     sync();
+
+    // ── Markdown toolbar ──
+    const body = document.getElementById('body');
+    function surround(pre, post, placeholder) {
+      const s = body.selectionStart, e = body.selectionEnd;
+      const sel = body.value.slice(s, e) || placeholder;
+      body.setRangeText(pre + sel + post, s, e, 'end');
+      body.focus();
+    }
+    function linePrefix(prefix) {
+      const s = body.selectionStart;
+      let lineStart = body.value.lastIndexOf('\n', s - 1) + 1;
+      body.setRangeText(prefix, lineStart, lineStart, 'end');
+      body.focus();
+    }
+    document.querySelectorAll('.md-toolbar button').forEach(b => b.addEventListener('click', () => {
+      switch (b.dataset.md) {
+        case 'bold':   surround('**', '**', 'bold'); break;
+        case 'italic': surround('*', '*', 'italic'); break;
+        case 'link':   surround('[', '](https://)', 'text'); break;
+        case 'h2':     linePrefix('## '); break;
+        case 'h3':     linePrefix('### '); break;
+        case 'quote':  linePrefix('> '); break;
+        case 'list':   linePrefix('- '); break;
+        case 'litany': linePrefix('~ '); break;
+      }
+      if (previewOpen) refreshPreview();
+    }));
+
+    // ── Live preview (rendered by the same PHP, so it always matches) ──
+    const preview = document.getElementById('preview');
+    const toggle = document.getElementById('previewToggle');
+    let previewOpen = false, timer = null;
+    async function refreshPreview() {
+      try {
+        const r = await fetch(location.pathname, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: 'action=preview&body=' + encodeURIComponent(body.value)
+        });
+        preview.innerHTML = await r.text();
+      } catch (_) {}
+    }
+    toggle.addEventListener('click', () => {
+      previewOpen = !previewOpen;
+      preview.hidden = !previewOpen;
+      toggle.textContent = previewOpen ? 'Hide preview' : 'Preview';
+      if (previewOpen) refreshPreview();
+    });
+    body.addEventListener('input', () => {
+      if (!previewOpen) return;
+      clearTimeout(timer); timer = setTimeout(refreshPreview, 300);
+    });
   </script>
 <?php endif; ?>
 
