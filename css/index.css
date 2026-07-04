@@ -8,9 +8,9 @@
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  justify-content: flex-end;
+  align-items: flex-start;
+  text-align: left;
   padding: 0 3rem 4.5rem;
   background: var(--bg);
 }
