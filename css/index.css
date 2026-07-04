@@ -147,9 +147,17 @@
   transition: opacity 0.5s ease;
 }
 
-.work-item:hover .work-media-alt,
+/* Keyboard focus still reveals the alt image (desktop tab navigation). */
 .work-item:focus-visible .work-media-alt {
   opacity: 1;
+}
+
+/* Hover cross-fade only on real pointers — never on touch, where a tap would
+   otherwise trigger a sticky :hover and require a second tap to open. */
+@media (hover: hover) {
+  .work-item:hover .work-media-alt {
+    opacity: 1;
+  }
 }
 
 .work-meta {
