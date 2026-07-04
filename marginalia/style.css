@@ -365,7 +365,7 @@ a.entry-title:hover { text-decoration-color: var(--text); }
 .post-body > *:nth-child(3) { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.68s both; }
 .post-body > *:nth-child(4) { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.77s both; }
 
-.post-body h1 {
+.post-body h2 {
   font-family: 'Instrument Serif', serif;
   font-style: italic;
   font-size: clamp(1.75rem, 3.5vw, 2.75rem);
