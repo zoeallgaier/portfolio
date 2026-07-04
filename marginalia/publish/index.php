@@ -140,35 +140,47 @@ function handle_publish() {
 
 /* ── Markdown → post-body HTML (a small subset mapped to the site's styles) ── */
 function md_to_html($md) {
-  $md = str_replace(["\r\n", "\r"], "\n", (string)$md);
-  $blocks = preg_split('/\n{2,}/', trim($md));
+  $lines = explode("\n", str_replace(["\r\n", "\r"], "\n", (string)$md));
+  $lines[] = '';                 // sentinel so the final group flushes in-loop
   $out = [];
-  foreach ($blocks as $block) {
-    $block = rtrim($block);
-    if ($block === '') continue;
-    $lines = explode("\n", $block);
-    $all = fn($re) => !in_array(false, array_map(fn($l) => (bool)preg_match($re, $l), $lines), true);
+  $buf = [];                     // current grouped-block lines (markers stripped)
+  $mode = '';
 
-    if (count($lines) === 1 && preg_match('/^###\s+(.*)$/', $lines[0], $m)) {
-      $out[] = '<h3>' . md_inline($m[1]) . '</h3>';
-    } elseif (count($lines) === 1 && preg_match('/^#{1,2}\s+(.*)$/', $lines[0], $m)) {
-      $out[] = '<h2>' . md_inline($m[1]) . '</h2>';
-    } elseif (count($lines) === 1 && preg_match('/^(---|\*\*\*)$/', $lines[0])) {
-      $out[] = '<hr>';
-    } elseif ($all('/^>\s?/')) {
-      $inner = array_map(fn($l) => md_inline(preg_replace('/^>\s?/', '', $l)), $lines);
-      $out[] = '<blockquote>' . implode('<br>', $inner) . '</blockquote>';
-    } elseif ($all('/^[-*]\s+/')) {
-      $items = array_map(fn($l) => '<li>' . md_inline(preg_replace('/^[-*]\s+/', '', $l)) . '</li>', $lines);
-      $out[] = '<ul>' . implode('', $items) . '</ul>';
-    } elseif ($all('/^~\s+/')) {                       // ~ → litany refrain (italic serif)
-      $inner = array_map(fn($l) => md_inline(preg_replace('/^~\s+/', '', $l)), $lines);
-      $out[] = '<p class="litany">' . implode('<br>', $inner) . '</p>';
-    } else {
-      $out[] = '<p>' . implode('<br>', array_map('md_inline', $lines)) . '</p>';
+  foreach ($lines as $raw) {
+    $t = rtrim($raw);
+
+    if ($t === '')                                   { $kind = 'blank'; $m = []; }
+    elseif (preg_match('/^###\s+(.*)$/', $t, $m))    { $kind = 'h3'; }
+    elseif (preg_match('/^#{1,2}\s+(.*)$/', $t, $m)) { $kind = 'h2'; }
+    elseif (preg_match('/^(---|\*\*\*)$/', $t))      { $kind = 'hr'; $m = []; }
+    elseif (preg_match('/^>\s?(.*)$/', $t, $m))      { $kind = 'quote'; }
+    elseif (preg_match('/^[-*]\s+(.*)$/', $t, $m))   { $kind = 'list'; }
+    elseif (preg_match('/^~\s+(.*)$/', $t, $m))      { $kind = 'litany'; }
+    else                                             { $kind = 'p'; $m = [1 => $t]; }
+
+    // Flush the running group when the block type changes or a non-group appears.
+    $grouped = in_array($kind, ['quote', 'list', 'litany', 'p'], true);
+    if ($buf && (!$grouped || $kind !== $mode)) {
+      $out[] = md_flush($mode, $buf);
+      $buf = []; $mode = '';
     }
+
+    if ($kind === 'blank') continue;
+    if ($kind === 'h2') { $out[] = '<h2>' . md_inline($m[1]) . '</h2>'; continue; }
+    if ($kind === 'h3') { $out[] = '<h3>' . md_inline($m[1]) . '</h3>'; continue; }
+    if ($kind === 'hr') { $out[] = '<hr>'; continue; }
+
+    $mode = $kind;
+    $buf[] = $m[1];
   }
   return implode("\n\n", $out);
+}
+
+function md_flush($mode, $buf) {
+  if ($mode === 'quote')  return '<blockquote>' . implode('<br>', array_map('md_inline', $buf)) . '</blockquote>';
+  if ($mode === 'list')   return '<ul>' . implode('', array_map(fn($l) => '<li>' . md_inline($l) . '</li>', $buf)) . '</ul>';
+  if ($mode === 'litany') return '<p class="litany">' . implode('<br>', array_map('md_inline', $buf)) . '</p>';
+  return '<p>' . implode('<br>', array_map('md_inline', $buf)) . '</p>';
 }
 
 /* Inline formatting. Escapes first, then applies markdown, so raw HTML is safe. */
