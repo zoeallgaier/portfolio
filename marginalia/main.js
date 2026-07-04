@@ -96,7 +96,10 @@
   });
 
   /* Load entries */
-  fetch('./content.json')
+  // Cache-bust: SiteGround serves content.json with a long browser cache, so a
+  // fixed URL would show returning visitors stale posts. A per-load timestamp
+  // makes every fetch a fresh URL — the feed is always current.
+  fetch('./content.json?t=' + Date.now())
     .then(r => { if (!r.ok) throw r.status; return r.json(); })
     .then(data => {
       data.sort((a, b) => new Date(b.date) - new Date(a.date));

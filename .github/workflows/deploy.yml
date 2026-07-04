@@ -22,6 +22,18 @@ jobs:
         run: |
           printf "<?php\n\$PUBLISH_PASSWORD = '%s';\n" "$PUBLISH_PASSWORD" > marginalia/publish/config.php
 
+      # Cache-bust: SiteGround long-caches static CSS/JS, so a fixed URL would
+      # serve returning visitors stale styles/scripts. Append the commit SHA to
+      # every stylesheet/script reference — a changed URL forces a fresh fetch,
+      # so design/JS updates land immediately (Google Fonts URLs are untouched).
+      - name: Version CSS/JS references
+        run: |
+          V="${GITHUB_SHA::8}"
+          find . -path ./.git -prune -o -name '*.html' -print | while read -r f; do
+            sed -i -E "s/(=\"[^\"]+\.(css|js))\"/\1?v=$V\"/g" "$f"
+          done
+          echo "Versioned CSS/JS with ?v=$V"
+
       - name: Upload to SiteGround over FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
