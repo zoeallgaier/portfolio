@@ -43,3 +43,5 @@ jobs:
             marginalia/content.json
             _assets/marginalia/**
             marginalia/publish/DEPLOY.txt
+            partials/**
+            scripts/**
