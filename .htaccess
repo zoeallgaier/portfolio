@@ -6,8 +6,11 @@
 # updates appear immediately. Images keep the long cache (their filenames are
 # stable/unique, so they never go stale).
 <IfModule mod_headers.c>
+  # Probe: if this header shows up in responses, .htaccess is being honored.
+  Header set X-Cache-Test "htaccess-live"
+
   <FilesMatch "\.(html|json|css|js)$">
-    Header set Cache-Control "no-cache, must-revalidate"
+    Header always set Cache-Control "no-cache, must-revalidate"
     Header unset Expires
   </FilesMatch>
 
