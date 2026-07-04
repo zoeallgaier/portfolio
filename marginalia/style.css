@@ -46,6 +46,7 @@ main {
 
 /* —— Entry cards —— */
 .entry {
+  position: relative;                   /* anchor for the stretched title link */
   padding: 2.2rem 2.3rem 1.9rem 2.5rem;
   border: 1px solid var(--rule);
   border-left: 3px solid transparent;   /* type stripe (color set per type) */
@@ -54,13 +55,26 @@ main {
   animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* Make the whole text card one tap target: the title link stretches over the
+   card. Tags/date sit above it (z-index) so they stay independently tappable. */
+.entry:not(.entry--media) a.entry-title::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+/* Only the meta row (which holds the tag chips) sits above the stretched link,
+   so tags stay tappable while taps anywhere else on the card open the post. */
+.entry:not(.entry--media) .entry-meta { position: relative; z-index: 1; }
+
 /* Muted default, full-strength on hover — stripe (border-left) left intact.
-   Tint derives from --text, so it adapts to light/dark without a separate rule. */
-.entry:hover {
-  background-color: color-mix(in srgb, var(--text) 4%, transparent);
-  border-top-color: var(--muted);
-  border-right-color: var(--muted);
-  border-bottom-color: var(--muted);
+   Hover only on real pointers, so a touch tap isn't swallowed as a "hover". */
+@media (hover: hover) {
+  .entry:hover {
+    background-color: color-mix(in srgb, var(--text) 4%, transparent);
+    border-top-color: var(--muted);
+    border-right-color: var(--muted);
+    border-bottom-color: var(--muted);
+  }
 }
 
 /* Type cue on the left stripe — brighter tier for a more vivid board. */
@@ -131,7 +145,7 @@ a.entry-title {
   text-underline-offset: 4px;
   transition: color 0.2s, text-decoration-color 0.2s;
 }
-a.entry-title:hover { text-decoration-color: var(--text); }
+@media (hover: hover) { a.entry-title:hover { text-decoration-color: var(--text); } }
 
 .entry-title--text { cursor: default; }
 
@@ -198,10 +212,12 @@ a.entry-title:hover { text-decoration-color: var(--text); }
   line-height: 1.5;
 }
 
-.tag:hover,
 .tag.active {
   color: var(--accent);
   border-color: var(--accent);
+}
+@media (hover: hover) {
+  .tag:hover { color: var(--accent); border-color: var(--accent); }
 }
 
 /* —— Photo entries —— */
@@ -229,7 +245,7 @@ a.entry-title:hover { text-decoration-color: var(--text); }
   border-left-width: 1px;      /* uniform frame, no colored stripe */
   border-left-color: var(--rule);
 }
-.entry--media:hover { border-left-color: var(--muted); }
+@media (hover: hover) { .entry--media:hover { border-left-color: var(--muted); } }
 
 .entry-media { position: relative; display: block; }
 
@@ -253,7 +269,7 @@ a.entry-title:hover { text-decoration-color: var(--text); }
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 .entry-media-overlay a.entry-title { text-decoration-color: rgba(255, 255, 255, 0.5); }
-.entry-media-overlay a.entry-title:hover { text-decoration-color: #fff; }
+@media (hover: hover) { .entry-media-overlay a.entry-title:hover { text-decoration-color: #fff; } }
 .entry-media-overlay .entry-note {
   color: rgba(255, 255, 255, 0.96);
   margin-bottom: 0.55rem;
@@ -268,8 +284,10 @@ a.entry-title:hover { text-decoration-color: var(--text); }
   border-color: rgba(255, 255, 255, 0.45);
   pointer-events: auto;        /* tags stay clickable */
 }
-.entry-media-overlay .tag:hover,
 .entry-media-overlay .tag.active { color: #fff; border-color: #fff; }
+@media (hover: hover) {
+  .entry-media-overlay .tag:hover { color: #fff; border-color: #fff; }
+}
 
 /* —— Lightbox (photo zoom) —— */
 .lightbox {
@@ -493,18 +511,18 @@ a.entry-title:hover { text-decoration-color: var(--text); }
     padding-top: 5rem;
   }
 
-  /* Lighter touch on phones — the feed gutter + card padding were stacking. */
+  /* Phones: thin gutters + tighter cards so posts use more of the screen. */
   .feed {
-    padding-inline: 1rem;
+    padding-inline: 0.55rem;
     margin-block: 1.5rem;
   }
 
-  .feed-col { gap: 1.25rem; }
+  .feed-col { gap: 1.1rem; }
 
   /* Media tiles keep their zero padding (image fills the card); only text
      cards get the tighter mobile padding. */
   .entry:not(.entry--media) {
-    padding: 1.4rem 1.35rem 1.2rem 1.6rem;
+    padding: 1.2rem 1.1rem 1.05rem 1.3rem;
   }
 
   /* Smaller type on phones. */
