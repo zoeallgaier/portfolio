@@ -433,15 +433,19 @@ $csrf = $_SESSION['csrf'];
   .topbar a { color: var(--muted); font-size: .85rem; text-decoration: none; }
 
   /* Markdown toolbar */
-  .md-toolbar { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .4rem; }
+  .md-tools-row { display: flex; justify-content: space-between; align-items: center; margin-top: 1.1rem; margin-bottom: .55rem; }
+  .md-tools-row label { margin: 0; }
+  .md-preview-toggle {
+    font: inherit; font-size: .78rem; letter-spacing: .02em; padding: .32rem .85rem; cursor: pointer;
+    color: var(--muted); background: var(--field); border: 1px solid var(--rule); border-radius: 999px;
+  }
+  .md-preview-toggle:active { opacity: .8; }
+  .md-toolbar { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .65rem; }
   .md-toolbar button {
-    font: inherit; font-size: .82rem; padding: .35rem .6rem; cursor: pointer;
-    color: var(--text); background: var(--field); border: 1px solid var(--rule); border-radius: 7px;
+    font: inherit; font-size: .82rem; line-height: 1.35; padding: .4rem .75rem; cursor: pointer;
+    color: var(--text); background: var(--field); border: 1px solid var(--rule); border-radius: 999px;
   }
   .md-toolbar button:active { opacity: .8; }
-  .md-tools-row { display: flex; justify-content: space-between; align-items: baseline; margin-top: 1.1rem; }
-  .md-tools-row label { margin: 0; }
-  .md-preview-toggle { font-size: .8rem; color: var(--muted); background: none; border: 0; cursor: pointer; text-decoration: underline; }
 
   /* Live preview — approximates the post-body styles */
   .preview { margin-top: .6rem; padding: 1rem 1.1rem; border: 1px dashed var(--rule); border-radius: 8px; }
