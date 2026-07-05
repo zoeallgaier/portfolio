@@ -24,31 +24,20 @@
     });
   }());
 
-  /* —— Post body: blur-in each block as it scrolls into view (post pages) —— */
+  /* —— Post body: blur-in the whole post on load, cascading in after the title.
+     One pass (no scroll observer) to stay light on small devices. —— */
   (function revealPostBody() {
     const body = document.querySelector('.post-body');
     if (!body) return;
     const items   = [...body.children];
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // No animation wanted / possible → just show everything (CSS hid it up-front).
-    if (reduced || !('IntersectionObserver' in window)) {
-      items.forEach(el => el.classList.add('is-revealed'));
-      return;
-    }
-
-    const io = new IntersectionObserver((entries, obs) => {
-      // Stagger each on-screen batch in DOM order so a screenful cascades in.
-      entries.filter(e => e.isIntersecting)
-        .sort((a, b) => items.indexOf(a.target) - items.indexOf(b.target))
-        .forEach((entry, i) => {
-          entry.target.style.animationDelay = (0.1 + i * 0.09).toFixed(2) + 's';
-          entry.target.classList.add('is-revealed');
-          obs.unobserve(entry.target);
-        });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
-
-    items.forEach(el => io.observe(el));
+    items.forEach((el, i) => {
+      // Start after the header cascade (~0.5s), then stagger — capped so a long
+      // post never leaves a block waiting too long.
+      if (!reduced) el.style.animationDelay = Math.min(0.5 + i * 0.08, 1.5).toFixed(2) + 's';
+      el.classList.add('is-revealed');
+    });
   }());
 
   /* —— Feed (index only) —— */
