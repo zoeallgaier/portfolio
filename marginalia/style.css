@@ -37,9 +37,32 @@ main {
    tab bar; the desktop top nav stays text-only (matches the portfolio chrome). */
 .nav-icon { display: none; }
 
-/* Mobile-only top bar (title + monogram), injected by main.js. Off on desktop,
-   where the top nav already carries the logo. */
+/* Mobile-only top bar (monogram + publish "+"), injected by main.js. Off on
+   desktop, where the top nav already carries the logo. */
 .app-topbar { display: none; }
+
+/* Publish "+" — opens the password-gated publish page so posts can be added
+   from inside the app. Injected by main.js into the desktop nav (far right) and
+   the mobile top bar (top right). Muted by default, full-strength on hover. */
+.nav-publish, .app-publish {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.icon-plus { display: block; width: 24px; height: 24px; }
+@media (hover: hover) {
+  .nav-publish:hover, .app-publish:hover { color: var(--accent); }
+}
+
+/* Desktop nav: logo stays left, filter tabs stay right, and the "+" parks at
+   the far-right edge. (On phones the nav is the bottom tab bar — see below.) */
+@media (min-width: 681px) {
+  nav { justify-content: flex-start; }
+  .nav-links { margin-left: auto; }
+  .nav-publish { margin-left: 2rem; }
+}
 
 .feed-col {
   flex: 1 1 0;
@@ -569,13 +592,11 @@ a.entry-caption { transition: color 0.2s; }
     padding: 0.7rem 1.1rem;
     padding-top: calc(0.7rem + env(safe-area-inset-top));
   }
-  .app-title {
-    font-family: 'Instrument Serif', serif;
-    font-size: 1.25rem;
-    letter-spacing: 0.01em;
-    color: var(--text);
-  }
   .app-topbar .nav-logo img { width: 24px; height: 24px; }
+
+  /* The desktop nav's "+" lives in the bottom tab bar's DOM but isn't wanted
+     there — the mobile "+" is in the top bar instead. */
+  nav .nav-publish { display: none; }
 
   .nav-links {
     flex: 1;
