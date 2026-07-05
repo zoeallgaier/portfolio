@@ -57,3 +57,4 @@ jobs:
             marginalia/publish/DEPLOY.txt
             partials/**
             scripts/**
+            design-src/**
