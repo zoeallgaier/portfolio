@@ -1,6 +1,27 @@
 [
     {
         "type": "photo",
+        "image": "/_assets/marginalia/2025-09-14-photo-9a7b.jpg",
+        "note": "A week in Denver 😌 I've spent every morning reading here.",
+        "date": "2025-09-14"
+    },
+    {
+        "type": "photo",
+        "image": "/_assets/marginalia/2025-08-31-photo-5b9e.jpg",
+        "date": "2025-08-31"
+    },
+    {
+        "type": "photo",
+        "image": "/_assets/marginalia/2026-04-13-photo-d5a2.jpg",
+        "note": "Aurora (Recursia)",
+        "date": "2026-04-13",
+        "tags": [
+            "art",
+            "recursia"
+        ]
+    },
+    {
+        "type": "photo",
         "image": "/_assets/marginalia/2026-05-16-photo-bed5.jpg",
         "note": "Staying at my aunt Julie's in Arizona. I am sooo glad that she has a pool.",
         "date": "2026-05-16",
