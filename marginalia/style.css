@@ -511,18 +511,30 @@ a.entry-title {
     padding-top: 5rem;
   }
 
-  /* Phones: thin gutters + tighter cards so posts use more of the screen. */
+  /* Phones: full-bleed feed. Cards run edge-to-edge (no side gutter) and read
+     as stacked full-width bands rather than floating rounded cards. */
   .feed {
-    padding-inline: 0.55rem;
+    max-width: none;
+    padding-inline: 0;
     margin-block: 1.5rem;
   }
 
-  .feed-col { gap: 1.1rem; }
+  .feed-col { gap: 0; }
 
-  /* Media tiles keep their zero padding (image fills the card); only text
-     cards get the tighter mobile padding. */
+  /* Strip the rounded outline and side borders so cards sit flush with the
+     screen edges; keep the colored left type-stripe and a hairline divider
+     between stacked entries. */
+  .entry {
+    border-radius: 0;
+    border-left-width: 3px;
+    border-right: none;
+    border-top: none;
+  }
+
+  /* Media tiles keep their zero padding (image fills the card, now full-bleed);
+     only text cards get the tighter mobile padding. */
   .entry:not(.entry--media) {
-    padding: 1.2rem 1.1rem 1.05rem 1.3rem;
+    padding: 1.3rem 1.2rem 1.2rem 1.4rem;
   }
 
   /* Smaller type on phones. */
