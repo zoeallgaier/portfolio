@@ -312,6 +312,51 @@ function write_post_page($title, $eyebrow, $date, $tags, $bodyHtml, $desc, $imag
 }
 
 /* Save an uploaded image: fix rotation, downscale, re-encode. Returns web path or error. */
+// Read a JPEG's EXIF Orientation (1-8) without relying on the exif extension,
+// which isn't installed on all shared hosts. Returns 1 (normal) if unknown.
+function jpeg_orientation($path) {
+  if (function_exists('exif_read_data')) {
+    $exif = @exif_read_data($path);
+    if (!empty($exif['Orientation'])) return (int)$exif['Orientation'];
+  }
+  $fp = @fopen($path, 'rb');
+  if (!$fp) return 1;
+  $ori = 1;
+  try {
+    if (fread($fp, 2) !== "\xFF\xD8") return 1;          // not a JPEG (no SOI)
+    while (!feof($fp)) {
+      $marker = fread($fp, 2);
+      if (strlen($marker) < 2 || $marker[0] !== "\xFF") break;
+      $m = ord($marker[1]);
+      if ($m === 0xD9 || $m === 0xDA) break;              // EOI or start of scan
+      $lenb = fread($fp, 2);
+      if (strlen($lenb) < 2) break;
+      $len = (ord($lenb[0]) << 8) + ord($lenb[1]);
+      if ($len < 2) break;
+      $seg = fread($fp, $len - 2);
+      if ($m !== 0xE1 || substr($seg, 0, 6) !== "Exif\x00\x00") continue;
+      $tiff = substr($seg, 6);
+      $le = substr($tiff, 0, 2) === "II";                // byte order
+      $u16 = fn($s) => $le ? (ord($s[0]) | (ord($s[1]) << 8)) : ((ord($s[0]) << 8) | ord($s[1]));
+      $u32 = fn($s) => $le
+        ? (ord($s[0]) | (ord($s[1]) << 8) | (ord($s[2]) << 16) | (ord($s[3]) << 24))
+        : ((ord($s[0]) << 24) | (ord($s[1]) << 16) | (ord($s[2]) << 8) | ord($s[3]));
+      $ifd = $u32(substr($tiff, 4, 4));
+      $n = $u16(substr($tiff, $ifd, 2));
+      for ($i = 0; $i < $n; $i++) {
+        $entry = substr($tiff, $ifd + 2 + $i * 12, 12);
+        if (strlen($entry) < 12) break;
+        if ($u16(substr($entry, 0, 2)) === 0x0112) {      // Orientation tag
+          $ori = $u16(substr($entry, 8, 2));
+          break;
+        }
+      }
+      break;
+    }
+  } finally { fclose($fp); }
+  return ($ori >= 1 && $ori <= 8) ? $ori : 1;
+}
+
 function save_image($file, $label, $date) {
   global $IMAGE_DIR, $IMAGE_WEBBASE, $MAX_WIDTH;
 
@@ -335,13 +380,16 @@ function save_image($file, $label, $date) {
   elseif ($mime === 'image/webp' && function_exists('imagecreatefromwebp')) $img = @imagecreatefromwebp($file['tmp_name']);
 
   if ($img) {
-    // Respect EXIF orientation for JPEGs from phones
-    if ($mime === 'image/jpeg' && function_exists('exif_read_data')) {
-      $exif = @exif_read_data($file['tmp_name']);
-      $o = $exif['Orientation'] ?? 0;
-      if ($o === 3) $img = imagerotate($img, 180, 0);
-      elseif ($o === 6) $img = imagerotate($img, -90, 0);
-      elseif ($o === 8) $img = imagerotate($img, 90, 0);
+    // Respect EXIF orientation for JPEGs from phones. exif_read_data isn't
+    // guaranteed on shared hosting, so fall back to a byte-level reader — GD
+    // never auto-applies orientation, so if we skip this photos come out rotated.
+    if ($mime === 'image/jpeg') {
+      $o = jpeg_orientation($file['tmp_name']);
+      // 5/7 are transpose/transverse (mirror + rotate); mirror first, then rotate.
+      if ($o === 2 || $o === 4 || $o === 5 || $o === 7) imageflip($img, IMG_FLIP_HORIZONTAL);
+      if ($o === 3 || $o === 4)      $img = imagerotate($img, 180, 0);
+      elseif ($o === 6 || $o === 7)  $img = imagerotate($img, -90, 0);
+      elseif ($o === 8 || $o === 5)  $img = imagerotate($img, 90, 0);
     }
     $w = imagesx($img); $h = imagesy($img);
     if ($w > $MAX_WIDTH) {
