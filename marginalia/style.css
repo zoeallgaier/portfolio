@@ -259,7 +259,7 @@ a.entry-title {
   position: absolute;
   inset: auto 0 0 0;
   padding: 3.25rem 1.15rem 1.05rem;
-  background: linear-gradient(to top, rgba(0,0,0,0.88), rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.12) 78%, transparent);
+  background: linear-gradient(to top, rgba(0,0,0,0.96), rgba(0,0,0,0.72) 42%, rgba(0,0,0,0.32) 72%, transparent);
   pointer-events: none;        /* clicks fall through to the image (zoom or link) */
 }
 .entry-media-overlay .entry-title {
@@ -378,10 +378,16 @@ a.entry-title {
 .post-body blockquote b,
 .post-body blockquote strong { color: inherit; }
 
-.post-body > *:nth-child(1) { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.50s both; }
-.post-body > *:nth-child(2) { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.59s both; }
-.post-body > *:nth-child(3) { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.68s both; }
-.post-body > *:nth-child(4) { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.77s both; }
+/* Every block in the post body blur-ins as it scrolls into view (main.js adds
+   .is-revealed via IntersectionObserver, staggering each on-screen batch). Only
+   hide up-front when scripting is on, so no-JS readers still get the full text. */
+@media (scripting: enabled) {
+  .post-body > * { opacity: 0; }
+  .post-body > *.is-revealed {
+    opacity: 1;
+    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
 
 .post-body h2 {
   font-family: 'Instrument Serif', serif;
@@ -516,7 +522,7 @@ a.entry-title {
   .feed {
     max-width: none;
     padding-inline: 0;
-    margin-block: 1.5rem;
+    margin-block: 0;      /* posts run right up under the nav and down to the footer */
   }
 
   .feed-col { gap: 0; }

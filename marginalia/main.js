@@ -24,6 +24,33 @@
     });
   }());
 
+  /* —— Post body: blur-in each block as it scrolls into view (post pages) —— */
+  (function revealPostBody() {
+    const body = document.querySelector('.post-body');
+    if (!body) return;
+    const items   = [...body.children];
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // No animation wanted / possible → just show everything (CSS hid it up-front).
+    if (reduced || !('IntersectionObserver' in window)) {
+      items.forEach(el => el.classList.add('is-revealed'));
+      return;
+    }
+
+    const io = new IntersectionObserver((entries, obs) => {
+      // Stagger each on-screen batch in DOM order so a screenful cascades in.
+      entries.filter(e => e.isIntersecting)
+        .sort((a, b) => items.indexOf(a.target) - items.indexOf(b.target))
+        .forEach((entry, i) => {
+          entry.target.style.animationDelay = (0.1 + i * 0.09).toFixed(2) + 's';
+          entry.target.classList.add('is-revealed');
+          obs.unobserve(entry.target);
+        });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+
+    items.forEach(el => io.observe(el));
+  }());
+
   /* —— Feed (index only) —— */
   if (!document.getElementById('feed')) return;
 
