@@ -1,6 +1,47 @@
 [
     {
         "type": "photo",
+        "image": "/_assets/marginalia/2026-07-05-photo-e7e8.jpg",
+        "note": "Trying new things! I was never good at sports, but this is feeling good so far.",
+        "date": "2026-07-05",
+        "tags": [
+            "sports",
+            "tennis",
+            "life"
+        ]
+    },
+    {
+        "type": "photo",
+        "image": "/_assets/marginalia/2026-02-25-photo-8644.jpg",
+        "note": "The Dance Between Luna and Thalassa (Recursia)",
+        "date": "2026-02-25",
+        "tags": [
+            "art",
+            "recursia"
+        ]
+    },
+    {
+        "type": "photo",
+        "image": "/_assets/marginalia/2025-10-22-photo-d072.jpg",
+        "note": "Jordyn (aka Jam) n’ me at the Jazz game!",
+        "date": "2025-10-22",
+        "tags": [
+            "life",
+            "sports",
+            "friends"
+        ]
+    },
+    {
+        "type": "photo",
+        "image": "/_assets/marginalia/2025-12-04-photo-f0dc.jpg",
+        "date": "2025-12-04",
+        "tags": [
+            "life",
+            "christmas"
+        ]
+    },
+    {
+        "type": "photo",
         "image": "/_assets/marginalia/2025-09-14-photo-9a7b.jpg",
         "note": "A week in Denver 😌 I've spent every morning reading here at the park.",
         "date": "2025-09-14"
@@ -143,7 +184,8 @@
         "date": "2026-06-26",
         "tags": [
             "film",
-            "review"
+            "review",
+            "tennis"
         ]
     },
     {
