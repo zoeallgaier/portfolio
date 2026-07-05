@@ -28,13 +28,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <nav>
-    <a href="/" class="nav-logo" aria-current="page"><img src="/Zmono-dark.png" alt="Zoe Allgaier — Home"></a>
-    <div class="nav-links">
-      <a href="#work">Selected work</a>
-      <a href="/about.html">About</a>
-    </div>
-  </nav>
+  <nav data-chrome="nav"></nav>
 
   <main id="main-content" tabindex="-1">
 
@@ -132,61 +126,13 @@
 
   </main>
 
-  <footer id="contact">
-    <p class="footer-prompt">If you've got a project where graphic, motion, and web all need to show up as one thing, I'd love to hear about it.</p>
-    <a href="mailto:zoeallgaier@gmail.com" class="footer-email">zoeallgaier@gmail.com</a>
-    <div class="footer-bottom">
-      <span>Zoe Allgaier</span>
-      <span>© 2026</span>
-    </div>
-  </footer>
+  <footer id="contact" data-chrome="footer"></footer>
 
+  <script src="/js/chrome.js"></script>
   <script src="/js/canvas.js"></script>
   <script src="/js/footer.js"></script>
 
-  <script>
-    (function () {
-      const heroName = document.querySelector('.hero-name');
-      if (!heroName) return;
-      // Reduced motion: skip the char animation, but still wrap each word so the
-      // name breaks onto its own line (Zoe / Allgaier) like the animated version.
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        heroName.innerHTML = heroName.textContent.trim()
-          .split(' ')
-          .map(w => `<span class="word">${w}</span>`)
-          .join(' ');
-        heroName.style.opacity = '1';
-        return;
-      }
-      const text = heroName.textContent.trim();
-      const charGap = 0.045;
-      const baseDelay = 0.3;
-      heroName.innerHTML = '';
-      let charIdx = 0;
-
-      // Wrap each word so the browser only breaks at spaces, never mid-word.
-      text.split(' ').forEach((word, wi, words) => {
-        const wordSpan = document.createElement('span');
-        wordSpan.className = 'word';
-        [...word].forEach((ch) => {
-          const mask = document.createElement('span');
-          mask.className = 'char-mask';
-          const inner = document.createElement('span');
-          inner.className = 'char';
-          inner.textContent = ch;
-          inner.style.animationDelay = `${(baseDelay + charIdx * charGap).toFixed(3)}s`;
-          mask.appendChild(inner);
-          wordSpan.appendChild(mask);
-          charIdx++;
-        });
-        heroName.appendChild(wordSpan);
-        if (wi < words.length - 1) heroName.appendChild(document.createTextNode(' '));
-      });
-
-      // Reveal the container; the chars themselves start hidden and fade/blur in.
-      heroName.style.opacity = '1';
-    }());
-  </script>
+  <script src="/js/reveal.js"></script>
   <script>
     document.querySelector('a[href="#work"]').addEventListener('click', e => {
       e.preventDefault();
