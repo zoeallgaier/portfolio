@@ -181,15 +181,20 @@
       `</div>`;
 
     if (isLibrary) {
-      // Compact row: title and author/year share a single line.
+      // Caption-only: italic book title (proper convention for a title) + author.
+      const cap = (item.title ? `<i class="entry-cap-title">${item.title}</i>` : '') +
+                  (item.title && item.note ? ', ' : '') +
+                  (item.note || '');
+      const capHtml = item.url
+        ? `<a class="entry-caption" href="${item.url}"` +
+            (external ? ` target="_blank" rel="noopener noreferrer"` : '') +
+          `>${cap}</a>`
+        : `<p class="entry-caption">${cap}</p>`;
       el.innerHTML =
         `<div class="entry-header">` +
           `<span class="entry-badge">${badge}</span>` +
         `</div>` +
-        `<div class="entry-libline">` +
-          titleEl +
-          (item.note ? `<span class="entry-author">${item.note}</span>` : '') +
-        `</div>` +
+        capHtml +
         metaHtml;
     } else if (item.image) {
       // Any entry with an image → full-bleed media tile: image fills the card,

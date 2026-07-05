@@ -178,6 +178,20 @@ a.entry-title {
   font-weight: 300;
 }
 
+/* Library entries rendered as a single plain caption line (no serif title). */
+.entry-caption {
+  display: block;
+  font-size: clamp(1.02rem, 1.4vw, 1.14rem);
+  line-height: 1.6;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+a.entry-caption { transition: color 0.2s; }
+@media (hover: hover) { a.entry-caption:hover { color: var(--accent); } }
+/* Title reads a touch stronger than the author, but stays in the muted tier. */
+.entry-cap-title { font-style: italic; color: color-mix(in srgb, var(--text) 78%, transparent); }
+
 .entry-meta {
   display: flex;
   align-items: center;
