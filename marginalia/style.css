@@ -558,21 +558,16 @@ a.entry-caption { transition: color 0.2s; }
   nav .nav-logo { display: none; }
 
   /* —— Top bar —— A subtle header so the bottom bar is nav-only: the
-     "Marginalia" wordmark sits top-left, the monogram (→ portfolio) top-right. */
+     "Marginalia" wordmark sits top-left, the monogram (→ portfolio) top-right.
+     It scrolls in-flow with the feed (not sticky) — it's a web app, so there's
+     no need to keep the title + logo on screen the whole time. */
   .app-topbar {
     display: flex;
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
     padding: 0.7rem 1.1rem;
     padding-top: calc(0.7rem + env(safe-area-inset-top));
-    background: color-mix(in srgb, var(--bg) 55%, transparent);
-    backdrop-filter: blur(35px);
-    -webkit-backdrop-filter: blur(35px);
-    border-bottom: 1px solid var(--rule);
   }
   .app-title {
     font-family: 'Instrument Serif', serif;
@@ -607,9 +602,8 @@ a.entry-caption { transition: color 0.2s; }
   .nav-links a:active { transform: scale(0.9); transition: transform 0.08s; }
 
   main {
-    /* Clear the fixed top bar; JS refines to its exact height, this is the
-       pre-JS fallback. */
-    padding-top: calc(env(safe-area-inset-top) + 3.3rem);
+    /* Top bar now scrolls in-flow above the feed, so no fixed-bar offset. */
+    padding-top: 0;
   }
 
   /* Keep the last of the footer clear of the fixed bottom bar. */

@@ -14,21 +14,18 @@
       '</header>');
   }());
 
-  /* —— Header height sync —— Pad main clear of whichever bar is fixed above it:
-     the top nav on desktop, the injected top bar on phones (the bottom tab bar's
-     clearance is handled by footer padding in CSS). —— */
+  /* —— Header height sync —— On desktop the top nav is fixed, so offset main by
+     its height. On phones the nav is the bottom tab bar and the top bar scrolls
+     in-flow, so main needs no top offset (CSS handles it). —— */
   (function syncHeader() {
-    const nav    = document.querySelector('nav');
-    const topbar = document.querySelector('.app-topbar');
-    const main   = document.querySelector('main');
-    if (!main) return;
+    const nav  = document.querySelector('nav');
+    const main = document.querySelector('main');
+    if (!nav || !main) return;
     const mobile = window.matchMedia('(max-width: 680px)');
     function apply() {
-      if (mobile.matches) main.style.paddingTop = topbar ? topbar.offsetHeight + 'px' : '';
-      else                main.style.paddingTop = nav ? nav.offsetHeight + 'px' : '';
+      main.style.paddingTop = mobile.matches ? '' : nav.offsetHeight + 'px';
     }
-    if (nav)    new ResizeObserver(apply).observe(nav);
-    if (topbar) new ResizeObserver(apply).observe(topbar);
+    new ResizeObserver(apply).observe(nav);
     mobile.addEventListener('change', apply);
     apply();
   }());
