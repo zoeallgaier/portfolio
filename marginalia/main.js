@@ -1,28 +1,74 @@
 (function () {
 
-  /* —— Header height sync —— */
+  /* —— Top bar —— Inject a subtle mobile header: the "Marginalia" wordmark at
+     top-left and the monogram (→ portfolio) at top-right, so the bottom bar is
+     nav-only. Shown only on phones (CSS); runs on the feed and post pages. —— */
+  (function injectTopbar() {
+    const main = document.querySelector('main');
+    if (!main || document.querySelector('.app-topbar')) return;
+    main.insertAdjacentHTML('beforebegin',
+      '<header class="app-topbar">' +
+        '<a class="app-title" href="/marginalia/">Marginalia</a>' +
+        '<a class="nav-logo" href="/" aria-label="Zoe Allgaier — Home">' +
+          '<img src="/Zmono-dark.png" alt=""></a>' +
+      '</header>');
+  }());
+
+  /* —— Header height sync —— Pad main clear of whichever bar is fixed above it:
+     the top nav on desktop, the injected top bar on phones (the bottom tab bar's
+     clearance is handled by footer padding in CSS). —— */
   (function syncHeader() {
-    const header = document.querySelector('nav');
+    const nav    = document.querySelector('nav');
+    const topbar = document.querySelector('.app-topbar');
     const main   = document.querySelector('main');
-    if (!header || !main) return;
-    function apply() { main.style.paddingTop = header.offsetHeight + 'px'; }
-    new ResizeObserver(apply).observe(header);
+    if (!main) return;
+    const mobile = window.matchMedia('(max-width: 680px)');
+    function apply() {
+      if (mobile.matches) main.style.paddingTop = topbar ? topbar.offsetHeight + 'px' : '';
+      else                main.style.paddingTop = nav ? nav.offsetHeight + 'px' : '';
+    }
+    if (nav)    new ResizeObserver(apply).observe(nav);
+    if (topbar) new ResizeObserver(apply).observe(topbar);
+    mobile.addEventListener('change', apply);
     apply();
   }());
 
   const urlParams = new URLSearchParams(window.location.search);
   const urlFilter = urlParams.get('filter');
 
+  /* —— Nav tab icons —— Inject a small line icon into each filter tab so the
+     mobile bottom bar reads as a native app tab bar. Shown only on phones (CSS);
+     runs on the feed and on post pages, which share this nav. —— */
+  (function navIcons() {
+    const ICONS = {
+      all:     '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+      posts:   '<path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5Z"/>',
+      finds:   '<path d="M7 17 17 7"/><path d="M8 7h9v9"/>',
+      photos:  '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="m21 15-5-5L5 21"/>',
+      library: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/>'
+    };
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      const key = new URL(a.href, location.href).searchParams.get('filter') || 'all';
+      if (!ICONS[key]) return;
+      a.insertAdjacentHTML('afterbegin',
+        '<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+        'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+        ICONS[key] + '</svg>');
+    });
+  }());
+
   /* —— Active nav link —— */
-  (function setActiveNav() {
-    const filter = urlFilter || null;
+  function updateActiveNav(filter) {
+    filter = filter || null;
     document.querySelectorAll('.nav-links a').forEach(link => {
       const linkUrl    = new URL(link.href, location.href);
       const linkFilter = linkUrl.searchParams.get('filter') || null;
       const samePath   = linkUrl.pathname.replace(/\/$/, '') === location.pathname.replace(/\/$/, '');
       if (samePath && linkFilter === filter) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
     });
-  }());
+  }
+  updateActiveNav(urlFilter);
 
   /* —— Post body: blur-in the whole post on load, cascading in after the title.
      One pass (no scroll observer) to stay light on small devices. —— */
@@ -43,13 +89,45 @@
   /* —— Feed (index only) —— */
   if (!document.getElementById('feed')) return;
 
-  let activeType = 'all';
-  let activeTag  = null;
+  const typeForFilter = f =>
+    f === 'posts'   ? 'post'    :
+    f === 'finds'   ? 'find'    :
+    f === 'library' ? 'library' :
+    f === 'photos'  ? 'photo'   : 'all';
 
-  if (urlFilter === 'posts') activeType = 'post';
-  else if (urlFilter === 'finds') activeType = 'find';
-  else if (urlFilter === 'library') activeType = 'library';
-  else if (urlFilter === 'photos') activeType = 'photo';
+  let activeTag  = null;
+  let activeType = typeForFilter(urlFilter);
+
+  /* —— In-page filtering —— The top filter tabs switch the feed without a full
+     page reload (no white flash — feels like an app), while keeping ?filter=
+     deep links via pushState. Tapping the tab you're already on scrolls the feed
+     back to the top (native tab-bar gesture). —— */
+  const currentFilter = () => new URLSearchParams(location.search).get('filter') || null;
+
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    const linkUrl  = new URL(a.href, location.href);
+    const samePath = linkUrl.pathname.replace(/\/$/, '') === location.pathname.replace(/\/$/, '');
+    if (!samePath) return;                    // links that leave the feed navigate normally
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const f = linkUrl.searchParams.get('filter') || null;
+      if (f === currentFilter()) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+      history.pushState({ filter: f }, '', a.getAttribute('href'));
+      activeType = typeForFilter(f);
+      activeTag  = null;
+      updateActiveNav(f);
+      switchFeed(applyFilter);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  window.addEventListener('popstate', () => {
+    const f = currentFilter();
+    activeType = typeForFilter(f);
+    activeTag  = null;
+    updateActiveNav(f);
+    switchFeed(applyFilter);
+  });
 
   function applyFilter() {
     entryEls.forEach(entry => {
@@ -64,6 +142,19 @@
     });
 
     renderColumns();   // re-flow the masonry over the now-visible cards
+  }
+
+  /* Cross-fade the board on a filter change (tab or tag): fade out, re-flow,
+     fade back — softer than an instant snap. Skipped under reduced motion. */
+  function switchFeed(mutate) {
+    const feed    = document.getElementById('feed');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!feed || reduced) { mutate(); return; }
+    feed.classList.add('is-switching');
+    setTimeout(() => {
+      mutate();
+      requestAnimationFrame(() => feed.classList.remove('is-switching'));
+    }, 160);
   }
 
   /* —— Masonry board —— */
@@ -226,7 +317,7 @@
     el.querySelectorAll('.tag').forEach(btn =>
       btn.addEventListener('click', () => {
         activeTag = activeTag === btn.dataset.tag ? null : btn.dataset.tag;
-        applyFilter();
+        switchFeed(applyFilter);
       })
     );
 
