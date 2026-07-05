@@ -1,26 +1,7 @@
-@import '../../css/base.css';
-
-/* — Nav (current-section marker) — */
-.nav-links a[aria-current="page"] {
-  border-bottom: 1px solid var(--text);
-  padding-bottom: 2px;
-}
-
-/* Publish "+" — matches the marginalia feed nav: logo left, tabs right, "+" at
-   the far right (desktop). */
-.nav-publish {
-  display: inline-flex;
-  align-items: center;
-  color: var(--muted);
-  transition: color 0.2s;
-}
-.icon-plus { display: block; width: 24px; height: 24px; }
-@media (hover: hover) { .nav-publish:hover { color: var(--accent); } }
-@media (min-width: 769px) {
-  nav { justify-content: flex-start; }
-  .nav-links { margin-left: auto; }
-  .nav-publish { margin-left: 2rem; }
-}
+/* Inherit the full marginalia chrome (bottom tab bar + top bar + "+" + tab icons
+   on mobile, and the shared nav/footer) so this page matches the rest of the
+   app. marginalia/style.css itself @imports base.css. */
+@import '../style.css';
 
 /* — Hero — */
 .hero {
@@ -32,7 +13,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10rem 3rem 6rem;
+  /* Nav clearance is handled by the chrome now (syncHeader on desktop, the
+     in-flow top bar on mobile), so the hero only needs breathing room. */
+  padding: 4rem 3rem;
   background: var(--bg);
   text-align: center;
 }
@@ -218,15 +201,17 @@ kbd {
 
   .hero {
     cursor: pointer;
-    padding: 8rem 1.5rem 4rem;
+    padding: 3rem 1.5rem;
   }
 
   .controls-row {
     flex-wrap: wrap;
     gap: 1rem;
   }
+}
 
-  footer {
-    padding: 3rem 1.5rem 2.5rem;
-  }
+/* Phones: the nav is the bottom tab bar — give the centred hero a little extra
+   bottom room so its content clears the fixed bar. */
+@media (max-width: 680px) {
+  .hero { padding-bottom: 6rem; }
 }

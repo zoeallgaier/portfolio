@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Band Name Generator</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,6 +57,10 @@
     </div>
   </footer>
 
+  <!-- Marginalia app chrome (top bar, bottom tab bar icons, publish "+"): the
+       feed's script injects/enhances the shared nav; its feed logic no-ops here
+       (no #feed). Loaded before the generator's own script. -->
+  <script src="../main.js"></script>
   <script src="main.js"></script>
 
   <script src="/js/footer.js"></script>
