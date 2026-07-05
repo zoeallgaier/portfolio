@@ -6,6 +6,22 @@
   padding-bottom: 2px;
 }
 
+/* Publish "+" — matches the marginalia feed nav: logo left, tabs right, "+" at
+   the far right (desktop). */
+.nav-publish {
+  display: inline-flex;
+  align-items: center;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.icon-plus { display: block; width: 24px; height: 24px; }
+@media (hover: hover) { .nav-publish:hover { color: var(--accent); } }
+@media (min-width: 769px) {
+  nav { justify-content: flex-start; }
+  .nav-links { margin-left: auto; }
+  .nav-publish { margin-left: 2rem; }
+}
+
 /* — Hero — */
 .hero {
   position: relative;

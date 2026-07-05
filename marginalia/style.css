@@ -589,10 +589,12 @@ a.entry-caption { transition: color 0.2s; }
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    padding: 0.7rem 1.1rem;
-    padding-top: calc(0.7rem + env(safe-area-inset-top));
+    /* Match the portfolio nav's mobile height (1.5rem padding + 28px logo) for
+       consistency — matters more now that this bar isn't sticky. */
+    padding: 1.5rem;
+    padding-top: calc(1.5rem + env(safe-area-inset-top));
   }
-  .app-topbar .nav-logo img { width: 24px; height: 24px; }
+  .app-topbar .nav-logo img { width: 28px; height: 28px; }
 
   /* The desktop nav's "+" lives in the bottom tab bar's DOM but isn't wanted
      there — the mobile "+" is in the top bar instead. */
