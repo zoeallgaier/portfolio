@@ -1,60 +1,48 @@
-name: Deploy to SiteGround
+name: Deploy to GitHub Pages
 
-# Every push to main uploads the changed files to your SiteGround hosting.
-# You can also trigger it by hand from the Actions tab (Run workflow).
+# Every push to main publishes the site. There is no build step and no FTP —
+# the repo *is* the site, so what you commit is what goes live.
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
 
+# Let the deploy publish to Pages, and don't pile up overlapping runs.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout the site
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      # Recreate the publish password file from a secret, so it lives on the
-      # server without the password ever being committed to git.
-      - name: Write publish config
-        env:
-          PUBLISH_PASSWORD: ${{ secrets.PUBLISH_PASSWORD }}
-        run: |
-          printf "<?php\n\$PUBLISH_PASSWORD = '%s';\n" "$PUBLISH_PASSWORD" > marginalia/publish/config.php
+      - uses: actions/configure-pages@v5
 
-      # Cache-bust: SiteGround long-caches static CSS/JS, so a fixed URL would
-      # serve returning visitors stale styles/scripts. Append the commit SHA to
-      # every stylesheet/script reference — a changed URL forces a fresh fetch,
-      # so design/JS updates land immediately (Google Fonts URLs are untouched).
+      # Browsers cache CSS/JS hard, so a fixed URL would serve returning
+      # visitors stale styles after a design change. Appending the commit SHA
+      # changes the URL whenever the site changes, forcing a fresh fetch.
+      # Google Fonts and other absolute URLs are left alone.
       - name: Version CSS/JS references
         run: |
           V="${GITHUB_SHA::8}"
           find . -path ./.git -prune -o -name '*.html' -print | while read -r f; do
-            sed -i -E "s/(=\"[^\"]+\.(css|js))\"/\1?v=$V\"/g" "$f"
+            sed -i -E 's#(="[^"]*\.(css|js))"#\1?v='"$V"'"#g' "$f"
           done
           echo "Versioned CSS/JS with ?v=$V"
 
-      - name: Upload to SiteGround over FTPS
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - uses: actions/upload-pages-artifact@v3
         with:
-          server:    ${{ secrets.FTP_SERVER }}
-          username:  ${{ secrets.FTP_USERNAME }}
-          password:  ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
-          protocol: ftps
-          port: 21
-          # The phone form writes these ON THE SERVER, so we never overwrite
-          # them from git — that would wipe posts/photos made from your phone.
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/.github/**
-            **/.DS_Store
-            **/.claude/**
-            **/node_modules/**
-            marginalia/content.json
-            _assets/marginalia/**
-            marginalia/publish/DEPLOY.txt
-            partials/**
-            scripts/**
-            design-src/**
+          path: .
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

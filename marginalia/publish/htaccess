@@ -1,6 +1,0 @@
-# Don't list the folder contents
-Options -Indexes
-
-# Allow reasonably large phone photos to be uploaded
-php_value upload_max_filesize 25M
-php_value post_max_size 26M

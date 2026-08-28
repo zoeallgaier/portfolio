@@ -3,9 +3,3 @@
 
 # Claude Code local config
 .claude/
-
-# The publish password — never commit this (it lives only on the server)
-marginalia/publish/config.php
-
-# FTP deploy state file (managed on the server)
-.ftp-deploy-sync-state.json

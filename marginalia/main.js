@@ -1,18 +1,7 @@
 (function () {
 
-  // A "+" that opens the password-gated publish page — add posts from inside
-  // the app. Sits top-right in the mobile top bar and far-right in the desktop
-  // nav. (Fine to expose: publish/ is password-protected and it's a private app.)
-  const PLUS =
-    '<svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
-    'stroke-width="1.9" stroke-linecap="round" aria-hidden="true">' +
-    '<path d="M12 5v14"/><path d="M5 12h14"/></svg>';
-  const publishLink = cls =>
-    '<a class="' + cls + '" href="/marginalia/publish/" aria-label="Add a post">' + PLUS + '</a>';
-
-  /* —— App chrome —— Mobile top bar: monogram (→ portfolio) at top-left, the "+"
-     at top-right; the bottom bar stays nav-only. Also drops a "+" at the far
-     right of the (desktop) nav. Shown per-context via CSS; runs on feed + posts. */
+  /* —— App chrome —— Mobile top bar: monogram (→ portfolio) at top-left; the
+     bottom bar stays nav-only. Shown per-context via CSS; runs on feed + posts. */
   (function injectChrome() {
     const main = document.querySelector('main');
     if (main && !document.querySelector('.app-topbar')) {
@@ -20,12 +9,7 @@
         '<header class="app-topbar">' +
           '<a class="nav-logo" href="/" aria-label="Zoe Allgaier — Home">' +
             '<img src="/Zmono-dark.png" alt=""></a>' +
-          publishLink('app-publish') +
         '</header>');
-    }
-    const nav = document.querySelector('nav');
-    if (nav && !nav.querySelector('.nav-publish')) {
-      nav.insertAdjacentHTML('beforeend', publishLink('nav-publish'));
     }
   }());
 
