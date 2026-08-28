@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zoe Allgaier — President's Scholarship Ball 2026</title>
+  <link rel="stylesheet" href="/css/project.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav data-chrome="nav"></nav>
+
+  <main id="main-content" tabindex="-1">
+
+    <!-- ── Project title ──
+         Lime → blue-green, pulled from the 2026 direction. Keep this pair in
+         sync with the .next-project card on tria.html that points here. -->
+    <div class="project-title" style="--g1: rgba(154, 230, 46, 0.22); --g2: rgba(18, 178, 170, 0.22);">
+      <canvas class="project-canvas" aria-hidden="true"></canvas>
+      <div class="project-title-bg" aria-hidden="true"></div>
+      <div class="project-name-clip">
+        <h1 class="project-name">President's Scholarship Ball 2026</h1>
+      </div>
+      <p class="project-role">Creative Lead &nbsp;·&nbsp; October 10, 2026</p>
+    </div>
+
+    <!-- ── Resume / Toggle ── -->
+    <div class="resume">
+      <div class="toggle" role="tablist" aria-label="Project details">
+        <button role="tab" aria-selected="true"  aria-controls="panel-scope"   id="tab-scope"   tabindex="0">Scope</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-concept" id="tab-concept" tabindex="-1">Concept</button>
+      </div>
+
+      <div class="toggle-panels">
+        <div class="toggle-panel active" role="tabpanel" id="panel-scope"   aria-labelledby="tab-scope"   tabindex="0">
+          <p>UVU's President's Scholarship Ball is the <b>largest donor event of the year</b>. For 2026 I'm <b>leading out on the main design:</b> the concept, the system it becomes, and how it carries across the night.</p>
+          <p>The direction is <i>Future in Focus</i>: one key message stretched across print, motion, digital signage, and the event space, so donors have a relationship with the event before even attending.</p>
+          <p class="note">The ball is October 10, 2026. Full case study to follow.</p>
+        </div>
+        <div class="toggle-panel" role="tabpanel" id="panel-concept" aria-labelledby="tab-concept" tabindex="0" hidden>
+          <p><i>Future in Focus</i> brings clarity to UVU's existing pillars: exceptional care, accountability, and results. The design system is built around singular focal points, with a hex grid that nods to the architecture on campus.</p>            
+          <p>Coming into a presidential transition, the concept is deliberately about <i>the path forward</i>: clear, steady, and built to earn donor trust.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Gallery ──
+         2-up grid, so keep the count EVEN or the last row leaves a blank cell. -->
+    <div class="gallery">
+      <img loading="lazy" decoding="async" src="/_assets/PSB26/PSB26-01.jpeg" alt="Future in Focus title lockup, set inside concentric lens rings over the hex grid">
+      <img loading="lazy" decoding="async" src="/_assets/PSB26/PSB26-02.jpeg" alt="Student portrait framed by the lens ring, over the lime hex grid">
+    </div>
+
+    <!-- ── Next project ── -->
+    <a href="/psb25.html" class="next-project" style="--g1: rgba(223, 140, 24, 0.2); --g2: rgba(16, 186, 132, 0.2);">
+      <canvas class="project-canvas" aria-hidden="true"></canvas>
+      <div class="project-title-bg" aria-hidden="true"></div>
+      <p class="next-eyebrow">Next project</p>
+      <h2 class="next-name">President's Scholarship Ball 2025</h2>
+      <span class="next-cta">View project →</span>
+    </a>
+
+    <footer id="contact" data-chrome="footer"></footer>
+
+  </main>
+
+  <script src="/js/chrome.js"></script>
+  <script src="/js/canvas.js"></script>
+  <script src="/js/footer.js"></script>
+
+  <script src="/js/tabs.js"></script>
+  <script src="/js/reveal.js"></script>
+
+</body>
+</html>
