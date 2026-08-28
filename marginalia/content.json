@@ -1,78 +1,5 @@
 [
     {
-        "type": "photo",
-        "image": "/_assets/marginalia/2026-07-05-photo-e7e8.jpg",
-        "note": "Trying new things! I was never good at sports, but this is feeling good so far.",
-        "date": "2026-07-05",
-        "tags": [
-            "sports",
-            "tennis",
-            "life"
-        ]
-    },
-    {
-        "type": "photo",
-        "image": "/_assets/marginalia/2026-02-25-photo-8644.jpg",
-        "note": "The Dance Between Luna and Thalassa (Recursia)",
-        "date": "2026-02-25",
-        "tags": [
-            "art",
-            "recursia"
-        ]
-    },
-    {
-        "type": "photo",
-        "image": "/_assets/marginalia/2025-10-22-photo-d072.jpg",
-        "note": "Jordyn (aka Jam) n’ me at the Jazz game!",
-        "date": "2025-10-22",
-        "tags": [
-            "life",
-            "sports",
-            "friends"
-        ]
-    },
-    {
-        "type": "photo",
-        "image": "/_assets/marginalia/2025-12-04-photo-f0dc.jpg",
-        "date": "2025-12-04",
-        "tags": [
-            "life",
-            "christmas"
-        ]
-    },
-    {
-        "type": "photo",
-        "image": "/_assets/marginalia/2025-09-14-photo-9a7b.jpg",
-        "note": "A week in Denver 😌 I've spent every morning reading here at the park.",
-        "date": "2025-09-14"
-    },
-    {
-        "type": "photo",
-        "image": "/_assets/marginalia/2025-08-31-photo-5b9e.jpg",
-        "date": "2025-08-31"
-    },
-    {
-        "type": "photo",
-        "image": "/_assets/marginalia/2026-04-13-photo-d5a2.jpg",
-        "note": "Aurora (Recursia)",
-        "date": "2026-04-13",
-        "tags": [
-            "art",
-            "recursia"
-        ]
-    },
-    {
-        "type": "photo",
-        "image": "/_assets/marginalia/2026-05-16-photo-bed5.jpg",
-        "note": "Staying at my aunt Julie's in Arizona. I am sooo glad that she has a pool.",
-        "date": "2026-05-16",
-        "tags": [
-            "life",
-            "summer",
-            "vaca"
-        ]
-    },
-    {
         "type": "post",
         "title": "The Sound of Freedom",
         "url": "posts/sound-of-freedom.html",
@@ -87,93 +14,12 @@
         "type": "post",
         "title": "Metalheart",
         "url": "posts/metalheart.html",
-        "image": "/_assets/marginalia/Metalheart-metadataconstruct.jpg",
         "note": "Digital maximalism as a rejection of minimalist monoculture.",
         "date": "2025-03-27",
         "tags": [
             "design",
             "art",
             "essay"
-        ]
-    },
-    {
-        "type": "photo",
-        "image": "/_assets/marginalia/2026-06-05-photo-a0b8.jpg",
-        "note": "Met some new friends at Wendy’s 🦆",
-        "date": "2026-06-05",
-        "tags": [
-            "life"
-        ]
-    },
-    {
-        "type": "photo",
-        "image": "/_assets/marginalia/2025-09-27-photo-b247.jpg",
-        "note": "Bridal Veil Falls",
-        "date": "2025-09-27",
-        "tags": [
-            "life"
-        ]
-    },
-    {
-        "type": "photo",
-        "image": "/_assets/marginalia/2026-04-22-photo-e244.jpg",
-        "note": "U of U art museum",
-        "date": "2026-04-22",
-        "tags": [
-            "art",
-            "museum",
-            "life"
-        ]
-    },
-    {
-        "type": "photo",
-        "image": "/_assets/marginalia/2025-12-13-photo-e29c.jpg",
-        "note": "Reading at the coffee shop is unparalleled",
-        "date": "2025-12-13",
-        "tags": [
-            "book",
-            "design",
-            "life"
-        ]
-    },
-    {
-        "type": "photo",
-        "image": "/_assets/marginalia/2026-03-10-photo-aa6d.jpg",
-        "note": "You know the vibe.",
-        "date": "2026-03-10",
-        "tags": [
-            "funny",
-            "design",
-            "poster"
-        ]
-    },
-    {
-        "type": "photo",
-        "image": "/_assets/marginalia/birthday.jpg",
-        "note": "Birthday brunch! I love my friends so much",
-        "date": "2026-06-28",
-        "tags": [
-            "life"
-        ]
-    },
-    {
-        "type": "photo",
-        "image": "/_assets/marginalia/doodle.jpg",
-        "note": "A doodle.",
-        "date": "2026-06-07",
-        "tags": [
-            "art",
-            "sketch"
-        ]
-    },
-    {
-        "type": "photo",
-        "image": "/_assets/marginalia/metalheart.jpg",
-        "note": "Metalheart.",
-        "date": "2026-02-26",
-        "tags": [
-            "art",
-            "design"
         ]
     },
     {
@@ -263,7 +109,6 @@
         "type": "post",
         "title": "Eidolon",
         "url": "https://bitter-voice-1fe2.zoeallgaier.workers.dev/",
-        "image": "/_assets/marginalia/eidolon.jpg",
         "note": "A sci-fi universe I've been building. 'Silica-bio' weapons, an isolated Alaskan research facility, and a Coast Guard evacuation. Prototype playable.",
         "date": "2026-05-05",
         "tags": [
