@@ -1,0 +1,5 @@
+# Portfolio site — everything here is meant to be found.
+User-agent: *
+Allow: /
+
+Sitemap: https://zoeallgaier.com/sitemap.xml
