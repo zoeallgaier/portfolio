@@ -23,42 +23,57 @@
       .map(w => `<span class="word">${w}</span>`).join(' ');
   }
 
-  TARGETS.forEach(({ sel, baseDelay, gapFor, wrapOnReduced }) => {
-    document.querySelectorAll(sel).forEach(el => {
-      const text = el.textContent.trim();
-      if (!text) return;
+  // Run against whatever <main> is on screen: js/app.js swaps in a fresh one
+  // on every route, and its title arrives unsplit.
+  function split(root) {
+    TARGETS.forEach(({ sel, baseDelay, gapFor, wrapOnReduced }) => {
+      root.querySelectorAll(sel).forEach(el => {
+        const text = el.textContent.trim();
+        if (!text) return;
 
-      if (reduced) {
-        if (wrapOnReduced) wrapWords(el);
-        el.style.opacity = '1';
-        return;
-      }
+        if (reduced) {
+          if (wrapOnReduced) wrapWords(el);
+          el.style.opacity = '1';
+          return;
+        }
 
-      const charCount = text.replace(/\s/g, '').length;
-      const gap = gapFor(charCount);
-      el.innerHTML = '';
-      let charIdx = 0;
+        const charCount = text.replace(/\s/g, '').length;
+        const gap = gapFor(charCount);
+        el.innerHTML = '';
+        let charIdx = 0;
 
-      // Wrap each word so the browser only breaks at spaces, never mid-word.
-      text.split(' ').forEach((word, wi, words) => {
-        const wordSpan = document.createElement('span');
-        wordSpan.className = 'word';
-        [...word].forEach(ch => {
-          const mask  = document.createElement('span');
-          mask.className = 'char-mask';
-          const inner = document.createElement('span');
-          inner.className = 'char';
-          inner.textContent = ch;
-          inner.style.animationDelay = `${(baseDelay + charIdx * gap).toFixed(3)}s`;
-          mask.appendChild(inner);
-          wordSpan.appendChild(mask);
-          charIdx++;
+        // Wrap each word so the browser only breaks at spaces, never mid-word.
+        text.split(' ').forEach((word, wi, words) => {
+          const wordSpan = document.createElement('span');
+          wordSpan.className = 'word';
+          [...word].forEach(ch => {
+            const mask  = document.createElement('span');
+            mask.className = 'char-mask';
+            const inner = document.createElement('span');
+            inner.className = 'char';
+            inner.textContent = ch;
+            inner.style.animationDelay = `${(baseDelay + charIdx * gap).toFixed(3)}s`;
+            mask.appendChild(inner);
+            wordSpan.appendChild(mask);
+            charIdx++;
+          });
+          el.appendChild(wordSpan);
+          if (wi < words.length - 1) el.appendChild(document.createTextNode(' '));
         });
-        el.appendChild(wordSpan);
-        if (wi < words.length - 1) el.appendChild(document.createTextNode(' '));
-      });
 
-      el.style.opacity = '1';
+        el.style.opacity = '1';
+
+        // Once a letter has landed, drop its animation: the fill-mode would
+        // otherwise pin filter: blur(0) on it forever, and WebKit clips a
+        // filtered element's ink to its box (it sliced the g in "Allgaier").
+        // The resting styles are identical, so nothing visibly changes.
+        el.addEventListener('animationend', e => {
+          if (e.target.classList.contains('char')) e.target.style.animation = 'none';
+        });
+      });
     });
-  });
+  }
+
+  split(document);
+  document.addEventListener('page:load', e => split(e.detail.main));
 }());

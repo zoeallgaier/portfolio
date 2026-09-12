@@ -28,6 +28,8 @@ about.html            Bio
 css/base.css          Shared chrome + design tokens — edit shared styles HERE
 css/*.css             Page-specific styles layered on top of base
 js/chrome.js          Injects the shared nav/footer into portfolio pages
+js/app.js             Swaps <main> between pages instead of reloading
+js/backdrop.js        The one fixed glow + dot grid behind every page
 marginalia/           The feed: content.json (data) + main.js (renderer)
 marginalia/posts/     Long-form written posts, one HTML file each
 _assets/              All imagery, grouped by project
@@ -35,6 +37,33 @@ _assets/              All imagery, grouped by project
 
 Shared chrome is defined once in `css/base.css` and `js/chrome.js` rather than
 copy-pasted per page, so nav and footer changes only need making in one place.
+
+## The portfolio as an app
+
+Every portfolio page is a complete HTML document — open any of them directly
+and it works. On top of that, `js/app.js` takes over internal links: it fetches
+the next page, swaps its `<main>` into the current document and updates the
+URL, so the nav, the footer and the background are never rebuilt. Content
+blurs out and back in around the swap; the background eases across to the new
+page's palette at the same time.
+
+That background is `js/backdrop.js` — one fixed layer for the whole site,
+replacing the per-page hero canvas and gradient. A page says which palette it
+wants on its `<main>`:
+
+```html
+<main id="main-content" data-backdrop="project"
+      data-g1="rgba(236, 120, 160, 0.22)" data-g2="rgba(120, 150, 240, 0.2)">
+```
+
+`data-backdrop` is `home`, `about`, `project` or `quiet` (the reading pages).
+Project pages give their two colours, and the `.next-project` link at the foot
+carries the colours of the page it leads to, so the background starts drifting
+towards the next project as you scroll into it.
+
+Anything the router can't take — an external link, a file, marginalia, a failed
+fetch — falls through to an ordinary page load, so nothing depends on the JS
+succeeding.
 
 ## Adding to marginalia
 

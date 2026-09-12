@@ -36,31 +36,13 @@ video {
   to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
 }
 
-/* ── Project title ── */
+/* ── Project title ──
+   The glow behind it is the sitewide backdrop (js/backdrop.js), tinted by the
+   two colours this page declares on <main data-g1 data-g2>. */
 .project-title {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  padding: 15rem 6rem 8rem;
+  /* Top room was sized for the old fixed top nav; the nav is a sidebar now. */
+  padding: 11rem 6rem 8rem;
   border-bottom: 1px solid var(--rule);
-}
-
-.project-canvas,
-.project-title-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.project-canvas { display: block; z-index: -1; }
-
-.project-title-bg {
-  z-index: -2;
-  background:
-    radial-gradient(ellipse 100% 100% at 110% 60%, var(--g1, transparent) 0%, transparent 90%),
-    radial-gradient(ellipse 100% 100% at 90% 110%, var(--g2, transparent) 0%, transparent 90%);
 }
 
 .project-name-clip {
@@ -96,6 +78,10 @@ video {
 
 .project-name .char {
   display: inline-block;
+  /* Pad the box over descenders/overhangs so Safari's filter clip can't
+     crop them mid-animation; the negative margin cancels it out in layout. */
+  padding: 0.1em 0.05em 0.3em;
+  margin: -0.1em -0.05em -0.3em;
   animation: charReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -234,11 +220,10 @@ video {
   background: var(--bg);
 }
 
-/* ── Next project (bookend of the header) ── */
+/* ── Next project (bookend of the header) ──
+   Carries the palette of the page it leads to (data-g1/data-g2): the backdrop
+   drifts towards it as this scrolls up, so the colour arrives before you do. */
 .next-project {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
   display: block;
   padding: 8rem 6rem;
   border-top: 1px solid var(--rule);
@@ -276,10 +261,21 @@ video {
   border-color: var(--accent);
 }
 
+/* ── Desktop: header + next-project bookend run the full width of the window
+   under the glass sidebar (their text still starts clear of it). ── */
+@media (min-width: 769px) {
+  .project-title,
+  .next-project {
+    margin-left: calc(-1 * var(--nav-inset));
+    padding-left: calc(6rem + var(--nav-inset));
+  }
+}
+
 /* ── Mobile ── */
 @media (max-width: 768px) {
   .project-title {
-    padding: 10rem 1.5rem 5rem;
+    /* Clears the status bar in the home-screen app (inset is 0 in Safari). */
+    padding: calc(5.5rem + env(safe-area-inset-top, 0px)) 1.5rem 5rem;
   }
 
   .next-project {

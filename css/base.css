@@ -13,19 +13,59 @@
   --rule: rgba(0, 0, 0, 0.2);
   /* No accent hue — interactive states resolve to full-strength foreground. */
   --accent: var(--text);
+
+  /* Nav geometry. --nav-inset is the horizontal room reserved for the desktop
+     sidebar (0 on phones, where the nav is a bottom tab bar). */
+  --sidebar-w: clamp(15rem, 19vw, 18.5rem);
+  --sidebar-gap: 0.75rem;
+  --nav-inset: 0px;
+  /* Vertical room the floating tab bar needs at the bottom (0 on desktop). */
+  --tabbar-clear: 0px;
 }
 
-html { scroll-behavior: smooth; }
-
-/* Keep in-page anchor targets clear of the fixed nav. */
-#main-content, #work, #contact { scroll-margin-top: 6rem; }
-
-body {
+/* An explicit root background: iOS paints it behind the translucent status
+   bar and into the overscroll bounce (a missing one falls back to white/black). */
+html {
+  scroll-behavior: smooth;
   background-color: var(--bg);
+}
+
+/* The nav no longer sits across the top, so anchor targets only need to clear
+   the status bar when running as a home-screen app (0 everywhere else). */
+#main-content, #work, #contact { scroll-margin-top: env(safe-area-inset-top, 0px); }
+
+/* No background here: js/backdrop.js sits a fixed layer behind the page at
+   z-index -1, and a background on <body> would paint straight over it. The
+   base colour is on <html> (above), which is what iOS shows behind the status
+   bar and in the overscroll bounce anyway. */
+body {
   color: var(--text);
   font-family: 'Oxygen', sans-serif;
   font-weight: 300;
   line-height: 1.25;
+  /* Landscape iPhone: keep content out from under the notch/Dynamic Island. */
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* ── Status bar (home-screen app) ──
+   Pages use black-translucent + viewport-fit=cover, so content runs up under
+   the status bar with no background. iOS forces that status bar's glyphs to
+   WHITE, so on the light theme a soft scroll-edge scrim (blur + gentle
+   darkening, fading out) keeps the clock/battery legible — the same trick
+   iOS 26's own apps use. Its height is derived from the top safe-area inset,
+   so it collapses to nothing in a normal browser tab. */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 150;                 /* above the nav (100), below modals/skip link */
+  height: calc(env(safe-area-inset-top, 0px) * 1.45);
+  pointer-events: none;
+  background: linear-gradient(rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.26) 55%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  -webkit-mask-image: linear-gradient(#000 55%, transparent);
+  mask-image: linear-gradient(#000 55%, transparent);
 }
 
 a {
@@ -37,6 +77,46 @@ a {
   outline: 2px solid var(--text);
   outline-offset: 3px;
   border-radius: 2px;
+}
+
+/* ── Backdrop ──
+   The site's one background: a warm radial glow with the animated dot grid
+   over it, locked to the viewport and built once per visit by js/backdrop.js.
+   Pages no longer carry their own hero gradient or canvas — content scrolls
+   over this, and on a route change the glow eases across to the next page's
+   palette while the dots shift hue. Sized in lvh so a collapsing mobile
+   toolbar can't reveal an unpainted strip, and given the base colour so
+   Safari 26 samples the page colour (not the glow) to tint its own bars. */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100lvh;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: var(--bg);
+}
+
+.backdrop-glow,
+.backdrop-dots {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Announcements for swapped-in pages (js/app.js) — nothing reloads, so this
+   is the only cue assistive tech gets that the page changed. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* ── Skip link ── */
@@ -55,7 +135,14 @@ a {
 }
 .skip-link:focus { top: 0; }
 
-/* ── Nav ── */
+/* ── Nav ──
+   ONE nav DOM that the breakpoints reshape — an editorial glass sidebar on
+   desktop (masthead, big italic serif sections, numbered project index), an
+   iOS-style glass tab bar (capsule) at the bottom on phones. Items are
+   `.nav-logo` + `.nav-links a`, each an optional `.nav-icon` + `.nav-label`.
+   The current item wears a soft neutral capsule (no accent hue). Both shapes
+   sit well clear of the viewport edges, which also keeps Safari 26 from
+   sampling the glass to tint its own bars. */
 nav {
   /* Translucent tint behind the blur so nav text keeps contrast over busy
      images; derived from --bg, so it adapts to light/dark automatically. */
@@ -64,58 +151,247 @@ nav {
   -webkit-backdrop-filter: blur(35px);
   outline: 1px solid var(--rule);
   position: fixed;
-  top: 0; left: 0; right: 0;
   z-index: 100;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem 3rem;
+  /* Native-feeling controls: no grey tap flash, no long-press callout, no
+     accidental text selection while thumbing between tabs. */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
-.nav-logo img {
+nav a {
+  display: flex;
+  align-items: center;
+  color: var(--muted);
+  border-radius: var(--item-radius, 0.75rem);
+  transition: color 0.2s, background-color 0.2s, transform 0.15s;
+}
+
+nav .nav-logo img {
   width: 28px;
   height: 28px;
   object-fit: contain;
   display: block;
+  transition: opacity 0.2s;
 }
 
-.nav-links {
-  display: flex;
-  gap: 2.5rem;
+.nav-icon {
+  display: block;
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
-.nav-links a {
-  position: relative;
-  font-size: 0.8125rem;
-  letter-spacing: 0.02em;
+nav a[aria-current] {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+}
+
+/* On the home page, while "Work" is scrolled into view it becomes the current
+   location (chrome.js), and the Home item hands its highlight over to it. */
+nav:has([aria-current="location"]) a[aria-current="page"] {
   color: var(--muted);
-  transition: color 0.2s;
+  background: none;
 }
 
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -0.35rem;
-  width: 100%;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+nav a:focus-visible {
+  color: var(--accent);
+  border-radius: var(--item-radius, 0.75rem);   /* keep the capsule shape on focus */
+  outline-offset: 2px;
 }
-
-.nav-links a:focus-visible,
-.nav-links a[aria-current] { color: var(--accent); }
-
-.nav-links a:focus-visible::after,
-.nav-links a[aria-current]::after { transform: scaleX(1); }
 
 /* Hover only on real pointers — on touch the first tap became a "hover" and a
    second tap was needed to follow the link. */
 @media (hover: hover) {
-  .nav-links a:hover { color: var(--accent); }
-  .nav-links a:hover::after { transform: scaleX(1); }
+  nav a:hover { color: var(--accent); }
+  nav a:not([aria-current]):hover { background: color-mix(in srgb, var(--text) 5%, transparent); }
+}
+
+/* Tactile press feedback — items dip on tap like native controls. */
+nav a:active { transform: scale(0.94); transition-duration: 0.08s; }
+
+.nav-label { white-space: nowrap; }
+
+/* Sidebar-only pieces (shown in the desktop block below): the masthead name
+   and the project index nested under "Work". */
+.nav-name,
+.nav-sub { display: none; }
+
+/* Desktop: editorial sidebar — a tall glass panel, inset from the window,
+   set like a magazine contents page: masthead up top, section names in large
+   Instrument Serif italic, a numbered project index, Contact at the foot. */
+@media (min-width: 769px) {
+  :root { --nav-inset: calc(var(--sidebar-w) + var(--sidebar-gap) * 2 + env(safe-area-inset-left, 0px)); }
+
+  body { padding-left: var(--nav-inset); }
+
+  nav {
+    --item-radius: 0.9rem;
+    top: var(--sidebar-gap);
+    bottom: var(--sidebar-gap);
+    left: calc(var(--sidebar-gap) + env(safe-area-inset-left, 0px));
+    width: var(--sidebar-w);
+    flex-direction: column;
+    padding: 1.75rem 1rem 1.25rem;
+    border-radius: 1.75rem;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+  /* Masthead: the name alone (the monogram is the Home icon on phones only),
+     ruled off from the contents below. It never takes the capsule or dims —
+     it's the title, not a row. (The doubled a.nav-logo[href] out-ranks the
+     aria-current/hover item rules.) */
+  nav a.nav-logo[href] {
+    padding: 0.25rem 0.75rem 1.5rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--rule);
+    border-radius: 0;
+    color: var(--text);
+    background: none;
+    transform: none;
+  }
+  nav .nav-logo img { display: none; }
+  /* Sized off the panel so the name sits on one line at ~70% of the
+     masthead: "Zoe Allgaier" sets 3.83em wide in Instrument Serif, and the
+     masthead is the panel less 3.5rem of padding. */
+  .nav-name {
+    display: block;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: calc((var(--sidebar-w) - 3.5rem) / 5.375);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+  nav .nav-logo .nav-label {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  /* Contents fill the panel so Contact can sit at its foot. */
+  .nav-links {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  /* Sections: type-only (no icons), big italic serif. */
+  .nav-links > a .nav-icon { display: none; }
+  .nav-links > a {
+    padding: 0.3rem 0.75rem 0.4rem;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 2rem;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  /* Project index under "Work": numbered like the home grid, set in Oxygen
+     so it reads as a list against the serif section heads. */
+  .nav-sub {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin: 0.3rem 0 0.9rem;
+  }
+  .nav-sub a {
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.45rem 0.75rem;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.2;
+    letter-spacing: 0.005em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .nav-num {
+    flex: none;
+    width: 1.6em;                  /* fixed column, so every title lines up */
+    font-family: 'Oxygen', sans-serif;
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.75;
+  }
+
+  /* Contact sits at the foot of the panel, ruled off like a colophon. */
+  .nav-links > .nav-contact {
+    margin-top: auto;
+    position: relative;
+  }
+  .nav-links > .nav-contact::before {
+    content: '';
+    position: absolute;
+    left: 0.75rem; right: 0.75rem;
+    top: -1rem;
+    border-top: 1px solid var(--rule);
+  }
+  /* Room for that rule even when a short window leaves no slack. */
+  .nav-links > a:has(+ .nav-contact) { margin-bottom: 2rem; }
+}
+
+/* Short desktop windows: set the contents a touch tighter so Contact still
+   clears the foot of the panel. */
+@media (min-width: 769px) and (max-height: 680px) {
+  .nav-sub a { padding-block: 0.34rem; }
+  .nav-links > a { font-size: 1.875rem; }
+}
+
+/* Phones: floating tab bar — a glass capsule above the home indicator, icon
+   over label, like an iOS 26 tab bar. */
+@media (max-width: 768px) {
+  :root { --tabbar-clear: calc(4.5rem + env(safe-area-inset-bottom, 0px)); }
+
+  nav {
+    --item-radius: 999px;
+    left: 50%;
+    translate: -50% 0;
+    /* Float just above the home indicator in the home-screen app; in a Safari
+       tab the inset reads 0, so fall back to a fixed gap above its toolbar. */
+    bottom: max(0.75rem, calc(env(safe-area-inset-bottom, 0px) - 0.5rem));
+    width: min(calc(100% - 2rem), 24rem);
+    gap: 0.125rem;
+    padding: 0.3rem;
+    border-radius: 999px;
+  }
+
+  /* Tabs share the capsule evenly, logo (Home) included. Four tabs: Home,
+     Work, About, Resume — Contact is sidebar-only (the footer ends every page). */
+  .nav-links { display: contents; }
+  .nav-links > .nav-contact { display: none; }
+
+  nav .nav-logo,
+  .nav-links > a {
+    flex: 1 1 0;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.2rem;
+    padding: 0.45rem 0.25rem;
+    font-size: 0.625rem;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-icon { width: 1.5rem; height: 1.5rem; }
+  /* The Z is a solid mark, so it reads bigger than the line icons — set it a
+     touch smaller, padded back to their height so the labels stay level. */
+  nav .nav-logo img { width: 1.3rem; height: 1.3rem; margin-block: 0.1rem; }
+
+  /* The monogram is a PNG, so it can't take currentColor — dim it instead
+     to match the muted tabs whenever Home isn't the highlighted tab. */
+  nav .nav-logo:not([aria-current]) img,
+  nav:has([aria-current="location"]) .nav-logo img { opacity: 0.6; }
+
+  /* Keep the end of every page scrollable clear of the floating bar. */
+  body { padding-bottom: var(--tabbar-clear); }
 }
 
 /* ── Footer ── */
@@ -193,15 +469,22 @@ footer {
 
 /* ── Dark mode tokens ── */
 @media (prefers-color-scheme: dark) {
+  /* A deeper ground than the old #1a1a22 — same blue-violet cast, dropped
+     most of the way to black so the type, the glow and the dot grid all read
+     with more contrast against it (#e1e1e8 on this is ~14.6:1). Muted text and
+     hairlines lift a little to stay visible on it. */
   :root {
-    --bg: #1a1a22;
+    --bg: #0e0e15;
     --text: #e1e1e8;
-    --muted: rgba(255, 255, 255, 0.5);
-    --rule: rgba(255, 255, 255, 0.12);
+    --muted: rgba(255, 255, 255, 0.55);
+    --rule: rgba(255, 255, 255, 0.14);
     --accent: var(--text);
   }
 
-  .nav-logo img { content: url('/Zmono-light.png'); }
+  .nav-logo img { content: url('/icons/z-mark-light.png'); }
+
+  /* White status-bar glyphs already read on the dark page — blur only. */
+  body::before { background: none; }
 }
 
 /* ── Reduced motion ── */
@@ -213,9 +496,7 @@ footer {
   }
 }
 
-/* ── Mobile nav ── */
+/* ── Mobile ── (nav shape lives with the nav rules above) */
 @media (max-width: 768px) {
-  nav { padding: 1.5rem; }
-  .nav-links { gap: 1.25rem; }
   footer { padding: 3rem 1.5rem 2.5rem; }
 }

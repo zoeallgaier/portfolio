@@ -12,9 +12,8 @@
   --type-library-stripe: #e2478f;
 }
 
-/* —— Main —— */
+/* —— Main —— (the nav is a sidebar / bottom tab bar, so no top offset) */
 main {
-  padding-top: 9rem; /* overridden by JS */
   min-height: 100vh;
 }
 
@@ -33,19 +32,31 @@ main {
 /* Board fades out for a beat while a filter change re-flows the columns. */
 .feed.is-switching { opacity: 0; }
 
-/* Filter-tab icons are injected by main.js but only shown in the mobile bottom
-   tab bar; the desktop top nav stays text-only (matches the portfolio chrome). */
-.nav-icon { display: none; }
+/* Filter-tab icons are injected by main.js; base.css shows them as sidebar
+   row icons on desktop and tab icons in the phone tab bar. */
 
-/* Mobile-only top bar (monogram), injected by main.js. Off on desktop, where
-   the top nav already carries the logo. */
+/* Phone-only top bar (monogram), injected by main.js. Off on desktop, where
+   the sidebar already carries the logo. */
 .app-topbar { display: none; }
 
-/* Desktop nav: logo stays left, filter tabs stay right. (On phones the nav is
-   the bottom tab bar — see below.) */
-@media (min-width: 681px) {
-  nav { justify-content: flex-start; }
-  .nav-links { margin-left: auto; }
+/* —— Phones: nav chrome —— base.css turns the nav into the floating tab bar
+   (same breakpoint); marginalia's tab bar is purely the filter tabs, with the
+   monogram moved up into the in-flow top bar. */
+@media (max-width: 768px) {
+  nav .nav-logo { display: none; }
+
+  /* —— Top bar —— The monogram (→ portfolio) sits top-left. It scrolls in-flow
+     with the feed (not sticky) — it's a web app, so there's no need to keep
+     the logo on screen the whole time. */
+  .app-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.5rem;
+    padding-top: calc(1.5rem + env(safe-area-inset-top));
+  }
+  .app-topbar .nav-logo img { width: 28px; height: 28px; }
 }
 
 .feed-col {
@@ -546,75 +557,6 @@ a.entry-caption { transition: color 0.2s; }
 
 /* —— Mobile —— */
 @media (max-width: 680px) {
-  /* —— Bottom tab bar —— The feed is used as a home-screen web app, so on
-     phones the nav lives at the bottom, within thumb reach (iOS-app style).
-     Overrides base.css's top-fixed nav for marginalia + its post pages only. */
-  nav {
-    top: auto;
-    bottom: 0;
-    outline: none;
-    border-top: 1px solid var(--rule);
-    justify-content: flex-start;
-    gap: 0.9rem;
-    padding: 0.55rem 1rem;
-    padding-bottom: calc(0.55rem + env(safe-area-inset-bottom));
-  }
-
-  /* The monogram now lives in the top bar, so the bottom bar is purely the five
-     filter tabs, spread evenly like a native app tab bar. */
-  nav .nav-logo { display: none; }
-
-  /* —— Top bar —— A subtle header so the bottom bar is nav-only: the
-     "Marginalia" wordmark sits top-left, the monogram (→ portfolio) top-right.
-     It scrolls in-flow with the feed (not sticky) — it's a web app, so there's
-     no need to keep the title + logo on screen the whole time. */
-  .app-topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    /* Match the portfolio nav's mobile height (1.5rem padding + 28px logo) for
-       consistency — matters more now that this bar isn't sticky. */
-    padding: 1.5rem;
-    padding-top: calc(1.5rem + env(safe-area-inset-top));
-  }
-  .app-topbar .nav-logo img { width: 28px; height: 28px; }
-
-  .nav-links {
-    flex: 1;
-    justify-content: space-around;
-    gap: 0.25rem;
-  }
-  /* Each tab stacks its icon over its label, like a native app tab. */
-  .nav-links a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.16rem;
-    padding: 0.3rem 0.2rem;
-    font-size: 0.6rem;
-    letter-spacing: 0.02em;
-  }
-  .nav-icon { display: block; width: 22px; height: 22px; }
-
-  /* The active/hover marker rides the TOP edge of a tab (toward screen centre)
-     instead of underlining it, so it isn't lost against the screen's bottom. */
-  .nav-links a::after { bottom: auto; top: -0.55rem; }
-
-  /* Tactile press feedback — tabs dip on tap like native controls. */
-  .nav-links a:active { transform: scale(0.9); transition: transform 0.08s; }
-
-  main {
-    /* Top bar now scrolls in-flow above the feed, so no fixed-bar offset. */
-    padding-top: 0;
-  }
-
-  /* Keep the last of the footer clear of the fixed bottom bar. */
-  footer { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom)); }
-
-  /* Contain the scroll bounce so the fixed bar doesn't reveal a gap under it. */
-  html, body { overscroll-behavior-y: none; }
-
   /* Phones: full-bleed feed. Cards run edge-to-edge (no side gutter) and read
      as stacked full-width bands rather than floating rounded cards. */
   .feed {

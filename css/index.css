@@ -1,57 +1,23 @@
 @import 'base.css';
 
-/* ── Hero ── */
+/* ── Hero ──
+   Transparent: the glow and dot grid behind it belong to the sitewide
+   backdrop now (js/backdrop.js, .backdrop in base.css), which stays put while
+   the hero scrolls off it. */
 .hero {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  text-align: left;
-  padding: 0 3rem 4.5rem;
-  background: var(--bg);
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 109% 138% at 95% 0%, rgba(255, 110, 70, 0.2) 0%, transparent 70%),
-    radial-gradient(ellipse 109% 86% at 70% 0%, rgba(235, 80, 120, 0.2) 0%, transparent 70%);
-  animation: hueShift 60s linear infinite;
-}
-
-@keyframes hueShift {
-  from { filter: hue-rotate(0deg); }
-  to   { filter: hue-rotate(360deg); }
-}
-
-.hero-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.hero-eyebrow {
-  font-size: 0.8125rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 2.5rem;
-  animation: fadeUp 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.05s both;
+  /* Eyebrow, name and tagline sit dead centre of the first screen. */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4.5rem 3rem;
 }
 
 .hero-name {
   font-family: 'Instrument Serif', serif;
+  font-style: italic;
   font-size: clamp(5rem, 11vw, 13rem);
   line-height: .88;
   letter-spacing: -0.03em;
@@ -80,6 +46,13 @@
 
 .char {
   display: inline-block;
+  /* WebKit clips a filtered element's ink to its box. At line-height .88 the
+     descenders (the g in "Allgaier") hang below each char's box, so Safari
+     sliced them off. reveal.js drops the animation (and its filter) once
+     each letter lands; this padding covers the ink while it's still
+     animating. The matching negative margin leaves the layout unchanged. */
+  padding: 0.1em 0.05em 0.3em;
+  margin: -0.1em -0.05em -0.3em;
   animation: charReveal 1s cubic-bezier(0.15, 1, 0.3, 1) both;
 }
 
@@ -97,24 +70,20 @@
   animation: fadeUp 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) 0.68s both;
 }
 
+/* The one way out of the hero besides the nav — lands last, after the
+   tagline has settled. (.pill itself is below, shared with about/resume.) */
+.hero-cta {
+  margin-top: 2.75rem;
+  animation: fadeUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) 1.05s both;
+}
+
 /* ── Work ── */
 .work {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1px;
   background-color: var(--rule);
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-}
-
-.section-label {
-  grid-column: 1 / -1;
-  background: var(--bg);
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding: 4rem 3rem 2rem;
+  border-top: 1px solid var(--rule);   /* the footer's own rule closes it */
 }
 
 .work-item {
@@ -162,54 +131,128 @@
   color: var(--muted);
 }
 
-/* ── About blurb ── */
-.about-blurb {
-  padding: 10rem 3rem;
-  max-width: 72ch;
+/* ── Avatar ──
+   Round portrait with a glassy face: a soft specular sheen across the photo
+   and a bright rim along its edge, lifted off the page by a long shadow.
+   Used by the about page (lives here with the other shared pieces). */
+.avatar {
+  --size: 17.5rem;
+  position: relative;
+  flex: none;
+  width: min(var(--size), 100%);
+  aspect-ratio: 1;
+  margin: 0;
+  border-radius: 50%;
+  box-shadow: 0 30px 60px -28px rgba(24, 20, 48, 0.45);
 }
 
-.about-blurb p {
-  font-size: clamp(1.2rem, 2.2vw, 1.625rem);
-  line-height: 1.5;
-  font-weight: 300;
-  margin-bottom: 2rem;
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
 }
 
-.about-link {
-  display: inline-block;
-  font-size: 0.8125rem;
-  letter-spacing: 0.05em;
+/* Sheen: a diagonal highlight over the photo, like light on curved glass. */
+.avatar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 32%, transparent 50%);
+  box-shadow:
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Capped by height too, so the about hero still fits on one screen. */
+.avatar--lg { --size: min(clamp(14rem, 24vw, 22.75rem), 34svh); }
+
+/* ── Pills ──
+   Glass link buttons, icon + label. Shared by the about + resume pages. */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.7rem 1.25rem 0.7rem 1rem;
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  letter-spacing: 0.01em;
   color: var(--muted);
-  border-bottom: 1px solid var(--rule);
-  padding-bottom: 0.2rem;
-  transition: color 0.2s, border-color 0.2s;
+  background: color-mix(in srgb, var(--bg) 55%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  outline: 1px solid var(--rule);
+  transition: color 0.2s, background-color 0.2s, transform 0.15s;
 }
 
-.about-link:hover {
-  color: var(--accent);
-  border-color: var(--accent);
+.pill:focus-visible {
+  border-radius: 999px;
+  outline: 2px solid var(--text);
+  color: var(--text);
+}
+.pill:active { transform: scale(0.96); }
+
+@media (hover: hover) {
+  .pill:hover {
+    color: var(--text);
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+  }
+}
+
+.pill-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex: none;
+  display: block;
+}
+
+/* Tria's mark is its lowercase t — set here in Instrument Serif italic. */
+.pill-t {
+  display: grid;
+  place-items: center;
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 1.65rem;
+  line-height: 1;
+  transform: translateY(-0.22em);
+}
+
+@media (prefers-color-scheme: dark) {
+  .avatar { box-shadow: 0 30px 60px -28px rgba(0, 0, 0, 0.75); }
+  .avatar::after {
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 32%, transparent 50%);
+    box-shadow:
+      inset 0 1.5px 1px rgba(255, 255, 255, 0.22),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ── Desktop: centre the hero on the whole window rather than on the column
+   beside the sidebar — the backdrop already runs under the glass, the way
+   iPadOS extends content beneath a floating sidebar. ── */
+@media (min-width: 769px) {
+  .hero {
+    margin-left: calc(-1 * var(--nav-inset));
+    padding-left: calc(3rem + var(--nav-inset));
+  }
 }
 
 /* ── Mobile ── */
 @media (max-width: 768px) {
   .hero {
-    padding: 5rem 1.5rem 3rem;
+    /* Centre within the space the chrome leaves free: below the status bar
+       (home-screen app) and above the floating tab bar. */
+    padding: calc(3rem + env(safe-area-inset-top, 0px)) 1.5rem calc(3rem + var(--tabbar-clear));
   }
 
   .work {
     grid-template-columns: 1fr;
   }
 
-  .section-label {
-    padding: 3rem 1.5rem 1.5rem;
-  }
-
   .work-item {
     padding: 1.5rem;
-  }
-
-  .about-blurb {
-    padding: 6rem 1.5rem;
-    max-width: 100%;
   }
 }

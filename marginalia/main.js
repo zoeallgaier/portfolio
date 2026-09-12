@@ -8,33 +8,23 @@
       main.insertAdjacentHTML('beforebegin',
         '<header class="app-topbar">' +
           '<a class="nav-logo" href="/" aria-label="Zoe Allgaier — Home">' +
-            '<img src="/Zmono-dark.png" alt=""></a>' +
+            '<img src="/icons/z-mark-dark.png" alt=""></a>' +
         '</header>');
     }
-  }());
-
-  /* —— Header height sync —— On desktop the top nav is fixed, so offset main by
-     its height. On phones the nav is the bottom tab bar and the top bar scrolls
-     in-flow, so main needs no top offset (CSS handles it). —— */
-  (function syncHeader() {
-    const nav  = document.querySelector('nav');
-    const main = document.querySelector('main');
-    if (!nav || !main) return;
-    const mobile = window.matchMedia('(max-width: 680px)');
-    function apply() {
-      main.style.paddingTop = mobile.matches ? '' : nav.offsetHeight + 'px';
+    // The desktop sidebar's masthead is the name (base.css hides the
+    // monogram there), matching the portfolio's sidebar.
+    const navLogo = document.querySelector('nav .nav-logo');
+    if (navLogo && !navLogo.querySelector('.nav-name')) {
+      navLogo.insertAdjacentHTML('beforeend', '<span class="nav-name">Zoe Allgaier</span>');
     }
-    new ResizeObserver(apply).observe(nav);
-    mobile.addEventListener('change', apply);
-    apply();
   }());
 
   const urlParams = new URLSearchParams(window.location.search);
   const urlFilter = urlParams.get('filter');
 
-  /* —— Nav tab icons —— Inject a small line icon into each filter tab so the
-     mobile bottom bar reads as a native app tab bar. Shown only on phones (CSS);
-     runs on the feed and on post pages, which share this nav. —— */
+  /* —— Nav tab icons —— Inject a small line icon + label wrapper into each
+     filter tab: sidebar rows on desktop, native-style tabs on phones (base.css).
+     Runs on the feed and on post pages, which share this nav. —— */
   (function navIcons() {
     const ICONS = {
       all:     '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
@@ -46,6 +36,7 @@
     document.querySelectorAll('.nav-links a').forEach(a => {
       const key = new URL(a.href, location.href).searchParams.get('filter') || 'all';
       if (!ICONS[key]) return;
+      a.innerHTML = '<span class="nav-label">' + a.innerHTML + '</span>';
       a.insertAdjacentHTML('afterbegin',
         '<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
         'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +

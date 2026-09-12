@@ -3,14 +3,21 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#e1e1e8" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0e0e15" media="(prefers-color-scheme: dark)" />
+  <link rel="apple-touch-icon" href="/icons/z-180.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <title>Zoe Allgaier — About</title>
-  <meta name="description" content="Eight years across graphic, motion, and web — from social storytelling to leading design on campaigns that have raised over $254M." />
+  <meta name="description" content="A motion-first designer, eight years in the overlap between graphic, motion, and web — from building a brand to leading design on campaigns that have raised over $254M." />
   <meta property="og:type" content="profile" />
   <meta property="og:title" content="Zoe Allgaier — About" />
-  <meta property="og:description" content="Eight years across graphic, motion, and web — from social storytelling to leading design on campaigns that have raised over $254M." />
+  <meta property="og:description" content="A motion-first designer, eight years in the overlap between graphic, motion, and web — from building a brand to leading design on campaigns that have raised over $254M." />
   <meta property="og:url" content="https://zoeallgaier.com/about.html" />
-  <meta property="og:image" content="https://zoeallgaier.com/_assets/pfp.jpg" />
+  <meta property="og:image" content="https://zoeallgaier.com/_assets/zoeallgaier.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="/css/index.css" />
   <link rel="stylesheet" href="/css/about.css" />
@@ -25,26 +32,58 @@
 
   <nav data-chrome="nav"></nav>
 
-  <main id="main-content" tabindex="-1">
+  <main id="main-content" tabindex="-1" data-backdrop="about">
 
-    <section class="bio-grid">
-      <canvas class="hero-canvas" aria-hidden="true"></canvas>
-      <div class="hero-bg" aria-hidden="true"></div>
+    <!-- ── Hero: avatar, title, links ── -->
+    <section class="about-hero">
 
-      <div class="bio-photo">
-        <img src="/_assets/pfp.jpg" alt="Zoe Allgaier">
+      <figure class="avatar avatar--lg about-avatar">
+        <img src="/_assets/zoeallgaier-sq.jpg" alt="Zoe Allgaier" width="640" height="640">
+      </figure>
+
+      <p class="about-eyebrow">Designer — graphic, motion, web</p>
+      <h1 class="about-title">A bit about me</h1>
+
+      <div class="about-actions">
+        <a class="pill" href="https://www.linkedin.com/in/zoeallgaier/" target="_blank" rel="noopener">
+          <svg class="pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4.5"/><path d="M8 10.5V16"/><path d="M8 7.6v.01"/><path d="M12 16v-5.5"/><path d="M12 13.2a2.6 2.6 0 0 1 5.2 0V16"/></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a class="pill" href="/resume.html">
+          <svg class="pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7.5A2.5 2.5 0 0 0 5 5.5v13A2.5 2.5 0 0 0 7.5 21h9a2.5 2.5 0 0 0 2.5-2.5V8z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 16.5h4"/></svg>
+          <span>Resume</span>
+        </a>
+        <a class="pill" href="https://triaonline.com/#/u/zoe" target="_blank" rel="noopener">
+          <span class="pill-icon pill-t" aria-hidden="true">t</span>
+          <span>Tria</span>
+        </a>
       </div>
+    </section>
 
-      <div class="bio-text">
-        <h1>A bit about me</h1>
-        <p>I started my career eight years ago, at the beginning of the "make someone stop scrolling" era. Obsessed with telling stories through video, I focused on narrative, advertising, and social media strategy.</p>
-        <p>But videography can only get you so far. So I spent 4 years learning the ins and outs of graphic design. Print, digital, branding, logo animations, the works.</p>
-        <p>As creative director at Elysium Black Diamond, I built a brand from zero and watched it clear $300K in eight months. As a designer II at UVU, I lead design on campaigns that have raised over $254M. Same storytelling, bigger stakes. 👩🏻‍💻</p>
-
-        <a href="https://www.linkedin.com/in/zoeallgaier/" target="_blank" rel="noopener" class="connect-link">Connect on LinkedIn →</a>
-        <a href="/_assets/ZoeAllgaier-Resume2026.pdf" target="_blank" rel="noopener" class="connect-link">View my resume →</a>
+    <!-- ── By the numbers ── -->
+    <section class="about-figures" aria-label="By the numbers">
+      <div class="about-figure">
+        <span class="about-figure-num">8<em>yrs</em></span>
+        <span class="about-figure-label">across graphic, motion &amp; web</span>
       </div>
+      <div class="about-figure">
+        <span class="about-figure-num">$300K</span>
+        <span class="about-figure-label">in eight months, Elysium Black Diamond</span>
+      </div>
+      <div class="about-figure">
+        <span class="about-figure-num">$254M</span>
+        <span class="about-figure-label">raised on UVU campaigns I've led design on</span>
+      </div>
+    </section>
 
+    <!-- ── Story ── -->
+    <section class="about-spread">
+      <div class="about-copy">
+        <p class="about-lede"><span class="about-dropcap">I</span>'m a Designer who's spent eight years in the <strong>overlap between graphic, motion, and web</strong>. Not because I couldn't pick one, but because pulling them apart is where brands lose the plot.</p>
+        <p>My career started in videography, and <em>evolved</em> into graphic design; so naturally, <strong>I'm a motion-first designer</strong>. I'm very lucky to have worked on a wide range of projects, from fundraising to app design.</p>
+        <blockquote class="about-pull">Same storytelling, bigger&nbsp;stakes.</blockquote>
+        <p>As <strong>creative director at Elysium Black Diamond</strong>, I created a brand that made $300K in eight months. As a <strong>designer II at UVU</strong>, I lead design on campaigns that have raised over $254M. Same storytelling, bigger stakes.</p>
+      </div>
     </section>
 
   </main>
@@ -52,8 +91,10 @@
   <footer id="contact" data-chrome="footer"></footer>
 
   <script src="/js/chrome.js"></script>
-  <script src="/js/canvas.js"></script>
+  <script src="/js/backdrop.js"></script>
   <script src="/js/footer.js"></script>
-
+  <script src="/js/tabs.js"></script>
+  <script src="/js/reveal.js"></script>
+  <script src="/js/app.js"></script>
 </body>
 </html>

@@ -3,7 +3,12 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#e1e1e8" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0e0e15" media="(prefers-color-scheme: dark)" />
   <title>Zoe Allgaier — Designer</title>
   <meta name="description" content="Zoe Allgaier — designer working across graphic, motion, and web. I turn vague ideas and vibes into fully realized brands, no chaos required." />
   <meta property="og:type" content="website" />
@@ -13,9 +18,9 @@
   <meta property="og:image" content="https://zoeallgaier.com/_assets/UVU/evergreen-billboard.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
-  <link rel="icon" href="/icons/monogram-32.png" sizes="32x32" type="image/png" />
-  <link rel="icon" href="/icons/monogram-16.png" sizes="16x16" type="image/png" />
-  <link rel="apple-touch-icon" href="/icons/monogram-180.png" />
+  <link rel="icon" href="/icons/z-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="/icons/z-16.png" sizes="16x16" type="image/png" />
+  <link rel="apple-touch-icon" href="/icons/z-180.png" />
   <meta name="apple-mobile-web-app-title" content="Zoe Allgaier" />
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="stylesheet" href="/css/index.css" />
@@ -30,18 +35,18 @@
 
   <nav data-chrome="nav"></nav>
 
-  <main id="main-content" tabindex="-1">
+  <main id="main-content" tabindex="-1" data-backdrop="home">
 
     <section class="hero">
-      <canvas class="hero-canvas" aria-hidden="true"></canvas>
-      <div class="hero-bg" aria-hidden="true"></div>
-      <span class="hero-eyebrow">Designer — graphic, motion, web</span>
       <h1 class="hero-name">Zoe Allgaier</h1>
       <p class="hero-tagline">I turn vague ideas and vibes into fully realized brands, no chaos required.</p>
+      <a class="pill hero-cta" href="/about.html">
+        <svg class="pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/></svg>
+        <span>A bit about me</span>
+      </a>
     </section>
 
-    <section class="work" id="work">
-      <p class="section-label">Selected work</p>
+    <section class="work" id="work" aria-label="Selected work">
 
       <a href="/evergreen.html" class="work-item">
         <div class="work-media">
@@ -135,46 +140,15 @@
 
     </section>
 
-    <section class="about-blurb">
-      <p>I've spent eight years in the overlap between graphic, motion, and web. Not because I couldn't pick one–but because pulling them apart is where brands lose the plot.</p>
-      <a href="/about.html" class="about-link">Learn more about me →</a>
-    </section>
-
   </main>
 
   <footer id="contact" data-chrome="footer"></footer>
 
   <script src="/js/chrome.js"></script>
-  <script src="/js/canvas.js"></script>
+  <script src="/js/backdrop.js"></script>
   <script src="/js/footer.js"></script>
-
+  <script src="/js/tabs.js"></script>
   <script src="/js/reveal.js"></script>
-  <script>
-    document.querySelector('a[href="#work"]').addEventListener('click', e => {
-      e.preventDefault();
-      const target = document.getElementById('work');
-      if (!target) return;
-      const nav = document.querySelector('nav');
-      const offset = nav ? nav.offsetHeight : 0;
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        target.scrollIntoView();
-        return;
-      }
-      const start = window.scrollY;
-      const end = target.getBoundingClientRect().top + window.scrollY - offset;
-      const duration = 1200;
-      const t0 = performance.now();
-      document.documentElement.style.scrollBehavior = 'auto';
-      function step(now) {
-        const t = Math.min((now - t0) / duration, 1);
-        const ease = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-        window.scrollTo(0, start + (end - start) * ease);
-        if (t < 1) requestAnimationFrame(step);
-        else document.documentElement.style.scrollBehavior = '';
-      }
-      requestAnimationFrame(step);
-    });
-  </script>
-
+  <script src="/js/app.js"></script>
 </body>
 </html>

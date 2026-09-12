@@ -1,0 +1,221 @@
+/* resume.css — loaded after index.css, which supplies .pill. The resume as
+   a timeline: dates hang in a margin rail, a hairline runs down the page
+   with a dot at each role, and everything else shares one left edge —
+   title, company, bullets, links. */
+
+/* Blur-in entrances, as on the about page. */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); filter: blur(5px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
+
+.cv {
+  --rail: clamp(8.5rem, 12vw, 11rem);   /* the date column */
+  --axis: clamp(2rem, 3.5vw, 3rem);     /* from the timeline to the text */
+  padding: 0 3rem clamp(5rem, 9vw, 8rem);
+}
+
+.cv-head,
+.cv-roles {
+  max-width: 66rem;
+  margin-inline: auto;
+}
+
+/* ── Head: the name and links, on the same edge as the roles below ── */
+.cv-head {
+  padding: clamp(5rem, 9vw, 8rem) 0 clamp(4.5rem, 8vw, 6.5rem) calc(var(--rail) + var(--axis) + 1px);
+}
+
+.cv-name {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-size: clamp(3.5rem, 7.5vw, 7.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  padding-bottom: 0.08em;               /* room for the g */
+  margin-bottom: 1.75rem;
+  animation: fadeUp 1s cubic-bezier(0.25, 0.8, 0.25, 1) 0.1s both;
+}
+
+.cv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  animation: fadeUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) 0.3s both;
+}
+
+/* ── Roles ── */
+.cv-roles { list-style: none; }
+
+/* Date in the rail, role on the line; the two share a baseline. */
+.cv-role {
+  display: grid;
+  grid-template-columns: var(--rail) minmax(0, 1fr);
+  align-items: baseline;
+}
+
+.cv-when {
+  padding-right: 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.cv-main {
+  border-left: 1px solid var(--rule);
+  padding: 0 0 clamp(4rem, 7vw, 5.5rem) var(--axis);
+}
+
+/* The last stretch of the line fades out rather than stopping dead. */
+.cv-role:last-child .cv-main {
+  padding-bottom: 1rem;
+  border-image: linear-gradient(to bottom, var(--rule) 55%, transparent) 1;
+}
+
+.cv-title {
+  position: relative;
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-size: clamp(2.25rem, 3.4vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+/* A dot on the line at each role, level with the title's x-height: hollow
+   for past roles, filled for the current one. */
+.cv-title::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--axis) - 5px);
+  top: 0.6em;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  translate: 0 -50%;
+  background: var(--bg);
+  box-shadow: inset 0 0 0 1px var(--text);
+}
+.cv-role--now .cv-title::before { background: var(--text); }
+
+.cv-org {
+  margin-top: 0.3rem;
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: clamp(1.25rem, 1.6vw, 1.5rem);
+  line-height: 1.2;
+  color: var(--muted);
+}
+
+/* Bullets: a small round point hung in the margin (so the text keeps the
+   title's edge), with the figures in each line picked out in bold. */
+.cv-points {
+  list-style: none;
+  display: grid;
+  gap: 0.85rem;
+  max-width: 44rem;
+  margin-top: 1.75rem;
+}
+
+.cv-points li {
+  position: relative;
+  font-size: clamp(1rem, 1.15vw, 1.0625rem);
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--text) 80%, transparent);
+  text-wrap: pretty;
+}
+
+.cv-points li::before {
+  content: '';
+  position: absolute;
+  left: -1.1rem;
+  top: calc(0.825em - 2.5px);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+.cv-points strong {
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* Selected work: small outlined chips. */
+.cv-work {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+}
+
+.cv-work-label {
+  margin-right: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.cv-work a {
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  outline: 1px solid var(--rule);
+  outline-offset: -1px;
+  font-size: 0.8125rem;
+  transition: background-color 0.2s, outline-color 0.2s;
+}
+
+.cv-work a:focus-visible { outline: 2px solid var(--text); }
+
+@media (hover: hover) {
+  .cv-work a:hover {
+    background: color-mix(in srgb, var(--text) 6%, transparent);
+    outline-color: var(--text);
+  }
+}
+
+/* ── Narrower: no room for the rail, so each date sits over its title and
+   the line runs down the left edge. ── */
+@media (max-width: 1000px) {
+  .cv { --axis: 1.75rem; }
+  .cv-head { padding-left: 0; }
+
+  .cv-role {
+    display: block;
+    border-left: 1px solid var(--rule);
+    padding: 0 0 3.5rem var(--axis);
+  }
+  .cv-role:last-child {
+    padding-bottom: 1rem;
+    border-image: linear-gradient(to bottom, var(--rule) 55%, transparent) 1;
+  }
+  .cv-main,
+  .cv-role:last-child .cv-main {
+    border: 0;
+    border-image: none;
+    padding: 0;
+  }
+  .cv-when { margin-bottom: 0.6rem; }
+}
+
+@media (max-width: 768px) {
+  .cv {
+    --axis: 1.25rem;
+    padding: 0 1.5rem 3rem;
+  }
+  .cv-head { padding: calc(3.5rem + env(safe-area-inset-top, 0px)) 0 3rem; }
+  .cv-name { margin-bottom: 1.5rem; }
+
+  /* Links as full-width, equal buttons rather than a ragged pair. */
+  .cv-actions { display: grid; gap: 0.625rem; }
+  .cv-actions .pill { justify-content: center; }
+
+  .cv-points { gap: 0.75rem; margin-top: 1.5rem; }
+  /* Too close to the line to hang the points, so they indent instead. */
+  .cv-points li { padding-left: 1.1rem; font-size: 1rem; line-height: 1.6; }
+  .cv-points li::before { left: 0.05rem; top: calc(0.8em - 2.5px); }
+  .cv-work { margin-top: 1.5rem; }
+  .cv-work-label { flex-basis: 100%; margin: 0 0 0.15rem; }
+}
