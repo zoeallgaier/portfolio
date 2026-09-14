@@ -12,10 +12,10 @@
   <link rel="apple-touch-icon" href="/icons/z-180.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <title>Zoe Allgaier — EverGREEN Campaign</title>
+  <link rel="stylesheet" href="/css/base.css" />
   <link rel="stylesheet" href="/css/project.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/oxygen-300.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 
 <body>
@@ -54,12 +54,12 @@
 
     <!-- ── Gallery ── -->
     <div class="gallery">
-      <video src="/_assets/UVU/studentstories.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
-      <img loading="lazy" decoding="async" src="/_assets/UVU/evergreen-billboard.jpg"              alt="EverGREEN billboard">
-      <img loading="lazy" decoding="async" src="/_assets/UVU/IMG_6059.jpg"                     alt="EverGREEN event">
-      <img loading="lazy" decoding="async" src="/_assets/UVU/UVU-give-desktop.jpg"                alt="UVU Give desktop">
-      <img loading="lazy" decoding="async" src="/_assets/UVU/UVU-evergreen-mobile.jpg"            alt="EverGREEN mobile">
-      <img loading="lazy" decoding="async" src="/_assets/UVU/evergreen-report.jpg"                alt="EverGREEN report">
+      <video src="/_assets/UVU/studentstories.mp4" poster="/_assets/UVU/studentstories-poster.webp" autoplay muted loop playsinline aria-hidden="true"></video>
+      <img loading="lazy" decoding="async" src="/_assets/UVU/evergreen-billboard.jpg" srcset="/_assets/UVU/evergreen-billboard-800.webp 800w, /_assets/UVU/evergreen-billboard-1400.webp 1400w, /_assets/UVU/evergreen-billboard-2000.webp 2000w" sizes="(max-width: 768px) calc((100vw) * 1.33), calc(((100vw - 20rem) / 2) * 1.33)"              alt="EverGREEN billboard">
+      <img loading="lazy" decoding="async" src="/_assets/UVU/IMG_6059.jpg" srcset="/_assets/UVU/IMG_6059-800.webp 800w, /_assets/UVU/IMG_6059-1400.webp 1400w, /_assets/UVU/IMG_6059-1800.webp 1800w" sizes="(max-width: 768px) calc(100vw), calc((100vw - 20rem) / 2)"                     alt="EverGREEN event">
+      <img loading="lazy" decoding="async" src="/_assets/UVU/UVU-give-desktop.jpg" srcset="/_assets/UVU/UVU-give-desktop-800.webp 800w, /_assets/UVU/UVU-give-desktop-1400.webp 1400w, /_assets/UVU/UVU-give-desktop-2000.webp 2000w" sizes="(max-width: 768px) calc((100vw) * 1.50), calc(((100vw - 20rem) / 2) * 1.50)"                alt="UVU Give desktop">
+      <img loading="lazy" decoding="async" src="/_assets/UVU/UVU-evergreen-mobile.jpg" srcset="/_assets/UVU/UVU-evergreen-mobile-800.webp 800w, /_assets/UVU/UVU-evergreen-mobile-1400.webp 1400w, /_assets/UVU/UVU-evergreen-mobile-2000.webp 2000w" sizes="(max-width: 768px) calc((100vw) * 1.33), calc(((100vw - 20rem) / 2) * 1.33)"            alt="EverGREEN mobile">
+      <img loading="lazy" decoding="async" src="/_assets/UVU/evergreen-report.jpg" srcset="/_assets/UVU/evergreen-report-800.webp 800w, /_assets/UVU/evergreen-report-1400.webp 1400w, /_assets/UVU/evergreen-report-2000.webp 2000w" sizes="(max-width: 768px) calc((100vw) * 1.33), calc(((100vw - 20rem) / 2) * 1.33)"                alt="EverGREEN report">
     </div>
 
     <!-- ── Next project ── -->

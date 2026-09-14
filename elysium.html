@@ -12,10 +12,10 @@
   <link rel="apple-touch-icon" href="/icons/z-180.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <title>Zoe Allgaier — Elysium Black Diamond</title>
+  <link rel="stylesheet" href="/css/base.css" />
   <link rel="stylesheet" href="/css/project.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/oxygen-300.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 
 <body>
@@ -54,14 +54,14 @@
 
     <!-- ── Gallery ── -->
     <div class="gallery">
-      <img loading="lazy" decoding="async" src="/_assets/Elysium/mens1.JPG"             alt="Mens product">
-      <img loading="lazy" decoding="async" src="/_assets/Elysium/elysiumblacksite.jpg"  alt="Elysium desktop">
-      <img loading="lazy" decoding="async" src="/_assets/Elysium/elysiumopemockup.jpg"  alt="Elysium mobile">
-      <img loading="lazy" decoding="async" src="/_assets/Elysium/womens2.JPG"           alt="Womens product">
-      <img loading="lazy" decoding="async" src="/_assets/Elysium/ad2.jpg"               alt="Womens newsletter">
-      <img loading="lazy" decoding="async" src="/_assets/Elysium/catalog.jpg"           alt="Catalog">
-      <img loading="lazy" decoding="async" src="/_assets/Elysium/mens4.png"             alt="Mens product">
-      <img loading="lazy" decoding="async" src="/_assets/Elysium/ad1.JPG"               alt="Mens product">
+      <img loading="lazy" decoding="async" src="/_assets/Elysium/mens1.JPG" srcset="/_assets/Elysium/mens1-800.webp 800w, /_assets/Elysium/mens1-1400.webp 1400w, /_assets/Elysium/mens1-1600.webp 1600w" sizes="(max-width: 768px) calc(100vw), calc((100vw - 20rem) / 2)"             alt="Mens product">
+      <img loading="lazy" decoding="async" src="/_assets/Elysium/elysiumblacksite.jpg" srcset="/_assets/Elysium/elysiumblacksite-800.webp 800w, /_assets/Elysium/elysiumblacksite-1400.webp 1400w, /_assets/Elysium/elysiumblacksite-2000.webp 2000w" sizes="(max-width: 768px) calc((100vw) * 1.64), calc(((100vw - 20rem) / 2) * 1.64)"  alt="Elysium desktop">
+      <img loading="lazy" decoding="async" src="/_assets/Elysium/elysiumopemockup.jpg" srcset="/_assets/Elysium/elysiumopemockup-800.webp 800w, /_assets/Elysium/elysiumopemockup-1400.webp 1400w, /_assets/Elysium/elysiumopemockup-2000.webp 2000w" sizes="(max-width: 768px) calc((100vw) * 1.50), calc(((100vw - 20rem) / 2) * 1.50)"  alt="Elysium mobile">
+      <img loading="lazy" decoding="async" src="/_assets/Elysium/womens2.JPG" srcset="/_assets/Elysium/womens2-800.webp 800w, /_assets/Elysium/womens2-1400.webp 1400w, /_assets/Elysium/womens2-1920.webp 1920w" sizes="(max-width: 768px) calc(100vw), calc((100vw - 20rem) / 2)"           alt="Womens product">
+      <img loading="lazy" decoding="async" src="/_assets/Elysium/ad2.jpg" srcset="/_assets/Elysium/ad2-800.webp 800w, /_assets/Elysium/ad2-1400.webp 1400w, /_assets/Elysium/ad2-1920.webp 1920w" sizes="(max-width: 768px) calc(100vw), calc((100vw - 20rem) / 2)"               alt="Womens newsletter">
+      <img loading="lazy" decoding="async" src="/_assets/Elysium/catalog.jpg" srcset="/_assets/Elysium/catalog-800.webp 800w, /_assets/Elysium/catalog-1400.webp 1400w, /_assets/Elysium/catalog-2000.webp 2000w" sizes="(max-width: 768px) calc((100vw) * 1.43), calc(((100vw - 20rem) / 2) * 1.43)"           alt="Catalog">
+      <img loading="lazy" decoding="async" src="/_assets/Elysium/mens4.png" srcset="/_assets/Elysium/mens4-800.webp 800w, /_assets/Elysium/mens4-1330.webp 1330w" sizes="(max-width: 768px) calc(100vw), calc((100vw - 20rem) / 2)"             alt="Mens product">
+      <img loading="lazy" decoding="async" src="/_assets/Elysium/ad1.JPG" srcset="/_assets/Elysium/ad1-800.webp 800w, /_assets/Elysium/ad1-1400.webp 1400w, /_assets/Elysium/ad1-1920.webp 1920w" sizes="(max-width: 768px) calc(100vw), calc((100vw - 20rem) / 2)"               alt="Mens product">
     </div>
 
     <!-- ── Next project ── -->

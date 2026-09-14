@@ -1,8 +1,19 @@
 /* ─────────────────────────────────────────────────────────────
    base.css — shared foundation for every page:
    reset, design tokens, chrome (nav + footer), motion, dark mode.
-   Page-specific stylesheets @import this at the top, then layer on.
+   Every page links this first, then its own stylesheet on top. (A <link>,
+   not an @import, so the browser fetches both in parallel.)
    ───────────────────────────────────────────────────────────── */
+
+/* ── Fonts ──
+   Self-hosted (latin subset) rather than Google Fonts: no third-party
+   connection on first visit, and the two faces the first screen needs are
+   preloaded in each page's <head>. */
+@font-face { font-family: 'Instrument Serif'; font-style: normal; font-weight: 400; font-display: swap; src: url(/fonts/instrument-serif.woff2) format('woff2'); }
+@font-face { font-family: 'Instrument Serif'; font-style: italic; font-weight: 400; font-display: swap; src: url(/fonts/instrument-serif-italic.woff2) format('woff2'); }
+@font-face { font-family: 'Oxygen'; font-style: normal; font-weight: 300; font-display: swap; src: url(/fonts/oxygen-300.woff2) format('woff2'); }
+@font-face { font-family: 'Oxygen'; font-style: normal; font-weight: 400; font-display: swap; src: url(/fonts/oxygen-400.woff2) format('woff2'); }
+@font-face { font-family: 'Oxygen'; font-style: normal; font-weight: 700; font-display: swap; src: url(/fonts/oxygen-700.woff2) format('woff2'); }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 

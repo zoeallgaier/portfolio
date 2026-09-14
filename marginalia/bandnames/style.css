@@ -1,7 +1,5 @@
-/* Inherit the full marginalia chrome (bottom tab bar + top bar + "+" + tab icons
-   on mobile, and the shared nav/footer) so this page matches the rest of the
-   app. marginalia/style.css itself @imports base.css. */
-@import '../style.css';
+/* Layers on top of css/base.css and marginalia/style.css (both linked from
+   generator.html first), so this page matches the rest of the app. */
 
 /* — Hero — */
 .hero {

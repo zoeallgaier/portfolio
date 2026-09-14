@@ -12,10 +12,10 @@
   <link rel="apple-touch-icon" href="/icons/z-180.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <title>Zoe Allgaier — Tria</title>
+  <link rel="stylesheet" href="/css/base.css" />
   <link rel="stylesheet" href="/css/project.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/oxygen-300.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 
 <body>
@@ -43,21 +43,21 @@
 
       <div class="toggle-panels">
         <div class="toggle-panel active" role="tabpanel" id="panel-scope"    aria-labelledby="tab-scope"    tabindex="0">
-          <p><i>Tria</i> is a social media app built for real relationships. Whether you're keeping up with lifelong friends, or finding your people for the first time, Tria is the place to do it. </p>
-          <p>Your feed is chronological. There are no ads, and no algorithm deciding for you. Just a place to share your life, discover things worth caring about, and stay connected.</p>
+          <p><i>Tria</i> is a social media app I designed  and built myself. After taking a two year hiatus from social media, I wanted to create a space that felt more authentic and less algorithmic.</p>
+          <p>On Tria, you can post like any other platform, and you can post activities/events. It's important to me that Tria fosters in-person connections as much as online ones.</p>
+          <p>Your feed is chronological and there are no ads. Just a place to share your life, discover things worth caring about, and stay connected.</p>
           <p><a href="https://apps.apple.com/us/app/tria-digital-third-place/id6796104809" target="_blank" rel="noopener noreferrer">View Tria on the App Store →</a></p>
         </div>
         <div class="toggle-panel" role="tabpanel" id="panel-results"  aria-labelledby="tab-results"  tabindex="0" hidden>
-          <p>I designed, coded, and shipped Tria myself; with <b>Claude Code</b> as my co-developer and Apple's <b>Human Interface Guidelines</b> as the standard I held it to.</p>
-          <p>The HIG makes you answer for real things: touch targets, Dynamic Type, safe areas, native navigation. Leveraging AI allowed me to focus on my strengths: the user experience, accessibility, and design.</p>
+          <p>Tria has gained 64+ users in its first month of release, based on word of mouth sharing. Developing the app myself gave me complete control over the user experience and allowed me to implement features that prioritize authenticity and connection.</p>
         </div>
       </div>
     </div>
 
     <!-- ── Gallery ── -->
     <div class="gallery">
-      <img loading="lazy" decoding="async" src="/_assets/Tria/Tria-icon.jpg" alt="Tria app icon">
-      <img loading="lazy" decoding="async" src="/_assets/Tria/newpost.jpg"   alt="New post composer">
+      <img loading="lazy" decoding="async" src="/_assets/Tria/Tria-icon.jpg" srcset="/_assets/Tria/Tria-icon-800.webp 800w, /_assets/Tria/Tria-icon-1400.webp 1400w, /_assets/Tria/Tria-icon-2000.webp 2000w" sizes="(max-width: 768px) calc((100vw) * 1.50), calc(((100vw - 20rem) / 2) * 1.50)" alt="Tria app icon">
+      <img loading="lazy" decoding="async" src="/_assets/Tria/newpost.jpg" srcset="/_assets/Tria/newpost-800.webp 800w, /_assets/Tria/newpost-1400.webp 1400w, /_assets/Tria/newpost-2000.webp 2000w" sizes="(max-width: 768px) calc((100vw) * 1.14), calc(((100vw - 20rem) / 2) * 1.14)"   alt="New post composer">
     </div>
 
     <!-- ── Next project ── -->

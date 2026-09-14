@@ -33,6 +33,8 @@ js/backdrop.js        The one fixed glow + dot grid behind every page
 marginalia/           The feed: content.json (data) + main.js (renderer)
 marginalia/posts/     Long-form written posts, one HTML file each
 _assets/              All imagery, grouped by project
+fonts/                Self-hosted Instrument Serif + Oxygen (woff2)
+scripts/              optimize-images.py — run after adding imagery
 ```
 
 Shared chrome is defined once in `css/base.css` and `js/chrome.js` rather than
@@ -97,10 +99,36 @@ python3 -m http.server 8000
 
 ## Images
 
-Everything is served at up to 2400px on the long edge, JPEG quality ~82. If
-you add something straight from a camera or Figma export, resize it first —
-a 10MB original will load slowly on a phone and buy you nothing visually:
+The pages never make a visitor download an original. Every image on the home
+grid and in a project gallery has WebP copies at display sizes beside it
+(`name-800.webp`, `name-1400.webp`, `name-2000.webp`) and a `srcset` pointing
+at them, so a phone pulls an 800px WebP instead of a multi-megabyte JPEG.
+
+After adding or replacing an image in a page's `.work` grid or `.gallery`,
+just put the plain `<img src="/_assets/…">` in the HTML and run:
 
 ```sh
-sips -Z 2400 -s format jpeg -s formatOptions 82 photo.jpg --out photo.jpg
+python3 scripts/optimize-images.py
 ```
+
+It shrinks the original to 2400px / JPEG 82 if it's bigger, writes the WebPs,
+and fills in `srcset`/`sizes` for you. Re-running is safe.
+
+Gallery videos should be short, silent, and re-encoded before committing — a
+1080px H.264 loop is ~1–2MB, where an export straight from After Effects or
+Premiere is often 5–10MB. With ffmpeg:
+
+```sh
+ffmpeg -i in.mp4 -an -vf "scale='if(lte(iw,ih),min(1080,iw),-2)':'if(lte(iw,ih),-2,min(1080,ih))'" \
+  -c:v libx264 -preset slow -crf 26 -pix_fmt yuv420p -movflags +faststart out.mp4
+ffmpeg -i out.mp4 -frames:v 1 -c:v libwebp -quality 78 out-poster.webp
+```
+
+…and give the `<video>` a `poster="…-poster.webp"` so the cell isn't blank
+while it loads.
+
+## Fonts
+
+Instrument Serif and Oxygen are served from `/fonts` (declared at the top of
+`css/base.css`), not Google Fonts — one less connection to open before the
+first screen can paint. Each page preloads the two faces that screen uses.

@@ -12,10 +12,10 @@
   <link rel="apple-touch-icon" href="/icons/z-180.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <title>Zoe Allgaier — President's Scholarship Ball 2025</title>
+  <link rel="stylesheet" href="/css/base.css" />
   <link rel="stylesheet" href="/css/project.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/oxygen-300.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 
 <body>
@@ -55,12 +55,12 @@
 
     <!-- ── Gallery ── -->
     <div class="gallery">
-      <video src="/_assets/PSB25/psb-entrancegraphic.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
-      <img loading="lazy" decoding="async" src="/_assets/PSB25/psb-wide.jpg"    alt="PSB graphic">
-      <video src="/_assets/PSB25/sponsor.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
-      <img loading="lazy" decoding="async" src="/_assets/PSB25/psb-spines.jpg"  alt="PSB spines">
-      <img loading="lazy" decoding="async" src="/_assets/PSB25/psb-invite.jpg"     alt="PSB invite">
-      <img loading="lazy" decoding="async" src="/_assets/PSB25/psb-tablenumber.jpg"     alt="PSB table number">
+      <video src="/_assets/PSB25/psb-entrancegraphic.mp4" poster="/_assets/PSB25/psb-entrancegraphic-poster.webp" autoplay muted loop playsinline aria-hidden="true"></video>
+      <img loading="lazy" decoding="async" src="/_assets/PSB25/psb-wide.jpg" srcset="/_assets/PSB25/psb-wide-800.webp 800w, /_assets/PSB25/psb-wide-1400.webp 1400w" sizes="(max-width: 768px) calc(100vw), calc((100vw - 20rem) / 2)"    alt="PSB graphic">
+      <video src="/_assets/PSB25/sponsor.mp4" poster="/_assets/PSB25/sponsor-poster.webp" autoplay muted loop playsinline aria-hidden="true"></video>
+      <img loading="lazy" decoding="async" src="/_assets/PSB25/psb-spines.jpg" srcset="/_assets/PSB25/psb-spines-800.webp 800w, /_assets/PSB25/psb-spines-1400.webp 1400w, /_assets/PSB25/psb-spines-1887.webp 1887w" sizes="(max-width: 768px) calc(100vw), calc((100vw - 20rem) / 2)"  alt="PSB spines">
+      <img loading="lazy" decoding="async" src="/_assets/PSB25/psb-invite.jpg" srcset="/_assets/PSB25/psb-invite-800.webp 800w, /_assets/PSB25/psb-invite-1400.webp 1400w, /_assets/PSB25/psb-invite-2000.webp 2000w" sizes="(max-width: 768px) calc((100vw) * 1.33), calc(((100vw - 20rem) / 2) * 1.33)"     alt="PSB invite">
+      <img loading="lazy" decoding="async" src="/_assets/PSB25/psb-tablenumber.jpg" srcset="/_assets/PSB25/psb-tablenumber-800.webp 800w, /_assets/PSB25/psb-tablenumber-1400.webp 1400w, /_assets/PSB25/psb-tablenumber-1573.webp 1573w" sizes="(max-width: 768px) calc(100vw), calc((100vw - 20rem) / 2)"     alt="PSB table number">
     </div>
 
     <!-- ── Next project ── -->

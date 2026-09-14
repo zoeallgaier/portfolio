@@ -12,10 +12,10 @@
   <link rel="apple-touch-icon" href="/icons/z-180.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <title>Zoe Allgaier — Recursia</title>
+  <link rel="stylesheet" href="/css/base.css" />
   <link rel="stylesheet" href="/css/project.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/oxygen-300.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 
 <body>
@@ -134,12 +134,12 @@
 
     <!-- ── Gallery ── -->
     <div class="gallery">
-      <img loading="lazy" decoding="async" src="/_assets/recursia/algorithmica.jpeg"  alt="Algorithmica">
-      <img loading="lazy" decoding="async" src="/_assets/recursia/vitae.jpg"          alt="Vitae">
-      <img loading="lazy" decoding="async" src="/_assets/recursia/lily.jpg"      alt="Thalassa">
-      <img loading="lazy" decoding="async" src="/_assets/recursia/Symbiosis.jpg"    alt="Symbiosis">
-      <img loading="lazy" decoding="async" src="/_assets/recursia/gynandromorph.jpeg"      alt="Gynandromorph">
-      <img loading="lazy" decoding="async" src="/_assets/recursia/adyingstar.jpeg"      alt="A Dying Star">
+      <img loading="lazy" decoding="async" src="/_assets/recursia/algorithmica.jpeg" srcset="/_assets/recursia/algorithmica-800.webp 800w, /_assets/recursia/algorithmica-1400.webp 1400w, /_assets/recursia/algorithmica-2000.webp 2000w" sizes="(max-width: 768px) calc(100vw), calc((100vw - 20rem) / 2)"  alt="Algorithmica">
+      <img loading="lazy" decoding="async" src="/_assets/recursia/vitae.jpg" srcset="/_assets/recursia/vitae-800.webp 800w, /_assets/recursia/vitae-1400.webp 1400w, /_assets/recursia/vitae-2000.webp 2000w" sizes="(max-width: 768px) calc((100vw) * 1.78), calc(((100vw - 20rem) / 2) * 1.78)"          alt="Vitae">
+      <img loading="lazy" decoding="async" src="/_assets/recursia/lily.jpg" srcset="/_assets/recursia/lily-800.webp 800w, /_assets/recursia/lily-1400.webp 1400w, /_assets/recursia/lily-2000.webp 2000w" sizes="(max-width: 768px) calc((100vw) * 1.12), calc(((100vw - 20rem) / 2) * 1.12)"      alt="Thalassa">
+      <img loading="lazy" decoding="async" src="/_assets/recursia/Symbiosis.jpg" srcset="/_assets/recursia/Symbiosis-800.webp 800w, /_assets/recursia/Symbiosis-1400.webp 1400w, /_assets/recursia/Symbiosis-2000.webp 2000w" sizes="(max-width: 768px) calc(100vw), calc((100vw - 20rem) / 2)"    alt="Symbiosis">
+      <img loading="lazy" decoding="async" src="/_assets/recursia/gynandromorph.jpeg" srcset="/_assets/recursia/gynandromorph-800.webp 800w, /_assets/recursia/gynandromorph-1400.webp 1400w, /_assets/recursia/gynandromorph-2000.webp 2000w" sizes="(max-width: 768px) calc(100vw), calc((100vw - 20rem) / 2)"      alt="Gynandromorph">
+      <img loading="lazy" decoding="async" src="/_assets/recursia/adyingstar.jpeg" srcset="/_assets/recursia/adyingstar-800.webp 800w, /_assets/recursia/adyingstar-1400.webp 1400w, /_assets/recursia/adyingstar-2000.webp 2000w" sizes="(max-width: 768px) calc((100vw) * 1.78), calc(((100vw - 20rem) / 2) * 1.78)"      alt="A Dying Star">
     </div>
 
     <!-- ── Next project ── -->

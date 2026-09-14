@@ -23,10 +23,10 @@
   <link rel="apple-touch-icon" href="/icons/z-180.png" />
   <meta name="apple-mobile-web-app-title" content="Zoe Allgaier" />
   <link rel="manifest" href="/site.webmanifest" />
+  <link rel="stylesheet" href="/css/base.css" />
   <link rel="stylesheet" href="/css/index.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/oxygen-300.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 
 <body>
@@ -50,7 +50,7 @@
 
       <a href="/evergreen.html" class="work-item">
         <div class="work-media">
-          <img loading="lazy" decoding="async" src="/_assets/UVU/evergreen-billboard.jpg" alt="EverGREEN Campaign">
+          <img loading="lazy" decoding="async" src="/_assets/UVU/evergreen-billboard.jpg" srcset="/_assets/UVU/evergreen-billboard-800.webp 800w, /_assets/UVU/evergreen-billboard-1400.webp 1400w, /_assets/UVU/evergreen-billboard-2000.webp 2000w" sizes="(max-width: 768px) calc(100vw - 3rem), calc((100vw - 20rem) / 2 - 4rem)" alt="EverGREEN Campaign">
           <!-- <video src="/_mockups/" autoplay muted loop playsinline aria-hidden="true"></video> -->
         </div>
         <div class="work-meta">
@@ -62,7 +62,7 @@
 
       <a href="/elysium.html" class="work-item">
         <div class="work-media">
-          <img loading="lazy" decoding="async" src="/_assets/Elysium/elysiumblacksite.jpg" alt="Elysium Black Diamond">
+          <img loading="lazy" decoding="async" src="/_assets/Elysium/elysiumblacksite.jpg" srcset="/_assets/Elysium/elysiumblacksite-800.webp 800w, /_assets/Elysium/elysiumblacksite-1400.webp 1400w, /_assets/Elysium/elysiumblacksite-2000.webp 2000w" sizes="(max-width: 768px) calc(100vw - 3rem), calc((100vw - 20rem) / 2 - 4rem)" alt="Elysium Black Diamond">
           <!-- <video src="/_assets/elysium-header.mp4" autoplay muted loop playsinline aria-hidden="true"></video> -->
         </div>
         <div class="work-meta">
@@ -74,7 +74,7 @@
 
       <a href="/tria.html" class="work-item">
         <div class="work-media">
-          <img loading="lazy" decoding="async" src="/_assets/Tria/Tria-icon.jpg" alt="Tria">
+          <img loading="lazy" decoding="async" src="/_assets/Tria/Tria-icon.jpg" srcset="/_assets/Tria/Tria-icon-800.webp 800w, /_assets/Tria/Tria-icon-1400.webp 1400w, /_assets/Tria/Tria-icon-2000.webp 2000w" sizes="(max-width: 768px) calc(100vw - 3rem), calc((100vw - 20rem) / 2 - 4rem)" alt="Tria">
         </div>
         <div class="work-meta">
           <span class="work-num">03</span>
@@ -85,7 +85,7 @@
 
       <a href="/psb26.html" class="work-item">
         <div class="work-media">
-          <img loading="lazy" decoding="async" src="/_assets/PSB26/PSB26-01.jpg" alt="PSB 2026 lockup inside concentric lens rings over the hex grid">
+          <img loading="lazy" decoding="async" src="/_assets/PSB26/PSB26-01.jpg" srcset="/_assets/PSB26/PSB26-01-800.webp 800w, /_assets/PSB26/PSB26-01-1400.webp 1400w, /_assets/PSB26/PSB26-01-2000.webp 2000w" sizes="(max-width: 768px) calc(100vw - 3rem), calc((100vw - 20rem) / 2 - 4rem)" alt="PSB 2026 lockup inside concentric lens rings over the hex grid">
         </div>
         <div class="work-meta">
           <span class="work-num">04</span>
@@ -96,7 +96,7 @@
 
       <a href="/psb25.html" class="work-item">
         <div class="work-media">
-          <img loading="lazy" decoding="async" src="/_assets/PSB25/PSB-cover2.jpg" alt="PSB 2025 cover image">
+          <img loading="lazy" decoding="async" src="/_assets/PSB25/PSB-cover2.jpg" srcset="/_assets/PSB25/PSB-cover2-800.webp 800w, /_assets/PSB25/PSB-cover2-1400.webp 1400w, /_assets/PSB25/PSB-cover2-2000.webp 2000w" sizes="(max-width: 768px) calc(100vw - 3rem), calc((100vw - 20rem) / 2 - 4rem)" alt="PSB 2025 cover image">
         </div>
         <div class="work-meta">
           <span class="work-num">05</span>
@@ -107,7 +107,7 @@
 
       <a href="/uvusoccer.html" class="work-item">
         <div class="work-media">
-          <img loading="lazy" decoding="async" src="/_assets/UCCU Stadium/signage.jpg" alt="UCCU Stadium">
+          <img loading="lazy" decoding="async" src="/_assets/UCCU Stadium/signage.jpg" srcset="/_assets/UCCU%20Stadium/signage-800.webp 800w, /_assets/UCCU%20Stadium/signage-1400.webp 1400w, /_assets/UCCU%20Stadium/signage-2000.webp 2000w" sizes="(max-width: 768px) calc(100vw - 3rem), calc((100vw - 20rem) / 2 - 4rem)" alt="UCCU Stadium">
         </div>
         <div class="work-meta">
           <span class="work-num">06</span>
@@ -118,7 +118,7 @@
 
       <a href="/hipower.html" class="work-item">
         <div class="work-media">
-          <img loading="lazy" decoding="async" src="/_assets/HIPOWER/Manual-mockup2.jpg" alt="HIPOWER">
+          <img loading="lazy" decoding="async" src="/_assets/HIPOWER/Manual-mockup2.jpg" srcset="/_assets/HIPOWER/Manual-mockup2-800.webp 800w, /_assets/HIPOWER/Manual-mockup2-1400.webp 1400w, /_assets/HIPOWER/Manual-mockup2-2000.webp 2000w" sizes="(max-width: 768px) calc(100vw - 3rem), calc((100vw - 20rem) / 2 - 4rem)" alt="HIPOWER">
         </div>
         <div class="work-meta">
           <span class="work-num">07</span>
@@ -129,7 +129,7 @@
 
       <a href="/recursia.html" class="work-item">
         <div class="work-media">
-          <img loading="lazy" decoding="async" src="/_assets/recursia/Symbiosis.jpg" alt="Recursia fine art series">
+          <img loading="lazy" decoding="async" src="/_assets/recursia/Symbiosis.jpg" srcset="/_assets/recursia/Symbiosis-800.webp 800w, /_assets/recursia/Symbiosis-1400.webp 1400w, /_assets/recursia/Symbiosis-2000.webp 2000w" sizes="(max-width: 768px) calc(100vw - 3rem), calc((100vw - 20rem) / 2 - 4rem)" alt="Recursia fine art series">
         </div>
         <div class="work-meta">
           <span class="work-num">08</span>
