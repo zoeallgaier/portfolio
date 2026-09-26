@@ -11,11 +11,14 @@
             '<img src="/icons/z-mark-dark.png" alt=""></a>' +
         '</header>');
     }
-    // The desktop sidebar's masthead is the name (base.css hides the
-    // monogram there), matching the portfolio's sidebar.
+    // The desktop sidebar's masthead is the wordmark (base.css hides the
+    // monogram there and paints .nav-name), matching the portfolio's sidebar.
     const navLogo = document.querySelector('nav .nav-logo');
+    // The wordmark is a CSS mask with no text, and the monogram's alt goes
+    // with it when hidden, so the link carries its own name.
     if (navLogo && !navLogo.querySelector('.nav-name')) {
-      navLogo.insertAdjacentHTML('beforeend', '<span class="nav-name">Zoe Allgaier</span>');
+      navLogo.insertAdjacentHTML('beforeend', '<span class="nav-name" aria-hidden="true"></span>');
+      navLogo.setAttribute('aria-label', 'Zoe Allgaier — Home');
     }
   }());
 

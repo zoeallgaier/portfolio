@@ -265,17 +265,16 @@ nav a:active { transform: scale(0.94); transition-duration: 0.08s; }
     transform: none;
   }
   nav .nav-logo img { display: none; }
-  /* Sized off the panel so the name sits on one line at ~70% of the
-     masthead: "Zoe Allgaier" sets 3.83em wide in Instrument Serif, and the
-     masthead is the panel less 3.5rem of padding. */
+  /* The wordmark (icons/wordmark.svg) at ~70% of the masthead. It's a mask
+     over currentColor rather than an <img>, so it takes the masthead's
+     --text in light and dark without a second file. */
   .nav-name {
     display: block;
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
-    font-size: calc((var(--sidebar-w) - 3.5rem) / 5.375);
-    line-height: 1;
-    letter-spacing: -0.01em;
-    white-space: nowrap;
+    width: 70%;
+    aspect-ratio: 1728 / 494;
+    background: currentColor;
+    -webkit-mask: url(/icons/wordmark.svg) left center / contain no-repeat;
+    mask: url(/icons/wordmark.svg) left center / contain no-repeat;
   }
   nav .nav-logo .nav-label {
     position: absolute;

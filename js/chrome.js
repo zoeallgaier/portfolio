@@ -58,7 +58,7 @@
   nav.innerHTML =
     '<a href="/" class="nav-logo">' +
       '<img src="/icons/z-mark-dark.png" alt="">' +
-      '<span class="nav-name" aria-hidden="true">Zoe Allgaier</span>' +
+      '<span class="nav-name" aria-hidden="true"></span>' +
       '<span class="nav-label">Home</span></a>' +
     '<div class="nav-links">' +
       '<a href="/#work" class="nav-work">' + WORK_ICON + '<span class="nav-label">Work</span></a>' +
