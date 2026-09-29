@@ -91,7 +91,60 @@ video {
   animation: fadeUp 0.7s cubic-bezier(0.25, 0.8, 0.25, 1) 0.65s both;
 }
 
-/* ── Details / Toggle ── */
+/* ── Details: two ruled boxes side by side, like the about page's figures ── */
+.details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-bottom: 1px solid var(--rule);
+}
+
+.detail {
+  padding: 3.5rem 3rem 4rem;
+  animation: fadeUp 0.7s cubic-bezier(0.25, 0.8, 0.25, 1) 0.82s both;
+}
+
+.detail + .detail {
+  border-left: 1px solid var(--rule);
+  animation-delay: 0.96s;
+}
+
+.detail-label {
+  font-family: 'Oxygen', sans-serif;
+  font-weight: 400;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+
+.detail p {
+  line-height: 1.65;
+  margin: 0;
+  padding-block: 0.5rem;
+  max-width: 40rem;
+}
+
+.detail .note {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-top: 1.25rem;
+}
+
+.detail a {
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.1rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.detail a:hover {
+  color: var(--text);
+  border-color: var(--text);
+}
+
+/* ── Details / Toggle (Recursia only — its full statement is too long to sit
+   beside the summary) ── */
 .resume {
   display: flex;
   flex-direction: column;
@@ -283,6 +336,15 @@ video {
 
   .resume {
     padding: 2.5rem 1.5rem 3rem;
+  }
+
+  .details { grid-template-columns: 1fr; }
+
+  .detail { padding: 2.5rem 1.5rem; }
+
+  .detail + .detail {
+    border-left: none;
+    border-top: 1px solid var(--rule);
   }
 
   .gallery {
