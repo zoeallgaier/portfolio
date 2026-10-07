@@ -4,7 +4,9 @@
    backdrop now (js/backdrop.js, .backdrop in base.css), which stays put while
    the hero scrolls off it. */
 .hero {
-  min-height: 100svh;
+  /* Short of a full screen on purpose: the top of the first row of work
+     peeks up under the tagline, so the page reads as a portfolio at once. */
+  min-height: 78svh;
   display: flex;
   flex-direction: column;
   /* Eyebrow, name and tagline sit dead centre of the first screen. */
@@ -245,6 +247,8 @@
     /* Centre within the space the chrome leaves free: below the status bar
        (home-screen app) and above the floating tab bar. */
     padding: calc(3rem + env(safe-area-inset-top, 0px)) 1.5rem calc(3rem + var(--tabbar-clear));
+    /* Shorter still on phones, so the first project shows above the tab bar. */
+    min-height: 62svh;
   }
 
   .work {

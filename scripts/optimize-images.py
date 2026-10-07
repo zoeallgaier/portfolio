@@ -45,12 +45,15 @@ LAYOUTS = {
     'work':    {'box': 16 / 9, 'phone': '100vw - 3rem', 'desktop': '(100vw - 20rem) / 2 - 4rem'},
     # Project galleries: two columns of square cells, edge to edge.
     'gallery': {'box': 1.0,    'phone': '100vw',        'desktop': '(100vw - 20rem) / 2'},
+    # Project heroes: one full-width image at its own aspect (no box to fill).
+    'hero':    {'box': None,   'phone': '100vw',        'desktop': '100vw - 20rem'},
 }
 
 # Which part of which page holds each layout's images.
 BLOCK = {
     'work':    re.compile(r'<section class="work".*?</section>', re.S),
     'gallery': re.compile(r'<div class="gallery">.*?</div>', re.S),
+    'hero':    re.compile(r'<figure class="project-hero">.*?</figure>', re.S),
 }
 
 IMG = re.compile(r'<img\b[^>]*>')
@@ -115,7 +118,7 @@ def webp_variants(path):
 def sizes_for(layout, aspect):
     spec = LAYOUTS[layout]
     # object-fit: cover — wider-than-the-box images fill by height.
-    f = max(1.0, aspect / spec['box'])
+    f = max(1.0, aspect / spec['box']) if spec['box'] else 1.0
     def slot(expr):
         return f'calc(({expr}) * {f:.2f})' if f > 1.005 else f'calc({expr})'
     return f'(max-width: 768px) {slot(spec["phone"])}, {slot(spec["desktop"])}'

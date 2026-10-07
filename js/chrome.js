@@ -23,13 +23,13 @@
   // Projects listed under "Work" in the desktop sidebar, in the same order as
   // the home page grid. Short names so they fit the sidebar on one line.
   const PROJECTS = [
-    ['/evergreen.html', 'EverGREEN'],
-    ['/elysium.html',   'Elysium'],
-    ['/tria.html',      'Tria'],
     ['/psb26.html',     'PSB 2026'],
+    ['/elysium.html',   'Elysium'],
     ['/psb25.html',     'PSB 2025'],
-    ['/uvusoccer.html', 'UCCU Stadium'],
+    ['/tria.html',      'Tria'],
+    ['/evergreen.html', 'EverGREEN'],
     ['/hipower.html',   'HIPOWER'],
+    ['/uvusoccer.html', 'UCCU Stadium'],
     ['/recursia.html',  'Recursia'],
   ];
 

@@ -3,3 +3,6 @@
 
 # Claude Code local config
 .claude/
+
+# Full-res masters (too big to publish; web versions live in _assets)
+_source/
