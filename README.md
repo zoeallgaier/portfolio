@@ -124,8 +124,16 @@ ffmpeg -i in.mp4 -an -vf "scale='if(lte(iw,ih),min(1080,iw),-2)':'if(lte(iw,ih),
 ffmpeg -i out.mp4 -frames:v 1 -c:v libwebp -quality 78 out-poster.webp
 ```
 
-…and give the `<video>` a `poster="…-poster.webp"` so the cell isn't blank
-while it loads.
+…then embed it like this (no `autoplay` — that makes the browser download
+every clip on page load; `js/media.js` plays each one as it scrolls into view):
+
+```html
+<video src="/_assets/…/out.mp4" poster="/_assets/…/out-poster.webp" muted loop playsinline preload="none" data-autoplay aria-hidden="true"></video>
+```
+
+Add `class="gallery-wide"` for 16:9 pieces or `class="gallery-tall"` for 9:16
+social clips, so they aren't cropped to a square. Keep the 4K masters in
+`_source/` (gitignored); GitHub rejects files over 100MB anyway.
 
 ## Fonts
 

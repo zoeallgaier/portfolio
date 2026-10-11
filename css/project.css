@@ -344,6 +344,12 @@ video {
   aspect-ratio: auto;
 }
 
+/* Vertical social clips keep their full 9:16 frame: a square crop would cut
+   off the captions burned into their lower third. */
+.gallery .gallery-tall {
+  aspect-ratio: 9 / 16;
+}
+
 /* ── Next project (bookend of the header) ──
    Carries the palette of the page it leads to (data-g1/data-g2): the backdrop
    drifts towards it as this scrolls up, so the colour arrives before you do. */
