@@ -225,9 +225,8 @@ nav a:active { transform: scale(0.94); transition-duration: 0.08s; }
 
 .nav-label { white-space: nowrap; }
 
-/* Sidebar-only pieces (shown in the desktop block below): the masthead name
-   and the project index nested under "Work". */
-.nav-name,
+/* Sidebar-only piece (shown in the desktop block below): the project index
+   nested under "Work". */
 .nav-sub { display: none; }
 
 /* Desktop: editorial sidebar — a tall glass panel, inset from the window,
@@ -251,10 +250,9 @@ nav a:active { transform: scale(0.94); transition-duration: 0.08s; }
     scrollbar-width: none;
   }
 
-  /* Masthead: the name alone (the monogram is the Home icon on phones only),
-     ruled off from the contents below. It never takes the capsule or dims —
-     it's the title, not a row. (The doubled a.nav-logo[href] out-ranks the
-     aria-current/hover item rules.) */
+  /* Masthead: the monogram alone, ruled off from the contents below. It never
+     takes the capsule or dims — it's the title, not a row. (The doubled
+     a.nav-logo[href] out-ranks the aria-current/hover item rules.) */
   nav a.nav-logo[href] {
     padding: 0.25rem 0.75rem 1.5rem;
     margin-bottom: 1.25rem;
@@ -264,18 +262,7 @@ nav a:active { transform: scale(0.94); transition-duration: 0.08s; }
     background: none;
     transform: none;
   }
-  nav .nav-logo img { display: none; }
-  /* The wordmark (icons/wordmark.svg) at ~70% of the masthead. It's a mask
-     over currentColor rather than an <img>, so it takes the masthead's
-     --text in light and dark without a second file. */
-  .nav-name {
-    display: block;
-    width: 70%;
-    aspect-ratio: 1728 / 494;
-    background: currentColor;
-    -webkit-mask: url(/icons/wordmark.svg) left center / contain no-repeat;
-    mask: url(/icons/wordmark.svg) left center / contain no-repeat;
-  }
+  nav .nav-logo img { display: block; width: 3rem; height: 3rem; }
   nav .nav-logo .nav-label {
     position: absolute;
     width: 1px; height: 1px;

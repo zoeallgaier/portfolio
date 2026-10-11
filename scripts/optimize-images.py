@@ -140,6 +140,9 @@ def process_tag(tag, layout, done):
         shrink_original(path)
         done[path] = webp_variants(path)
     variants, aspect = done[path]
+    # A .gallery-wide piece spans the row at its own aspect, like a hero.
+    if layout == 'gallery' and re.search(r'\sclass="[^"]*\bgallery-wide\b', tag):
+        layout = 'hero'
 
     srcset = ', '.join(f'{url_of(p)} {w}w' for p, w in variants)
     tag = re.sub(r'\s(srcset|sizes)="[^"]*"', '', tag)

@@ -49,7 +49,7 @@
 
   // One DOM for both shapes: CSS makes it an editorial sidebar on desktop and
   // a bottom tab bar on phones. The monogram is the Home tab's icon on phones
-  // and heads the sidebar (with the name) on desktop. "Work" is an in-page
+  // and the sidebar's masthead on desktop. "Work" is an in-page
   // anchor on the home page and a cross-page link elsewhere (syncNav), and
   // carries the project index (sidebar only). "Contact" scrolls to the footer
   // of whatever page you're on (sidebar only — phones get Resume in its place,
@@ -58,7 +58,6 @@
   nav.innerHTML =
     '<a href="/" class="nav-logo">' +
       '<img src="/icons/z-mark-dark.png" alt="">' +
-      '<span class="nav-name" aria-hidden="true"></span>' +
       '<span class="nav-label">Home</span></a>' +
     '<div class="nav-links">' +
       '<a href="/#work" class="nav-work">' + WORK_ICON + '<span class="nav-label">Work</span></a>' +
