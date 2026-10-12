@@ -114,7 +114,7 @@
 /* ── Figures: straight under the hero, ruled off from the story ── */
 .about-figures {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   border-bottom: 1px solid var(--rule);
 }
 
@@ -122,7 +122,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  padding: 3.5rem 3rem 4rem;
+  padding: 3.5rem 2rem 4rem;
 }
 
 .about-figure + .about-figure { border-left: 1px solid var(--rule); }
