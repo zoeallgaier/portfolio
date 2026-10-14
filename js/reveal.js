@@ -9,10 +9,13 @@
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Per-title timing, preserved from the original two implementations:
-  // hero used a fixed per-char gap and word-wraps even under reduced motion (so
-  // "Zoe / Allgaier" still breaks); project pages compute the gap from length.
+  // hero used a fixed per-char gap and keeps its word spans even under reduced
+  // motion; project pages compute the gap from length.
   const TARGETS = [
-    { sel: '.hero-name',    baseDelay: 0.3,  gapFor: () => 0.045, wrapOnReduced: true  },
+    // The hero speaks: after a word ending in punctuation ("Hi,") the next
+    // word waits a beat, read from --speech-pause on the title (index.css).
+    { sel: '.hero-name',    baseDelay: 0.3,  gapFor: () => 0.045, wrapOnReduced: true,
+      pauseVar: '--speech-pause' },
     { sel: '.project-name', baseDelay: 0.25,
       gapFor: n => Math.max(0.5, Math.min(1.5, n * 0.03)) / Math.max(n, 1),
       wrapOnReduced: false },
@@ -26,7 +29,7 @@
   // Run against whatever <main> is on screen: js/app.js swaps in a fresh one
   // on every route, and its title arrives unsplit.
   function split(root) {
-    TARGETS.forEach(({ sel, baseDelay, gapFor, wrapOnReduced }) => {
+    TARGETS.forEach(({ sel, baseDelay, gapFor, wrapOnReduced, pauseVar }) => {
       root.querySelectorAll(sel).forEach(el => {
         const text = el.textContent.trim();
         if (!text) return;
@@ -39,11 +42,13 @@
 
         const charCount = text.replace(/\s/g, '').length;
         const gap = gapFor(charCount);
+        const pause = pauseVar ? parseFloat(getComputedStyle(el).getPropertyValue(pauseVar)) || 0 : 0;
         el.innerHTML = '';
-        let charIdx = 0;
+        let charIdx = 0, held = 0;
 
         // Wrap each word so the browser only breaks at spaces, never mid-word.
         text.split(' ').forEach((word, wi, words) => {
+          if (wi > 0 && /[,.!?…]$/.test(words[wi - 1])) held += pause;
           const wordSpan = document.createElement('span');
           wordSpan.className = 'word';
           [...word].forEach(ch => {
@@ -52,7 +57,7 @@
             const inner = document.createElement('span');
             inner.className = 'char';
             inner.textContent = ch;
-            inner.style.animationDelay = `${(baseDelay + charIdx * gap).toFixed(3)}s`;
+            inner.style.animationDelay = `${(baseDelay + held + charIdx * gap).toFixed(3)}s`;
             mask.appendChild(inner);
             wordSpan.appendChild(mask);
             charIdx++;

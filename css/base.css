@@ -32,6 +32,8 @@
   --nav-inset: 0px;
   /* Vertical room the floating tab bar needs at the bottom (0 on desktop). */
   --tabbar-clear: 0px;
+  /* Chrome motion: a quick start that settles slowly, like an iOS sheet. */
+  --ease-chrome: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 /* An explicit root background: iOS paints it behind the translucent status
@@ -333,6 +335,131 @@ nav a:active { transform: scale(0.94); transition-duration: 0.08s; }
   }
   /* Room for that rule even when a short window leaves no slack. */
   .nav-links > a:has(+ .nav-contact) { margin-bottom: 2rem; }
+
+  /* ── Portfolio: the sidebar is a drawer ──
+     The work gets the whole window; the contents panel stays tucked away
+     until the Menu toggle (chrome.js) opens it over the page. Marginalia's
+     nav has no data-chrome, so it keeps the docked sidebar. */
+  :root:has(nav[data-chrome]) { --nav-inset: 0px; }
+
+  nav[data-chrome] {
+    transform-origin: 1.5rem 1.5rem;
+    translate: -0.75rem 0;
+    scale: 0.97;
+    opacity: 0;
+    visibility: hidden;
+    transition: translate 0.4s var(--ease-chrome), scale 0.4s var(--ease-chrome),
+                opacity 0.25s ease, visibility 0s 0.4s;
+  }
+  .nav-toggle[aria-expanded="true"] + nav[data-chrome] {
+    translate: 0 0;
+    scale: 1;
+    opacity: 1;
+    visibility: visible;
+    transition: translate 0.55s var(--ease-chrome), scale 0.55s var(--ease-chrome),
+                opacity 0.3s ease, visibility 0s;
+  }
+
+  /* The contents set themselves in a beat behind the glass, top to bottom
+     (--i is each row's position, from chrome.js). */
+  nav[data-chrome] :is(.nav-links > a, .nav-sub a) {
+    opacity: 0;
+    translate: -0.5rem 0;
+    transition: color 0.2s, background-color 0.2s, transform 0.15s,
+                opacity 0.2s ease, translate 0.2s ease;
+  }
+  .nav-toggle[aria-expanded="true"] + nav[data-chrome] :is(.nav-links > a, .nav-sub a) {
+    opacity: 1;
+    translate: 0 0;
+    transition: color 0.2s, background-color 0.2s, transform 0.15s,
+                opacity 0.45s ease calc(0.08s + var(--i, 0) * 0.022s),
+                translate 0.6s var(--ease-chrome) calc(0.08s + var(--i, 0) * 0.022s);
+  }
+
+  /* Menu toggle: a small glass capsule in the top-left corner. Opening the
+     panel glides it across to the masthead's far end, where it drops its
+     label and glass and becomes the panel's close button. Its top is set so
+     it centres on the masthead monogram either way. */
+  .nav-toggle {
+    --size: 2.75rem;
+    position: fixed;
+    z-index: 101;
+    top: calc(var(--sidebar-gap) + 3rem - var(--size) / 2);
+    left: calc(1.5rem + env(safe-area-inset-left, 0px));
+    display: flex;
+    align-items: center;
+    height: var(--size);
+    padding: 0 1.15rem 0 1rem;
+    border: 0;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--bg) 55%, transparent);
+    box-shadow: inset 0 0 0 1px var(--rule);   /* the glass hairline; frees outline for focus */
+    backdrop-filter: blur(35px);
+    -webkit-backdrop-filter: blur(35px);
+    color: var(--text);
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: left 0.55s var(--ease-chrome), padding 0.55s var(--ease-chrome),
+                background-color 0.3s, box-shadow 0.3s, transform 0.15s;
+  }
+  .nav-toggle:focus-visible { outline-offset: 3px; border-radius: 999px; }
+  .nav-toggle:active { transform: scale(0.94); transition-duration: 0.08s; }
+
+  .nav-toggle-label {
+    display: block;
+    max-width: 3em;
+    padding-left: 0.6rem;
+    overflow: hidden;
+    transition: max-width 0.45s var(--ease-chrome), padding 0.45s var(--ease-chrome), opacity 0.2s;
+  }
+
+  /* Two hairlines that cross into an × when open. */
+  .nav-toggle-icon {
+    position: relative;
+    flex: none;
+    width: 0.75rem;
+    height: 12px;
+  }
+  .nav-toggle-icon::before,
+  .nav-toggle-icon::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 1.5px;
+    border-radius: 1px;
+    background: currentColor;
+    transition: transform 0.5s var(--ease-chrome);
+  }
+  .nav-toggle-icon::before { top: 2.25px; }
+  .nav-toggle-icon::after  { bottom: 2.25px; }
+
+  .nav-toggle[aria-expanded="true"] {
+    left: calc(var(--sidebar-gap) + env(safe-area-inset-left, 0px) + var(--sidebar-w) - 1rem - var(--size));
+    padding: 0 calc((var(--size) - 0.75rem) / 2);
+    background-color: transparent;
+    box-shadow: none;
+    color: var(--muted);
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-label { max-width: 0; padding-left: 0; opacity: 0; }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-icon::before { transform: translateY(3px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-icon::after  { transform: translateY(-3px) rotate(-45deg); }
+
+  @media (hover: hover) {
+    .nav-toggle:hover { background-color: color-mix(in srgb, var(--bg) 75%, transparent); }
+    .nav-toggle[aria-expanded="true"]:hover {
+      color: var(--text);
+      background-color: color-mix(in srgb, var(--text) 5%, transparent);
+    }
+  }
+}
+
+/* The toggle only exists for the desktop drawer. */
+@media (max-width: 768px) {
+  .nav-toggle { display: none; }
 }
 
 /* Short desktop windows: set the contents a touch tighter so Contact still
@@ -358,6 +485,17 @@ nav a:active { transform: scale(0.94); transition-duration: 0.08s; }
     gap: 0.125rem;
     padding: 0.3rem;
     border-radius: 999px;
+    transition: translate 0.5s var(--ease-chrome), opacity 0.3s ease;
+  }
+
+  /* Scrolling down into the work tucks the bar away below the screen;
+     scrolling back up (or reaching either end of the page) brings it back.
+     chrome.js sets the class. */
+  nav.is-tucked {
+    translate: -50% calc(100% + 1.5rem);
+    opacity: 0;
+    pointer-events: none;
+    transition: translate 0.45s var(--ease-chrome), opacity 0.3s ease 0.1s;
   }
 
   /* Tabs share the capsule evenly, logo (Home) included. Four tabs: Home,
@@ -478,7 +616,7 @@ footer {
     --accent: var(--text);
   }
 
-  .nav-logo img { content: url('/icons/z-mark-light.png'); }
+  .nav-logo img { content: url('/icons/mono-light.png'); }
 
   /* White status-bar glyphs already read on the dark page — blur only. */
   body::before { background: none; }

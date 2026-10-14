@@ -57,7 +57,7 @@
   nav.setAttribute('aria-label', 'Primary');
   nav.innerHTML =
     '<a href="/" class="nav-logo">' +
-      '<img src="/icons/z-mark-dark.png" alt="">' +
+      '<img src="/icons/mono-dark.png" alt="">' +
       '<span class="nav-label">Home</span></a>' +
     '<div class="nav-links">' +
       '<a href="/#work" class="nav-work">' + WORK_ICON + '<span class="nav-label">Work</span></a>' +
@@ -71,6 +71,10 @@
       '<a href="/resume.html">' + RESUME_ICON + '<span class="nav-label">Resume</span></a>' +
       '<a href="#contact" class="nav-contact">' + CONTACT_ICON + '<span class="nav-label">Contact</span></a>' +
     '</div>';
+
+  // Row order for the staggered entrance when the desktop drawer opens.
+  nav.querySelectorAll('.nav-links > a, .nav-sub a')
+    .forEach((a, i) => a.style.setProperty('--i', i));
 
   const logo        = nav.querySelector('.nav-logo');
   const workLink    = nav.querySelector('.nav-work');
@@ -157,7 +161,74 @@
       { threshold: [0, 0.85, 1] }).observe(footer);
   }
 
-  document.addEventListener('page:load', () => { syncNav(); watchWork(); });
+  /* ── Desktop drawer ──
+     The sidebar stays tucked away so the work gets the whole window. A glass
+     "Menu" toggle opens it over the page; choosing anything, Escape, or a
+     click elsewhere puts it away again. The toggle sits right before the nav,
+     so the CSS reads the open state straight off its aria-expanded, and Tab
+     moves from it into the contents. */
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'nav-toggle';
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.innerHTML = '<span class="nav-toggle-icon" aria-hidden="true"></span>' +
+    '<span class="nav-toggle-label">Menu</span>';
+  nav.before(toggle);
+
+  const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
+  function setOpen(open) {
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
+  }
+  setOpen(false);
+
+  toggle.addEventListener('click', () => setOpen(!isOpen()));
+  nav.addEventListener('click', e => { if (e.target.closest('a')) setOpen(false); });
+  document.addEventListener('pointerdown', e => {
+    if (isOpen() && !nav.contains(e.target) && !toggle.contains(e.target)) setOpen(false);
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && isOpen()) { setOpen(false); toggle.focus(); }
+  });
+  sidebar.addEventListener('change', () => setOpen(false));
+
+  /* ── Phone tab bar: out of the way while you read ──
+     Scrolling down tucks it below the screen; a deliberate scroll back up, or
+     reaching the top or the end of the page, brings it back. Small
+     back-and-forth drift is ignored by measuring travel in one direction. */
+  let lastY = window.scrollY, travel = 0, ticking = false;
+
+  function tuck(hide) { nav.classList.toggle('is-tucked', hide); }
+
+  function onScroll() {
+    ticking = false;
+    if (sidebar.matches) return;
+    const y = Math.max(0, window.scrollY);          // ignore the iOS bounce above the top
+    const dy = y - lastY;
+    lastY = y;
+    if (!dy) return;
+    travel = Math.sign(dy) === Math.sign(travel) ? travel + dy : dy;
+    const atEnds = y < 80 ||
+      y + window.innerHeight >= document.documentElement.scrollHeight - 80;
+    if (atEnds || travel < -40) tuck(false);
+    else if (travel > 24) tuck(true);
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  // Keyboard users tabbing into a tucked bar should see where they are.
+  nav.addEventListener('focusin', () => tuck(false));
+  sidebar.addEventListener('change', () => tuck(false));
+
+  document.addEventListener('page:navigate', () => setOpen(false));
+  document.addEventListener('page:load', () => {
+    syncNav();
+    watchWork();
+    lastY = window.scrollY;
+    travel = 0;
+    tuck(false);
+  });
   syncNav();
   watchWork();
 }());

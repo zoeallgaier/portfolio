@@ -13,16 +13,20 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 4.5rem 3rem;
+  padding: 7rem 3rem 4.5rem;
+  /* The beat after "Hi," — reveal.js holds the rest of the line back by this
+     much so it lands like speech, and everything after it waits the same. */
+  --speech-pause: 0.35s;
 }
 
 .hero-name {
   font-family: 'Instrument Serif', serif;
   font-style: italic;
-  font-size: clamp(5rem, 11vw, 13rem);
+  font-size: clamp(4.5rem, 15vw, 15rem);
   line-height: .88;
   letter-spacing: -0.03em;
   font-weight: 400;
+  white-space: nowrap;     /* one line: "Hi, I’m Zoe" */
   margin-bottom: 3rem;
 }
 
@@ -33,10 +37,7 @@
   .hero-name { opacity: 0; }
 }
 
-.hero-name .word {
-  display: block;          /* each name word on its own line: Zoe / Allgaier */
-  white-space: nowrap;
-}
+.hero-name .word { display: inline-block; }
 
 .char-mask {
   display: inline-block;
@@ -68,14 +69,18 @@
   color: var(--muted);
   max-width: 32ch;
   text-wrap: balance;
-  animation: fadeUp 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) 0.68s both;
+  animation: fadeUp 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) calc(0.68s + var(--speech-pause)) both;
 }
 
 /* The one way out of the hero besides the nav — lands last, after the
    tagline has settled. (.pill itself is below, shared with about/resume.) */
 .hero-cta {
   margin-top: 2.75rem;
-  animation: fadeUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) 1.05s both;
+  animation: fadeUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) calc(1.05s + var(--speech-pause)) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero { --speech-pause: 0s; }
 }
 
 /* ── Work ── */
@@ -245,8 +250,9 @@
 @media (max-width: 768px) {
   .hero {
     /* Centre within the space the chrome leaves free: below the status bar
-       (home-screen app) and above the floating tab bar. */
-    padding: calc(3rem + env(safe-area-inset-top, 0px)) 1.5rem calc(3rem + var(--tabbar-clear));
+       (home-screen app) and above the floating tab bar. The heavier top
+       padding nudges the centred block down, off the top edge. */
+    padding: calc(11rem + env(safe-area-inset-top, 0px)) 1.5rem calc(3rem + var(--tabbar-clear));
     /* Shorter still on phones, so the first project shows above the tab bar. */
     min-height: 62svh;
   }
