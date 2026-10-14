@@ -93,11 +93,11 @@ a {
 }
 
 /* ── Backdrop ──
-   The site's one background: a warm radial glow with the animated dot grid
-   over it, locked to the viewport and built once per visit by js/backdrop.js.
+   The site's one background: a warm radial glow (plus a faint dot grid on
+   the home hero), locked to the viewport and built once per visit by js/backdrop.js.
    Pages no longer carry their own hero gradient or canvas — content scrolls
    over this, and on a route change the glow eases across to the next page's
-   palette while the dots shift hue. Sized in lvh so a collapsing mobile
+   palette. Sized in lvh so a collapsing mobile
    toolbar can't reveal an unpainted strip, and given the base colour so
    Safari 26 samples the page colour (not the glow) to tint its own bars. */
 .backdrop {
@@ -119,6 +119,13 @@ a {
   width: 100%;
   height: 100%;
   display: block;
+}
+
+/* Thins the grid behind the centred hero type so the name and tagline sit on
+   a quieter patch; the dots come up to full strength toward the edges. */
+.backdrop-dots {
+  -webkit-mask-image: radial-gradient(ellipse 60% 42% at 50% 42%, rgba(0, 0, 0, 0.2), #000);
+          mask-image: radial-gradient(ellipse 60% 42% at 50% 42%, rgba(0, 0, 0, 0.2), #000);
 }
 
 /* Announcements for swapped-in pages (js/app.js) — nothing reloads, so this
@@ -605,7 +612,7 @@ footer {
 /* ── Dark mode tokens ── */
 @media (prefers-color-scheme: dark) {
   /* A deeper ground than the old #1a1a22 — same blue-violet cast, dropped
-     most of the way to black so the type, the glow and the dot grid all read
+     most of the way to black so the type and the glow both read
      with more contrast against it (#e1e1e8 on this is ~14.6:1). Muted text and
      hairlines lift a little to stay visible on it. */
   :root {

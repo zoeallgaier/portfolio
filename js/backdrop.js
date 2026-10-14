@@ -1,10 +1,10 @@
 /* backdrop.js — the site's one living background.
 
-   A single fixed layer sits behind every page: a warm radial glow with the
-   animated dot grid over it. It is built once and never torn down, so when
-   js/app.js swaps <main> for the next page the background doesn't reload —
-   the glow eases across to the new page's palette while the dot grid shifts
-   hue, and the content fades over the top of it. Replaces the old per-section
+   A single fixed layer sits behind every page: a warm radial glow, with a
+   fine, faint dot grid over it on the home hero only. It is built once and
+   never torn down, so when js/app.js swaps <main> for the next page the
+   background doesn't reload — the glow eases across to the new page's palette
+   (the dots fading in or out with it), and the content fades over the top. Replaces the old per-section
    .hero-canvas / .hero-bg / .project-canvas / .project-title-bg pairs.
 
    A page declares its palette on <main>:
@@ -23,7 +23,7 @@
      Carried over from the stylesheets these replaced: positions and radii are
      percentages of the viewport, the stop is where the gradient reaches
      transparent. `drift` turns on the slow ambient hue rotation the home hero
-     used to run in CSS; `dots` scales the dot grid. */
+     used to run in CSS; `dots` turns on the dot grid (home only). */
   const ORANGE = [255, 110, 70];
   const ROSE   = [235,  80, 120];
 
@@ -34,13 +34,13 @@
       g2: { c: [...ROSE,   0.20], x:  70, y:  0, w: 109, h:  86, s: 70 },
     },
     about: {
-      dots: 1, band: true,
+      band: true,
       g1: { c: [...ORANGE, 0.17], x:  50, y: 38, w:  70, h:  70, s: 70 },
       g2: { c: [...ROSE,   0.15], x:  72, y: 80, w:  60, h:  55, s: 70 },
     },
     // Reading pages (resume, 404): the same light, turned most of the way down.
     quiet: {
-      dots: 0.5, band: true,
+      band: true,
       g1: { c: [...ORANGE, 0.08], x:  95, y:  0, w: 109, h: 138, s: 70 },
       g2: { c: [...ROSE,   0.07], x:  70, y:  0, w: 109, h:  86, s: 70 },
     },
@@ -52,19 +52,22 @@
   // with data-hue="band" — Recursia does, being Zoe's own work rather than a
   // client's brand.
   const PROJECT = {
-    dots: 1,
     g1: { x: 112, y: 30, w: 105, h: 68, s: 88 },
     g2: { x:  86, y: 66, w: 105, h: 62, s: 88 },
   };
 
   // How far the background recedes once you've scrolled off the first screen,
-  // so long stretches of text aren't read over a moving grid.
-  const REST_DOTS = 0.4;
+  // so long stretches of text aren't read over a bright wash.
   const REST_GLOW = 0.7;
-  // How much of the palette's hue the dots take on (the rest stays neutral).
-  const TINT = 0.55;
 
-  const GAP = 24;          // dot spacing, unchanged from the old canvases
+  /* The dot grid belongs to the hero, so it's gone by the time the hero has
+     scrolled off. Kept fine and faint so the name and tagline read cleanly
+     over it; the mask on .backdrop-dots (base.css) thins it further behind
+     the centred type. */
+  const GAP = 14;          // dot spacing, px
+  const ALPHA = 0.2;       // peak dot opacity, at the crest of the wave
+  const TINT = 0.55;       // how much of the palette's hue the dots take on
+
   const TWEEN = 1100;      // ms for the glow to cross to a new page's palette
 
   /* The ambient hue shift, on Zoe's own pages (home, about, resume, Recursia —
@@ -116,8 +119,7 @@
   }
 
   // Moving the colours themselves through the band (rather than filtering the
-  // layer) keeps the dot tint in step with the glow, and lets a page change
-  // blend straight from whatever is on screen to the new palette. Each pool
+  // layer) lets a page change blend straight from whatever is on screen to the new palette. Each pool
   // keeps its own saturation, lightness and alpha, so they never flatten into
   // the same wash.
   function banded(c, clock) {
@@ -140,7 +142,7 @@
       out.push(...(p.band ? banded(g.c, clock + i * TRAIL * PERIOD) : g.c));
       KEYS.forEach(k => out.push(g[k]));
     });
-    out.push(p.dots);
+    out.push(p.dots || 0);
     return out;
   }
 
@@ -154,7 +156,6 @@
     const g1 = parseColor(el.dataset.g1) || [...ORANGE, 0.2];
     const g2 = parseColor(el.dataset.g2) || [...ROSE, 0.2];
     return {
-      dots: PROJECT.dots,
       band: el.dataset.hue === 'band',
       g1: { ...PROJECT.g1, c: g1 },
       g2: { ...PROJECT.g2, c: g2 },
@@ -174,7 +175,7 @@
 
   const ctx = canvas.getContext('2d');
 
-  let W = 0, H = 0, cols = 0, rows = 0;
+  let W = 0, H = 0, cols = 0, rows = 0, blank = true;
   function resize() {
     const w = layer.offsetWidth, h = layer.offsetHeight;
     if (!w || !h) return;
@@ -185,6 +186,7 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     cols = Math.ceil(W / GAP) + 1;
     rows = Math.ceil(H / GAP) + 1;
+    blank = false;
     frame();
   }
 
@@ -232,10 +234,20 @@
     glow.style.backgroundImage = parts.join(',');
   }
 
-  function drawDots(a, near) {
+  // The wave keeps the old grid's on-screen size (it was tuned at a 24px
+  // spacing), so the finer grid ripples the same way rather than faster.
+  const K = GAP / 24;
+
+  function drawDots(a) {
     if (!W || !H) return;
+    const vh = window.innerHeight || 1;
     const dark = darkQ.matches;
-    const intensity = a[18] * lerp(REST_DOTS, 1, near) * (dark ? 1.3 : 1);
+    const intensity = a[18] * (1 - clamp01(window.scrollY / (vh * 0.6)));
+    if (intensity < 0.003) {
+      if (!blank) { ctx.clearRect(0, 0, W, H); blank = true; }
+      return;
+    }
+    blank = false;
     // The dots take a little of the palette's hue; the rest stays neutral, so
     // the grid reads as texture rather than colour.
     const [h] = rgb2hsl(a[0], a[1], a[2]);
@@ -249,12 +261,12 @@
     ctx.fillStyle = `rgb(${r},${g},${b})`;
     for (let row = 0; row < rows; row++) {
       for (let col = 0; col < cols; col++) {
-        const w1 = 0.5 + 0.5 * Math.sin(col * 0.22 + row * 0.14 - wave * 0.7);
-        const w2 = 0.5 + 0.5 * Math.sin(col * 0.11 - row * 0.18 - wave * 0.43);
+        const w1 = 0.5 + 0.5 * Math.sin((col * 0.22 + row * 0.14) * K - wave * 0.7);
+        const w2 = 0.5 + 0.5 * Math.sin((col * 0.11 - row * 0.18) * K - wave * 0.43);
         const mix = w1 * 0.6 + w2 * 0.4;
-        ctx.globalAlpha = (0.02 + 0.40 * mix) * intensity;
+        ctx.globalAlpha = (0.015 + ALPHA * mix) * intensity;
         ctx.beginPath();
-        ctx.arc(col * GAP, row * GAP, 0.55 + 0.45 * mix, 0, Math.PI * 2);
+        ctx.arc(col * GAP, row * GAP, 0.4 + 0.3 * mix, 0, Math.PI * 2);
         ctx.fill();
       }
     }
@@ -267,7 +279,7 @@
     last = t;
 
     if (!reduced.matches) {
-      wave += dt * 0.66;          // the old canvas ran +0.011 a frame at 60fps
+      wave += dt * 0.66;
       clock += dt;
     }
 
@@ -285,17 +297,25 @@
       shown = want;
     }
 
+    // With nothing drifting, rippling or tweening there's nothing to animate;
+    // a scroll wakes the loop again to follow the fade.
+    const drifting = target.band || target.dots || (nextP > 0 && nextPre.band);
+    const more = running && (tweening || drifting);
+
     const near = presence(nextP);
     // Repainting a viewport-sized gradient is only worth it while something is
     // actually moving it; the ambient drift is slow enough to write at ~10fps.
-    if (tweening || Math.abs(near - wroteNear) > 0.004 || t - wrote > 90) {
+    // The last frame before the loop rests is always written.
+    if (!more || tweening || Math.abs(near - wroteNear) > 0.004 || t - wrote > 90) {
       apply(shown, near);
       wrote = t;
       wroteNear = near;
     }
-    drawDots(shown, near);
 
-    if (running) requestAnimationFrame(frame);
+    drawDots(shown);
+
+    if (more) requestAnimationFrame(frame);
+    else running = false;
   }
 
   function start() {
@@ -310,7 +330,7 @@
     last = 0;
   }
 
-  // Under reduced motion nothing animates on its own: the grid and glow are
+  // Under reduced motion nothing animates on its own: the glow and grid are
   // drawn once, and again whenever the page (or the window) changes.
   function schedule() {
     if (reduced.matches) { stop(); requestAnimationFrame(frame); }

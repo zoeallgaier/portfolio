@@ -29,7 +29,7 @@ css/base.css          Shared chrome + design tokens — edit shared styles HERE
 css/*.css             Page-specific styles layered on top of base
 js/chrome.js          Injects the shared nav/footer into portfolio pages
 js/app.js             Swaps <main> between pages instead of reloading
-js/backdrop.js        The one fixed glow + dot grid behind every page
+js/backdrop.js        The one fixed glow behind every page (+ dot grid on the home hero)
 marginalia/           The feed: content.json (data) + main.js (renderer)
 marginalia/posts/     Long-form written posts, one HTML file each
 _assets/              All imagery, grouped by project
