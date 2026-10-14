@@ -119,11 +119,6 @@
   gap: 0.3rem;
 }
 
-.work-num {
-  font-size: 0.75rem;
-  color: var(--muted);
-}
-
 .work-title {
   font-family: 'Instrument Serif', serif;
   font-size: clamp(1.4rem, 2.2vw, 2rem);
