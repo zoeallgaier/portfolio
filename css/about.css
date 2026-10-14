@@ -66,6 +66,14 @@
 .about-copy b,
 .about-copy strong { font-weight: 700; }
 
+/* Inline links (employers): a hairline underline that firms up on hover. */
+.about-copy p a {
+  border-bottom: 1px solid var(--rule);
+  transition: border-color 0.2s;
+}
+
+.about-copy p a:hover { border-color: var(--text); }
+
 /* Drop cap: a three-line Instrument Serif initial. Spanned in the markup
    rather than ::first-letter — the lede opens on a contraction, and WebKit
    folds the apostrophe that follows the first letter into ::first-letter,
