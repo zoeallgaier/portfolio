@@ -173,9 +173,6 @@
     inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
-/* Capped by height too, so the about hero still fits on one screen. */
-.avatar--lg { --size: min(clamp(14rem, 24vw, 22.75rem), 34svh); }
-
 /* ── Pills ──
    Glass link buttons, icon + label. Shared by the about + resume pages. */
 .pill {

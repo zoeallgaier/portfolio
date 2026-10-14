@@ -1,7 +1,7 @@
 /* about.css — loaded alongside index.css (which supplies the .avatar and the
-   .pill). An editorial layout in three beats: a hero with the big round
-   avatar + links, a ruled row of figures, and the story (drop cap, pull
-   quote). */
+   .pill). An editorial layout in two beats: the intro (round portrait beside
+   the heading + story, drop cap, links underneath), then a ruled row of
+   figures. */
 
 /* Blur-in entrances (marginalia variant) — overrides base.css fadeUp
    for every animated element on this page. */
@@ -10,63 +10,47 @@
   to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
 }
 
-/* ── Hero ── */
-.about-hero {
+/* ── Intro: portrait beside one reading column (heading, story, links),
+   the pair centred in the space beside the sidebar. The warm glow pooled
+   behind it is the sitewide backdrop's "about" palette (js/backdrop.js). ── */
+.about-spread {
+  --portrait: clamp(15rem, 26vw, 24rem);
   min-height: 88svh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: var(--portrait) minmax(0, 40rem);
   justify-content: center;
-  text-align: center;
-  padding: 6rem 3rem 5rem;
-  border-bottom: 1px solid var(--rule);
+  align-content: center;
+  align-items: center;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  padding: clamp(6rem, 9vw, 9rem) 3rem;
 }
 
-/* The warm glow pooled behind the avatar + title is the sitewide backdrop's
-   "about" palette now (js/backdrop.js). */
 .about-avatar {
-  margin-bottom: 2.5rem;
+  --size: var(--portrait);
   animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 }
 
-.about-eyebrow {
-  font-size: clamp(1rem, 1.3vw, 1.125rem);
-  letter-spacing: 0.01em;
-  color: var(--muted);
-  margin-bottom: 1.25rem;
-  animation: fadeUp 0.7s cubic-bezier(0.25, 0.8, 0.25, 1) 0.3s both;
+.about-copy {
+  animation: fadeUp 1s cubic-bezier(0.25, 0.8, 0.25, 1) 0.3s both;
 }
 
 .about-title {
   font-family: 'Instrument Serif', serif;
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(3.25rem, 7.5vw, 7.5rem);
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
   line-height: 0.95;
   letter-spacing: -0.03em;
   padding-bottom: 0.08em;       /* room for italic descenders */
-  margin-bottom: 2.5rem;
-  animation: fadeUp 1s cubic-bezier(0.25, 0.8, 0.25, 1) 0.4s both;
+  margin-bottom: 2rem;
 }
 
-/* ── Link buttons (the .pill itself lives in index.css) ── */
+/* ── Link buttons under the copy (the .pill itself lives in index.css) ── */
 .about-actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 0.75rem;
-  animation: fadeUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) 0.6s both;
-}
-
-
-/* ── Story: one reading column, centred in the space beside the sidebar ── */
-.about-spread {
-  padding: clamp(5rem, 9vw, 9rem) 3rem;
-}
-
-.about-copy {
-  max-width: 40rem;
-  margin-inline: auto;
+  margin-top: 2.5rem;
 }
 
 .about-copy p {
@@ -111,11 +95,11 @@
 .about-pull::before { content: '“'; }
 .about-pull::after  { content: '”'; }
 
-/* ── Figures: straight under the hero, ruled off from the story ── */
+/* ── Figures: ruled off under the intro ── */
 .about-figures {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border-bottom: 1px solid var(--rule);
+  border-top: 1px solid var(--rule);
 }
 
 .about-figure {
@@ -149,25 +133,17 @@
   max-width: 22ch;
 }
 
-/* ── Desktop: centre the hero on the window, not on the column beside the
-   sidebar (the backdrop already runs under the glass) ── */
-@media (min-width: 769px) {
-  .about-hero {
-    margin-left: calc(-1 * var(--nav-inset));
-    padding-left: calc(3rem + var(--nav-inset));
-  }
-}
-
 /* ── Mobile ── */
 @media (max-width: 768px) {
-  .about-hero {
+  .about-spread {
+    --portrait: min(18rem, 76vw);
     min-height: auto;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
     padding: calc(4.5rem + env(safe-area-inset-top, 0px)) 1.5rem 4rem;
   }
 
-  .about-title { margin-bottom: 2rem; }
-
-  .about-spread { padding: 4rem 1.5rem; }
+  .about-avatar { justify-self: center; }
 
   .about-figures { grid-template-columns: 1fr; }
 
