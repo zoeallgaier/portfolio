@@ -22,7 +22,7 @@
   align-content: center;
   align-items: center;
   gap: clamp(2.5rem, 5vw, 5rem);
-  padding: clamp(6rem, 9vw, 9rem) 3rem;
+  padding: clamp(6rem, 9vw, 9rem) clamp(3rem, 8vw, 8rem);
 }
 
 .about-avatar {
@@ -114,7 +114,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  padding: 3.5rem 2rem 4rem;
+  padding: 3.5rem 3rem 4rem;
 }
 
 .about-figure + .about-figure { border-left: 1px solid var(--rule); }
