@@ -21,7 +21,7 @@
   const CONTACT_ICON = icon('<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7.5 8.5 6 8.5-6"/>');
 
   // Projects listed under "Work" in the desktop sidebar, in the same order as
-  // the home page grid. Short names so they fit the sidebar on one line.
+  // the home page cards. Short names so they fit the sidebar on one line.
   const PROJECTS = [
     ['/psb26.html',     'PSB 2026'],
     ['/elysium.html',   'Elysium'],

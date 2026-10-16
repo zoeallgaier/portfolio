@@ -83,53 +83,187 @@
   .hero { --speech-pause: 0s; }
 }
 
-/* ── Work ── */
-.work {
+/* ── Featured work (home) ──
+   Every project gets a card, and each card pins near the top of the screen
+   while the next slides up over it: the image on one side, the role, a line
+   of context and the results on the other, so the numbers are never more
+   than a glance away. js/work.js eases a covered card back, dims and fades
+   it (--cover), then hides it outright once it's buried (.is-past) so the
+   browser stops painting it; it blurs each card's pieces up in sequence as
+   it first arrives (.is-in, --d). */
+.featured {
+  /* Cards pin just below the glass Menu toggle, never under it. */
+  --stack-top: 6rem;
+  --stack-bottom: 1.5rem;
+  padding: clamp(1rem, 3vh, 2rem) clamp(1rem, 2.5vw, 2.5rem) clamp(3rem, 10vh, 6rem);
+}
+
+.card {
+  --cover: 0;
+  position: sticky;
+  top: var(--stack-top);
+  height: min(52rem, calc(100svh - var(--stack-top) - var(--stack-bottom)));
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background-color: var(--rule);
-  border-top: 1px solid var(--rule);   /* the footer's own rule closes it */
-}
-
-.work-item {
-  display: block;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 3.5vw, 3.5rem);
+  padding: 0.75rem;
+  border-radius: 20px;
+  /* Opaque, so a card fully hides the one it slides over. */
   background: var(--bg);
-  padding: 2rem;
-}
-
-.work-media {
-  position: relative;
+  box-shadow: inset 0 0 0 1px var(--rule), 0 -16px 48px -28px rgba(0, 0, 0, 0.35);
   overflow: hidden;
-  border-radius: 4px;
-  margin-bottom: 1.25rem;
+  transform-origin: 50% 0;
+  scale: calc(1 - var(--cover) * 0.08);
+  /* Holds full strength for most of the crossing, then fades out over the
+     last stretch, so nothing of it is left to see behind the next card. */
+  opacity: clamp(0, (1 - var(--cover)) * 3, 1);
 }
 
-.work-media img,
-.work-media video {
+/* Fully buried: gone, and skipped by rendering until you scroll back. */
+.card.is-past {
+  visibility: hidden;
+  content-visibility: hidden;
+}
+
+/* The scroll between cards. Spaced from above, not below: a sticky card lets
+   go when its margin box meets the end of .stack, so a gap under the
+   second-to-last card would release it early and leave a strip of it
+   hanging over the last one. Spaced this way, the last two let go together. */
+.card + .card { margin-top: clamp(2rem, 8vh, 5rem); }
+
+/* The covered card dims as it sinks back. */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background: var(--bg);
+  opacity: calc(var(--cover) * 0.6);
+  pointer-events: none;
+}
+
+.card:focus-visible { border-radius: 20px; outline-offset: 4px; }
+
+.card-media {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.card-media img {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.work-meta {
+.card-body {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  justify-content: center;
+  min-height: 0;
+  padding: clamp(1.25rem, 3.5vh, 2.75rem) clamp(0.75rem, 1.75vw, 2rem) clamp(1.25rem, 3.5vh, 2.25rem) 0;
 }
 
-.work-title {
-  font-family: 'Instrument Serif', serif;
-  font-size: clamp(1.4rem, 2.2vw, 2rem);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  font-weight: 400;
-}
-
-.work-role {
+.card-role {
   font-size: 0.8125rem;
+  letter-spacing: 0.05em;
   color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2rem, 3.3vw, 3.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+.card-summary {
+  margin-top: 1rem;
+  max-width: 38ch;
+  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+  line-height: 1.55;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+/* The same hairline rows as the project pages' results list. */
+.card-results {
+  list-style: none;
+  padding-top: clamp(1.75rem, 5vh, 3rem);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1.25rem;
+}
+
+.card-results li {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: baseline;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+.card-num {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.6rem, 2.4vw, 2.4rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.card-label {
+  font-size: 0.875rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+/* The whole card is the link: on hover its muted copy comes up to full
+   strength, the site's one hover language. */
+.card-summary,
+.card-label { transition: color 0.2s; }
+
+@media (hover: hover) {
+  .card:hover :is(.card-summary, .card-label) { color: var(--text); }
+}
+
+/* Entrance: until a card scrolls into view its pieces wait, hidden; then the
+   image blurs up and settles from a slight zoom, and the type follows in
+   order. .is-done drops the animations once they've landed. Only armed by
+   js/work.js, so no-JS and reduced motion just see the cards. */
+@media (prefers-reduced-motion: no-preference) {
+  .stack.is-armed .card:not(.is-in) :is(.card-media, .card-role, .card-title, .card-summary, .card-results li) {
+    opacity: 0;
+  }
+  .card.is-in:not(.is-done) .card-media {
+    animation: cardMedia 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .card.is-in:not(.is-done) .card-media img {
+    animation: cardZoom 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .card.is-in:not(.is-done) :is(.card-role, .card-title, .card-summary, .card-results li) {
+    animation: cardRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s) both;
+  }
+}
+
+@keyframes cardMedia {
+  from { opacity: 0; transform: translateY(32px); filter: blur(12px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
+
+@keyframes cardZoom {
+  from { transform: scale(1.1); }
+  to   { transform: scale(1); }
+}
+
+@keyframes cardRise {
+  from { opacity: 0; transform: translateY(18px); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
 }
 
 /* ── Avatar ──
@@ -191,6 +325,7 @@
   outline: 2px solid var(--text);
   color: var(--text);
 }
+
 .pill:active { transform: scale(0.96); }
 
 @media (hover: hover) {
@@ -238,6 +373,12 @@
   }
 }
 
+/* Too short to pin a whole card: let them scroll as plain cards. */
+@media (min-width: 769px) and (max-height: 620px) {
+  .card { position: relative; top: auto; height: 36rem; scale: none; opacity: 1; }
+  .card::after { display: none; }
+}
+
 /* ── Mobile ── */
 @media (max-width: 768px) {
   .hero {
@@ -249,11 +390,31 @@
     min-height: 62svh;
   }
 
-  .work {
+  /* Phones: no pinning, just one card after another, image over text. */
+  .featured { padding: 1rem 1rem 2.5rem; }
+
+  .card {
+    position: relative;
+    top: auto;
+    height: auto;
+    scale: none;
+    opacity: 1;
     grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0.5rem;
+    border-radius: 16px;
+  }
+  .card + .card { margin-top: 1rem; }
+  .card::after { display: none; }
+  .card:focus-visible { border-radius: 16px; }
+
+  .card-media {
+    aspect-ratio: 4 / 3;
+    border-radius: 10px;
   }
 
-  .work-item {
-    padding: 1.5rem;
-  }
+  .card-body { padding: 1.25rem 0.75rem 1rem; }
+  .card-title { font-size: clamp(1.9rem, 8.5vw, 2.5rem); }
+  .card-results { padding-top: 1.5rem; }
+
 }

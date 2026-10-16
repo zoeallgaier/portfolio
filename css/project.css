@@ -35,17 +35,18 @@ video {
   to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
 }
 
+/* Side gutter for every block on a project page, so they all start on one
+   left edge. Roomier than the home hero's 3rem on a wide window; phones set
+   their own 1.5rem below. */
+:root { --gutter: clamp(3rem, 7vw, 8rem); }
+
 /* ── Project title ──
    The glow behind it is the sitewide backdrop (js/backdrop.js), tinted by the
    two colours this page declares on <main data-g1 data-g2>. */
 .project-title {
-  /* Top room was sized for the old fixed top nav; the nav is a sidebar now. */
-  padding: 8.5rem 6rem 4rem;
-  border-bottom: 1px solid var(--rule);
-}
-
-.project-name-clip {
-  margin-bottom: 1.25rem;
+  /* No rule or role line under it: the title runs straight into the
+     overview, which carries its own top padding. */
+  padding: 8.5rem var(--gutter) 1.5rem;
 }
 
 .project-name {
@@ -84,29 +85,23 @@ video {
   animation: charReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.project-role {
-  font-size: 0.8125rem;
-  letter-spacing: 0.05em;
-  color: var(--muted);
-  animation: fadeUp 0.7s cubic-bezier(0.25, 0.8, 0.25, 1) 0.65s both;
-}
-
-/* ── Intro: overview on the left, results on the right ── */
+/* ── Intro: overview on the left, results on the right ──
+   Split by space, not a rule (as on the home cards): with nothing under the
+   title, a column rule would hang off it. */
 .project-intro {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  column-gap: clamp(4rem, 8vw, 8rem);
+  padding: 0 var(--gutter);
   border-bottom: 1px solid var(--rule);
 }
 
 .intro-col {
-  padding: 3rem 3rem 3.5rem;
+  padding: 3.5rem 0 5rem;
   animation: fadeUp 0.7s cubic-bezier(0.25, 0.8, 0.25, 1) 0.82s both;
 }
 
-.intro-col + .intro-col {
-  border-left: 1px solid var(--rule);
-  animation-delay: 0.96s;
-}
+.intro-col + .intro-col { animation-delay: 0.96s; }
 
 .intro-label {
   font-family: 'Oxygen', sans-serif;
@@ -193,7 +188,7 @@ video {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 4rem 6rem 5rem;
+  padding: 3.5rem var(--gutter) 5rem;
   gap: 2rem;
   border-bottom: 1px solid var(--rule);
 }
@@ -355,7 +350,7 @@ video {
    drifts towards it as this scrolls up, so the colour arrives before you do. */
 .next-project {
   display: block;
-  padding: 8rem 6rem;
+  padding: 8rem var(--gutter);
   border-top: 1px solid var(--rule);
   color: var(--text);
 }
@@ -397,15 +392,18 @@ video {
   .project-title,
   .next-project {
     margin-left: calc(-1 * var(--nav-inset));
-    padding-left: calc(6rem + var(--nav-inset));
+    padding-left: calc(var(--gutter) + var(--nav-inset));
   }
+
+  /* The shared footer (base.css) follows the page's wider gutter here. */
+  footer { padding-inline: var(--gutter); }
 }
 
 /* ── Mobile ── */
 @media (max-width: 768px) {
   .project-title {
     /* Clears the status bar in the home-screen app (inset is 0 in Safari). */
-    padding: calc(5.5rem + env(safe-area-inset-top, 0px)) 1.5rem 2.75rem;
+    padding: calc(5.5rem + env(safe-area-inset-top, 0px)) 1.5rem 0.75rem;
   }
 
   .next-project {
@@ -413,17 +411,17 @@ video {
   }
 
   .resume {
-    padding: 2.5rem 1.5rem 3rem;
+    padding: 3.25rem 1.5rem 3.5rem;
   }
 
-  .project-intro { grid-template-columns: 1fr; }
-
-  .intro-col { padding: 2.5rem 1.5rem; }
-
-  .intro-col + .intro-col {
-    border-left: none;
-    border-top: 1px solid var(--rule);
+  .project-intro {
+    grid-template-columns: 1fr;
+    padding: 0 1.5rem;
   }
+
+  .intro-col { padding: 3rem 0 3.5rem; }
+
+  .intro-col + .intro-col { border-top: 1px solid var(--rule); }
 
   .gallery {
     grid-template-columns: 1fr;
