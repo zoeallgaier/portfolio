@@ -1,6 +1,6 @@
 /* backdrop.js — the site's one living background.
 
-   A single fixed layer sits behind every page: a cool radial glow, with a
+   A single fixed layer sits behind every page: a warm radial glow, with a
    fine, faint dot grid over it on the home hero only. It is built once and
    never torn down, so when js/app.js swaps <main> for the next page the
    background doesn't reload — the glow eases across to the new page's palette
@@ -24,25 +24,25 @@
      percentages of the viewport, the stop is where the gradient reaches
      transparent. `drift` turns on the slow ambient hue rotation the home hero
      used to run in CSS; `dots` turns on the dot grid (home only). */
-  const CYAN   = [ 20, 200, 255];
-  const VIOLET = [125,  90, 255];
+  const ORANGE = [255, 110, 70];
+  const ROSE   = [235,  80, 120];
 
   const PRESETS = {
     home: {
       dots: 1, band: true,
-      g1: { c: [...CYAN,   0.20], x:  95, y:  0, w: 109, h: 138, s: 70 },
-      g2: { c: [...VIOLET, 0.20], x:  70, y:  0, w: 109, h:  86, s: 70 },
+      g1: { c: [...ORANGE, 0.20], x:  95, y:  0, w: 109, h: 138, s: 70 },
+      g2: { c: [...ROSE,   0.20], x:  70, y:  0, w: 109, h:  86, s: 70 },
     },
     about: {
       band: true,
-      g1: { c: [...CYAN,   0.17], x:  50, y: 38, w:  70, h:  70, s: 70 },
-      g2: { c: [...VIOLET, 0.15], x:  72, y: 80, w:  60, h:  55, s: 70 },
+      g1: { c: [...ORANGE, 0.17], x:  50, y: 38, w:  70, h:  70, s: 70 },
+      g2: { c: [...ROSE,   0.15], x:  72, y: 80, w:  60, h:  55, s: 70 },
     },
     // Reading pages (resume, 404): the same light, turned most of the way down.
     quiet: {
       band: true,
-      g1: { c: [...CYAN,   0.08], x:  95, y:  0, w: 109, h: 138, s: 70 },
-      g2: { c: [...VIOLET, 0.07], x:  70, y:  0, w: 109, h:  86, s: 70 },
+      g1: { c: [...ORANGE, 0.08], x:  95, y:  0, w: 109, h: 138, s: 70 },
+      g2: { c: [...ROSE,   0.07], x:  70, y:  0, w: 109, h:  86, s: 70 },
     },
   };
 
@@ -72,12 +72,12 @@
 
   /* The ambient hue shift, on Zoe's own pages (home, about, resume, Recursia —
      the ones marked `band` below). They drift through one band of the wheel
-     and back: cyan → blue → purple (Qualtrics vibes), never out of it. The old hero
+     and back: peach → coral → red → purple, never out of it. The old hero
      rotated a full 360° every 60s, which was fine while each page load reset
-     it to the brand colour; nothing reloads now, so a rotation would wander
+     it to the brand orange; nothing reloads now, so a rotation would wander
      off somewhere green and stay there. Project pages don't shift at all —
      their colours are the project's. */
-  const BAND = [192, 268]; // degrees: cyan at rest, drifting through blue to purple
+  const BAND = [25, -72];  // degrees: peach at rest, negative wrapping to purple
   const TRAIL = 0.3;       // how far the second pool lags the first, 0–1
   const PERIOD = 80;       // seconds for a full there-and-back
   const cycle = clock => 0.5 - 0.5 * Math.cos(clock * 2 * Math.PI / PERIOD);
@@ -153,8 +153,8 @@
   function presetFor(el) {
     const name = (el && el.dataset.backdrop) || 'quiet';
     if (name !== 'project') return PRESETS[name] || PRESETS.quiet;
-    const g1 = parseColor(el.dataset.g1) || [...CYAN, 0.2];
-    const g2 = parseColor(el.dataset.g2) || [...VIOLET, 0.2];
+    const g1 = parseColor(el.dataset.g1) || [...ORANGE, 0.2];
+    const g2 = parseColor(el.dataset.g2) || [...ROSE, 0.2];
     return {
       band: el.dataset.hue === 'band',
       g1: { ...PROJECT.g1, c: g1 },
