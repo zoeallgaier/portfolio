@@ -1,18 +1,6 @@
 [
     {
         "type": "post",
-        "title": "My Response to Trump’s Attempts at Removing Trans Rights",
-        "url": "posts/trans-rights.html",
-        "note": "Life before and after gender-affirming care, and why the administration’s war on trans people won’t erase us.",
-        "date": "2025-02-17",
-        "tags": [
-            "politics",
-            "trans",
-            "essay"
-        ]
-    },
-    {
-        "type": "post",
         "title": "The Sound of Freedom",
         "url": "posts/sound-of-freedom.html",
         "note": "Love for my people, little pride in the country, and stubborn hope for what it could be.",
@@ -20,42 +8,6 @@
         "tags": [
             "rant",
             "politics"
-        ]
-    },
-    {
-        "type": "post",
-        "title": "Metalheart",
-        "url": "posts/metalheart.html",
-        "note": "Digital maximalism as a rejection of minimalist monoculture.",
-        "date": "2025-03-27",
-        "tags": [
-            "design",
-            "art",
-            "essay"
-        ]
-    },
-    {
-        "type": "post",
-        "title": "Challengers: The Points That Matter",
-        "url": "posts/challengers.html",
-        "note": "8/10. Bold and energetic art direction, with a back-and-forth narrative mirroring tennis.",
-        "date": "2026-06-26",
-        "tags": [
-            "film",
-            "review",
-            "tennis"
-        ]
-    },
-    {
-        "type": "post",
-        "title": "Obsession: What Is Love?",
-        "url": "posts/obsession.html",
-        "note": "10/10. An unsettling, visceral exploration of obsession and its consequences.",
-        "date": "2026-06-24",
-        "tags": [
-            "rant",
-            "film",
-            "review"
         ]
     },
     {
@@ -67,18 +19,6 @@
         "tags": [
             "paleontology",
             "science"
-        ]
-    },
-    {
-        "type": "post",
-        "title": "The Band Name Generator",
-        "url": "/marginalia/bandnames/generator.html",
-        "note": "At long last.",
-        "date": "2026-06-23",
-        "tags": [
-            "funny",
-            "creative",
-            "website"
         ]
     },
     {
@@ -264,18 +204,6 @@
             "theory",
             "politics",
             "manifestos"
-        ]
-    },
-    {
-        "type": "post",
-        "title": "Jurassic World Rebirth: \"One Big Pile of Sh*t\"",
-        "url": "posts/jurassic-world.html",
-        "note": "2/10. Technically \"great\" visual effects, squandered everything else.",
-        "date": "2025-07-17",
-        "tags": [
-            "rant",
-            "film",
-            "review"
         ]
     },
     {

@@ -66,21 +66,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://zoeallgaier.com/marginalia/posts/metalheart.html</loc>
-    <lastmod>2025-03-27</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://zoeallgaier.com/marginalia/posts/challengers.html</loc>
-    <lastmod>2026-06-26</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://zoeallgaier.com/marginalia/posts/obsession.html</loc>
-    <lastmod>2026-06-24</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://zoeallgaier.com/marginalia/posts/symbioticism.html</loc>
     <lastmod>2025-03-27</lastmod>
     <priority>0.6</priority>
@@ -121,11 +106,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://zoeallgaier.com/marginalia/posts/jurassic-world.html</loc>
-    <lastmod>2025-07-17</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://zoeallgaier.com/marginalia/posts/social-media.html</loc>
     <lastmod>2025-07-07</lastmod>
     <priority>0.6</priority>
@@ -134,10 +114,5 @@
     <loc>https://zoeallgaier.com/marginalia/posts/physical-media.html</loc>
     <lastmod>2025-01-25</lastmod>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://zoeallgaier.com/marginalia/bandnames/generator.html</loc>
-    <lastmod>2026-08-28</lastmod>
-    <priority>0.5</priority>
   </url>
 </urlset>
