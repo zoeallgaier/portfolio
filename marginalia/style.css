@@ -1,14 +1,17 @@
 
 :root {
-  /* Type palette drawn from the site's warm gradient (orange / teal / magenta).
-     Two tiers: badge text stays legible (~AA-large) on the light bg, while the
-     left stripe runs brighter to carry the vividness across the board. */
-  --type-post: #0f766e;           /* teal        */
-  --type-find: #c2410c;           /* rust orange */
-  --type-library: #c02a74;        /* magenta     */
-  --type-post-stripe: #14a88a;
-  --type-find-stripe: #f0651f;
-  --type-library-stripe: #e2478f;
+  /* Type quartet — a dusk run pulled from the backdrop glow (ORANGE / ROSE in
+     js/backdrop.js) and carried into the cool lavender-gray of --bg:
+     ember → rose → plum → amber. Two tiers: type text stays legible on the
+     light bg; the card slab runs brighter to carry the color on the board. */
+  --type-post: #ad2c4a;           /* rose   */
+  --type-find: #a6431b;           /* ember  */
+  --type-library: #6e46a8;        /* plum   */
+  --type-photo: #82580c;          /* amber  */
+  --type-post-stripe: #eb5078;
+  --type-find-stripe: #ff6e46;
+  --type-library-stripe: #9a6ad8;
+  --type-photo-stripe: #e8a33a;
 }
 
 /* —— Main —— (the nav is a sidebar / bottom tab bar, so no top offset) */
@@ -31,8 +34,94 @@ main {
 /* Board fades out for a beat while a filter change re-flows the columns. */
 .feed.is-switching { opacity: 0; }
 
-/* Filter-tab icons are injected by main.js; base.css shows them as sidebar
-   row icons on desktop and tab icons in the phone tab bar. */
+/* —— "All" view: most recent block + the rest —— main.js splits the feed into
+   two sections; the cards themselves are unchanged. */
+.feed--split {
+  display: block;
+  container-type: inline-size;
+}
+.feed-board {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+.feed-rest { margin-top: clamp(3.5rem, 6vw, 5rem); }
+
+.feed-heading {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.75rem, 2.6vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.25rem;
+}
+
+/* Newest entry runs full width with bigger type; the next four share a row. */
+.feed-recent-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+}
+.feed-recent-grid > .entry:first-child {
+  grid-column: 1 / -1;
+  padding: clamp(2.5rem, 4vw, 3.5rem) clamp(2.3rem, 4vw, 3.5rem) 2.2rem;
+}
+.feed-recent-grid > .entry:first-child .entry-title {
+  font-size: clamp(2.6rem, 5vw, 4.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin-bottom: 1rem;
+}
+.feed-recent-grid > .entry:first-child .entry-note {
+  max-width: 48ch;
+  font-size: clamp(1.15rem, 1.7vw, 1.35rem);
+}
+
+@container (max-width: 1100px) {
+  .feed-recent-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@container (max-width: 560px) {
+  .feed-recent-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Filter tabs get an icon, a number and a label from main.js. Phones show the
+   icon (tab bar); the desktop sidebar sets them as a numbered sub-list under a
+   big serif "Marginalia" head — the same look as Work → projects on the home
+   sidebar (base.css .nav-sub). */
+@media (min-width: 769px) {
+  .nav-links { gap: 1px; }
+
+  .nav-head {
+    margin: 0 0 0.3rem;
+    padding: 0.3rem 0.75rem 0.4rem;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 2rem;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  nav .nav-links > a {
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.45rem 0.75rem;
+    font-family: 'Oxygen', sans-serif;
+    font-style: normal;
+    font-size: 0.9375rem;
+    line-height: 1.2;
+    letter-spacing: 0.005em;
+  }
+}
+@media (min-width: 769px) and (max-height: 680px) {
+  nav .nav-links > a { padding-block: 0.34rem; }
+  .nav-head { font-size: 1.875rem; }
+}
+@media (max-width: 768px) {
+  .nav-head,
+  nav .nav-num { display: none; }
+}
 
 /* Phone-only top bar (monogram), injected by main.js. Off on desktop, where
    the sidebar already carries the logo. */
@@ -76,75 +165,53 @@ main {
 /* —— Entry cards —— */
 .entry {
   position: relative;                   /* anchor for the stretched title link */
-  padding: 2.2rem 2.3rem 1.9rem 2.5rem;
+  padding: 2.2rem 2.3rem 1.9rem;
   border: 1px solid var(--rule);
-  border-left: 3px solid transparent;   /* type stripe (color set per type) */
-  border-radius: 3px;
-  transition: background-color 0.15s, border-color 0.2s;
+  border-radius: 8px;
+  /* Type cue: a solid offset slab in the type hue behind the right + bottom
+     edges, so each card reads as a block with depth. `--stripe` is set per
+     type below. Hover lifts the card with `translate` (not `transform`, which
+     the fadeUp animation holds) and deepens the slab to match. */
+  --depth: 2px;
+  box-shadow: var(--depth) var(--depth) 0 var(--stripe, var(--rule));
+  transition: background-color 0.15s, border-color 0.2s,
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              translate 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Make the whole text card one tap target: the title link stretches over the
-   card. Tags/date sit above it (z-index) so they stay independently tappable. */
+/* Make the whole text card one tap target: the title link stretches over the card. */
 .entry:not(.entry--media) a.entry-title::after {
   content: '';
   position: absolute;
   inset: 0;
 }
-/* Only the meta row (which holds the tag chips) sits above the stretched link,
-   so tags stay tappable while taps anywhere else on the card open the post. */
-.entry:not(.entry--media) .entry-meta { position: relative; z-index: 1; }
 
-/* Muted default, full-strength on hover — stripe (border-left) left intact.
+/* Muted default, full-strength on hover; the card rises off its slab.
    Hover only on real pointers, so a touch tap isn't swallowed as a "hover". */
 @media (hover: hover) {
   .entry:hover {
     background-color: color-mix(in srgb, var(--text) 4%, transparent);
-    border-top-color: var(--muted);
-    border-right-color: var(--muted);
-    border-bottom-color: var(--muted);
+    border-color: var(--muted);
+    --depth: 5px;
+    translate: -2px -2px;
   }
 }
+@media (prefers-reduced-motion: reduce) {
+  .entry:hover { translate: none; --depth: 2px; }
+}
 
-/* Type cue on the left stripe — brighter tier for a more vivid board. */
-.entry--post    { border-left-color: var(--type-post-stripe); }
-.entry--find    { border-left-color: var(--type-find-stripe); }
-.entry--library { border-left-color: var(--type-library-stripe); }
-/* Photo tiles get a uniform thin frame, not a colored stripe (see photo section). */
-.entry--photo   { border-left-color: var(--rule); }
+/* Slab color per type — the brighter tier, for a vivid board. */
+.entry--post    { --stripe: var(--type-post-stripe); }
+.entry--find    { --stripe: var(--type-find-stripe); }
+.entry--library { --stripe: var(--type-library-stripe); }
+.entry--photo   { --stripe: var(--type-photo-stripe); }
 
 .entry-header {
   display: flex;
   align-items: center;
   gap: 0.6rem;
   margin-bottom: 0.5rem;
-}
-
-.entry-badge {
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.2rem 0.55rem;
-  border-radius: 2px;
-  flex-shrink: 0;
-  background: rgba(0, 0, 0, 0.05);
-}
-
-/* Badge label carries the type hue over a neutral tint. */
-.entry--post .entry-badge    { color: var(--type-post); }
-.entry--find .entry-badge    { color: var(--type-find); }
-.entry--library .entry-badge { color: var(--type-library); }
-
-/* On a media tile the badge rides on the image itself — dark pill, light text. */
-.entry--media .entry-badge {
-  position: absolute;
-  top: 0.7rem;
-  left: 0.7rem;
-  z-index: 1;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
 }
 
 .entry-domain {
@@ -223,45 +290,31 @@ a.entry-caption { transition: color 0.2s; }
 
 .entry-meta {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  align-items: baseline;
+  gap: 0.45rem;
   flex-wrap: wrap;
+  font-size: 0.82rem;
 }
 
-.entry-date {
-  font-size: 0.82rem;
+.entry-date,
+.meta-sep {
   color: var(--muted);
   opacity: 0.75;
 }
 
-/* —— Tags —— */
-.tags {
-  display: flex;
-  gap: 0.35rem;
-  flex-wrap: wrap;
-}
-
-.tag {
-  font-size: 0.8rem;
-  letter-spacing: 0.03em;
+/* —— Type —— metadata, not a label: lowercase, same size as the date, carried
+   by the type hue alone. */
+.entry-type,
+.post-type {
+  font-weight: 400;
   color: var(--muted);
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  padding: 0.22rem 0.7rem;
-  cursor: pointer;
-  transition: color 0.2s, border-color 0.2s;
-  background: none;
-  font-family: 'Oxygen', sans-serif;
-  line-height: 1.5;
 }
+.entry--post .entry-type    { color: var(--type-post); }
+.entry--find .entry-type    { color: var(--type-find); }
+.entry--library .entry-type { color: var(--type-library); }
+.entry--photo .entry-type   { color: var(--type-photo); }
+.post-type                  { color: var(--type-post); }
 
-.tag.active {
-  color: var(--accent);
-  border-color: var(--accent);
-}
-@media (hover: hover) {
-  .tag:hover { color: var(--accent); border-color: var(--accent); }
-}
 
 /* —— Photo entries —— */
 .entry-image {
@@ -269,7 +322,7 @@ a.entry-caption { transition: color 0.2s; }
   width: 100%;
   object-fit: cover;
   aspect-ratio: 1 / 1;
-  border-radius: 2px;
+  border-radius: 4px;
   margin-bottom: 1rem;
   background: var(--rule);   /* quiet tint while the image lazy-loads */
   cursor: zoom-in;
@@ -280,15 +333,12 @@ a.entry-caption { transition: color 0.2s; }
 .entry-image-link .entry-image { cursor: pointer; }
 
 /* —— Media tile: any entry with an image (photo, or a post/find with an image).
-   The image fills the card; the badge rides on it and the title + caption + meta
+   The image fills the card; the title + caption + meta
    overlay the bottom over a scrim. —— */
 .entry--media {
   padding: 0;
   overflow: hidden;            /* clip the image to the card radius */
-  border-left-width: 1px;      /* uniform frame, no colored stripe */
-  border-left-color: var(--rule);
 }
-@media (hover: hover) { .entry--media:hover { border-left-color: var(--muted); } }
 
 .entry-media { position: relative; display: block; }
 
@@ -318,18 +368,11 @@ a.entry-caption { transition: color 0.2s; }
   margin-bottom: 0.55rem;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
-.entry-media-overlay .entry-date {
+.entry-media-overlay .entry-date,
+.entry-media-overlay .meta-sep,
+.entry-media-overlay .entry-type {
   color: rgba(255, 255, 255, 0.82);
   opacity: 1;
-}
-.entry-media-overlay .tag {
-  color: rgba(255, 255, 255, 0.92);
-  border-color: rgba(255, 255, 255, 0.45);
-  pointer-events: auto;        /* tags stay clickable */
-}
-.entry-media-overlay .tag.active { color: #fff; border-color: #fff; }
-@media (hover: hover) {
-  .entry-media-overlay .tag:hover { color: #fff; border-color: #fff; }
 }
 
 /* —— Lightbox (photo zoom) —— */
@@ -371,16 +414,6 @@ a.entry-caption { transition: color 0.2s; }
   padding: 5rem 2rem 6rem;
 }
 
-.post-eyebrow {
-  display: block;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 1.25rem;
-  animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
-}
-
 .post-title {
   font-family: 'Instrument Serif', serif;
   font-size: clamp(2.25rem, 5vw, 4rem);
@@ -393,8 +426,8 @@ a.entry-caption { transition: color 0.2s; }
 
 .post-meta {
   display: flex;
-  gap: 1.25rem;
-  align-items: center;
+  gap: 0.45rem;
+  align-items: baseline;
   flex-wrap: wrap;
   padding-bottom: 3rem;
   border-bottom: 1px solid var(--rule);
@@ -402,8 +435,11 @@ a.entry-caption { transition: color 0.2s; }
   animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
 }
 
-.post-date {
+.post-meta {
   font-size: 0.8125rem;
+}
+.post-date,
+.post-meta .meta-sep {
   color: var(--muted);
 }
 
@@ -542,53 +578,72 @@ a.entry-caption { transition: color 0.2s; }
 /* —— Dark mode (type palette + entry surfaces; base handles tokens & nav) —— */
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Lifted warm palette — bright on the dark bg; both tiers share it. */
-    --type-post: #4fd1ac;    /* teal    */
-    --type-find: #f0965a;    /* orange  */
-    --type-library: #e08cc0; /* magenta */
-    --type-post-stripe: #4fd1ac;
-    --type-find-stripe: #f0965a;
-    --type-library-stripe: #e08cc0;
+    /* Lifted dusk palette — bright on the dark bg; both tiers share it. */
+    --type-post: #f27a98;    /* rose  */
+    --type-find: #ff9468;    /* ember */
+    --type-library: #b896ee; /* plum  */
+    --type-photo: #f0bd5e;   /* amber */
+    --type-post-stripe: #f27a98;
+    --type-find-stripe: #ff9468;
+    --type-library-stripe: #b896ee;
+    --type-photo-stripe: #f0bd5e;
   }
-
-  .entry-badge { background: rgba(255, 255, 255, 0.07); }
 }
 
 /* —— Mobile —— */
 @media (max-width: 680px) {
-  /* Phones: full-bleed feed. Cards run edge-to-edge (no side gutter) and read
-     as stacked full-width bands rather than floating rounded cards. */
+  /* Phones: the slab doesn't survive the small screen, so cards become soft
+     rounded panels on a 16px gutter, same family as the capsule tab bar.
+     Type reads from the colored type word; the lead card gets a line of its
+     type hue down the right so the newest entry still stands out. */
   .feed {
     max-width: none;
-    padding-inline: 0;
-    margin-block: 0;      /* posts run right up under the nav and down to the footer */
+    padding-inline: 16px;
+    margin-block: 0 2.5rem;
   }
 
-  .feed-col { gap: 0; }
+  .feed-col,
+  .feed-recent-grid,
+  .feed-board { gap: 10px; }
 
-  /* Strip the rounded outline and side borders so cards sit flush with the
-     screen edges; keep the colored left type-stripe and a hairline divider
-     between stacked entries. */
+  .feed-rest { margin-top: 2.25rem; }
+  .feed-heading {
+    font-size: 1.6rem;
+    padding: 0.25rem 0.25rem 0;
+    margin-bottom: 0.7rem;
+  }
+
   .entry {
-    border-radius: 0;
-    border-left-width: 3px;
-    border-right: none;
-    border-top: none;
+    border: none;
+    border-radius: 8px;          /* same radius as the desktop cards */
+    background: color-mix(in srgb, var(--text) 5%, transparent);
+    box-shadow: none;
+    transition: background-color 0.15s, scale 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  /* Native-style press: a quick dip and darken. */
+  .entry:active {
+    background: color-mix(in srgb, var(--text) 9%, transparent);
+    scale: 0.985;
   }
 
-  /* Media tiles keep their zero padding (image fills the card, now full-bleed);
+  .feed-recent-grid > .entry:first-child {
+    padding: 1.6rem 1.35rem 1.4rem;
+    box-shadow: inset -3px 0 0 var(--stripe, var(--text));
+  }
+  .feed-recent-grid > .entry:first-child .entry-title { font-size: 2.25rem; }
+  .feed-recent-grid > .entry:first-child .entry-note { font-size: 1.05rem; }
+
+  /* Media tiles keep their zero padding (image fills the card);
      only text cards get the tighter mobile padding. */
   .entry:not(.entry--media) {
-    padding: 1.3rem 1.2rem 1.2rem 1.4rem;
+    padding: 1.2rem 1.3rem 1.15rem;
   }
 
   /* Smaller type on phones. */
   .entry-title { font-size: 1.5rem; }
   .entry-note,
   .entry-author { font-size: 0.95rem; }
-  .entry-date { font-size: 0.75rem; }
-  .tag { font-size: 0.72rem; }
-  .entry-badge { font-size: 0.65rem; }
+  .entry-meta { font-size: 0.75rem; }
 
   .post-wrap {
     padding: 3.5rem 1.5rem 4rem;

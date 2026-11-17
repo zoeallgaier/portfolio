@@ -1,6 +1,18 @@
 [
     {
         "type": "post",
+        "title": "My Response to Trump’s Attempts at Removing Trans Rights",
+        "url": "posts/trans-rights.html",
+        "note": "Life before and after gender-affirming care, and why the administration’s war on trans people won’t erase us.",
+        "date": "2025-02-17",
+        "tags": [
+            "politics",
+            "trans",
+            "essay"
+        ]
+    },
+    {
+        "type": "post",
         "title": "The Sound of Freedom",
         "url": "posts/sound-of-freedom.html",
         "note": "Love for my people, little pride in the country, and stubborn hope for what it could be.",

@@ -27,15 +27,22 @@
       photos:  '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="m21 15-5-5L5 21"/>',
       library: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/>'
     };
-    document.querySelectorAll('.nav-links a').forEach(a => {
+    const links = document.querySelector('.nav-links');
+    if (!links) return;
+    [...links.querySelectorAll('a')].forEach((a, i) => {
       const key = new URL(a.href, location.href).searchParams.get('filter') || 'all';
       if (!ICONS[key]) return;
-      a.innerHTML = '<span class="nav-label">' + a.innerHTML + '</span>';
-      a.insertAdjacentHTML('afterbegin',
+      // Number (desktop sidebar, like the home sidebar's project index) +
+      // icon (phone tab bar) + label; CSS shows whichever fits the shape.
+      a.innerHTML =
         '<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
         'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-        ICONS[key] + '</svg>');
+        ICONS[key] + '</svg>' +
+        '<span class="nav-num" aria-hidden="true">' + String(i + 1).padStart(2, '0') + '</span>' +
+        '<span class="nav-label">' + a.innerHTML + '</span>';
     });
+    // Section head over the filters, like "Work" over the projects (desktop only).
+    links.insertAdjacentHTML('afterbegin', '<p class="nav-head" aria-hidden="true">Marginalia</p>');
   }());
 
   /* —— Active nav link —— */
@@ -76,7 +83,6 @@
     f === 'library' ? 'library' :
     f === 'photos'  ? 'photo'   : 'all';
 
-  let activeTag  = null;
   let activeType = typeForFilter(urlFilter);
 
   /* —— In-page filtering —— The top filter tabs switch the feed without a full
@@ -95,7 +101,6 @@
       if (f === currentFilter()) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
       history.pushState({ filter: f }, '', a.getAttribute('href'));
       activeType = typeForFilter(f);
-      activeTag  = null;
       updateActiveNav(f);
       switchFeed(applyFilter);
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -105,27 +110,19 @@
   window.addEventListener('popstate', () => {
     const f = currentFilter();
     activeType = typeForFilter(f);
-    activeTag  = null;
     updateActiveNav(f);
     switchFeed(applyFilter);
   });
 
   function applyFilter() {
     entryEls.forEach(entry => {
-      const typeOk = activeType === 'all' || entry.dataset.type === activeType;
-      const tags   = entry.dataset.tags ? entry.dataset.tags.split(',') : [];
-      const tagOk  = !activeTag || tags.includes(activeTag);
-      entry.hidden = !(typeOk && tagOk);
-    });
-
-    document.querySelectorAll('.tag').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.tag === activeTag);
+      entry.hidden = !(activeType === 'all' || entry.dataset.type === activeType);
     });
 
     renderColumns();   // re-flow the masonry over the now-visible cards
   }
 
-  /* Cross-fade the board on a filter change (tab or tag): fade out, re-flow,
+  /* Cross-fade the board on a filter change: fade out, re-flow,
      fade back — softer than an instant snap. Skipped under reduced motion. */
   function switchFeed(mutate) {
     const feed    = document.getElementById('feed');
@@ -146,21 +143,47 @@
     return Math.max(1, Math.min(3, Math.floor(w / 420)));
   }
 
+  /* "All" view: the newest few sit in their own block up top (the first one
+     larger), and the rest flow into the board below. Filtered views are
+     board-only. */
+  const RECENT = 5;
+
   /* Distribute the currently-visible cards into N columns, always appending
      to the shortest one (Pinterest-style) so every column fills from the top. */
   function renderColumns() {
     const feed = document.getElementById('feed');
     if (!feed || !entryEls.length) return;
-    colCount = columnsForWidth(feed.clientWidth);
     feed.textContent = '';
+    let visible = entryEls.filter(el => !el.hidden);
+    let board = feed;
+
+    const split = activeType === 'all' && visible.length > RECENT;
+    feed.classList.toggle('feed--split', split);
+    if (split) {
+      const recent = document.createElement('section');
+      recent.className = 'feed-recent';
+      recent.innerHTML = '<h2 class="feed-heading">Most recent</h2><div class="feed-recent-grid"></div>';
+      const grid = recent.lastChild;
+      visible.slice(0, RECENT).forEach(el => grid.appendChild(el));
+
+      const rest = document.createElement('section');
+      rest.className = 'feed-rest';
+      rest.innerHTML = '<h2 class="feed-heading">The rest</h2><div class="feed-board"></div>';
+      board = rest.lastChild;
+
+      feed.append(recent, rest);
+      visible = visible.slice(RECENT);
+    }
+
+    colCount = columnsForWidth(board.clientWidth);
     const cols = [];
     for (let i = 0; i < colCount; i++) {
       const c = document.createElement('div');
       c.className = 'feed-col';
-      feed.appendChild(c);
+      board.appendChild(c);
       cols.push(c);
     }
-    entryEls.filter(el => !el.hidden).forEach(el => {
+    visible.forEach(el => {
       let min = 0;
       for (let i = 1; i < cols.length; i++) {
         if (cols[i].offsetHeight < cols[min].offsetHeight) min = i;
@@ -173,7 +196,8 @@
   function layoutFeed() {
     const feed = document.getElementById('feed');
     if (!feed || !entryEls.length) return;
-    if (columnsForWidth(feed.clientWidth) === colCount && feed.children.length) return;
+    const board = feed.querySelector('.feed-board') || feed;
+    if (columnsForWidth(board.clientWidth) === colCount && feed.children.length) return;
     renderColumns();
   }
 
@@ -211,12 +235,10 @@
     const date = new Date(item.date + 'T12:00:00').toLocaleDateString('en-US', {
       year: 'numeric', month: 'short', day: 'numeric'
     });
-    const tags = item.tags || [];
 
     const el = document.createElement('article');
     el.className     = `entry entry--${item.type}`;
     el.dataset.type  = item.type;
-    el.dataset.tags  = tags.join(',');
     el.style.animationDelay = `${(i * 0.06).toFixed(2)}s`;
 
     // Title is optional (e.g. an image-only entry that just links out).
@@ -240,16 +262,14 @@
         : `<img ${imgAttrs} tabindex="0" role="button" aria-label="Enlarge photo">`;
     }
 
-    const badge = item.reading ? 'now reading' : isLibrary ? 'library' : item.type;
+    // Type reads as metadata, set in the date's line: "post – Nov 16, 2026".
+    const typeLabel = item.reading ? 'now reading' : item.type;
 
     const metaHtml =
       `<div class="entry-meta">` +
+        `<span class="entry-type">${typeLabel}</span>` +
+        `<span class="meta-sep" aria-hidden="true">–</span>` +
         `<span class="entry-date">${date}</span>` +
-        (tags.length
-          ? `<div class="tags">${tags.map(t =>
-              `<button class="tag" type="button" data-tag="${t}">${t}</button>`
-            ).join('')}</div>`
-          : '') +
       `</div>`;
 
     if (isLibrary) {
@@ -263,20 +283,16 @@
           `>${cap}</a>`
         : `<p class="entry-caption">${cap}</p>`;
       el.innerHTML =
-        `<div class="entry-header">` +
-          `<span class="entry-badge">${badge}</span>` +
-        `</div>` +
         capHtml +
         metaHtml;
     } else if (item.image) {
       // Any entry with an image → full-bleed media tile: image fills the card,
-      // badge rides on the image, and title + caption + meta overlay the bottom
+      // and title + caption + meta overlay the bottom
       // over a scrim. Linked images (a url) navigate; bare ones (photos) zoom.
       el.classList.add('entry--media');
       el.innerHTML =
         `<div class="entry-media">` +
           imgHtml +
-          `<span class="entry-badge">${badge}</span>` +
           `<div class="entry-media-overlay">` +
             titleEl +
             (item.note ? `<p class="entry-note">${item.note}</p>` : '') +
@@ -284,23 +300,13 @@
           `</div>` +
         `</div>`;
     } else {
-      // Text post / find — badge kicker above the title.
+      // Text post / find — source domain (finds) above the title.
       el.innerHTML =
-        `<div class="entry-header">` +
-          `<span class="entry-badge">${badge}</span>` +
-          (domain ? `<span class="entry-domain">${domain}</span>` : '') +
-        `</div>` +
+        (domain ? `<div class="entry-header"><span class="entry-domain">${domain}</span></div>` : '') +
         titleEl +
         (item.note ? `<p class="entry-note">${item.note}</p>` : '') +
         metaHtml;
     }
-
-    el.querySelectorAll('.tag').forEach(btn =>
-      btn.addEventListener('click', () => {
-        activeTag = activeTag === btn.dataset.tag ? null : btn.dataset.tag;
-        switchFeed(applyFilter);
-      })
-    );
 
     const img = el.querySelector('.entry-image');
     if (img && !img.closest('a')) {   // linked images navigate; only bare ones zoom
