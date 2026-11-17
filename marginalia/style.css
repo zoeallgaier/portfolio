@@ -34,57 +34,6 @@ main {
 /* Board fades out for a beat while a filter change re-flows the columns. */
 .feed.is-switching { opacity: 0; }
 
-/* —— "All" view: most recent block + the rest —— main.js splits the feed into
-   two sections; the cards themselves are unchanged. */
-.feed--split {
-  display: block;
-  container-type: inline-size;
-}
-.feed-board {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-}
-.feed-rest { margin-top: clamp(3.5rem, 6vw, 5rem); }
-
-.feed-heading {
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(1.75rem, 2.6vw, 2.25rem);
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-  margin-bottom: 1.25rem;
-}
-
-/* Newest entry runs full width with bigger type; the next four share a row. */
-.feed-recent-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 2rem;
-}
-.feed-recent-grid > .entry:first-child {
-  grid-column: 1 / -1;
-  padding: clamp(2.5rem, 4vw, 3.5rem) clamp(2.3rem, 4vw, 3.5rem) 2.2rem;
-}
-.feed-recent-grid > .entry:first-child .entry-title {
-  font-size: clamp(2.6rem, 5vw, 4.25rem);
-  line-height: 1.02;
-  letter-spacing: -0.025em;
-  margin-bottom: 1rem;
-}
-.feed-recent-grid > .entry:first-child .entry-note {
-  max-width: 48ch;
-  font-size: clamp(1.15rem, 1.7vw, 1.35rem);
-}
-
-@container (max-width: 1100px) {
-  .feed-recent-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@container (max-width: 560px) {
-  .feed-recent-grid { grid-template-columns: minmax(0, 1fr); }
-}
-
 /* Filter tabs get an icon, a number and a label from main.js. Phones show the
    icon (tab bar); the desktop sidebar sets them as a numbered sub-list under a
    big serif "Marginalia" head — the same look as Work → projects on the home
@@ -594,24 +543,14 @@ a.entry-caption { transition: color 0.2s; }
 @media (max-width: 680px) {
   /* Phones: the slab doesn't survive the small screen, so cards become soft
      rounded panels on a 16px gutter, same family as the capsule tab bar.
-     Type reads from the colored type word; the lead card gets a line of its
-     type hue down the right so the newest entry still stands out. */
+     Type reads from the colored type word. */
   .feed {
     max-width: none;
     padding-inline: 16px;
     margin-block: 0 2.5rem;
   }
 
-  .feed-col,
-  .feed-recent-grid,
-  .feed-board { gap: 10px; }
-
-  .feed-rest { margin-top: 2.25rem; }
-  .feed-heading {
-    font-size: 1.6rem;
-    padding: 0.25rem 0.25rem 0;
-    margin-bottom: 0.7rem;
-  }
+  .feed-col { gap: 10px; }
 
   .entry {
     border: none;
@@ -625,13 +564,6 @@ a.entry-caption { transition: color 0.2s; }
     background: color-mix(in srgb, var(--text) 9%, transparent);
     scale: 0.985;
   }
-
-  .feed-recent-grid > .entry:first-child {
-    padding: 1.6rem 1.35rem 1.4rem;
-    box-shadow: inset -3px 0 0 var(--stripe, var(--text));
-  }
-  .feed-recent-grid > .entry:first-child .entry-title { font-size: 2.25rem; }
-  .feed-recent-grid > .entry:first-child .entry-note { font-size: 1.05rem; }
 
   /* Media tiles keep their zero padding (image fills the card);
      only text cards get the tighter mobile padding. */

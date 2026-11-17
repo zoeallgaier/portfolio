@@ -143,47 +143,21 @@
     return Math.max(1, Math.min(3, Math.floor(w / 420)));
   }
 
-  /* "All" view: the newest few sit in their own block up top (the first one
-     larger), and the rest flow into the board below. Filtered views are
-     board-only. */
-  const RECENT = 5;
-
   /* Distribute the currently-visible cards into N columns, always appending
      to the shortest one (Pinterest-style) so every column fills from the top. */
   function renderColumns() {
     const feed = document.getElementById('feed');
     if (!feed || !entryEls.length) return;
+    colCount = columnsForWidth(feed.clientWidth);
     feed.textContent = '';
-    let visible = entryEls.filter(el => !el.hidden);
-    let board = feed;
-
-    const split = activeType === 'all' && visible.length > RECENT;
-    feed.classList.toggle('feed--split', split);
-    if (split) {
-      const recent = document.createElement('section');
-      recent.className = 'feed-recent';
-      recent.innerHTML = '<h2 class="feed-heading">Most recent</h2><div class="feed-recent-grid"></div>';
-      const grid = recent.lastChild;
-      visible.slice(0, RECENT).forEach(el => grid.appendChild(el));
-
-      const rest = document.createElement('section');
-      rest.className = 'feed-rest';
-      rest.innerHTML = '<h2 class="feed-heading">The rest</h2><div class="feed-board"></div>';
-      board = rest.lastChild;
-
-      feed.append(recent, rest);
-      visible = visible.slice(RECENT);
-    }
-
-    colCount = columnsForWidth(board.clientWidth);
     const cols = [];
     for (let i = 0; i < colCount; i++) {
       const c = document.createElement('div');
       c.className = 'feed-col';
-      board.appendChild(c);
+      feed.appendChild(c);
       cols.push(c);
     }
-    visible.forEach(el => {
+    entryEls.filter(el => !el.hidden).forEach(el => {
       let min = 0;
       for (let i = 1; i < cols.length; i++) {
         if (cols[i].offsetHeight < cols[min].offsetHeight) min = i;
@@ -196,8 +170,7 @@
   function layoutFeed() {
     const feed = document.getElementById('feed');
     if (!feed || !entryEls.length) return;
-    const board = feed.querySelector('.feed-board') || feed;
-    if (columnsForWidth(board.clientWidth) === colCount && feed.children.length) return;
+    if (columnsForWidth(feed.clientWidth) === colCount && feed.children.length) return;
     renderColumns();
   }
 
