@@ -25,11 +25,13 @@
   const PROJECTS = [
     ['/psb26.html',     'PSB 2026'],
     ['/elysium.html',   'Elysium'],
-    ['/psb25.html',     'PSB 2025'],
     ['/tria.html',      'Tria'],
+    ['/uvu-web.html',   'UVU Giving & Alumni'],
     ['/evergreen.html', 'EverGREEN'],
-    ['/hipower.html',   'HIPOWER'],
+    ['/ylac.html',      'YLAC Signage'],
+    ['/psb25.html',     'PSB 2025'],
     ['/uvusoccer.html', 'UCCU Stadium'],
+    ['/hipower.html',   'HIPOWER'],
     ['/recursia.html',  'Recursia'],
   ];
 
@@ -191,6 +193,28 @@
     if (e.key === 'Escape' && isOpen()) { setOpen(false); toggle.focus(); }
   });
   sidebar.addEventListener('change', () => setOpen(false));
+
+  /* ── Edge reveal: bring the pointer within EDGE_ZONE px of the left edge of
+     the window and the drawer slides out on its own. Opened that way, it tucks
+     itself away again once the pointer wanders off it (a click-opened drawer
+     stays put). ── */
+  const EDGE_ZONE = 20;
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+  let edgeOpened = false, edgeClose = 0;
+  document.addEventListener('pointermove', e => {
+    if (e.pointerType !== 'mouse' || !sidebar.matches || !finePointer.matches) return;
+    if (!isOpen() && e.clientX <= EDGE_ZONE) {
+      setOpen(true);
+      edgeOpened = true;
+    } else if (edgeOpened && isOpen()) {
+      // The whole strip from the window edge to the drawer's far side counts,
+      // so crossing the gap between them doesn't put it away.
+      const overDrawer = e.clientX <= nav.getBoundingClientRect().right + 24;
+      clearTimeout(edgeClose);
+      if (!overDrawer) edgeClose = setTimeout(() => { setOpen(false); edgeOpened = false; }, 350);
+    }
+  }, { passive: true });
+  toggle.addEventListener('click', () => { edgeOpened = false; clearTimeout(edgeClose); });
 
   /* ── Phone tab bar: out of the way while you read ──
      Scrolling down tucks it below the screen; a deliberate scroll back up, or

@@ -9,7 +9,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#e1e1e8" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0e0e15" media="(prefers-color-scheme: dark)" />
-  <link rel="apple-touch-icon" href="/icons/z-180.png" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/icons/sig-180.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <title>Zoe Allgaier — About</title>
   <meta name="description" content="A motion-first designer, eight years in the overlap between graphic, motion, and web — from building a brand that cleared $300K to leading design on UVU's largest donor event." />
@@ -34,16 +36,17 @@
 
   <main id="main-content" tabindex="-1" data-backdrop="about">
 
-    <!-- ── Intro: portrait beside the heading + copy, links underneath ── -->
-    <section class="about-spread">
-      <figure class="avatar about-avatar">
-        <img src="/_assets/zoeallgaier-sq.jpg" alt="Zoe Allgaier" width="640" height="640">
-      </figure>
+    <!-- ── About: one section. The copy (work, then life, then the signature
+         and links) stays pinned on the left while the photos scroll past as
+         a slightly overlapping vertical reel (js/about.js bends it along an arc). ── -->
+    <section class="about-life" aria-labelledby="about-title">
 
-      <div class="about-copy">
-        <h1 class="about-title">A bit about me</h1>
-        <p class="about-lede"><span class="about-dropcap">I</span>'m a multidisciplinary Designer who's spent <strong>eight years in the overlap between graphic, motion, and web</strong>. Not because I couldn't pick one, but because pulling them apart is where brands lose the plot.</p>
-        <p>As <strong>creative director at <a href="https://elysiumblack.com/" target="_blank" rel="noopener">Elysium Black Diamond</a></strong>, I created a brand that made $300K in eight months and is still going strong. As a <strong>Designer II at <a href="https://www.uvu.edu/advancement/" target="_blank" rel="noopener">UVU</a></strong>, I lead design on fundraising campaigns and experiences.</p>
+      <div class="life-copy">
+        <h1 class="about-title" id="about-title">A bit about me</h1>
+        <p class="about-lede">I'm a multidisciplinary designer who's spent <strong>eight years in the overlap between graphic, motion, and web</strong>. Not because I couldn't pick one, but because pulling them apart is where brands lose the plot.</p>
+        <p>As <strong>Creative Director at <a href="https://elysiumblack.com/" target="_blank" rel="noopener">Elysium Black Diamond</a></strong>, I created a brand that made $300K in eight months and is still going strong. As a <strong>Designer II at <a href="https://www.uvu.edu/advancement/" target="_blank" rel="noopener">UVU</a></strong>, I lead design on fundraising campaigns and experiences.</p>
+        <p>Outside work, you can usually find me at the Natural History Museum, vibe-coding at a coffee shop, reading nonfiction, or out taking photos.</p>
+        <span class="life-signature" role="img" aria-label="Zoe's signature"></span>
 
         <div class="about-actions">
           <a class="pill" href="https://www.linkedin.com/in/zoeallgaier/" target="_blank" rel="noopener">
@@ -64,26 +67,25 @@
           </a>
         </div>
       </div>
-    </section>
 
-    <!-- ── By the numbers ── -->
-    <section class="about-figures" aria-label="By the numbers">
-      <div class="about-figure">
-        <span class="about-figure-num">$1.38M</span>
-        <span class="about-figure-label">raised at President&rsquo;s Scholarship Ball 2025, CASE Best of District VII</span>
+      <div class="life-reel">
+        <figure class="reel-item">
+          <img fetchpriority="high" decoding="async" src="/_assets/About/selfie.jpg" srcset="/_assets/About/selfie-800.webp 800w, /_assets/About/selfie-1400.webp 1400w" sizes="(max-width: 768px) 76vw, (max-width: 900px) 28rem, 36rem" alt="Selfie of Zoe at home, in a white ribbed top" width="1800" height="2400">
+        </figure>
+        <figure class="reel-item">
+          <img loading="lazy" decoding="async" src="/_assets/About/psb-team.jpg" srcset="/_assets/About/psb-team-800.webp 800w, /_assets/About/psb-team-1400.webp 1400w" sizes="(max-width: 768px) 76vw, (max-width: 900px) 28rem, 36rem" alt="Zoe with the President&#39;s Scholarship Ball team, in formalwear in front of the event backdrop" width="1920" height="2400">
+        </figure>
+        <figure class="reel-item">
+          <img loading="lazy" decoding="async" src="/_assets/About/ceratosaurus.jpg" srcset="/_assets/About/ceratosaurus-800.webp 800w, /_assets/About/ceratosaurus-1400.webp 1400w" sizes="(max-width: 768px) 76vw, (max-width: 900px) 28rem, 36rem" alt="Mounted Ceratosaurus nasicornis skeleton, jaws open, lit against a brown museum wall" width="1800" height="2400">
+        </figure>
+        <figure class="reel-item">
+          <img loading="lazy" decoding="async" src="/_assets/About/living-on-earth.jpg" srcset="/_assets/About/living-on-earth-800.webp 800w, /_assets/About/living-on-earth-1400.webp 1400w" sizes="(max-width: 768px) 76vw, (max-width: 900px) 28rem, 36rem" alt="Zoe&#39;s hand holding Living on Earth by Peter Godfrey-Smith in front of a bookshelf" width="1800" height="2400">
+        </figure>
+        <figure class="reel-item">
+          <img loading="lazy" decoding="async" src="/_assets/About/duck.jpg" srcset="/_assets/About/duck-800.webp 800w, /_assets/About/duck-1400.webp 1400w" sizes="(max-width: 768px) 76vw, (max-width: 900px) 28rem, 36rem" alt="Black and white photo of a female mallard on rippled water" width="1920" height="2400">
+        </figure>
       </div>
-      <div class="about-figure">
-        <span class="about-figure-num">$792.3K</span>
-        <span class="about-figure-label">raised at President&rsquo;s Scholarship Ball 2026, as design lead</span>
-      </div>
-      <div class="about-figure">
-        <span class="about-figure-num">$300K</span>
-        <span class="about-figure-label">revenue in eight months, Elysium Black Diamond</span>
-      </div>
-      <div class="about-figure">
-        <span class="about-figure-num">147%</span>
-        <span class="about-figure-label">increase in online giving across UVU campaign web, email &amp; digital</span>
-      </div>
+
     </section>
 
   </main>
@@ -97,5 +99,6 @@
   <script src="/js/reveal.js"></script>
   <script src="/js/media.js"></script>
   <script src="/js/app.js"></script>
+  <script src="/js/about.js"></script>
 </body>
 </html>

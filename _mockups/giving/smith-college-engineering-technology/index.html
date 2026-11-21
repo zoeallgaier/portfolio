@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<!-- =====================================================================
+     UVU GIVING · IA WEB SYSTEM v1.3 · CMS MOCKUP · Support Smith College of Engineering and Technology
+     Live URL: https://www.uvu.edu/give/colleges-schools/smith-college-engineering-technology/index.html
+     Styles: UVU production CSS snapshot + ../_kit/css/12-alumni-system.css
+     See ../README.md and ../_kit/styleguide.html
+     ===================================================================== -->
+<html lang="en" dir="ltr" style="--headroom-height: 123px;">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+<meta name="color-scheme" content="only light">
+<meta name="description" content="Give to the UVU Smith College of Engineering and Technology: scholarships and programs that support engineering and technology students.">
+<title>Support Smith College of Engineering and Technology | Utah Valley University</title>
+
+<!-- ===== UVU production CSS (snapshot) ===== -->
+<link rel="stylesheet" href="../_kit/css/01-bootstrap.min.css">
+<link rel="stylesheet" href="../_kit/css/02-global.css">
+<link rel="stylesheet" href="../_kit/css/03-component.css">
+<link rel="stylesheet" href="../_kit/css/04-helpers-legacy.css">
+<link rel="stylesheet" href="../_kit/css/05-elements.css">
+<link rel="stylesheet" href="../_kit/css/06-helpers.css">
+<link rel="stylesheet" href="../_kit/css/07-wrapper.css">
+<link rel="stylesheet" href="../_kit/css/08-fonts.css">
+<link rel="stylesheet" href="../_kit/css/09-homepage-wrapper.css">
+<link rel="stylesheet" href="../_kit/css/10-homepage-dept.css">
+<link rel="stylesheet" href="../_kit/css/11-fontawesome-pro.css">
+
+<!-- ===== IA Web System (shared with Alumni; the only system stylesheet a page needs) ===== -->
+<!-- Cesar's fund-page stylesheet (production: /give/lib/css/new-format-26.css). Loads before the system file so the hero and type stay on system. -->
+<link rel="stylesheet" href="../_kit/css/13-give-new-format-26.css">
+<link rel="stylesheet" href="../_kit/css/12-alumni-system.css">
+<!-- ===== Mockup-only tools. Not for production. ===== -->
+<script src="../_kit/js/funds-tabs.js" defer></script>
+</head>
+<body id="smith-college-engineering-technology" class="UVU_Public_Site utah-valley-university smith-college-engineering-technology marketing homepage audience DeptNav DeptFooter">
+
+<!-- ===== GLOBAL HEADER (CMS template; context only) ===== -->
+<header id="globalHeader" class="headroom" role="banner" aria-label="Primary Site banner" lang="en" data-import="false">
+					<div id="mquery"></div>
+					<a class="skiptocontent sr-only" href="#content-wrap">Skip to main content</a>
+					<noscript id="noJS">You have JavaScript Disabled! UVU's websites will not work properly without javascript. Please enable JavaScript to continue using UVU's websites as intended.</noscript>
+					<div class="globalHeaderMain">
+						<div class="slideNavToggle classy ready" role="button" aria-label="Open university and departmental navigation" aria-controls="slideNav" tabindex="0" data-classy-action="on" data-classy-declick="body" data-import="false" data-classy-group="all">
+							<img src="../_kit/img/hmbgr-menu.svg" alt="Menu and search icon">
+						</div>
+						<a class="globalTitle" href="https://www.uvu.edu/" title="Utah Valley University Homepage" hreflang="en">
+							<img src="../_kit/img/uvu-mono.svg" alt="Utah Valley University logo">
+						</a>
+						<a class="deptTitle" href="https://www.uvu.edu/" lang="en" hreflang="en" title="Site homepage">
+							Utah Valley University
+						</a>
+						<div class="actionBar">
+							<ul class="global-quicklinks">
+	<li><a href="https://www.uvu.edu/admissions/#degree-type">Apply to UVU</a></li>
+	<li><a href="https://my.uvu.edu/"><svg id="Group_3615" data-name="Group 3615" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.845 24.485">
+  <path id="Path_3937" data-name="Path 3937" d="M388.908,537.07H358.463a.806.806,0,0,1,0-1.611h30.445a.806.806,0,0,1,0,1.611m-29.51-3.757,4.208-6.721a.809.809,0,0,1,.686-.38h5.359l3.193,5.534a1.1,1.1,0,0,0,1.9,0l3.191-5.532H383.1a.81.81,0,0,1,.685.379l4.218,6.724a.81.81,0,0,1-.685,1.24l-27.237-.007a.81.81,0,0,1-.685-1.24m5.4-17.195a.654.654,0,0,1,.924-.875l7.693,5.04a.74.74,0,0,0,.81,0l7.634-5a.655.655,0,0,1,.925.876L374.441,530.6a.74.74,0,0,1-1.281,0Zm25.549,19.23-6-9.542a.978.978,0,0,0-.828-.458l-5.088,0,5.882-10.2a1.1,1.1,0,0,0-1.534-1.476l-8.4,5.3a1.1,1.1,0,0,1-1.17,0l-8.42-5.322a1.1,1.1,0,0,0-1.534,1.476l5.9,10.223-5.315,0a.978.978,0,0,0-.829.46l-5.969,9.5a1.71,1.71,0,0,0,1.427,2.65H388.9a1.71,1.71,0,0,0,1.447-2.619" transform="translate(-356.761 -513.482)" fill="currentColor"></path>
+</svg>
+myUVU</a></li>
+</ul>
+							<div id="mainSearch">
+								<a class="lightbox" href="#" data-lity="true" title="Open search box" data-import="false" data-lity-target="#globalSearch-container"><span class="fas fa-search" aria-hidden="true"></span></a>
+								<div id="globalSearch-container" class="lity-hide">
+									<form id="globalSearch" role="search" aria-label="Search UVU" method="get" action="https://www.uvu.edu/search">
+										<div id="globalSearchArea">
+											<label for="globalSearchInput" class="sr-only">Enter search terms</label>
+											<div class="search-group">
+												<label aria-hidden="true">I'm looking for:</label>
+												<input type="text" id="globalSearchInput" class="quicksearch" name="query" value="" autocomplete="off" data-quicksearch-out="#globalSearchSuggest" data-import="false">
+											</div>
+											<div id="globalSearchSuggest" aria-hidden="true"></div>
+											<input type="submit" title="Search UVU" id="globalSearchSubmit" value="Go">
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<nav id="deptNav" role="navigation" aria-label="Department Navigation">
+						<div class="deptNavWrap" lang="en">
+								<ul><li><a href="https://www.uvu.edu/admissions/">Admissions</a></li><li><a href="https://www.uvu.edu/campus-life/">Campus Life</a></li><li><a href="https://www.uvu.edu/academics/">Academics</a></li><li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li><li><a href="https://www.uvu.edu/news/">Content Hub</a></li><li><a href="https://www.uvu.edu/alumni/">Alumni</a></li><li><a href="https://www.uvu.edu/give/">Give</a></li><li><a href="https://www.uvu.edu/about/">About</a></li></ul>
+						</div>
+					</nav>
+				</header>
+				<section id="slideNav" aria-expanded="false" aria-label="University Navigation" tabindex="-1" lang="en" data-classy-group="all" class="ready">
+					<div class="menu-body">
+						<header>
+							<img src="../_kit/img/uvu-mono.svg" alt="Utah Valley University logo">
+							<p class="h1">Utah Valley University</p>
+							<span class="far fa-times-circle tabClose classy ready" role="button" title="Close Menu" aria-controls="slideNav" aria-label="Close University Navigation" data-classy-action="off" tabindex="-1" aria-hidden="true" data-import="false" data-classy-group="all">&nbsp;</span><span class="sr-only">Close Menu</span>
+						</header>
+						<form id="slideSearch" role="search" aria-label="UVU Search" action="https://www.uvu.edu/search/">
+							<label for="slideSearchInput" class="sr-only">Enter search terms</label><input type="text" id="slideSearchInput" class="quicksearch" name="query" placeholder="I'm looking for..." autocomplete="off" data-quicksearch-out="#slideSearchSuggest" data-import="false">
+							<input type="submit" value="" id="slideSearchSubmit" class="quicksearch" aria-label="Submit Search" title="Submit Search" data-import="false">
+							<div id="slideSearchSuggest" aria-hidden="true"></div>
+						</form>
+						<ul class="global-quicklinks">
+	<li><a href="https://www.uvu.edu/admissions/#degree-type">Apply to UVU</a></li>
+	<li><a href="https://my.uvu.edu/"><svg id="Group_3615" data-name="Group 3615" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.845 24.485">
+  <path id="Path_3937" data-name="Path 3937" d="M388.908,537.07H358.463a.806.806,0,0,1,0-1.611h30.445a.806.806,0,0,1,0,1.611m-29.51-3.757,4.208-6.721a.809.809,0,0,1,.686-.38h5.359l3.193,5.534a1.1,1.1,0,0,0,1.9,0l3.191-5.532H383.1a.81.81,0,0,1,.685.379l4.218,6.724a.81.81,0,0,1-.685,1.24l-27.237-.007a.81.81,0,0,1-.685-1.24m5.4-17.195a.654.654,0,0,1,.924-.875l7.693,5.04a.74.74,0,0,0,.81,0l7.634-5a.655.655,0,0,1,.925.876L374.441,530.6a.74.74,0,0,1-1.281,0Zm25.549,19.23-6-9.542a.978.978,0,0,0-.828-.458l-5.088,0,5.882-10.2a1.1,1.1,0,0,0-1.534-1.476l-8.4,5.3a1.1,1.1,0,0,1-1.17,0l-8.42-5.322a1.1,1.1,0,0,0-1.534,1.476l5.9,10.223-5.315,0a.978.978,0,0,0-.829.46l-5.969,9.5a1.71,1.71,0,0,0,1.427,2.65H388.9a1.71,1.71,0,0,0,1.447-2.619" transform="translate(-356.761 -513.482)" fill="currentColor"></path>
+</svg>
+myUVU</a></li>
+</ul>
+						<div id="breadcrumbContainer">
+							<nav class="breadcrumbNav" id="breadcrumbNav" aria-label="breadcrumb" tabindex="-1">
+								<div class="breadcrumbScroll">
+								</div>
+								<div class="breadcrumbScroll-left"></div>
+								<div class="breadcrumbScroll-right"></div>
+							</nav>
+						</div>
+						<div id="slideMenuDept" class="active" aria-label="Department Menu">
+							<nav class="slideDeptNav" aria-label="Department Navigation in side menu" lang="en">
+									<ul><li><a href="https://www.uvu.edu/admissions/">Admissions</a></li><li><a href="https://www.uvu.edu/campus-life/">Campus Life</a></li><li><a href="https://www.uvu.edu/academics/">Academics</a></li><li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li><li><a href="https://www.uvu.edu/news/">Content Hub</a></li><li><a href="https://www.uvu.edu/alumni/">Alumni</a></li><li><a href="https://www.uvu.edu/give/">Give</a></li><li><a href="https://www.uvu.edu/about/">About</a></li></ul>
+							</nav>
+						</div>
+						<div id="globalNav">
+						</div>
+					</div>
+				</section>
+      
+<main id="content-wrap" class="content-wrap">
+<!-- ===== CMS CONTENT START · each <section> = one OU section ===== -->
+
+<!-- SECTION 1 · template: header-fullbleed
+     ASSET: assets/smith-college-engineering-technology-header.jpg (1920x700 raw photo; the green fade is CSS). CMS: /give/colleges-schools/smith-college-engineering-technology/images/smith-college-engineering-technology-header.jpg
+     PHONES: assets/smith-college-engineering-technology-header-mobile.jpg (1080x1350 vertical, people centered). CMS: /give/colleges-schools/smith-college-engineering-technology/images/smith-college-engineering-technology-header-mobile.jpg -->
+<section class="page-header jumbo fullbleed container-narrow al-hero" style="background-image: url(assets/smith-college-engineering-technology-header.jpg);" data-cms-bg="/give/colleges-schools/smith-college-engineering-technology/images/smith-college-engineering-technology-header.jpg" data-uvu-template="header-fullbleed" data-uvu-section="1">
+   <div class="al-hero-m" style="background-image: url(assets/smith-college-engineering-technology-header-mobile.jpg);" data-cms-bg="/give/colleges-schools/smith-college-engineering-technology/images/smith-college-engineering-technology-header-mobile.jpg" aria-hidden="true"></div>
+   <div class="container-fluid">
+      <header class="fullbleed-overlay contain text-invert">
+            <p class="al-eyebrow">Support Future Innovators</p>
+            <h1>Smith College of Engineering and Technology</h1>
+            <p class="al-hero-lead">Your gift impacts UVU engineering and technology students for a lifetime.</p>
+            <div class="al-actions"><a class="al-btn al-btn--light al-btn--ext" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&formId=d0b8f654-4d0b-4e83-8233-77463f6c4318&envid=p-15SOd3UsHUO8MRNYFSnBvg&zone=usa" target="_blank" rel="noopener">Give to SCET Scholarships<span class="sr-only-al"> (opens in a new tab)</span></a></div>
+      </header>
+   </div>
+</section>
+<!-- SECTION 2 · template: one-col · Cesar's new-format-26 fund directory (/give/lib/css/new-format-26.css).
+     Sidebar tabs (desktop) + MAIN MENU popover (phones) + one content panel per department, each fund a link to its Blackbaud form. -->
+<section data-uvu-template="one-col" data-uvu-section="2" class="al-section al-nf">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+            <!-- MOBILE MENU BAR -->
+            <div class="mobile-menu-bar">
+               <div class="al-nf-bar"><span class="al-nf-bar-label"><span>Browse Funds</span></span><span class="al-nf-bar-current">SE Engineering Building</span></div>
+               <button class="menu-toggle" id="menuToggle" type="button" popovertarget="mobileFundsMenu" popovertargetaction="toggle" aria-label="Open main menu"><span></span><span></span><span></span></button>
+            </div>
+            <!-- MOBILE-ONLY POPOVER MENU -->
+            <nav id="mobileFundsMenu" class="funds-sidebar mobile-funds-sidebar" popover="auto" aria-label="Funds menu">
+               <div class="mobile-popover-header">
+                  <h2 class="sidebar-title"><span>Browse Funds</span></h2>
+                  <button type="button" class="close-menu" popovertarget="mobileFundsMenu" popovertargetaction="hide" aria-label="Close main menu">×</button>
+               </div>
+               <ul class="tabs">
+                     <li><a href="#search" class="anchorTab menu-btn noScroll" aria-controls="search" aria-expanded="false" role="tab"><span class="al-nf-tab"><span>Search All Funds</span></span></a></li>
+                     <li><a href="#se-engineering-building" class="anchorTab menu-btn active noScroll" aria-controls="se-engineering-building" aria-expanded="true" role="tab"><span class="al-nf-tab">SE Engineering Building</span></a></li>
+                     <li><a href="#applied-engineering-and-transportation-technolog" class="anchorTab menu-btn noScroll" aria-controls="applied-engineering-and-transportation-technolog" aria-expanded="false" role="tab"><span class="al-nf-tab">Applied Engineering and Transportation Technologies</span></a></li>
+                     <li><a href="#architecture-and-engineering-design" class="anchorTab menu-btn noScroll" aria-controls="architecture-and-engineering-design" aria-expanded="false" role="tab"><span class="al-nf-tab">Architecture and Engineering Design</span></a></li>
+                     <li><a href="#aviation-science" class="anchorTab menu-btn noScroll" aria-controls="aviation-science" aria-expanded="false" role="tab"><span class="al-nf-tab">Aviation Science</span></a></li>
+                     <li><a href="#computer-science" class="anchorTab menu-btn noScroll" aria-controls="computer-science" aria-expanded="false" role="tab"><span class="al-nf-tab">Computer Science</span></a></li>
+                     <li><a href="#construction-technologies" class="anchorTab menu-btn noScroll" aria-controls="construction-technologies" aria-expanded="false" role="tab"><span class="al-nf-tab">Construction Technologies</span></a></li>
+                     <li><a href="#culinary-arts" class="anchorTab menu-btn noScroll" aria-controls="culinary-arts" aria-expanded="false" role="tab"><span class="al-nf-tab">Culinary Arts</span></a></li>
+                     <li><a href="#digital-media" class="anchorTab menu-btn noScroll" aria-controls="digital-media" aria-expanded="false" role="tab"><span class="al-nf-tab">Digital Media</span></a></li>
+                     <li><a href="#electrical-and-computer-engineering" class="anchorTab menu-btn noScroll" aria-controls="electrical-and-computer-engineering" aria-expanded="false" role="tab"><span class="al-nf-tab">Electrical and Computer Engineering</span></a></li>
+                     <li><a href="#information-systems-and-technology" class="anchorTab menu-btn noScroll" aria-controls="information-systems-and-technology" aria-expanded="false" role="tab"><span class="al-nf-tab">Information Systems and Technology</span></a></li>
+                     <li><a href="#mechanical-and-civil-engineering" class="anchorTab menu-btn noScroll" aria-controls="mechanical-and-civil-engineering" aria-expanded="false" role="tab"><span class="al-nf-tab">Mechanical and Civil Engineering</span></a></li>
+                     <li><a href="#technology-management-and-mechatronics" class="anchorTab menu-btn noScroll" aria-controls="technology-management-and-mechatronics" aria-expanded="false" role="tab"><span class="al-nf-tab">Technology Management and Mechatronics</span></a></li>
+               </ul>
+            </nav>
+            <!-- MAIN LAYOUT -->
+            <section class="funds-layout">
+               <nav class="funds-sidebar desktop-funds-sidebar" aria-label="Funds menu">
+                  <h2 class="sidebar-title"><span>Browse Funds</span></h2>
+                  <ul class="tabs">
+                     <li><a href="#search" class="anchorTab menu-btn noScroll" data-target="search" aria-controls="search" aria-expanded="false" role="tab"><span class="al-nf-tab"><span>Search All Funds</span></span></a></li>
+                     <li><a href="#se-engineering-building" class="anchorTab menu-btn active noScroll" data-target="se-engineering-building" aria-controls="se-engineering-building" aria-expanded="true" role="tab"><span class="al-nf-tab">SE Engineering Building</span></a></li>
+                     <li><a href="#applied-engineering-and-transportation-technolog" class="anchorTab menu-btn noScroll" data-target="applied-engineering-and-transportation-technolog" aria-controls="applied-engineering-and-transportation-technolog" aria-expanded="false" role="tab"><span class="al-nf-tab">Applied Engineering and Transportation Technologies</span></a></li>
+                     <li><a href="#architecture-and-engineering-design" class="anchorTab menu-btn noScroll" data-target="architecture-and-engineering-design" aria-controls="architecture-and-engineering-design" aria-expanded="false" role="tab"><span class="al-nf-tab">Architecture and Engineering Design</span></a></li>
+                     <li><a href="#aviation-science" class="anchorTab menu-btn noScroll" data-target="aviation-science" aria-controls="aviation-science" aria-expanded="false" role="tab"><span class="al-nf-tab">Aviation Science</span></a></li>
+                     <li><a href="#computer-science" class="anchorTab menu-btn noScroll" data-target="computer-science" aria-controls="computer-science" aria-expanded="false" role="tab"><span class="al-nf-tab">Computer Science</span></a></li>
+                     <li><a href="#construction-technologies" class="anchorTab menu-btn noScroll" data-target="construction-technologies" aria-controls="construction-technologies" aria-expanded="false" role="tab"><span class="al-nf-tab">Construction Technologies</span></a></li>
+                     <li><a href="#culinary-arts" class="anchorTab menu-btn noScroll" data-target="culinary-arts" aria-controls="culinary-arts" aria-expanded="false" role="tab"><span class="al-nf-tab">Culinary Arts</span></a></li>
+                     <li><a href="#digital-media" class="anchorTab menu-btn noScroll" data-target="digital-media" aria-controls="digital-media" aria-expanded="false" role="tab"><span class="al-nf-tab">Digital Media</span></a></li>
+                     <li><a href="#electrical-and-computer-engineering" class="anchorTab menu-btn noScroll" data-target="electrical-and-computer-engineering" aria-controls="electrical-and-computer-engineering" aria-expanded="false" role="tab"><span class="al-nf-tab">Electrical and Computer Engineering</span></a></li>
+                     <li><a href="#information-systems-and-technology" class="anchorTab menu-btn noScroll" data-target="information-systems-and-technology" aria-controls="information-systems-and-technology" aria-expanded="false" role="tab"><span class="al-nf-tab">Information Systems and Technology</span></a></li>
+                     <li><a href="#mechanical-and-civil-engineering" class="anchorTab menu-btn noScroll" data-target="mechanical-and-civil-engineering" aria-controls="mechanical-and-civil-engineering" aria-expanded="false" role="tab"><span class="al-nf-tab">Mechanical and Civil Engineering</span></a></li>
+                     <li><a href="#technology-management-and-mechatronics" class="anchorTab menu-btn noScroll" data-target="technology-management-and-mechatronics" aria-controls="technology-management-and-mechatronics" aria-expanded="false" role="tab"><span class="al-nf-tab">Technology Management and Mechatronics</span></a></li>
+                  </ul>
+               </nav>
+               <section class="funds-content tabs-content">
+                     <!-- SE ENGINEERING BUILDING -->
+                     <div class="content-panel tab-container open" id="se-engineering-building">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-se-engineering-building.jpg" data-cms-src="/give/images/funds/fund-se-engineering-building.jpg" alt="student working on car engine" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">1 fund</p>
+                              <h2>SE Engineering Building</h2>
+                              <a class="al-nf-learn" href="#"><span>About SE Engineering Building</span></a>
+                           </div>
+                        </div>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=e41e10c5-338f-4e90-b51a-a1820d30b8ce&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desid=1852&amp;desname=Scott%20M.%20Smith%20Engineering%20Building" target="_blank" rel="noopener"><span class="al-nf-name">SE Engineering Building</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- APPLIED ENGINEERING &AMP; TRANSPORTATION TECHNOLOGIES -->
+                     <div class="content-panel tab-container" id="applied-engineering-and-transportation-technolog">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-auto-tech-diploma.jpg" data-cms-src="/give/images/funds/fund-auto-tech-diploma.jpg" alt="student working on car engine" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">6 programs · 12 scholarships</p>
+                              <h2>Applied Engineering and Transportation Technologies</h2>
+                              <a class="al-nf-learn" href="#"><span>About Applied Engineering and Transportation Technologies</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>6</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=7160ead6-87a2-4fcc-af0f-b80595c779b3&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Collision%20Repair%20Technology&amp;desid=1351" target="_blank" rel="noopener"><span class="al-nf-name">Collision Repair Technology</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=d385d222-0b9b-4cea-84a7-aa4322f27499&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Automation%20and%20Electrical%20Technology&amp;desid=242" target="_blank" rel="noopener"><span class="al-nf-name">Automation & Electrical Technology</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=d385d222-0b9b-4cea-84a7-aa4322f27499&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Automotive%20Technology&amp;desid=242" target="_blank" rel="noopener"><span class="al-nf-name">Automotive Technology</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=d385d222-0b9b-4cea-84a7-aa4322f27499&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Diesel%20Mechanics%20Technology&amp;desid=242" target="_blank" rel="noopener"><span class="al-nf-name">Diesel Mechanics Technology</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=d385d222-0b9b-4cea-84a7-aa4322f27499&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Power%20Sports%20Technology&amp;desid=242" target="_blank" rel="noopener"><span class="al-nf-name">Power Sports Technology</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=d385d222-0b9b-4cea-84a7-aa4322f27499&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Transportation%20Technology&amp;desid=242" target="_blank" rel="noopener"><span class="al-nf-name">Transportation Technology</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>12</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=992adb40-b64d-45c3-8e72-b2f018b8e6e0&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Auto%20Expo%20Endowed%20Scholarship&amp;desid=1005" target="_blank" rel="noopener"><span class="al-nf-name">Auto Expo Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=992adb40-b64d-45c3-8e72-b2f018b8e6e0&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Carrol%20Reid%20Memorial%20Endowed%20Scholarship&amp;desid=1042" target="_blank" rel="noopener"><span class="al-nf-name">Carrol Reid Memorial Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=992adb40-b64d-45c3-8e72-b2f018b8e6e0&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Intermountain%20Endowed%20Engineering%20Scholarship&amp;desid=3081" target="_blank" rel="noopener"><span class="al-nf-name">Intermountain Endowed Engineering Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=992adb40-b64d-45c3-8e72-b2f018b8e6e0&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Miles%20and%20Mary%20Morris%20Automotive%20Endowed%20Scholarship&amp;desid=1075" target="_blank" rel="noopener"><span class="al-nf-name">Miles & Mary Morris Automotive Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=992adb40-b64d-45c3-8e72-b2f018b8e6e0&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Mike%20Crouch%20Memorial%20Endowed%20Scholarship&amp;desid=1072" target="_blank" rel="noopener"><span class="al-nf-name">Mike Crouch Memorial Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=992adb40-b64d-45c3-8e72-b2f018b8e6e0&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Richard%20&amp;%20Zepha%20Boggess%20Scholarship&amp;desid=708" target="_blank" rel="noopener"><span class="al-nf-name">Richard & Zepha Boggess Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=992adb40-b64d-45c3-8e72-b2f018b8e6e0&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Reliable%20Controls%20Next-Gen%20Innovator%20Scholarship&amp;desid=3039" target="_blank" rel="noopener"><span class="al-nf-name">Reliable Controls Next-Gen Innovator Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=992adb40-b64d-45c3-8e72-b2f018b8e6e0&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Rio%20Tinto%20Diesel%20Scholarship&amp;desid=3049" target="_blank" rel="noopener"><span class="al-nf-name">Rio Tinto Diesel Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=992adb40-b64d-45c3-8e72-b2f018b8e6e0&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Rio%20Tinto%20Technical%20Scholarship&amp;desid=3050" target="_blank" rel="noopener"><span class="al-nf-name">Rio Tinto Technical Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=992adb40-b64d-45c3-8e72-b2f018b8e6e0&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Saitama%20Auto%20Diesel%20Endowed%20Scholarship&amp;desid=1043" target="_blank" rel="noopener"><span class="al-nf-name">Saitama Auto Diesel Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=992adb40-b64d-45c3-8e72-b2f018b8e6e0&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Universal%20Industrial%20Sales,%20Inc%20Endowed%20Scholarship&amp;desid=1071" target="_blank" rel="noopener"><span class="al-nf-name">Universal Industrial Sales, Inc Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=992adb40-b64d-45c3-8e72-b2f018b8e6e0&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Victor%20L%20Davies%20Endowed%20Scholarship&amp;desid=1354" target="_blank" rel="noopener"><span class="al-nf-name">Victor L Davies Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- ARCHITECTURE &AMP; ENGINEERING DESIGN -->
+                     <div class="content-panel tab-container" id="architecture-and-engineering-design">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-architecture.jpg" data-cms-src="/give/images/funds/fund-architecture.jpg" alt="student smiling at camera with other group of students  looking at blueprints" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">3 funds</p>
+                              <h2>Architecture and Engineering Design</h2>
+                              <a class="al-nf-learn" href="#"><span>About Architecture and Engineering Design</span></a>
+                           </div>
+                        </div>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=a1dceac1-0322-412c-afbf-9ca325f1e617&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Architecture&amp;desid=940" target="_blank" rel="noopener"><span class="al-nf-name">Architecture</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=a1dceac1-0322-412c-afbf-9ca325f1e617&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Engineering%20Design%20Technology&amp;desid=940" target="_blank" rel="noopener"><span class="al-nf-name">Engineering Design Technology</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=a1dceac1-0322-412c-afbf-9ca325f1e617&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Surveying%20and%20Mapping&amp;desid=940" target="_blank" rel="noopener"><span class="al-nf-name">Surveying and Mapping</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- AVIATION SCIENCE -->
+                     <div class="content-panel tab-container" id="aviation-science">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-soar-banner.jpg" data-cms-src="/give/images/funds/fund-soar-banner.jpg" alt="student sitting in UVU plane and going through routine pre flight checks" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">4 programs · 7 scholarships</p>
+                              <h2>Aviation Science</h2>
+                              <a class="al-nf-learn" href="#"><span>About Aviation Science</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>4</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=dcadfbb8-35d6-4f4d-aaf4-5a2206f95232&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Professional%20Pilot&amp;desid=438" target="_blank" rel="noopener"><span class="al-nf-name">Professional Pilot</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=dcadfbb8-35d6-4f4d-aaf4-5a2206f95232&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Aerospace%20Technology%20Management&amp;desid=438" target="_blank" rel="noopener"><span class="al-nf-name">Aerospace Technology Management</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=dcadfbb8-35d6-4f4d-aaf4-5a2206f95232&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Aviation%20Management&amp;desid=438" target="_blank" rel="noopener"><span class="al-nf-name">Aviation Management</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=dcadfbb8-35d6-4f4d-aaf4-5a2206f95232&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Aviation%20Science&amp;desid=438" target="_blank" rel="noopener"><span class="al-nf-name">Aviation Science</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>7</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=bbdf5713-d89d-43ee-908f-dce16f0a7970&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Bernon%20and%20Irene%20Smith%20Aviation%20Endowed%20Scholarship&amp;desid=1473" target="_blank" rel="noopener"><span class="al-nf-name">Bernon & Irene Smith Aviation Endowed Scholarship Fund</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=bbdf5713-d89d-43ee-908f-dce16f0a7970&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Branden%20Parker%20Endowed%20Scholarship&amp;desid=1750" target="_blank" rel="noopener"><span class="al-nf-name">Branden Parker Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=bbdf5713-d89d-43ee-908f-dce16f0a7970&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Bryan%20E%20Clarke%20Endowed%20Scholarship&amp;desid=1752" target="_blank" rel="noopener"><span class="al-nf-name">Bryan E. Clarke Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=bbdf5713-d89d-43ee-908f-dce16f0a7970&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Erik%20Farias%20Commercial%20Pilots%20Memorial%20Scholarship&amp;desid=3067" target="_blank" rel="noopener"><span class="al-nf-name">Erik Farias Commercial Pilots Memorial Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=bbdf5713-d89d-43ee-908f-dce16f0a7970&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Gail%20S%20Halvorsen%20Aviation%20Endowed%20Scholarship&amp;desid=1496" target="_blank" rel="noopener"><span class="al-nf-name">Gail S. Halvorsen Aviation Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=bbdf5713-d89d-43ee-908f-dce16f0a7970&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Kay%20L%20Jacobs%20Memorial%20Endowed%20Scholarship%20for%20Aviation&amp;desid=1296" target="_blank" rel="noopener"><span class="al-nf-name">Kay L. Jacobs Memorial Endowed Scholarship for Aviation</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=bbdf5713-d89d-43ee-908f-dce16f0a7970&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Lowell%20E.%20and%20Carolyn%20J.%20Call%20Aviation%20Endowed%20Scholarship&amp;desid=1915" target="_blank" rel="noopener"><span class="al-nf-name">Lowell E. & Carolyn J. Call Aviation Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- COMPUTER SCIENCE -->
+                     <div class="content-panel tab-container" id="computer-science">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-computer-science.jpg" data-cms-src="/give/images/funds/fund-computer-science.jpg" alt="computer science student presenting code infront of class" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">5 programs · 1 scholarship</p>
+                              <h2>Computer Science</h2>
+                              <a class="al-nf-learn" href="#"><span>About Computer Science</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>5</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=f39b4851-057d-4d69-9b86-08e8b81e2201&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Computer%20Science&amp;desid=1317" target="_blank" rel="noopener"><span class="al-nf-name">Computer Science</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=f39b4851-057d-4d69-9b86-08e8b81e2201&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Computational%20Data%20Science&amp;desid=1317" target="_blank" rel="noopener"><span class="al-nf-name">Computational Data Science</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=f39b4851-057d-4d69-9b86-08e8b81e2201&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Computer%20Science%20Education&amp;desid=1317" target="_blank" rel="noopener"><span class="al-nf-name">Computer Science Education</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=f39b4851-057d-4d69-9b86-08e8b81e2201&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Software%20Development&amp;desid=1317" target="_blank" rel="noopener"><span class="al-nf-name">Software Development</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=f39b4851-057d-4d69-9b86-08e8b81e2201&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Software%20Engineering&amp;desid=1317" target="_blank" rel="noopener"><span class="al-nf-name">Software Engineering</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>1</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=555f9797-df7e-4cc7-9abb-5ff1484f1f38&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=%20Thomas%20Taylor%20Burton%20Memorial%20Endowed%20Scholarship&amp;desid=1962" target="_blank" rel="noopener"><span class="al-nf-name">Thomas Taylor Burton Memorial Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- CONSTRUCTION TECHNOLOGIES -->
+                     <div class="content-panel tab-container" id="construction-technologies">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-comencement-tech.jpg" data-cms-src="/give/images/funds/fund-comencement-tech.jpg" alt="construction student with uvu construction hard hat and graduation gown smiling with a thumbs up" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">3 programs · 1 other fund · 14 scholarships</p>
+                              <h2>Construction Technologies</h2>
+                              <a class="al-nf-learn" href="#"><span>About Construction Technologies</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>3</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=58f6d5af-fb89-4fd3-8c51-b5cd94127ef5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Cabinetry%20and%20Architectural%20Woodworking&amp;desid=416" target="_blank" rel="noopener"><span class="al-nf-name">Cabinetry & Architectural Woodworking</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=58f6d5af-fb89-4fd3-8c51-b5cd94127ef5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Construction%20Management&amp;desid=416" target="_blank" rel="noopener"><span class="al-nf-name">Construction Management</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=58f6d5af-fb89-4fd3-8c51-b5cd94127ef5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Facilities%20Management&amp;desid=416" target="_blank" rel="noopener"><span class="al-nf-name">Facilities Management</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Other Funds <span>1</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=897c9f47-e043-4349-bc99-d18cf9d13cc5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Competition%20Construction%20Student%20Fund&amp;desid=1093" target="_blank" rel="noopener"><span class="al-nf-name">TTI AGC Competition Construction Student Fund</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>14</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=897c9f47-e043-4349-bc99-d18cf9d13cc5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Big%20D%20Construction%20Scholarship&amp;desid=2966" target="_blank" rel="noopener"><span class="al-nf-name">Big D Construction Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=897c9f47-e043-4349-bc99-d18cf9d13cc5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Blue%20Stakes%20of%20Utah%20Scholarship&amp;desid=1441" target="_blank" rel="noopener"><span class="al-nf-name">Blue Stakes of Utah Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=897c9f47-e043-4349-bc99-d18cf9d13cc5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Geneva%20Recreation%20Association%20Construction%20Management%20Endowed%20Scholarship%20&amp;desid=1660" target="_blank" rel="noopener"><span class="al-nf-name">Geneva Recreation Association Construction Management Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=897c9f47-e043-4349-bc99-d18cf9d13cc5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Geneva%20Rock%20Products%20Inc.%20Scholarship&amp;desid=1942" target="_blank" rel="noopener"><span class="al-nf-name">Geneva Rock Products Inc. Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=897c9f47-e043-4349-bc99-d18cf9d13cc5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Granite%20Construction%20Scholarship&amp;desid=1856" target="_blank" rel="noopener"><span class="al-nf-name">Granite Construction Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=897c9f47-e043-4349-bc99-d18cf9d13cc5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Henry%20and%20Jean%20Davis%20Endowed%20Scholarship&amp;desid=1073" target="_blank" rel="noopener"><span class="al-nf-name">Henry & Jean Davis Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=897c9f47-e043-4349-bc99-d18cf9d13cc5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Horrocks%20Engineers%20Scholarship&amp;desid=1857" target="_blank" rel="noopener"><span class="al-nf-name">Horrocks Engineers Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=897c9f47-e043-4349-bc99-d18cf9d13cc5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Jack%20and%20Mary%20Lois%20Wheatley%20Endowed%20Scholarship&amp;desid=3073" target="_blank" rel="noopener"><span class="al-nf-name">Jack & Mary Lois Wheatley Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=897c9f47-e043-4349-bc99-d18cf9d13cc5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Ivory%20Futures%20Building%20Dreams%20Scholarship&amp;desid=1809" target="_blank" rel="noopener"><span class="al-nf-name">Ivory Futures Building Dreams Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=897c9f47-e043-4349-bc99-d18cf9d13cc5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Paul%20Blaine%20Clyde%20Endowed%20Scholarship&amp;desid=1253" target="_blank" rel="noopener"><span class="al-nf-name">Paul Blaine Clyde Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=897c9f47-e043-4349-bc99-d18cf9d13cc5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=R%20and%20O%20Construction%20Scholarship&amp;desid=2965" target="_blank" rel="noopener"><span class="al-nf-name">R&O Construction Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=897c9f47-e043-4349-bc99-d18cf9d13cc5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=The%20Beavers%20Heavy%20Construction%20Endowed%20Scholarship%20&amp;desid=1656" target="_blank" rel="noopener"><span class="al-nf-name">The Beavers Heavy Construction Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=897c9f47-e043-4349-bc99-d18cf9d13cc5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=The%20W%20Cornell%20and%20Edna%20T%20Clyde%20Memorial%20Scholarship&amp;desid=1786" target="_blank" rel="noopener"><span class="al-nf-name">The W. Cornell and Edna T. Clyde Memorial Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=897c9f47-e043-4349-bc99-d18cf9d13cc5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Utah%20Valley%20Home%20Builders%20Association%20Endowed%20Scholarship&amp;desid=1074" target="_blank" rel="noopener"><span class="al-nf-name">Utah Valley Home Builders Association Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- CULINARY ARTS -->
+                     <div class="content-panel tab-container" id="culinary-arts">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-culinary-arts.jpg" data-cms-src="/give/images/funds/fund-culinary-arts.jpg" alt="culinary art student preparing plate" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">2 programs · 3 scholarships</p>
+                              <h2>Culinary Arts</h2>
+                              <a class="al-nf-learn" href="#"><span>About Culinary Arts</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>2</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=8fc055f5-c3ed-499e-ae7b-ee433ee0c082&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Culinary%20Arts&amp;desid=665" target="_blank" rel="noopener"><span class="al-nf-name">Culinary Arts</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=8fc055f5-c3ed-499e-ae7b-ee433ee0c082&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=%20Hospitality%20Management&amp;desid=665" target="_blank" rel="noopener"><span class="al-nf-name">Hospitality Management</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>3</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=c69ce7b5-5f55-4b94-b845-c14d243d46ff&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Culinary%20Arts%20Institute%20Endowed%20Scholarship&amp;desid=1445" target="_blank" rel="noopener"><span class="al-nf-name">Culinary Arts Institute Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=c69ce7b5-5f55-4b94-b845-c14d243d46ff&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Culinary%20Crafts%20Endowed%20Scholarship%20for%20Culinary%20Arts&amp;desid=1733" target="_blank" rel="noopener"><span class="al-nf-name">Culinary Crafts Endowed Scholarship for Culinary Arts</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=c69ce7b5-5f55-4b94-b845-c14d243d46ff&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Elaine%20D.%20Jones%20Culinary%20Arts%20Institute%20Endowed%20Scholarship&amp;desid=3014" target="_blank" rel="noopener"><span class="al-nf-name">Elaine D. Jones Culinary Arts Institute Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- DIGITAL MEDIA -->
+                     <div class="content-panel tab-container" id="digital-media">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-digital-media.jpg" data-cms-src="/give/images/funds/fund-digital-media.jpg" alt="student filming event" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">4 programs · 3 scholarships</p>
+                              <h2>Digital Media</h2>
+                              <a class="al-nf-learn" href="#"><span>About Digital Media</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>4</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=ab469e8f-fd10-4e8a-8c8f-960ebc8f652a&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=%20Animation%20and%20Game%20Development&amp;desid=847" target="_blank" rel="noopener"><span class="al-nf-name">Animation & Game Development</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=ab469e8f-fd10-4e8a-8c8f-960ebc8f652a&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=%20Digital%20Audio%20Production&amp;desid=847" target="_blank" rel="noopener"><span class="al-nf-name">Digital Audio Production</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=ab469e8f-fd10-4e8a-8c8f-960ebc8f652a&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=%20Digital%20Cinema%20Production&amp;desid=847" target="_blank" rel="noopener"><span class="al-nf-name">Digital Cinema Production</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=ab469e8f-fd10-4e8a-8c8f-960ebc8f652a&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=%20Web%20Design%20and%20Development&amp;desid=847" target="_blank" rel="noopener"><span class="al-nf-name">Web Design & Development</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>3</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=11b854d0-563f-4f8a-a0a2-473a2b28fe8b&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=The%20Animation%20and%20Game%20Design%20Endowed%20Scholarship&amp;desid=2974" target="_blank" rel="noopener"><span class="al-nf-name">The Animation and Game Design Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=11b854d0-563f-4f8a-a0a2-473a2b28fe8b&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Deseret%20Digital%20Media%20Scholarship&amp;desid=1363" target="_blank" rel="noopener"><span class="al-nf-name">Deseret Digital Media Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=11b854d0-563f-4f8a-a0a2-473a2b28fe8b&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=FEMME%20Project%20Scholarship&amp;desid=3142" target="_blank" rel="noopener"><span class="al-nf-name">FEMME Project Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- ELECTRICAL &AMP; COMPUTER ENGINEERING -->
+                     <div class="content-panel tab-container" id="electrical-and-computer-engineering">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-electric-computer.jpg" data-cms-src="/give/images/funds/fund-electric-computer.jpg" alt="sudent working on electrical component" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">3 programs · 2 scholarships</p>
+                              <h2>Electrical and Computer Engineering</h2>
+                              <a class="al-nf-learn" href="#"><span>About Electrical and Computer Engineering</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>3</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=af6b5f16-f763-4f19-8605-1895f9250a64&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Computer%20Engineering&amp;desid=3232" target="_blank" rel="noopener"><span class="al-nf-name">Computer Engineering</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=af6b5f16-f763-4f19-8605-1895f9250a64&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Electrical%20Engineering&amp;desid=3232" target="_blank" rel="noopener"><span class="al-nf-name">Electrical Engineering</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=af6b5f16-f763-4f19-8605-1895f9250a64&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Pre-Engineering&amp;desid=3232" target="_blank" rel="noopener"><span class="al-nf-name">Pre-Engineering</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>2</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=5b63a159-7b5e-419a-9ecd-3b74e872709e&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Intermountain%20Engineering%20Endowed%20Scholarship&amp;desid=3081" target="_blank" rel="noopener"><span class="al-nf-name">Intermountain Endowed Engineering Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=5b63a159-7b5e-419a-9ecd-3b74e872709e&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Rocky%20Mountain%20Power%20Scholarship&amp;desid=1905" target="_blank" rel="noopener"><span class="al-nf-name">Rocky Mountain Power Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- INFORMATION SYSTEMS &AMP; TECHNOLOGY -->
+                     <div class="content-panel tab-container" id="information-systems-and-technology">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-information-systems-technology.jpg" data-cms-src="/give/images/funds/fund-information-systems-technology.jpg" alt="glasses sitting in front of a laptop screen" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">5 programs · 3 scholarships</p>
+                              <h2>Information Systems and Technology</h2>
+                              <a class="al-nf-learn" href="#"><span>About Information Systems and Technology</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>5</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=5106062b-810a-4ca5-bd9a-718617964a22&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Cybersecurity&amp;desid=1683" target="_blank" rel="noopener"><span class="al-nf-name">Cybersecurity</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=5106062b-810a-4ca5-bd9a-718617964a22&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Information%20Systems&amp;desid=1118" target="_blank" rel="noopener"><span class="al-nf-name">Information Systems</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=5a2f1f16-cb99-4d77-919a-3e563246ebf9&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Business%20and%20Marketing%20Education&amp;desid=1118" target="_blank" rel="noopener"><span class="al-nf-name">Business & Marketing Education</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=5a2f1f16-cb99-4d77-919a-3e563246ebf9&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Information%20Management&amp;desid=1118" target="_blank" rel="noopener"><span class="al-nf-name">Information Management</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=5a2f1f16-cb99-4d77-919a-3e563246ebf9&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Information%20Technology&amp;desid=1118" target="_blank" rel="noopener"><span class="al-nf-name">Information Technology</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>3</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=5106062b-810a-4ca5-bd9a-718617964a22&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Information%20Systems%20and%20Technology%20Scholarship&amp;desid=1455" target="_blank" rel="noopener"><span class="al-nf-name">Information Systems and Technology Annual Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=5106062b-810a-4ca5-bd9a-718617964a22&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Keith%20R.%20Mulbery%20Endowed%20Scholarship%20for%20Information%20Systems&amp;desid=1456" target="_blank" rel="noopener"><span class="al-nf-name">Keith R. Mulbery Endowed Scholarship for Information Systems</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=5106062b-810a-4ca5-bd9a-718617964a22&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=NuSkin%20Force%20for%20Good%20Endowed%20Scholarship&amp;desid=1536" target="_blank" rel="noopener"><span class="al-nf-name">NuSkin Force for Good Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- MECHANICAL &AMP; CIVIL ENGINEERING -->
+                     <div class="content-panel tab-container" id="mechanical-and-civil-engineering">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-mech-civ-engineering.jpg" data-cms-src="/give/images/funds/fund-mech-civ-engineering.jpg" alt="student working with mechanical arm" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">3 programs · 4 scholarships</p>
+                              <h2>Mechanical and Civil Engineering</h2>
+                              <a class="al-nf-learn" href="#"><span>About Mechanical and Civil Engineering</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>3</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=585f0e19-13f1-49c8-8990-dd6e64e4e683&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Civil%20Engineering&amp;desid=3234" target="_blank" rel="noopener"><span class="al-nf-name">Civil Engineering</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=585f0e19-13f1-49c8-8990-dd6e64e4e683&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Mechanical%20Engineering&amp;desid=3234" target="_blank" rel="noopener"><span class="al-nf-name">Mechanical Engineering</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=585f0e19-13f1-49c8-8990-dd6e64e4e683&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Pre-Engineering&amp;desid=3234" target="_blank" rel="noopener"><span class="al-nf-name">Pre-Engineering</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>4</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=5842a3f6-8172-4c4d-9f13-d6c2ba097f1c&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Geneva%20Rock%20Products%20Inc.%20Scholarship&amp;desid=1942" target="_blank" rel="noopener"><span class="al-nf-name">Geneva Rock Products Inc. Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=5842a3f6-8172-4c4d-9f13-d6c2ba097f1c&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Horrocks%20Engineers%20Scholarship&amp;desid=1857" target="_blank" rel="noopener"><span class="al-nf-name">Horrocks Engineers Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=5842a3f6-8172-4c4d-9f13-d6c2ba097f1c&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Intermountain%20Engineering%20Endowed%20Scholarship&amp;desid=3081" target="_blank" rel="noopener"><span class="al-nf-name">Intermountain Endowed Engineering Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=5842a3f6-8172-4c4d-9f13-d6c2ba097f1c&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Jack%20and%20Mary%20Lois%20Wheatley%20Endowed%20Scholarship&amp;desid=3073" target="_blank" rel="noopener"><span class="al-nf-name">Jack & Mary Lois Wheatley Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- TECHNOLOGY MANAGEMENT &AMP; MECHATRONICS -->
+                     <div class="content-panel tab-container" id="technology-management-and-mechatronics">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-tech-management.jpg" data-cms-src="/give/images/funds/fund-tech-management.jpg" alt="students sitting at table and discussing strategic plan" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">3 programs · 2 scholarships</p>
+                              <h2>Technology Management and Mechatronics</h2>
+                              <a class="al-nf-learn" href="#"><span>About Technology Management and Mechatronics</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>3</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=eef1ef11-295f-4e8a-b2ce-ebdee39d2758&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Technology%20Management&amp;desid=806" target="_blank" rel="noopener"><span class="al-nf-name">Technology Management</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=769ca0e3-efc7-4157-ad21-dcff8d303b6c&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Mechatronics&amp;desid=806" target="_blank" rel="noopener"><span class="al-nf-name">Mechatronics</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=769ca0e3-efc7-4157-ad21-dcff8d303b6c&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Advanced%20Manufacturing&amp;desid=806" target="_blank" rel="noopener"><span class="al-nf-name">Advanced Manufacturing</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>2</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=f93da045-4764-4d6a-8c25-598934333ed5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=David%20W%20Johnson%20Family%20Endowed%20Scholarship&amp;desid=1276" target="_blank" rel="noopener"><span class="al-nf-name">David W Johnson Family Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=tcs&amp;formId=f93da045-4764-4d6a-8c25-598934333ed5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Reliable%20Controls%20Next-Gen%20Innovator%20Scholarship&amp;desid=3039" target="_blank" rel="noopener"><span class="al-nf-name">Reliable Controls Next-Gen Innovator Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- SEARCH -->
+                     <div class="tab-container" id="search">
+                        <h2>Search All SCET Funds</h2>
+                        <!-- Production: Cesar's Blackbaud designation search embed goes here (one per college; the CHPS embed id is dc89e2b3-…).
+                             Mockup: the same search as the Give page, filtered to this area on Find a Fund. -->
+                        <form class="al-search al-search--left" action="../find-a-fund/index.html" method="get" role="search">
+                           <label for="area-q">Search SCET funds</label>
+                           <input type="hidden" name="area" value="Smith+College+of+Engineering+and+Technology">
+                           <input id="area-q" name="q" type="search" placeholder="Fund, program, or scholarship name">
+                           <button type="submit" class="al-btn al-btn--primary">Search</button>
+                        </form>
+                     </div>
+               </section>
+            </section>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 3 · template: one-col (header region + region 1), as in Cesar's template -->
+<section data-uvu-template="one-col" data-uvu-section="3" class="al-section al-section--warm al-nf-info">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region padding-bottom-0 container-wide" data-uvu-region="header">
+            <h2 class="divider-header"><span>Questions? Contact Us</span></h2>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-xs-12 col-target region padding-top-0" data-uvu-region="1">
+            <ul class="al-contact-strip">
+                  <li class="al-contact-card"><span class="al-contact-badge" aria-hidden="true">SH</span><div>
+                     <p class="al-contact-name">Stefan Harlan</p>
+                     <p class="al-contact-role">Assistant Dean, Advancement, SCET</p>
+                     <p class="al-contact-links"><a href="tel:+18018638568">801-863-8568</a> · <a href="https://www.uvu.edu/directory/message/?id=dCtYV1NZQVlIVFZWZUlodUhUaWZYQT09">Message Stefan</a></p>
+                  </div></li>
+               </ul>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- SECTION 4 · template: one-col · GIVING FOOTER: section nav + contact + mail-a-check. Identical on every Give page
+     (the current page gets aria-current). Replaces the "Ways to Give: Give Online / Mail a Check" block the live
+     pages repeat at the bottom of Annual Giving, Gifts of Securities, Memorial Gifts, and Ways to Give. -->
+<section data-uvu-template="one-col" data-uvu-section="4" class="al-section al-sitenav">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+            <nav class="al-sitenav-nav" aria-label="Give to UVU">
+               <div class="al-sitenav-brand">
+                  <p class="al-sitenav-title"><a href="../give-home/index.html" data-cms-href="/give/index.html">Give to UVU</a></p>
+                  <ul class="al-sitenav-contact">
+                     <li><img src="../_kit/icons/white/envelope-1.svg" data-cms-src="/alumni/lib/icons/white/envelope-1.svg" alt="" width="48" height="48"><a href="mailto:giving@uvu.edu">giving@uvu.edu</a></li>
+                     <li><img src="../_kit/icons/white/cell.svg" data-cms-src="/alumni/lib/icons/white/cell.svg" alt="" width="48" height="48"><a href="tel:+18018638568">801.863.8568</a></li>
+                  </ul>
+               </div>
+               <div class="al-sitenav-groups">
+                  <div class="al-sitenav-group"><h2>Where to Give</h2><ul><li><a href="../find-a-fund/index.html" data-cms-href="/give/find-a-fund.html">Find a Fund</a></li><li><a href="../give-home/index.html#give-by-area">Colleges and Schools</a></li><li><a href="../programs-centers/index.html" data-cms-href="/give/programs-centers/index.html">Programs and Centers</a></li><li><a href="../student-affairs/index.html" data-cms-href="/give/student-affairs/index.html">Student Support</a></li><li><a href="../athletics/index.html" data-cms-href="/give/athletics/wolverine-club/index.html">Athletics</a></li><li><a href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&formId=3ebce5df-6a4a-4f44-89b7-ef3d89fcad79&envid=p-15SOd3UsHUO8MRNYFSnBvg&zone=usa" target="_blank" rel="noopener">General Scholarships<span class="sr-only-al"> (opens in a new tab)</span></a></li></ul></div>
+                  <div class="al-sitenav-group"><h2>Ways to Give</h2><ul><li><a href="../ways-to-give/index.html" data-cms-href="/give/ways-to-give/index.html">All Ways to Give</a></li><li><a href="../employee-giving/index.html" data-cms-href="/give/ways-to-give/employeegiving.html">Employee Giving</a></li><li><a href="../memorial-gifts/index.html" data-cms-href="/give/ways-to-give/memorial-gifts.html">Memorial Gifts</a></li><li><a href="../ways-to-give/index.html#give-stock">Gifts of Stock</a></li><li><a href="https://uvgift.org/" target="_blank" rel="noopener">Gift Planning<span class="sr-only-al"> (opens in a new tab)</span></a></li><li><a href="https://www.uvu.edu/give/ways-to-give/matching-gifts.html">Matching Gifts</a></li></ul></div>
+                  <div class="al-sitenav-group"><h2>More</h2><ul><li><a href="../give-home/index.html#larger-gift">Planning a Larger Gift</a></li><li><a href="https://www.uvu.edu/alumni/make-an-impact/uvu-license-plate.html">UVU License Plate</a></li><li><a href="https://www.uvu.edu/advancement/events/archive/scholarship-ball.html">Event Sponsorship</a></li><li><a href="https://www.uvu.edu/give/ways-to-give/in-kind-donation.html">In-Kind Donation</a></li><li><a href="https://www.uvu.edu/give/ways-to-give/service.html">Service</a></li></ul></div>
+               </div>
+               <p class="al-sitenav-fine"><strong>Mail a check</strong> payable to UVU Foundation, 800 W. University Parkway, MS 111, Orem, UT 84058. All donations are processed through the Utah Valley University Foundation, a 501(c)(3) <span>nonprofit</span> organization. <a href="#"><span>Annual Impact Report</span></a> · <a href="#"><span>IRS Form 990</span></a></p>
+            </nav>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- ===== CMS CONTENT END ===== -->
+</main>
+<!-- ===== GLOBAL FOOTER (CMS template; context only) ===== -->
+<footer id="globalFooter">
+	<div class="footerDept">
+		<ul><li>Institutional Advancement</li><li>Utah Valley University</li></ul>
+	</div>
+	<div class="footerUniversity" lang="en">
+		<div class="footerUniversity-top">
+<div class="container-fluid">
+<div class="row equal-height uppercase">
+<div class="col-sm-3">
+<div>
+<h2>Student</h2>
+<ul>
+<li><a href="https://www.uvu.edu/admissions/">Admissions</a></li>
+<li><a href="https://www.uvu.edu/campus-life/index.html">Campus Life</a></li>
+<li><a href="https://www.uvu.edu/students/">Current Student</a></li>
+<li><a href="https://www.uvu.edu/accreditation-academic-assessment/index.html">Accreditation</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Employees</h2>
+<ul>
+<li><a href="https://www.uvu.edu/peopleandculture/jobs/index.html">Career Opportunities</a></li>
+<li><a href="https://www.uvu.edu/facstaff/">Employee Resources</a></li>
+<li><a href="https://www.uvu.edu/directory/">Directory</a></li>
+<li><a href="https://www.uvu.edu/peopleandculture/">People &amp; Culture</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Community</h2>
+<ul>
+<li><a href="https://gouvu.com/" target="_blank" rel="noopener">Athletics</a></li>
+<li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li>
+<li><a href="https://www.uvu.edu/president/">Office of the President</a></li>
+<li><a href="https://www.uvu.edu/visitors/history.html">About UVU / History</a></li>
+<li><a href="https://alumni.uvu.edu/" target="_blank" rel="noopener">Alumni</a></li>
+<li><a href="https://www.uvu.edu/engagement-and-effectiveness/index.html">Engagement &amp; Effectiveness</a></li>
+<li><a href="https://www.uvu.edu/give/index.html" target="_blank" rel="noopener">Give to UVU</a></li>
+<li><a href="https://www.uvu.edu/visitors/contact.html">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Utility</h2>
+<ul>
+<li><a href="https://www.uvu.edu/maps/">Maps / Parking</a></li>
+<li><a href="https://www.uvu.edu/servicedesk/">Service Desk</a></li>
+<li><a href="https://www.uvu.edu/emergencymanagement/index.html">Emergency</a></li>
+<li><a href="https://www.uvu.edu/police/">Police</a></li>
+<li><a href="https://www.uvu.edu/servicedesk/">Get Help</a></li>
+<li><a href="https://www.uvu.edu/search/">Search</a></li>
+<li><a href="https://www.uvu.edu/accessibility-services/index.html">Accessibility</a></li>
+<li><a href="https://www.uvu.edu/accessibility-services/access-barrier.php">Report Access Barrier</a></li>
+<li><a href="https://www.uvu.edu/equityandtitleix/index.html">Title IX / Equal Opportunity</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footerUniversity-bottom">
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-12">
+<ul class="footerUniversity-quicklinks">
+<li><a href="https://www.uvu.edu/news/"><span class="far fa-newspaper" aria-hidden="true">&nbsp;</span>News</a></li>
+<li><a href="https://www.uvu.edu/events/"><span class="far fa-calendar-day" aria-hidden="true">&nbsp;</span>Events</a></li>
+</ul>
+<div class="footerUniversity-title uppercase">Utah Valley University</div>
+<ul class="footerUniversity-contact uppercase">
+<li><a title="See Utah Valley University on Google Maps" href="https://goo.gl/maps/9SQ5CSuqAoG1gw6J8">800&nbsp;West&nbsp;University&nbsp;Parkway,&nbsp;Orem,&nbsp;UT&nbsp;84058</a></li>
+<li>(801)&nbsp;863-8888</li>
+<li><a href="https://www.uvu.edu/legal/copyright/">© Utah Valley University</a></li>
+</ul>
+<ul class="footerUniversity-legalinfo">
+<li><a href="https://www.uvu.edu/legal/index.html">Terms of Use</a></li>
+<li><a href="https://www.uvu.edu/legal/privacy.html">Privacy Statement</a></li>
+<li><a href="https://www.uvu.edu/legal/copyright/copyright-infringement.html">Copyright Complaints</a></li>
+<li><a href="https://www.uvu.edu/legal/non-discrimination.html">Non-Discrimination and Accessibility Statement</a></li>
+</ul>
+<ul class="university-social"><li><a title="Opens UVU's Linkedin profile in a new tab" href="https://www.linkedin.com/school/utah-valley-university/" target="_blank" rel="external noopener"> <span class="fab fa-linkedin" aria-hidden="true"></span> <span class="sr-only">Linkedin</span> </a></li>
+<li><a title="Opens UVU's Instagram profile in a new tab" href="https://www.instagram.com/utah.valley.university/" target="_blank" rel="external noopener"> <span class="fab fa-instagram" aria-hidden="true"></span> <span class="sr-only">Instagram</span> </a></li>
+<li><a title="Opens UVU's Facebook profile in a new tab" href="https://www.facebook.com/UtahValleyUniversity/" target="_blank" rel="external noopener"> <span class="fab fa-facebook-square" aria-hidden="true"></span> <span class="sr-only">Facebook</span> </a></li>
+<li><a title="Opens UVU's YouTube channel in a new tab" href="https://www.youtube.com/user/UtahValleyUniversity" target="_blank" rel="external noopener"> <span class="fab fa-youtube-square" aria-hidden="true"></span> <span class="sr-only">YouTube</span> </a></li>
+<li><a title="Opens the UVU Athletics site in a new tab" href="https://gouvu.com/" target="_blank" rel="external noopener"><img src="../_kit/img/wolverine-logo.svg" alt="UVU Athletics logo" aria-hidden="true"><span class="sr-only">Athletics</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+	</div>
+</footer>
+</body>
+</html>

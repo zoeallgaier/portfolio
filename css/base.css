@@ -259,13 +259,12 @@ nav a:active { transform: scale(0.94); transition-duration: 0.08s; }
     scrollbar-width: none;
   }
 
-  /* Masthead: the monogram alone, ruled off from the contents below. It never
+  /* Masthead: the monogram alone, set apart from the contents below. It never
      takes the capsule or dims — it's the title, not a row. (The doubled
      a.nav-logo[href] out-ranks the aria-current/hover item rules.) */
   nav a.nav-logo[href] {
     padding: 0.25rem 0.75rem 1.5rem;
     margin-bottom: 1.25rem;
-    border-bottom: 1px solid var(--rule);
     border-radius: 0;
     color: var(--text);
     background: none;
@@ -328,19 +327,9 @@ nav a:active { transform: scale(0.94); transition-duration: 0.08s; }
     opacity: 0.75;
   }
 
-  /* Contact sits at the foot of the panel, ruled off like a colophon. */
-  .nav-links > .nav-contact {
-    margin-top: auto;
-    position: relative;
-  }
-  .nav-links > .nav-contact::before {
-    content: '';
-    position: absolute;
-    left: 0.75rem; right: 0.75rem;
-    top: -1rem;
-    border-top: 1px solid var(--rule);
-  }
-  /* Room for that rule even when a short window leaves no slack. */
+  /* Contact sits at the foot of the panel, like a colophon. */
+  .nav-links > .nav-contact { margin-top: auto; }
+  /* Keep it apart even when a short window leaves no slack. */
   .nav-links > a:has(+ .nav-contact) { margin-bottom: 2rem; }
 
   /* ── Portfolio: the sidebar is a drawer ──
@@ -576,7 +565,10 @@ footer {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  /* Padding cancelled by margin: the icon stays put, the tap target grows
+     to ~44px (it was 15px on phones). */
+  padding: 0.45em;
+  margin: -0.45em;
   background: none;
   border: none;
   cursor: pointer;

@@ -111,6 +111,22 @@
     };
   }
 
+  /* ── Page scripts ──
+     The shared enhancers are on every page and re-run on page:load. A page
+     can also bring one of its own (about.js); if this document hasn't run it
+     yet, load it now. It wires itself to the <main> on screen when it lands,
+     then listens for page:load like the rest. */
+  function syncScripts(doc, base) {
+    const have = new Set([...document.scripts].map(s => s.src).filter(Boolean));
+    doc.querySelectorAll('script[src]').forEach(s => {
+      const src = new URL(s.getAttribute('src'), base).href;
+      if (have.has(src)) return;
+      const el = document.createElement('script');
+      el.src = src;
+      document.body.append(el);
+    });
+  }
+
   /* ── The blur/fade ── */
   let playing = [];
   function fade(dir) {
@@ -190,6 +206,7 @@
     setScroll(url, opts.y);
 
     document.dispatchEvent(new CustomEvent('page:load', { detail: { main: next, url } }));
+    syncScripts(doc, url.href);
     next.focus({ preventScroll: true });
     live.textContent = doc.title;
     fade('in');

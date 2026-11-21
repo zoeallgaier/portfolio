@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<!-- =====================================================================
+     UVU GIVING · IA WEB SYSTEM v1.3 · CMS MOCKUP · Support Woodbury School of Business
+     Live URL: https://www.uvu.edu/give/colleges-schools/woodbury-school-business/index.html
+     Styles: UVU production CSS snapshot + ../_kit/css/12-alumni-system.css
+     See ../README.md and ../_kit/styleguide.html
+     ===================================================================== -->
+<html lang="en" dir="ltr" style="--headroom-height: 123px;">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+<meta name="color-scheme" content="only light">
+<meta name="description" content="Give to the UVU Woodbury School of Business: scholarships and programs that support business students.">
+<title>Support Woodbury School of Business | Utah Valley University</title>
+
+<!-- ===== UVU production CSS (snapshot) ===== -->
+<link rel="stylesheet" href="../_kit/css/01-bootstrap.min.css">
+<link rel="stylesheet" href="../_kit/css/02-global.css">
+<link rel="stylesheet" href="../_kit/css/03-component.css">
+<link rel="stylesheet" href="../_kit/css/04-helpers-legacy.css">
+<link rel="stylesheet" href="../_kit/css/05-elements.css">
+<link rel="stylesheet" href="../_kit/css/06-helpers.css">
+<link rel="stylesheet" href="../_kit/css/07-wrapper.css">
+<link rel="stylesheet" href="../_kit/css/08-fonts.css">
+<link rel="stylesheet" href="../_kit/css/09-homepage-wrapper.css">
+<link rel="stylesheet" href="../_kit/css/10-homepage-dept.css">
+<link rel="stylesheet" href="../_kit/css/11-fontawesome-pro.css">
+
+<!-- ===== IA Web System (shared with Alumni; the only system stylesheet a page needs) ===== -->
+<!-- Cesar's fund-page stylesheet (production: /give/lib/css/new-format-26.css). Loads before the system file so the hero and type stay on system. -->
+<link rel="stylesheet" href="../_kit/css/13-give-new-format-26.css">
+<link rel="stylesheet" href="../_kit/css/12-alumni-system.css">
+<!-- ===== Mockup-only tools. Not for production. ===== -->
+<script src="../_kit/js/funds-tabs.js" defer></script>
+</head>
+<body id="woodbury-school-business" class="UVU_Public_Site utah-valley-university woodbury-school-business marketing homepage audience DeptNav DeptFooter">
+
+<!-- ===== GLOBAL HEADER (CMS template; context only) ===== -->
+<header id="globalHeader" class="headroom" role="banner" aria-label="Primary Site banner" lang="en" data-import="false">
+					<div id="mquery"></div>
+					<a class="skiptocontent sr-only" href="#content-wrap">Skip to main content</a>
+					<noscript id="noJS">You have JavaScript Disabled! UVU's websites will not work properly without javascript. Please enable JavaScript to continue using UVU's websites as intended.</noscript>
+					<div class="globalHeaderMain">
+						<div class="slideNavToggle classy ready" role="button" aria-label="Open university and departmental navigation" aria-controls="slideNav" tabindex="0" data-classy-action="on" data-classy-declick="body" data-import="false" data-classy-group="all">
+							<img src="../_kit/img/hmbgr-menu.svg" alt="Menu and search icon">
+						</div>
+						<a class="globalTitle" href="https://www.uvu.edu/" title="Utah Valley University Homepage" hreflang="en">
+							<img src="../_kit/img/uvu-mono.svg" alt="Utah Valley University logo">
+						</a>
+						<a class="deptTitle" href="https://www.uvu.edu/" lang="en" hreflang="en" title="Site homepage">
+							Utah Valley University
+						</a>
+						<div class="actionBar">
+							<ul class="global-quicklinks">
+	<li><a href="https://www.uvu.edu/admissions/#degree-type">Apply to UVU</a></li>
+	<li><a href="https://my.uvu.edu/"><svg id="Group_3615" data-name="Group 3615" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.845 24.485">
+  <path id="Path_3937" data-name="Path 3937" d="M388.908,537.07H358.463a.806.806,0,0,1,0-1.611h30.445a.806.806,0,0,1,0,1.611m-29.51-3.757,4.208-6.721a.809.809,0,0,1,.686-.38h5.359l3.193,5.534a1.1,1.1,0,0,0,1.9,0l3.191-5.532H383.1a.81.81,0,0,1,.685.379l4.218,6.724a.81.81,0,0,1-.685,1.24l-27.237-.007a.81.81,0,0,1-.685-1.24m5.4-17.195a.654.654,0,0,1,.924-.875l7.693,5.04a.74.74,0,0,0,.81,0l7.634-5a.655.655,0,0,1,.925.876L374.441,530.6a.74.74,0,0,1-1.281,0Zm25.549,19.23-6-9.542a.978.978,0,0,0-.828-.458l-5.088,0,5.882-10.2a1.1,1.1,0,0,0-1.534-1.476l-8.4,5.3a1.1,1.1,0,0,1-1.17,0l-8.42-5.322a1.1,1.1,0,0,0-1.534,1.476l5.9,10.223-5.315,0a.978.978,0,0,0-.829.46l-5.969,9.5a1.71,1.71,0,0,0,1.427,2.65H388.9a1.71,1.71,0,0,0,1.447-2.619" transform="translate(-356.761 -513.482)" fill="currentColor"></path>
+</svg>
+myUVU</a></li>
+</ul>
+							<div id="mainSearch">
+								<a class="lightbox" href="#" data-lity="true" title="Open search box" data-import="false" data-lity-target="#globalSearch-container"><span class="fas fa-search" aria-hidden="true"></span></a>
+								<div id="globalSearch-container" class="lity-hide">
+									<form id="globalSearch" role="search" aria-label="Search UVU" method="get" action="https://www.uvu.edu/search">
+										<div id="globalSearchArea">
+											<label for="globalSearchInput" class="sr-only">Enter search terms</label>
+											<div class="search-group">
+												<label aria-hidden="true">I'm looking for:</label>
+												<input type="text" id="globalSearchInput" class="quicksearch" name="query" value="" autocomplete="off" data-quicksearch-out="#globalSearchSuggest" data-import="false">
+											</div>
+											<div id="globalSearchSuggest" aria-hidden="true"></div>
+											<input type="submit" title="Search UVU" id="globalSearchSubmit" value="Go">
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<nav id="deptNav" role="navigation" aria-label="Department Navigation">
+						<div class="deptNavWrap" lang="en">
+								<ul><li><a href="https://www.uvu.edu/admissions/">Admissions</a></li><li><a href="https://www.uvu.edu/campus-life/">Campus Life</a></li><li><a href="https://www.uvu.edu/academics/">Academics</a></li><li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li><li><a href="https://www.uvu.edu/news/">Content Hub</a></li><li><a href="https://www.uvu.edu/alumni/">Alumni</a></li><li><a href="https://www.uvu.edu/give/">Give</a></li><li><a href="https://www.uvu.edu/about/">About</a></li></ul>
+						</div>
+					</nav>
+				</header>
+				<section id="slideNav" aria-expanded="false" aria-label="University Navigation" tabindex="-1" lang="en" data-classy-group="all" class="ready">
+					<div class="menu-body">
+						<header>
+							<img src="../_kit/img/uvu-mono.svg" alt="Utah Valley University logo">
+							<p class="h1">Utah Valley University</p>
+							<span class="far fa-times-circle tabClose classy ready" role="button" title="Close Menu" aria-controls="slideNav" aria-label="Close University Navigation" data-classy-action="off" tabindex="-1" aria-hidden="true" data-import="false" data-classy-group="all">&nbsp;</span><span class="sr-only">Close Menu</span>
+						</header>
+						<form id="slideSearch" role="search" aria-label="UVU Search" action="https://www.uvu.edu/search/">
+							<label for="slideSearchInput" class="sr-only">Enter search terms</label><input type="text" id="slideSearchInput" class="quicksearch" name="query" placeholder="I'm looking for..." autocomplete="off" data-quicksearch-out="#slideSearchSuggest" data-import="false">
+							<input type="submit" value="" id="slideSearchSubmit" class="quicksearch" aria-label="Submit Search" title="Submit Search" data-import="false">
+							<div id="slideSearchSuggest" aria-hidden="true"></div>
+						</form>
+						<ul class="global-quicklinks">
+	<li><a href="https://www.uvu.edu/admissions/#degree-type">Apply to UVU</a></li>
+	<li><a href="https://my.uvu.edu/"><svg id="Group_3615" data-name="Group 3615" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.845 24.485">
+  <path id="Path_3937" data-name="Path 3937" d="M388.908,537.07H358.463a.806.806,0,0,1,0-1.611h30.445a.806.806,0,0,1,0,1.611m-29.51-3.757,4.208-6.721a.809.809,0,0,1,.686-.38h5.359l3.193,5.534a1.1,1.1,0,0,0,1.9,0l3.191-5.532H383.1a.81.81,0,0,1,.685.379l4.218,6.724a.81.81,0,0,1-.685,1.24l-27.237-.007a.81.81,0,0,1-.685-1.24m5.4-17.195a.654.654,0,0,1,.924-.875l7.693,5.04a.74.74,0,0,0,.81,0l7.634-5a.655.655,0,0,1,.925.876L374.441,530.6a.74.74,0,0,1-1.281,0Zm25.549,19.23-6-9.542a.978.978,0,0,0-.828-.458l-5.088,0,5.882-10.2a1.1,1.1,0,0,0-1.534-1.476l-8.4,5.3a1.1,1.1,0,0,1-1.17,0l-8.42-5.322a1.1,1.1,0,0,0-1.534,1.476l5.9,10.223-5.315,0a.978.978,0,0,0-.829.46l-5.969,9.5a1.71,1.71,0,0,0,1.427,2.65H388.9a1.71,1.71,0,0,0,1.447-2.619" transform="translate(-356.761 -513.482)" fill="currentColor"></path>
+</svg>
+myUVU</a></li>
+</ul>
+						<div id="breadcrumbContainer">
+							<nav class="breadcrumbNav" id="breadcrumbNav" aria-label="breadcrumb" tabindex="-1">
+								<div class="breadcrumbScroll">
+								</div>
+								<div class="breadcrumbScroll-left"></div>
+								<div class="breadcrumbScroll-right"></div>
+							</nav>
+						</div>
+						<div id="slideMenuDept" class="active" aria-label="Department Menu">
+							<nav class="slideDeptNav" aria-label="Department Navigation in side menu" lang="en">
+									<ul><li><a href="https://www.uvu.edu/admissions/">Admissions</a></li><li><a href="https://www.uvu.edu/campus-life/">Campus Life</a></li><li><a href="https://www.uvu.edu/academics/">Academics</a></li><li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li><li><a href="https://www.uvu.edu/news/">Content Hub</a></li><li><a href="https://www.uvu.edu/alumni/">Alumni</a></li><li><a href="https://www.uvu.edu/give/">Give</a></li><li><a href="https://www.uvu.edu/about/">About</a></li></ul>
+							</nav>
+						</div>
+						<div id="globalNav">
+						</div>
+					</div>
+				</section>
+      
+<main id="content-wrap" class="content-wrap">
+<!-- ===== CMS CONTENT START · each <section> = one OU section ===== -->
+
+<!-- SECTION 1 · template: header-fullbleed
+     ASSET: assets/woodbury-school-business-header.jpg (1920x700 raw photo; the green fade is CSS). CMS: /give/colleges-schools/woodbury-school-business/images/woodbury-school-business-header.jpg
+     PHONES: assets/woodbury-school-business-header-mobile.jpg (1080x1350 vertical, people centered). CMS: /give/colleges-schools/woodbury-school-business/images/woodbury-school-business-header-mobile.jpg -->
+<section class="page-header jumbo fullbleed container-narrow al-hero" style="background-image: url(assets/woodbury-school-business-header.jpg);" data-cms-bg="/give/colleges-schools/woodbury-school-business/images/woodbury-school-business-header.jpg" data-uvu-template="header-fullbleed" data-uvu-section="1">
+   <div class="al-hero-m" style="background-image: url(assets/woodbury-school-business-header-mobile.jpg);" data-cms-bg="/give/colleges-schools/woodbury-school-business/images/woodbury-school-business-header-mobile.jpg" aria-hidden="true"></div>
+   <div class="container-fluid">
+      <header class="fullbleed-overlay contain text-invert">
+            <p class="al-eyebrow">Support Future Entrepreneurs</p>
+            <h1>Woodbury School of Business</h1>
+            <p class="al-hero-lead">Your gift impacts UVU business students for a lifetime.</p>
+            <div class="al-actions"><a class="al-btn al-btn--light al-btn--ext" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&formId=a2ab4823-1102-4c3a-8f37-3b039b4b8df6&envid=p-15SOd3UsHUO8MRNYFSnBvg&zone=usa" target="_blank" rel="noopener">Give to WSB Scholarships<span class="sr-only-al"> (opens in a new tab)</span></a></div>
+      </header>
+   </div>
+</section>
+<!-- SECTION 2 · template: one-col · Cesar's new-format-26 fund directory (/give/lib/css/new-format-26.css).
+     Sidebar tabs (desktop) + MAIN MENU popover (phones) + one content panel per department, each fund a link to its Blackbaud form. -->
+<section data-uvu-template="one-col" data-uvu-section="2" class="al-section al-nf">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+            <!-- MOBILE MENU BAR -->
+            <div class="mobile-menu-bar">
+               <div class="al-nf-bar"><span class="al-nf-bar-label"><span>Browse Funds</span></span><span class="al-nf-bar-current">WSB General Funds</span></div>
+               <button class="menu-toggle" id="menuToggle" type="button" popovertarget="mobileFundsMenu" popovertargetaction="toggle" aria-label="Open main menu"><span></span><span></span><span></span></button>
+            </div>
+            <!-- MOBILE-ONLY POPOVER MENU -->
+            <nav id="mobileFundsMenu" class="funds-sidebar mobile-funds-sidebar" popover="auto" aria-label="Funds menu">
+               <div class="mobile-popover-header">
+                  <h2 class="sidebar-title"><span>Browse Funds</span></h2>
+                  <button type="button" class="close-menu" popovertarget="mobileFundsMenu" popovertargetaction="hide" aria-label="Close main menu">×</button>
+               </div>
+               <ul class="tabs">
+                     <li><a href="#search" class="anchorTab menu-btn noScroll" aria-controls="search" aria-expanded="false" role="tab"><span class="al-nf-tab"><span>Search All Funds</span></span></a></li>
+                     <li><a href="#wsb-general-funds" class="anchorTab menu-btn active noScroll" aria-controls="wsb-general-funds" aria-expanded="true" role="tab"><span class="al-nf-tab">WSB General Funds</span></a></li>
+                     <li><a href="#accounting" class="anchorTab menu-btn noScroll" aria-controls="accounting" aria-expanded="false" role="tab"><span class="al-nf-tab">Accounting</span></a></li>
+                     <li><a href="#baugh-entrepreneurship-institute" class="anchorTab menu-btn noScroll" aria-controls="baugh-entrepreneurship-institute" aria-expanded="false" role="tab"><span class="al-nf-tab">Baugh Entrepreneurship Institute</span></a></li>
+                     <li><a href="#business-graduate-studies" class="anchorTab menu-btn noScroll" aria-controls="business-graduate-studies" aria-expanded="false" role="tab"><span class="al-nf-tab">Business Graduate Studies</span></a></li>
+                     <li><a href="#finance-and-economics" class="anchorTab menu-btn noScroll" aria-controls="finance-and-economics" aria-expanded="false" role="tab"><span class="al-nf-tab">Finance and Economics</span></a></li>
+                     <li><a href="#hope-scholars" class="anchorTab menu-btn noScroll" aria-controls="hope-scholars" aria-expanded="false" role="tab"><span class="al-nf-tab">Hope Scholars</span></a></li>
+                     <li><a href="#marketing" class="anchorTab menu-btn noScroll" aria-controls="marketing" aria-expanded="false" role="tab"><span class="al-nf-tab">Marketing</span></a></li>
+                     <li><a href="#organizational-leadership" class="anchorTab menu-btn noScroll" aria-controls="organizational-leadership" aria-expanded="false" role="tab"><span class="al-nf-tab">Organizational Leadership</span></a></li>
+                     <li><a href="#strategic-management-and-operations" class="anchorTab menu-btn noScroll" aria-controls="strategic-management-and-operations" aria-expanded="false" role="tab"><span class="al-nf-tab">Strategic Management and Operations</span></a></li>
+               </ul>
+            </nav>
+            <!-- MAIN LAYOUT -->
+            <section class="funds-layout">
+               <nav class="funds-sidebar desktop-funds-sidebar" aria-label="Funds menu">
+                  <h2 class="sidebar-title"><span>Browse Funds</span></h2>
+                  <ul class="tabs">
+                     <li><a href="#search" class="anchorTab menu-btn noScroll" data-target="search" aria-controls="search" aria-expanded="false" role="tab"><span class="al-nf-tab"><span>Search All Funds</span></span></a></li>
+                     <li><a href="#wsb-general-funds" class="anchorTab menu-btn active noScroll" data-target="wsb-general-funds" aria-controls="wsb-general-funds" aria-expanded="true" role="tab"><span class="al-nf-tab">WSB General Funds</span></a></li>
+                     <li><a href="#accounting" class="anchorTab menu-btn noScroll" data-target="accounting" aria-controls="accounting" aria-expanded="false" role="tab"><span class="al-nf-tab">Accounting</span></a></li>
+                     <li><a href="#baugh-entrepreneurship-institute" class="anchorTab menu-btn noScroll" data-target="baugh-entrepreneurship-institute" aria-controls="baugh-entrepreneurship-institute" aria-expanded="false" role="tab"><span class="al-nf-tab">Baugh Entrepreneurship Institute</span></a></li>
+                     <li><a href="#business-graduate-studies" class="anchorTab menu-btn noScroll" data-target="business-graduate-studies" aria-controls="business-graduate-studies" aria-expanded="false" role="tab"><span class="al-nf-tab">Business Graduate Studies</span></a></li>
+                     <li><a href="#finance-and-economics" class="anchorTab menu-btn noScroll" data-target="finance-and-economics" aria-controls="finance-and-economics" aria-expanded="false" role="tab"><span class="al-nf-tab">Finance and Economics</span></a></li>
+                     <li><a href="#hope-scholars" class="anchorTab menu-btn noScroll" data-target="hope-scholars" aria-controls="hope-scholars" aria-expanded="false" role="tab"><span class="al-nf-tab">Hope Scholars</span></a></li>
+                     <li><a href="#marketing" class="anchorTab menu-btn noScroll" data-target="marketing" aria-controls="marketing" aria-expanded="false" role="tab"><span class="al-nf-tab">Marketing</span></a></li>
+                     <li><a href="#organizational-leadership" class="anchorTab menu-btn noScroll" data-target="organizational-leadership" aria-controls="organizational-leadership" aria-expanded="false" role="tab"><span class="al-nf-tab">Organizational Leadership</span></a></li>
+                     <li><a href="#strategic-management-and-operations" class="anchorTab menu-btn noScroll" data-target="strategic-management-and-operations" aria-controls="strategic-management-and-operations" aria-expanded="false" role="tab"><span class="al-nf-tab">Strategic Management and Operations</span></a></li>
+                  </ul>
+               </nav>
+               <section class="funds-content tabs-content">
+                     <!-- WSB GENERAL FUNDS -->
+                     <div class="content-panel tab-container open" id="wsb-general-funds">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-wsb-general-card.jpg" data-cms-src="/give/images/funds/fund-wsb-general-card.jpg" alt="students walking by front entrance of the Keller Building" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">5 funds</p>
+                              <h2>WSB General Funds</h2>
+                              <a class="al-nf-learn" href="#"><span>About WSB General Funds</span></a>
+                           </div>
+                        </div>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=a35fda81-8a00-4114-a262-9c27e474350d&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=JB%20Ritchie%20Professorship&amp;desid=1343" target="_blank" rel="noopener"><span class="al-nf-name">J. Bonner Ritchie Endowed Professorship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=a35fda81-8a00-4114-a262-9c27e474350d&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Money%20Success%20Center&amp;desid=1621" target="_blank" rel="noopener"><span class="al-nf-name">Money Success Center</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=a35fda81-8a00-4114-a262-9c27e474350d&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Reed%20and%20Christine%20Halladay%20Executive%20Lecture%20Series&amp;desid=986" target="_blank" rel="noopener"><span class="al-nf-name">Reed and Christine Halladay Executive Lecture Series Endowed</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=a35fda81-8a00-4114-a262-9c27e474350d&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Smart%20Lab&amp;desid=1524" target="_blank" rel="noopener"><span class="al-nf-name">Smart Lab</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=a35fda81-8a00-4114-a262-9c27e474350d&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=UVU%20Wolverine%20Fund&amp;desid=1711" target="_blank" rel="noopener"><span class="al-nf-name">UVU Wolverine Fund</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- ACCOUNTING -->
+                     <div class="content-panel tab-container" id="accounting">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-accounting-1.jpg" data-cms-src="/give/images/funds/fund-accounting-1.jpg" alt="student sitting down holding accounting books in thier lap" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">2 programs · 4 scholarships</p>
+                              <h2>Accounting</h2>
+                              <a class="al-nf-learn" href="#"><span>About Accounting</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>2</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=33ca1083-10bb-4b60-b482-c99030d8adf7&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Accounting&amp;desid=3044" target="_blank" rel="noopener"><span class="al-nf-name">Accounting</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=33ca1083-10bb-4b60-b482-c99030d8adf7&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=MAcc&amp;desid=3044&amp;desid=3044" target="_blank" rel="noopener"><span class="al-nf-name">Macc</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>4</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=75fe5164-0644-4bde-b28a-ead7a8a5866b&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Sheldon%20R.%20Smith%20Accounting%20Scholarship&amp;desid=3080" target="_blank" rel="noopener"><span class="al-nf-name">Sheldon R. Smith Endowed Accounting Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=75fe5164-0644-4bde-b28a-ead7a8a5866b&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Master%20of%20Accountancy%20Alumni%20Scholarship&amp;desid=3098" target="_blank" rel="noopener"><span class="al-nf-name">Woodbury School of Business Master of Accountancy Alumni Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=75fe5164-0644-4bde-b28a-ead7a8a5866b&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desid=3189&amp;desname=The%20Ray%20and%20Teri%20Chipman%20Accounting%20Endowed%20Scholarship" target="_blank" rel="noopener"><span class="al-nf-name">The Ray and Teri Chipman Accounting Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=75fe5164-0644-4bde-b28a-ead7a8a5866b&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Tanner%20LLC%20Accounting%20Scholarship&amp;desid=3105" target="_blank" rel="noopener"><span class="al-nf-name">Tanner LLC Accounting Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- BAUGH ENTREPRENEURSHIP INSTITUTE -->
+                     <div class="content-panel tab-container" id="baugh-entrepreneurship-institute">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-entrepreneurship-card.jpg" data-cms-src="/give/images/funds/fund-entrepreneurship-card.jpg" alt="two business professionals sitting at a table" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">3 funds</p>
+                              <h2>Baugh Entrepreneurship Institute</h2>
+                              <a class="al-nf-learn" href="#"><span>About Baugh Entrepreneurship Institute</span></a>
+                           </div>
+                        </div>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=6b15186f-25d0-438e-a510-7a1a61895cf9&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Baugh%20Entrepreneurship%20Institute&amp;desid=772" target="_blank" rel="noopener"><span class="al-nf-name">Baugh Entrepreneurship Institute</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=38334daa-c94f-4251-84e7-00bd7fc66a86&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Zero%20to%20CEO&amp;desid=772" target="_blank" rel="noopener"><span class="al-nf-name">Zero to CEO</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=38334daa-c94f-4251-84e7-00bd7fc66a86&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=ZinnStarter%20Pitch%20Competition&amp;desid=772" target="_blank" rel="noopener"><span class="al-nf-name">ZinnStarter Pitch Competition</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- BUSINESS GRADUATE STUDIES -->
+                     <div class="content-panel tab-container" id="business-graduate-studies">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-business-graduate.jpg" data-cms-src="/give/images/funds/fund-business-graduate.jpg" alt="business graduate student posing for picture on stairs" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">6 programs · 4 scholarships</p>
+                              <h2>Business Graduate Studies</h2>
+                              <a class="al-nf-learn" href="#"><span>About Business Graduate Studies</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>6</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=52e46aec-eb6e-427e-bd84-227a5a8477a4&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Finance&amp;desid=3230" target="_blank" rel="noopener"><span class="al-nf-name">Finance</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=52e46aec-eb6e-427e-bd84-227a5a8477a4&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Healthcare%20Leadership&amp;desid=3230" target="_blank" rel="noopener"><span class="al-nf-name">Healthcare Leadership</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=52e46aec-eb6e-427e-bd84-227a5a8477a4&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Management&amp;desid=3230" target="_blank" rel="noopener"><span class="al-nf-name">Management</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=52e46aec-eb6e-427e-bd84-227a5a8477a4&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Marketing&amp;desid=3230" target="_blank" rel="noopener"><span class="al-nf-name">Marketing</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=52e46aec-eb6e-427e-bd84-227a5a8477a4&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=MBA&amp;desid=3230" target="_blank" rel="noopener"><span class="al-nf-name">MBA</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=52e46aec-eb6e-427e-bd84-227a5a8477a4&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Technology%20Management&amp;desid=3230" target="_blank" rel="noopener"><span class="al-nf-name">Technology Management</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>4</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=91b646f6-f716-4765-970d-072346bec6d5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desid=1325&amp;desname=Gardner%20H.%20%26%20Dorothy%20Russell%20Leadership%20Endowed%20Scholarship" target="_blank" rel="noopener"><span class="al-nf-name">Gardner H. & Dorothy Russell Leadership Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=91b646f6-f716-4765-970d-072346bec6d5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Master%20of%20Financial%20Planning%20and%20Analytics%20Endowed%20Scholarship&amp;desid=3022" target="_blank" rel="noopener"><span class="al-nf-name">Master of Financial Planning & Analytics Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=91b646f6-f716-4765-970d-072346bec6d5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Presidential%20Master%20of%20Business%20Management%20Endowed%20Scholarship&amp;desid=1634" target="_blank" rel="noopener"><span class="al-nf-name">Presidential Master of Business Management Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=91b646f6-f716-4765-970d-072346bec6d5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Roger%20C%20and%20Gwen%20Connors%20Master%27s%20Program%20Scholarship&amp;desid=1932" target="_blank" rel="noopener"><span class="al-nf-name">Roger C. and Gwen Connors Master's Program Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- FINANCE &AMP; ECONOMICS -->
+                     <div class="content-panel tab-container" id="finance-and-economics">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-finance.jpg" data-cms-src="/give/images/funds/fund-finance.jpg" alt="silhouette of a person in front of a projected screen of a line graph" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">3 programs · 11 scholarships</p>
+                              <h2>Finance and Economics</h2>
+                              <a class="al-nf-learn" href="#"><span>About Finance and Economics</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>3</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=e3acaab5-2564-4eb6-857a-9effcf263923&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Enterprise%20Risk%20Managment%20and%20Insurance&amp;desid=1849" target="_blank" rel="noopener"><span class="al-nf-name">Enterprise Risk Management and Insurance</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=e3acaab5-2564-4eb6-857a-9effcf263923&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Personal%20Financial%20Planning&amp;desid=1424" target="_blank" rel="noopener"><span class="al-nf-name">Personal Financial Planning</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=e3acaab5-2564-4eb6-857a-9effcf263923&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=UVU%20FinTech%20Center&amp;desid=3200" target="_blank" rel="noopener"><span class="al-nf-name">UVU FinTech Center</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>11</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=794150cf-1d0f-42a2-840d-45defbea02d4&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Altabank%20Endowed%20Scholarship&amp;desid=993" target="_blank" rel="noopener"><span class="al-nf-name">Altabank Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=794150cf-1d0f-42a2-840d-45defbea02d4&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Brady%20and%20Andrea%20Murray%20Family%20Endowed%20Scholarship&amp;desid=1644" target="_blank" rel="noopener"><span class="al-nf-name">Brady and Andrea Murray Family Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=794150cf-1d0f-42a2-840d-45defbea02d4&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Capita%20Financial%20Network%20Scholarship&amp;desid=3009" target="_blank" rel="noopener"><span class="al-nf-name">Capita Financial Network Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=794150cf-1d0f-42a2-840d-45defbea02d4&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Caring%20Cetera%20Diversity%20in%20Financial%20Planning%20Scholarship&amp;desid=1912" target="_blank" rel="noopener"><span class="al-nf-name">Caring Cetera Diversity in Financial Planning Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=794150cf-1d0f-42a2-840d-45defbea02d4&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Enterprise%20Risk%20Management%20and%20Insurance%20Scholarship&amp;desid=1881" target="_blank" rel="noopener"><span class="al-nf-name">Enterprise Risk Management and Insurance Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=794150cf-1d0f-42a2-840d-45defbea02d4&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Jared%20and%20Melissa%20Mabey%20Family%20Endowed%20Scholarship&amp;desid=1650" target="_blank" rel="noopener"><span class="al-nf-name">Jared and Melissa Mabey Family Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=794150cf-1d0f-42a2-840d-45defbea02d4&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Joseph%20and%20Elsie%20Prior%20Financial%20Planning%20Endowed%20Scholarship&amp;desid=1936" target="_blank" rel="noopener"><span class="al-nf-name">Joseph & Elsie Prior Financial Planning Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=794150cf-1d0f-42a2-840d-45defbea02d4&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=L%20Jefferies%20Net%20Worth%20Advisory%20Group%20Personal%20Financial%20Planning%20Scholarship&amp;desid=1933" target="_blank" rel="noopener"><span class="al-nf-name">L Jefferies Net Worth Advisory Group Personal Financial Planning Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=794150cf-1d0f-42a2-840d-45defbea02d4&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Morris%20Personal%20Financial%20Planning%20Endowed%20Scholarship&amp;desid=1518" target="_blank" rel="noopener"><span class="al-nf-name">Morris Personal Financial Planning Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=794150cf-1d0f-42a2-840d-45defbea02d4&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Personal%20Financial%20Planning%20Award&amp;desid=1678" target="_blank" rel="noopener"><span class="al-nf-name">Personal Financial Planning Award</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=794150cf-1d0f-42a2-840d-45defbea02d4&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Surplus%20Line%20Association%20of%20Utah%20Endowed%20Scholarship&amp;desid=3011" target="_blank" rel="noopener"><span class="al-nf-name">Surplus Line Association of Utah Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- HOPE SCHOLARS -->
+                     <div class="content-panel tab-container" id="hope-scholars">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-hope-scholars-card.jpg" data-cms-src="/give/images/funds/fund-hope-scholars-card.jpg" alt="group of students working at desk in conference room" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">5 funds</p>
+                              <h2>Hope Scholars</h2>
+                              <a class="al-nf-learn" href="#"><span>About Hope Scholars</span></a>
+                           </div>
+                        </div>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=6153ae33-e63d-4fdb-83da-92c19b9e39ea&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Hope%20Scholar%20Program&amp;desid=3045" target="_blank" rel="noopener"><span class="al-nf-name">Hope Scholars Program</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=6153ae33-e63d-4fdb-83da-92c19b9e39ea&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Jeffrey%20S.%20Tolk%20Hope%20Scholars%20Program&amp;desid=3207" target="_blank" rel="noopener"><span class="al-nf-name">Jeffrey S. Tolk Hope Scholars Program</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=6153ae33-e63d-4fdb-83da-92c19b9e39ea&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Kahlert%20Hope%20Scholars&amp;desid=3128" target="_blank" rel="noopener"><span class="al-nf-name">Kahlert Hope Scholars Endowed Fund</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=6153ae33-e63d-4fdb-83da-92c19b9e39ea&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Savage%20Family%20Legacy%20Hope%20Scholars&amp;desid=3187" target="_blank" rel="noopener"><span class="al-nf-name">Savage Family Legacy Hope Scholars Endowment</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=6153ae33-e63d-4fdb-83da-92c19b9e39ea&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desid=3262&amp;desname=Nana%27s%20Hope%20Scholars%20Endowed%20Program%20Fund" target="_blank" rel="noopener"><span class="al-nf-name">Nana's Hope Scholars Endowed Program Fund</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- MARKETING -->
+                     <div class="content-panel tab-container" id="marketing">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-marketing.jpg" data-cms-src="/give/images/funds/fund-marketing.jpg" alt="student presending marketing plan to class" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">4 programs · 2 scholarships</p>
+                              <h2>Marketing</h2>
+                              <a class="al-nf-learn" href="#"><span>About Marketing</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>4</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=b0ab889e-1ed1-4a96-8812-096eeb77bd4e&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Digital%20Marketing&amp;desid=1345" target="_blank" rel="noopener"><span class="al-nf-name">Digital Marketing</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=b0ab889e-1ed1-4a96-8812-096eeb77bd4e&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Marketing%20Management&amp;desid=1345" target="_blank" rel="noopener"><span class="al-nf-name">Marketing Management</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=b0ab889e-1ed1-4a96-8812-096eeb77bd4e&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Product%20Management&amp;desid=1345" target="_blank" rel="noopener"><span class="al-nf-name">Product Management</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=b0ab889e-1ed1-4a96-8812-096eeb77bd4e&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Professional%20Sales&amp;desid=1345" target="_blank" rel="noopener"><span class="al-nf-name">Professional Sales</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>2</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=72dcf4e5-543a-4c23-bfc0-f2805accb5c5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Brady%20and%20Andrea%20Murray%20Family%20Scholarship&amp;desid=1644" target="_blank" rel="noopener"><span class="al-nf-name">Brady and Andrea Murray Family Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=72dcf4e5-543a-4c23-bfc0-f2805accb5c5&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Jared%20and%20Melissa%20Mabey%20Family%20Endowed%20Scholarship&amp;desid=1650" target="_blank" rel="noopener"><span class="al-nf-name">Jared and Melissa Mabey Family Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- ORGANIZATIONAL LEADERSHIP -->
+                     <div class="content-panel tab-container" id="organizational-leadership">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-organizational-leadership-3.jpg" data-cms-src="/give/images/funds/fund-organizational-leadership-3.jpg" alt="group meeting in conference room" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">10 programs · 1 scholarship</p>
+                              <h2>Organizational Leadership</h2>
+                              <a class="al-nf-learn" href="#"><span>About Organizational Leadership</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>10</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=02d5afd4-23df-401a-af81-a958e5f488d0&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Leadership%20Studies&amp;desid=3231" target="_blank" rel="noopener"><span class="al-nf-name">Leadership Studies</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=02d5afd4-23df-401a-af81-a958e5f488d0&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Leadership%20Studies%20-%20Nonprofit%20Organizations&amp;desid=3231" target="_blank" rel="noopener"><span class="al-nf-name">Leadership Studies - Nonprofit Organizations</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=02d5afd4-23df-401a-af81-a958e5f488d0&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Organizational%20Leadership%20and%20Change&amp;desid=3231" target="_blank" rel="noopener"><span class="al-nf-name">Organizational Leadership and Change</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=02d5afd4-23df-401a-af81-a958e5f488d0&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Event%20Management&amp;desid=3231" target="_blank" rel="noopener"><span class="al-nf-name">Event Management</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=02149c93-bf0d-47cc-9224-a97bb19ca5d2&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Business%20Impact%20Lab&amp;desid=1892" target="_blank" rel="noopener"><span class="al-nf-name">Business Impact Lab</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=02149c93-bf0d-47cc-9224-a97bb19ca5d2&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Hospitality%20Management&amp;desid=455" target="_blank" rel="noopener"><span class="al-nf-name">Hospitality Management</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=02149c93-bf0d-47cc-9224-a97bb19ca5d2&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Human%20Resource%20Management&amp;desid=1874" target="_blank" rel="noopener"><span class="al-nf-name">Human Resource Management</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=02d5afd4-23df-401a-af81-a958e5f488d0&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Wasatch%20Area%20Resort%20Management%20(WARM)&amp;desid=3231" target="_blank" rel="noopener"><span class="al-nf-name">Wasatch Area Resort Management (WARM)</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=02d5afd4-23df-401a-af81-a958e5f488d0&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Women%20In%20Business%20Impact%20Lab&amp;desid=3231" target="_blank" rel="noopener"><span class="al-nf-name">Women In Business Impact Lab</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=02d5afd4-23df-401a-af81-a958e5f488d0&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=PoliSHEd%20Conference&amp;desid=3231" target="_blank" rel="noopener"><span class="al-nf-name">PoliSHEd Conference</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>1</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=81723e7d-43ac-4722-8f8e-05e5b03facda&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Utah%20Hotel%20and%20Lodging%20Association%20Endowed%20Scholarship&amp;desid=1002" target="_blank" rel="noopener"><span class="al-nf-name">Utah Hotel & Lodging Association Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- STRATEGIC MANAGEMENT &AMP; OPERATIONS -->
+                     <div class="content-panel tab-container" id="strategic-management-and-operations">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-strategic-management.jpg" data-cms-src="/give/images/funds/fund-strategic-management.jpg" alt="group of students working together" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">8 programs · 2 scholarships</p>
+                              <h2>Strategic Management and Operations</h2>
+                              <a class="al-nf-learn" href="#"><span>About Strategic Management and Operations</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>8</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=75e61fcc-d193-43e0-b7f3-1e98e48be28e&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Business%20and%20Analysis&amp;desid=3229" target="_blank" rel="noopener"><span class="al-nf-name">Business and Analysis</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=75e61fcc-d193-43e0-b7f3-1e98e48be28e&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Operations%20and%20Supply%20Chain%20Management&amp;desid=3229" target="_blank" rel="noopener"><span class="al-nf-name">Operations & Supply Chain Management</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=75e61fcc-d193-43e0-b7f3-1e98e48be28e&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Operations%20Management&amp;desid=3229" target="_blank" rel="noopener"><span class="al-nf-name">Operations Management</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=75e61fcc-d193-43e0-b7f3-1e98e48be28e&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=International%20Business&amp;desid=3229" target="_blank" rel="noopener"><span class="al-nf-name">International Business</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=75e61fcc-d193-43e0-b7f3-1e98e48be28e&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Data%20Analytics%20and%20Decision%20Making&amp;desid=3229" target="_blank" rel="noopener"><span class="al-nf-name">Data Analytics and Decision Making</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=525df8e7-b20a-4d5a-b635-b7a17974e7b2&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Entrepreneurship&amp;desid=772" target="_blank" rel="noopener"><span class="al-nf-name">Entrepreneurship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=75e61fcc-d193-43e0-b7f3-1e98e48be28e&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Business%20Management&amp;desid=3229" target="_blank" rel="noopener"><span class="al-nf-name">Business Management</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://www.uvu.edu/give/colleges-schools/woodbury-school-business/#" target="_blank" rel="noopener"><span class="al-nf-name">Enterprise Development and Entrepreneurship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>2</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=f7724f98-c3d9-4bcd-8d32-1491cb067159&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Brady%20and%20Andrea%20Murray%20Family%20Scholarship&amp;desid=1644" target="_blank" rel="noopener"><span class="al-nf-name">Brady and Andrea Murray Family Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=f7724f98-c3d9-4bcd-8d32-1491cb067159&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Jared%20and%20Melissa%20Mabey%20Family%20Endowed%20Scholarship&amp;desid=1650" target="_blank" rel="noopener"><span class="al-nf-name">Jared and Melissa Mabey Family Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span>Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- SEARCH -->
+                     <div class="tab-container" id="search">
+                        <h2>Search All WSB Funds</h2>
+                        <!-- Production: Cesar's Blackbaud designation search embed goes here (one per college; the CHPS embed id is dc89e2b3-…).
+                             Mockup: the same search as the Give page, filtered to this area on Find a Fund. -->
+                        <form class="al-search al-search--left" action="../find-a-fund/index.html" method="get" role="search">
+                           <label for="area-q">Search WSB funds</label>
+                           <input type="hidden" name="area" value="Woodbury+School+of+Business">
+                           <input id="area-q" name="q" type="search" placeholder="Fund, program, or scholarship name">
+                           <button type="submit" class="al-btn al-btn--primary">Search</button>
+                        </form>
+                     </div>
+               </section>
+            </section>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 3 · template: one-col (header region + region 1), as in Cesar's template -->
+<section data-uvu-template="one-col" data-uvu-section="3" class="al-section al-section--warm al-nf-info">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region padding-bottom-0 container-wide" data-uvu-region="header">
+            <h2 class="divider-header"><span>Questions? Contact Us</span></h2>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-xs-12 col-target region padding-top-0" data-uvu-region="1">
+            <!-- Production: Cesar's directory widget renders the contact card here: <div class="directory"><div class="output employees" data-directory-calltype="emps" data-directory-listtype="advanced" data-directory-val="10806932," data-directory-style="style1" data-directory-columns="4"></div></div> -->
+            <ul class="al-contact-strip">
+                  <li class="al-contact-card"><span class="al-contact-badge" aria-hidden="true">?</span><div>
+                  </div></li>
+               </ul>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- SECTION 4 · template: one-col · GIVING FOOTER: section nav + contact + mail-a-check. Identical on every Give page
+     (the current page gets aria-current). Replaces the "Ways to Give: Give Online / Mail a Check" block the live
+     pages repeat at the bottom of Annual Giving, Gifts of Securities, Memorial Gifts, and Ways to Give. -->
+<section data-uvu-template="one-col" data-uvu-section="4" class="al-section al-sitenav">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+            <nav class="al-sitenav-nav" aria-label="Give to UVU">
+               <div class="al-sitenav-brand">
+                  <p class="al-sitenav-title"><a href="../give-home/index.html" data-cms-href="/give/index.html">Give to UVU</a></p>
+                  <ul class="al-sitenav-contact">
+                     <li><img src="../_kit/icons/white/envelope-1.svg" data-cms-src="/alumni/lib/icons/white/envelope-1.svg" alt="" width="48" height="48"><a href="mailto:giving@uvu.edu">giving@uvu.edu</a></li>
+                     <li><img src="../_kit/icons/white/cell.svg" data-cms-src="/alumni/lib/icons/white/cell.svg" alt="" width="48" height="48"><a href="tel:+18018638568">801.863.8568</a></li>
+                  </ul>
+               </div>
+               <div class="al-sitenav-groups">
+                  <div class="al-sitenav-group"><h2>Where to Give</h2><ul><li><a href="../find-a-fund/index.html" data-cms-href="/give/find-a-fund.html">Find a Fund</a></li><li><a href="../give-home/index.html#give-by-area">Colleges and Schools</a></li><li><a href="../programs-centers/index.html" data-cms-href="/give/programs-centers/index.html">Programs and Centers</a></li><li><a href="../student-affairs/index.html" data-cms-href="/give/student-affairs/index.html">Student Support</a></li><li><a href="../athletics/index.html" data-cms-href="/give/athletics/wolverine-club/index.html">Athletics</a></li><li><a href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&formId=3ebce5df-6a4a-4f44-89b7-ef3d89fcad79&envid=p-15SOd3UsHUO8MRNYFSnBvg&zone=usa" target="_blank" rel="noopener">General Scholarships<span class="sr-only-al"> (opens in a new tab)</span></a></li></ul></div>
+                  <div class="al-sitenav-group"><h2>Ways to Give</h2><ul><li><a href="../ways-to-give/index.html" data-cms-href="/give/ways-to-give/index.html">All Ways to Give</a></li><li><a href="../employee-giving/index.html" data-cms-href="/give/ways-to-give/employeegiving.html">Employee Giving</a></li><li><a href="../memorial-gifts/index.html" data-cms-href="/give/ways-to-give/memorial-gifts.html">Memorial Gifts</a></li><li><a href="../ways-to-give/index.html#give-stock">Gifts of Stock</a></li><li><a href="https://uvgift.org/" target="_blank" rel="noopener">Gift Planning<span class="sr-only-al"> (opens in a new tab)</span></a></li><li><a href="https://www.uvu.edu/give/ways-to-give/matching-gifts.html">Matching Gifts</a></li></ul></div>
+                  <div class="al-sitenav-group"><h2>More</h2><ul><li><a href="../give-home/index.html#larger-gift">Planning a Larger Gift</a></li><li><a href="https://www.uvu.edu/alumni/make-an-impact/uvu-license-plate.html">UVU License Plate</a></li><li><a href="https://www.uvu.edu/advancement/events/archive/scholarship-ball.html">Event Sponsorship</a></li><li><a href="https://www.uvu.edu/give/ways-to-give/in-kind-donation.html">In-Kind Donation</a></li><li><a href="https://www.uvu.edu/give/ways-to-give/service.html">Service</a></li></ul></div>
+               </div>
+               <p class="al-sitenav-fine"><strong>Mail a check</strong> payable to UVU Foundation, 800 W. University Parkway, MS 111, Orem, UT 84058. All donations are processed through the Utah Valley University Foundation, a 501(c)(3) <span>nonprofit</span> organization. <a href="#"><span>Annual Impact Report</span></a> · <a href="#"><span>IRS Form 990</span></a></p>
+            </nav>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- ===== CMS CONTENT END ===== -->
+</main>
+<!-- ===== GLOBAL FOOTER (CMS template; context only) ===== -->
+<footer id="globalFooter">
+	<div class="footerDept">
+		<ul><li>Institutional Advancement</li><li>Utah Valley University</li></ul>
+	</div>
+	<div class="footerUniversity" lang="en">
+		<div class="footerUniversity-top">
+<div class="container-fluid">
+<div class="row equal-height uppercase">
+<div class="col-sm-3">
+<div>
+<h2>Student</h2>
+<ul>
+<li><a href="https://www.uvu.edu/admissions/">Admissions</a></li>
+<li><a href="https://www.uvu.edu/campus-life/index.html">Campus Life</a></li>
+<li><a href="https://www.uvu.edu/students/">Current Student</a></li>
+<li><a href="https://www.uvu.edu/accreditation-academic-assessment/index.html">Accreditation</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Employees</h2>
+<ul>
+<li><a href="https://www.uvu.edu/peopleandculture/jobs/index.html">Career Opportunities</a></li>
+<li><a href="https://www.uvu.edu/facstaff/">Employee Resources</a></li>
+<li><a href="https://www.uvu.edu/directory/">Directory</a></li>
+<li><a href="https://www.uvu.edu/peopleandculture/">People &amp; Culture</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Community</h2>
+<ul>
+<li><a href="https://gouvu.com/" target="_blank" rel="noopener">Athletics</a></li>
+<li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li>
+<li><a href="https://www.uvu.edu/president/">Office of the President</a></li>
+<li><a href="https://www.uvu.edu/visitors/history.html">About UVU / History</a></li>
+<li><a href="https://alumni.uvu.edu/" target="_blank" rel="noopener">Alumni</a></li>
+<li><a href="https://www.uvu.edu/engagement-and-effectiveness/index.html">Engagement &amp; Effectiveness</a></li>
+<li><a href="https://www.uvu.edu/give/index.html" target="_blank" rel="noopener">Give to UVU</a></li>
+<li><a href="https://www.uvu.edu/visitors/contact.html">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Utility</h2>
+<ul>
+<li><a href="https://www.uvu.edu/maps/">Maps / Parking</a></li>
+<li><a href="https://www.uvu.edu/servicedesk/">Service Desk</a></li>
+<li><a href="https://www.uvu.edu/emergencymanagement/index.html">Emergency</a></li>
+<li><a href="https://www.uvu.edu/police/">Police</a></li>
+<li><a href="https://www.uvu.edu/servicedesk/">Get Help</a></li>
+<li><a href="https://www.uvu.edu/search/">Search</a></li>
+<li><a href="https://www.uvu.edu/accessibility-services/index.html">Accessibility</a></li>
+<li><a href="https://www.uvu.edu/accessibility-services/access-barrier.php">Report Access Barrier</a></li>
+<li><a href="https://www.uvu.edu/equityandtitleix/index.html">Title IX / Equal Opportunity</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footerUniversity-bottom">
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-12">
+<ul class="footerUniversity-quicklinks">
+<li><a href="https://www.uvu.edu/news/"><span class="far fa-newspaper" aria-hidden="true">&nbsp;</span>News</a></li>
+<li><a href="https://www.uvu.edu/events/"><span class="far fa-calendar-day" aria-hidden="true">&nbsp;</span>Events</a></li>
+</ul>
+<div class="footerUniversity-title uppercase">Utah Valley University</div>
+<ul class="footerUniversity-contact uppercase">
+<li><a title="See Utah Valley University on Google Maps" href="https://goo.gl/maps/9SQ5CSuqAoG1gw6J8">800&nbsp;West&nbsp;University&nbsp;Parkway,&nbsp;Orem,&nbsp;UT&nbsp;84058</a></li>
+<li>(801)&nbsp;863-8888</li>
+<li><a href="https://www.uvu.edu/legal/copyright/">© Utah Valley University</a></li>
+</ul>
+<ul class="footerUniversity-legalinfo">
+<li><a href="https://www.uvu.edu/legal/index.html">Terms of Use</a></li>
+<li><a href="https://www.uvu.edu/legal/privacy.html">Privacy Statement</a></li>
+<li><a href="https://www.uvu.edu/legal/copyright/copyright-infringement.html">Copyright Complaints</a></li>
+<li><a href="https://www.uvu.edu/legal/non-discrimination.html">Non-Discrimination and Accessibility Statement</a></li>
+</ul>
+<ul class="university-social"><li><a title="Opens UVU's Linkedin profile in a new tab" href="https://www.linkedin.com/school/utah-valley-university/" target="_blank" rel="external noopener"> <span class="fab fa-linkedin" aria-hidden="true"></span> <span class="sr-only">Linkedin</span> </a></li>
+<li><a title="Opens UVU's Instagram profile in a new tab" href="https://www.instagram.com/utah.valley.university/" target="_blank" rel="external noopener"> <span class="fab fa-instagram" aria-hidden="true"></span> <span class="sr-only">Instagram</span> </a></li>
+<li><a title="Opens UVU's Facebook profile in a new tab" href="https://www.facebook.com/UtahValleyUniversity/" target="_blank" rel="external noopener"> <span class="fab fa-facebook-square" aria-hidden="true"></span> <span class="sr-only">Facebook</span> </a></li>
+<li><a title="Opens UVU's YouTube channel in a new tab" href="https://www.youtube.com/user/UtahValleyUniversity" target="_blank" rel="external noopener"> <span class="fab fa-youtube-square" aria-hidden="true"></span> <span class="sr-only">YouTube</span> </a></li>
+<li><a title="Opens the UVU Athletics site in a new tab" href="https://gouvu.com/" target="_blank" rel="external noopener"><img src="../_kit/img/wolverine-logo.svg" alt="UVU Athletics logo" aria-hidden="true"><span class="sr-only">Athletics</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+	</div>
+</footer>
+</body>
+</html>

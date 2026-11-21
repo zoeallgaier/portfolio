@@ -10,11 +10,16 @@
   <meta name="theme-color" content="#e1e1e8" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0e0e15" media="(prefers-color-scheme: dark)" />
   <title>Marginalia</title>
-  <link rel="icon" href="/favicon.ico" sizes="any" />
-  <link rel="icon" href="/icons/z-32.png" sizes="32x32" type="image/png" />
-  <link rel="icon" href="/icons/z-16.png" sizes="16x16" type="image/png" />
-  <link rel="apple-touch-icon" href="/icons/z-180.png" />
+  <meta name="description" content="Marginalia: Zoe Allgaier's running feed of posts, finds, and books." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Marginalia" />
+  <meta property="og:description" content="Zoe Allgaier's running feed of posts, finds, and books." />
+  <meta property="og:url" content="https://zoeallgaier.com/marginalia/" />
+  <meta name="twitter:card" content="summary" />
   <meta name="apple-mobile-web-app-title" content="Marginalia" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/icons/sig-180.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="stylesheet" href="/css/base.css" />
   <link rel="stylesheet" href="style.css" />
@@ -27,7 +32,7 @@
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <nav>
-    <a href="/" class="nav-logo"><img src="/icons/z-mark-dark.png" alt="Zoe Allgaier — Home"></a>
+    <a href="/" class="nav-logo"><img src="/icons/mono-dark.png" alt="Zoe Allgaier — Home"></a>
     <div class="nav-links">
       <a href="/marginalia/">All</a>
       <a href="/marginalia/?filter=posts">Posts</a>
@@ -37,6 +42,7 @@
   </nav>
 
   <main id="main-content" tabindex="-1">
+    <h1 class="sr-only">Marginalia</h1>
     <!-- add new entries to content.json to update the feed -->
     <div id="feed" class="feed"></div>
   </main>

@@ -1,5 +1,7 @@
 # Portfolio site — everything here is meant to be found.
 User-agent: *
 Allow: /
+# Embedded UVU web mockups (framed on uvu-web.html), not pages of their own.
+Disallow: /_mockups/
 
 Sitemap: https://zoeallgaier.com/sitemap.xml

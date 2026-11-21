@@ -6,14 +6,14 @@
 .hero {
   /* Short of a full screen on purpose: the top of the first row of work
      peeks up under the tagline, so the page reads as a portfolio at once. */
-  min-height: 78svh;
+  min-height: 68svh;
   display: flex;
   flex-direction: column;
-  /* Eyebrow, name and tagline sit dead centre of the first screen. */
+  /* Name, tagline and pills sit dead centre of the first screen. */
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 7rem 3rem 4.5rem;
+  padding: 7rem 3rem 2.5rem;
   /* The beat after "Hi," — reveal.js holds the rest of the line back by this
      much so it lands like speech, and everything after it waits the same. */
   --speech-pause: 0.35s;
@@ -49,8 +49,8 @@
 .char {
   display: inline-block;
   /* WebKit clips a filtered element's ink to its box. At line-height .88 the
-     descenders (the g in "Allgaier") hang below each char's box, so Safari
-     sliced them off. reveal.js drops the animation (and its filter) once
+     comma's tail and the italic overhangs reach past each char's box, so
+     Safari sliced them off. reveal.js drops the animation (and its filter) once
      each letter lands; this padding covers the ink while it's still
      animating. The matching negative margin leaves the layout unchanged. */
   padding: 0.1em 0.05em 0.3em;
@@ -75,6 +75,10 @@
 /* The one way out of the hero besides the nav — lands last, after the
    tagline has settled. (.pill itself is below, shared with about/resume.) */
 .hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* a wrapped second pill stays centred under the tagline */
+  gap: 0.75rem;
   margin-top: 2.75rem;
   animation: fadeUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) calc(1.05s + var(--speech-pause)) both;
 }
@@ -87,21 +91,17 @@
 .work {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background-color: var(--rule);
-  border-top: 1px solid var(--rule);   /* the footer's own rule closes it */
 }
 
 .work-item {
   display: block;
-  background: var(--bg);
   padding: 2rem;
 }
 
 .work-media {
   position: relative;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 12px;
   margin-bottom: 1.25rem;
 }
 
@@ -113,6 +113,7 @@
   display: block;
 }
 
+/* Title, then role, then results: one stack at every width. */
 .work-meta {
   display: flex;
   flex-direction: column;
@@ -132,40 +133,121 @@
   color: var(--muted);
 }
 
-/* ── Avatar ──
-   Round portrait with a glassy face: a soft specular sheen across the photo
-   and a bright rim along its edge, lifted off the page by a long shadow.
-   Used by the about page (lives here with the other shared pieces). */
-.avatar {
-  --size: 17.5rem;
-  position: relative;
-  flex: none;
-  width: min(var(--size), 100%);
-  aspect-ratio: 1;
-  margin: 0;
-  border-radius: 50%;
-  box-shadow: 0 30px 60px -28px rgba(24, 20, 48, 0.45);
+/* Results: figure in ink, label muted, separated by a middle dot.
+   Every item carries its dot in a 1.4em slot to its left, and the list is
+   pulled left by that slot and clipped there. Mid-line, dots show between
+   items; an item that wraps to start a new line has its dot clipped away,
+   so no line ever opens with a stray "·". */
+.work-results {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 0 -1.4em;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  clip-path: inset(0 0 0 1.4em);
 }
 
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  display: block;
+.work-results li::before {
+  content: '·';
+  display: inline-block;
+  width: 1.4em;
+  text-align: center;
 }
 
-/* Sheen: a diagonal highlight over the photo, like light on curved glass. */
-.avatar::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  pointer-events: none;
-  background: linear-gradient(155deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 32%, transparent 50%);
-  box-shadow:
-    inset 0 1.5px 1px rgba(255, 255, 255, 0.55),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+.work-results b {
+  font-weight: 400;
+  color: var(--text);
+}
+
+/* ── Work reel (js/carousel.js) ──
+   Without JS the work stays the 2-column grid above. With it, every card
+   sits in the same grid cell, centred, and the script moves each one round
+   the rim of a wheel with transforms. column-gap does no layout here: the
+   script reads it as the spacing between cards. */
+.work.is-reel {
+  --reel-w: clamp(22rem, 48vw, 50rem);
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: start;
+  column-gap: clamp(3rem, 5vw, 6rem);
+  /* Little above; more below for the neighbours as they tilt and dip. */
+  padding: 0.5rem 0 clamp(7rem, 12vw, 16rem);
+  overflow-x: clip;
+  touch-action: pan-y;          /* vertical swipes still scroll the page */
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.work.is-reel.is-dragging,
+.work.is-reel.is-dragging .work-item { cursor: grabbing; }
+
+.work.is-reel > .work-item {
+  grid-area: 1 / 1;
+  width: var(--reel-w);
+  padding: 0;
+  /* Tilt from the foot of the card: the title rows stay evenly spaced along
+     the arc and only the images fan out above them. */
+  transform-origin: 50% 100%;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.work.is-reel img { -webkit-user-drag: none; }
+
+.work.is-reel > .work-item:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 0.75rem;
+  border-radius: 14px;
+}
+
+/* —— By the numbers: a ruled row of figures under the work —— */
+.figures {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--rule);
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 3.5rem 3rem 4rem;
+}
+
+.figure + .figure { border-left: 1px solid var(--rule); }
+
+.figure-num {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(3rem, 5vw, 5.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+
+.figure-label {
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 22ch;
+}
+
+@media (max-width: 1100px) {
+  .figures { grid-template-columns: repeat(2, 1fr); }
+  .figure:nth-child(3) { border-left: none; }
+  .figure:nth-child(n + 3) { border-top: 1px solid var(--rule); }
+}
+
+@media (max-width: 768px) {
+  .figures { grid-template-columns: 1fr; }
+  .figure { padding: 2.5rem 1.5rem; }
+  .figure + .figure {
+    border-left: none;
+    border-top: 1px solid var(--rule);
+  }
 }
 
 /* ── Pills ──
@@ -219,16 +301,6 @@
   transform: translateY(-0.22em);
 }
 
-@media (prefers-color-scheme: dark) {
-  .avatar { box-shadow: 0 30px 60px -28px rgba(0, 0, 0, 0.75); }
-  .avatar::after {
-    background: linear-gradient(155deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 32%, transparent 50%);
-    box-shadow:
-      inset 0 1.5px 1px rgba(255, 255, 255, 0.22),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-  }
-}
-
 /* ── Desktop: centre the hero on the whole window rather than on the column
    beside the sidebar — the backdrop already runs under the glass, the way
    iPadOS extends content beneath a floating sidebar. ── */
@@ -242,10 +314,10 @@
 /* ── Mobile ── */
 @media (max-width: 768px) {
   .hero {
-    /* Centre within the space the chrome leaves free: below the status bar
-       (home-screen app) and above the floating tab bar. The heavier top
-       padding nudges the centred block down, off the top edge. */
-    padding: calc(11rem + env(safe-area-inset-top, 0px)) 1.5rem calc(3rem + var(--tabbar-clear));
+    /* Clear of the status bar (home-screen app); the heavier top padding
+       nudges the block down, off the top edge. The bottom stays short so the
+       work follows close under the pills. */
+    padding: calc(11rem + env(safe-area-inset-top, 0px)) 1.5rem 3.5rem;
     /* Shorter still on phones, so the first project shows above the tab bar. */
     min-height: 62svh;
   }
@@ -256,5 +328,20 @@
 
   .work-item {
     padding: 1.5rem;
+  }
+
+  .work.is-reel {
+    --reel-w: 76vw;
+    column-gap: 2.75rem;
+    padding: 0.75rem 0 6rem;
+  }
+
+  /* Phones show one card at a time; tilting from its middle lets the
+     neighbours' tilted edges peek in at the sides. */
+  .work.is-reel > .work-item { transform-origin: 50% 50%; }
+
+  .work-media img,
+  .work-media video {
+    aspect-ratio: 1;
   }
 }

@@ -1,0 +1,206 @@
+/* SNAPSHOT of UVU production CSS (homepage-wrapper.css) taken 2026-10-14 from the live Alumni Benefits page.
+   Do not edit. ("only screen and" removed from media queries so Save as PDF keeps the desktop layout.) Root-relative url() paths rewritten to https://www.uvu.edu/ so they resolve locally. */
+:root {
+	--announcement-height: 58px;
+}
+.homepage.marketing#index #globalHeader {
+	/*border: none;
+	padding-block-start: var(--announcement-height);
+	background-color: #222222;*/
+}
+
+.homepage:has(#homepage-announcement) #globalHeader {
+	padding-block-start: calc(var(--announcement-height) + var(--emergency-notice-height));
+}
+.homepage.marketing#index #globalHeader .globalHeaderMain {
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+	background-color: white;
+}
+.homepage.marketing#index #globalHeader #deptNav {
+	border: none;
+}
+.homepage.marketing#index #globalHeader #deptNav .deptNavWrap.overflowing {
+	display: grid;
+	grid-template-columns: 22px 3fr 22px;
+	border-bottom: 3px solid var(--color-uvu-primary);
+}
+.homepage.marketing#index #globalHeader #deptNav ul {
+	width: 100%;
+}
+.homepage.marketing#index #globalHeader #deptNav ul li {
+	position: relative;
+	width: 100%;
+	margin-inline-end: -1px;
+}
+.homepage.marketing#index #globalHeader #deptNav ul li + li:before {
+	content: "";
+	height: 20px;
+	width: 1px;
+	background-color: var(--color-uvu-primary);
+	position: absolute;
+	left: 0;
+	top: calc(50% - 10px);
+}
+.homepage.marketing#index #globalHeader #deptNav a {
+	color: var(--color-uvu-primary);
+	border: none;
+	font-size: 16px;
+	line-height: 22px;
+	padding: 10px 80px;
+	width: 100%;
+	will-change: color, background-color;
+	transition: color 0.2s, background-color 0.2s;
+	justify-content: center;
+}
+/* .homepage.marketing#index #globalHeader #deptNav a:after {
+	content: "\f078";
+	color: white;
+	font-family: "Font Awesome 5 Pro";
+	opacity: 0;
+	will-change: opacity;
+	transition: opacity .2s;
+	position: absolute;
+	bottom: 0;
+	font-size: 11px;
+}
+.homepage.marketing#index #globalHeader #deptNav a:hover:after,
+.homepage.marketing#index #globalHeader #deptNav a:focus:after,
+.homepage.marketing#index #globalHeader #deptNav a.active:after {
+	opacity: 1;
+} */
+.homepage.marketing#index #globalHeader #deptNav a:hover,
+.homepage.marketing#index #globalHeader #deptNav a:focus {
+	color: white;
+	background-color: var(--color-uvu-secondary);
+}
+
+.homepage.marketing#index #globalHeader #deptNav a.active {
+	color: white;
+	background-color: var(--color-uvu-primary);
+}
+
+
+
+.homepage.marketing#index #globalHeader .globalHeaderMain .global-quicklinks li.hidden {
+	display: block !important;
+}
+
+/* Announcement Slider */
+#ou-campus-edit-id [path="/_homepage/lib/includes/homepage-announcement.inc"] {
+    position: absolute;
+    top: 0;
+}
+.homepage .announcement-container {
+	--show-announcement: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1941;
+	width: 100%;
+	background-color: #222222;
+	background-color: #185c33;
+	color: white;
+	opacity: var(--show-announcement);
+	padding-block-start: var(--emergency-notice-height);
+	transition: transform 0.5s, opacity 0.2s;
+}
+
+/* .headroom--pinned .announcement-container {
+	transform: translateY(0);
+}
+
+.headroom--unpinned .announcement-container {
+	transform: translateY(-100%);
+}
+.headroom--bottom .announcement-container {
+	transform: translateY(0);
+} */
+
+.homepage .announcement-slider {
+	margin: 0px auto;
+	font-size: 18px;
+	font-family: Arial, sans-serif;
+}
+
+.homepage .announcement-slider ul.announcement-list, .homepage .announcement-slider ul.announcement-list li.announcement-item, .homepage .announcement-slider ul.announcement-list li.announcement-item .announcement-details {
+    margin: 0;
+}
+
+.homepage .announcement-slider ul.announcement-list {
+	padding: 0;
+}
+
+.homepage .announcement-slider ul.announcement-list li.announcement-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	padding-block-start: 10px;
+	padding-block-end: 10px;
+	padding-inline-start: 10px;
+	padding-inline-end: 10px;
+}
+
+.homepage .announcement-slider .announcement-title {
+	font-family: "Rajdhani", arial, sans-serif;
+	font-weight: bold;
+}
+
+.homepage .announcement-slider .announcement-details a {
+	display: inline-block;
+    margin-inline-start: 1ch;
+    color: #275d38;
+    background-color: white;
+    text-decoration: underline;
+    padding: 5px 20px;
+    border-radius: 8px;
+}
+
+@media (min-width: 992px) {
+	.homepage.marketing#index #globalHeader #deptNav .deptNavWrap {
+		overflow-x: hidden;
+	}
+	.homepage.marketing#index #globalHeader #deptNav .deptNavWrap.overflowing {
+		display: flex;
+	}
+	.homepage.marketing#index #globalHeader #deptNav .deptNavWrap.overflowing:before,
+	.homepage.marketing#index #globalHeader #deptNav .deptNavWrap.overflowing:after {
+		display: none;
+	}
+	.homepage.marketing#index #globalHeader #deptNav ul li + li:before {
+		display: none;
+	}
+	.homepage.marketing#index #globalHeader #deptNav a {
+		font-size: 12px;
+		padding: 10px 0px;
+		letter-spacing: unset;
+	}
+
+	/* Announcement Slider */
+	.homepage .announcement-slider {
+		font-size: 16px;
+	}
+	.homepage .announcement-slider ul.announcement-list li.announcement-item {
+		padding-block-start: 20px;
+		padding-block-end: 20px;
+		padding-inline-start: 20px;
+		padding-inline-end: 20px;
+	}
+	.homepage .announcement-slider .announcement-title {
+		font-size: 20px;
+		margin-inline-end: 25px;
+	}
+	
+}
+@media (min-width: 1400px) {
+	.homepage.marketing#index #globalHeader #deptNav a {
+		font-size: 16px;
+		letter-spacing: 1px;
+	}
+	
+	/* Announcement Slider */
+	.homepage .announcement-slider ul.announcement-list li.announcement-item {
+		flex-direction: row;
+		justify-content: center;
+	}
+}

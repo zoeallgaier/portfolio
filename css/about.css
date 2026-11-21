@@ -1,7 +1,9 @@
-/* about.css — loaded alongside index.css (which supplies the .avatar and the
-   .pill). An editorial layout in two beats: the intro (round portrait beside
-   the heading + story, drop cap, links underneath), then a ruled row of
-   figures. */
+/* about.css: loaded alongside index.css (which supplies the .pill).
+   One section: the copy (work, life, signature, links) pinned on the left,
+   a vertical reel of slightly overlapping photos scrolling past on the
+   right. js/about.js bends the reel along an arc and keeps the pinned
+   column fully on screen when it's taller than the viewport. The warm glow
+   behind it is the sitewide backdrop's "about" palette (js/backdrop.js). */
 
 /* Blur-in entrances (marginalia variant) — overrides base.css fadeUp
    for every animated element on this page. */
@@ -10,28 +12,34 @@
   to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
 }
 
-/* ── Intro: portrait beside one reading column (heading, story, links),
-   the pair centred in the space beside the sidebar. The warm glow pooled
-   behind it is the sitewide backdrop's "about" palette (js/backdrop.js). ── */
-.about-spread {
-  --portrait: clamp(15rem, 26vw, 24rem);
-  min-height: 88svh;
+/* —— Layout ——
+   Capped and centred so the photos stay beside the copy on wide screens.
+   overflow-x: clip (not hidden) trims the tilted photos at the edges without
+   making a scroll container, which would break the pinned column. */
+.about-life {
   display: grid;
-  grid-template-columns: var(--portrait) minmax(0, 40rem);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: clamp(3rem, 6vw, 6rem);
+  max-width: 100rem;
+  margin-inline: auto;
+  padding: 0 clamp(3rem, 8vw, 8rem);
+  overflow-x: clip;
+}
+
+/* --pin-top is set by js/about.js: 0 when the column fits the viewport,
+   negative when it doesn't, so its bottom (signature, links) stays
+   reachable while it's pinned. */
+.life-copy {
+  position: sticky;
+  top: var(--pin-top, 0px);
+  align-self: start;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-content: center;
-  align-items: center;
-  gap: clamp(2.5rem, 5vw, 5rem);
-  padding: clamp(6rem, 9vw, 9rem) clamp(3rem, 8vw, 8rem);
-}
-
-.about-avatar {
-  --size: var(--portrait);
-  animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
-}
-
-.about-copy {
-  animation: fadeUp 1s cubic-bezier(0.25, 0.8, 0.25, 1) 0.3s both;
+  max-width: 34rem;
+  padding: clamp(5rem, 9vw, 7rem) 0 clamp(3rem, 6vw, 5rem);
+  animation: fadeUp 1s cubic-bezier(0.25, 0.8, 0.25, 1) 0.2s both;
 }
 
 .about-title {
@@ -45,120 +53,138 @@
   margin-bottom: 2rem;
 }
 
-/* ── Link buttons under the copy (the .pill itself lives in index.css) ── */
-.about-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 2.5rem;
-}
-
-.about-copy p {
-  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+.life-copy p {
+  font-size: clamp(1.02rem, 1.25vw, 1.18rem);
   line-height: 1.7;
   font-weight: 300;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 /* Key phrases, same treatment as the marginalia post body. Pinned to 700
    because the UA default is the RELATIVE `bolder`, which against this
    column's 300 computes to 400 — near-invisible next to the body text. */
-.about-copy b,
-.about-copy strong { font-weight: 700; }
+.life-copy b,
+.life-copy strong { font-weight: 700; }
 
 /* Inline links (employers): a hairline underline that firms up on hover. */
-.about-copy p a {
+.life-copy p a {
   border-bottom: 1px solid var(--rule);
   transition: border-color 0.2s;
 }
 
-.about-copy p a:hover { border-color: var(--text); }
+.life-copy p a:hover { border-color: var(--text); }
 
-/* Drop cap: a three-line Instrument Serif initial. Spanned in the markup
-   rather than ::first-letter — the lede opens on a contraction, and WebKit
-   folds the apostrophe that follows the first letter into ::first-letter,
-   which would blow the ' up to three lines tall alongside the I. */
-.about-dropcap {
-  float: left;
-  font-family: 'Instrument Serif', serif;
-  font-size: 5.1em;
-  line-height: 0.8;
-  padding: 0.08em 0.1em 0 0;
-  color: var(--text);
+/* The signature mark, tinted through a mask so it follows light/dark mode
+   without a second asset. */
+.life-signature {
+  display: block;
+  width: clamp(6rem, 9vw, 8.5rem);
+  aspect-ratio: 365 / 308;
+  margin-top: 0.25rem;
+  background-color: var(--text);
+  -webkit-mask: url(/_assets/About/signature.png) no-repeat center / contain;
+          mask: url(/_assets/About/signature.png) no-repeat center / contain;
 }
 
-.about-pull {
-  margin: 3rem 0;
-  padding: 1.75rem 0;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
-  font-size: clamp(2.25rem, 4.2vw, 3.75rem);
-  line-height: 1.02;
-  letter-spacing: -0.02em;
-  text-wrap: balance;
+/* —— Link buttons under the signature (the .pill itself lives in index.css) —— */
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
 }
 
-.about-pull::before { content: '“'; }
-.about-pull::after  { content: '”'; }
-
-/* ── Figures: ruled off under the intro ── */
-.about-figures {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid var(--rule);
-}
-
-.about-figure {
+/* —— The reel ——
+   Each item pulls up over the one before it, later ones on top, so the
+   stack reads as loose prints. --tilt and --shift come from js/about.js;
+   --arc-tilt (degrees) and --arc-shift (fraction of an item's width) set
+   how far it bends, softer on narrow screens. */
+.life-reel {
+  --arc-tilt: 9;
+  --arc-shift: 0.12;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  padding: 3.5rem 3rem 4rem;
+  align-items: center;
+  padding: 22svh 0 30svh;
 }
 
-.about-figure + .about-figure { border-left: 1px solid var(--rule); }
-
-.about-figure-num {
-  font-family: 'Instrument Serif', serif;
-  font-size: clamp(3.5rem, 6vw, 6rem);
-  line-height: 0.9;
-  letter-spacing: -0.03em;
+.reel-item {
+  --tilt: 0deg;
+  --shift: 0px;
+  position: relative;
+  width: min(36rem, 100%);
+  transform: translateX(var(--shift)) rotate(var(--tilt));
+  will-change: transform;
 }
 
-.about-figure-num em {
-  font-size: 0.4em;
-  margin-left: 0.15em;
-  letter-spacing: 0;
-  color: var(--muted);
+.reel-item + .reel-item { margin-top: clamp(-6rem, -7vw, -3rem); }
+
+.reel-item:nth-child(1) { z-index: 1; }
+.reel-item:nth-child(2) { z-index: 2; }
+.reel-item:nth-child(3) { z-index: 3; }
+.reel-item:nth-child(4) { z-index: 4; }
+.reel-item:nth-child(5) { z-index: 5; }
+
+.reel-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 1rem;
+  transition: scale 1.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+              translate 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.about-figure-label {
-  font-size: 0.8125rem;
-  letter-spacing: 0.04em;
-  line-height: 1.5;
-  color: var(--muted);
-  max-width: 22ch;
+/* Not yet scrolled into view: shrunk and dropped, so each one springs up.
+   Only once js/about.js has armed the reel, so a page without it (no JS,
+   a failed script) still shows every photo at full size. */
+.life-reel.is-armed .reel-item:not(.is-in) img {
+  scale: 0.8;
+  translate: 0 12%;
 }
 
-/* ── Mobile ── */
-@media (max-width: 768px) {
-  .about-spread {
-    --portrait: min(18rem, 76vw);
-    min-height: auto;
+@media (prefers-reduced-motion: reduce) {
+  .life-copy { animation: none; }
+  .reel-item { transform: none; will-change: auto; }
+  .reel-item img,
+  .life-reel.is-armed .reel-item:not(.is-in) img { transition: none; scale: 1; translate: none; }
+}
+
+/* ── Stacked: copy first, then the reel ──
+   Tablets in portrait and phones in landscape. Two columns here either
+   squeeze the copy to a strip or pin it in a window too short to read. */
+@media (max-width: 900px), (max-height: 500px) {
+  .about-life {
     grid-template-columns: minmax(0, 1fr);
-    gap: 2.5rem;
-    padding: calc(4.5rem + env(safe-area-inset-top, 0px)) 1.5rem 4rem;
+    gap: 0;
   }
 
-  .about-avatar { justify-self: center; }
-
-  .about-figures { grid-template-columns: 1fr; }
-
-  .about-figure { padding: 2.5rem 1.5rem; }
-
-  .about-figure + .about-figure {
-    border-left: none;
-    border-top: 1px solid var(--rule);
+  .life-copy {
+    position: static;
+    min-height: auto;
+    padding-bottom: 1rem;
   }
+
+  .life-reel {
+    --arc-tilt: 6;
+    --arc-shift: 0.06;
+    padding: 3rem 0 6rem;
+  }
+
+  /* Never taller than most of the window, so landscape phones see a whole photo. */
+  .reel-item { width: min(28rem, 76vw, 64svh); }
+
+  .reel-item + .reel-item { margin-top: -3rem; }
+}
+
+/* ── Phones ── */
+@media (max-width: 768px) {
+  .about-life { padding: 0 1.5rem; }
+
+  .life-copy { padding-top: calc(4.5rem + env(safe-area-inset-top, 0px)); }
+
+  .reel-item { width: min(19rem, 76vw); }
+
+  .reel-item + .reel-item { margin-top: -2rem; }
 }

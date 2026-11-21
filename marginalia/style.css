@@ -115,18 +115,19 @@ main {
 .entry {
   position: relative;                   /* anchor for the stretched title link */
   padding: 2.2rem 2.3rem 1.9rem;
-  border: 1px solid var(--rule);
+  /* Soft panel at every size: no outer edge, just a quiet tint. Type reads
+     from the colored type word. */
+  border: none;
   border-radius: 8px;
-  /* Type cue: a solid offset slab in the type hue behind the right + bottom
-     edges, so each card reads as a block with depth. `--stripe` is set per
-     type below. Hover lifts the card with `translate` (not `transform`, which
-     the fadeUp animation holds) and deepens the slab to match. */
-  --depth: 2px;
-  box-shadow: var(--depth) var(--depth) 0 var(--stripe, var(--rule));
-  transition: background-color 0.15s, border-color 0.2s,
-              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              translate 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  background: color-mix(in srgb, var(--text) 5%, transparent);
+  transition: background-color 0.15s, scale 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Native-style press: a quick dip and darken. */
+.entry:active {
+  background: color-mix(in srgb, var(--text) 9%, transparent);
+  scale: 0.985;
 }
 
 /* Make the whole text card one tap target: the title link stretches over the card. */
@@ -136,25 +137,16 @@ main {
   inset: 0;
 }
 
-/* Muted default, full-strength on hover; the card rises off its slab.
-   Hover only on real pointers, so a touch tap isn't swallowed as a "hover". */
-@media (hover: hover) {
-  .entry:hover {
-    background-color: color-mix(in srgb, var(--text) 4%, transparent);
-    border-color: var(--muted);
-    --depth: 5px;
-    translate: -2px -2px;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .entry:hover { translate: none; --depth: 2px; }
-}
+/* Hover washes the card in its type color. Real pointers only, so a touch
+   tap isn't swallowed as a "hover". */
+.entry--post    { --hue: var(--type-post-stripe); }
+.entry--find    { --hue: var(--type-find-stripe); }
+.entry--library { --hue: var(--type-library-stripe); }
+.entry--photo   { --hue: var(--type-photo-stripe); }
 
-/* Slab color per type — the brighter tier, for a vivid board. */
-.entry--post    { --stripe: var(--type-post-stripe); }
-.entry--find    { --stripe: var(--type-find-stripe); }
-.entry--library { --stripe: var(--type-library-stripe); }
-.entry--photo   { --stripe: var(--type-photo-stripe); }
+@media (hover: hover) {
+  .entry:hover { background-color: color-mix(in srgb, var(--hue, var(--text)) 16%, transparent); }
+}
 
 .entry-header {
   display: flex;
@@ -541,9 +533,7 @@ a.entry-caption { transition: color 0.2s; }
 
 /* —— Mobile —— */
 @media (max-width: 680px) {
-  /* Phones: the slab doesn't survive the small screen, so cards become soft
-     rounded panels on a 16px gutter, same family as the capsule tab bar.
-     Type reads from the colored type word. */
+  /* Phones: cards on a 16px gutter, tighter gaps. */
   .feed {
     max-width: none;
     padding-inline: 16px;
@@ -551,19 +541,6 @@ a.entry-caption { transition: color 0.2s; }
   }
 
   .feed-col { gap: 10px; }
-
-  .entry {
-    border: none;
-    border-radius: 8px;          /* same radius as the desktop cards */
-    background: color-mix(in srgb, var(--text) 5%, transparent);
-    box-shadow: none;
-    transition: background-color 0.15s, scale 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  /* Native-style press: a quick dip and darken. */
-  .entry:active {
-    background: color-mix(in srgb, var(--text) 9%, transparent);
-    scale: 0.985;
-  }
 
   /* Media tiles keep their zero padding (image fills the card);
      only text cards get the tighter mobile padding. */

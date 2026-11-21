@@ -8,7 +8,7 @@
       main.insertAdjacentHTML('beforebegin',
         '<header class="app-topbar">' +
           '<a class="nav-logo" href="/" aria-label="Zoe Allgaier — Home">' +
-            '<img src="/icons/z-mark-dark.png" alt=""></a>' +
+            '<img src="/icons/mono-dark.png" alt=""></a>' +
         '</header>');
     }
   }());

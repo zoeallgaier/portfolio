@@ -44,9 +44,19 @@ video {
    The glow behind it is the sitewide backdrop (js/backdrop.js), tinted by the
    two colours this page declares on <main data-g1 data-g2>. */
 .project-title {
-  /* No rule or role line under it: the title runs straight into the
-     overview, which carries its own top padding. */
+  /* No rule under it: the title and role run straight into the overview,
+     which carries its own top padding. */
   padding: 8.5rem var(--gutter) 1.5rem;
+}
+
+/* My title on the project, as on its home card. Fades in after the
+   per-character title reveal, just ahead of the overview. */
+.project-role {
+  margin-top: 0.9rem;
+  font-size: 0.9375rem;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+  animation: fadeUp 0.7s cubic-bezier(0.25, 0.8, 0.25, 1) 0.7s both;
 }
 
 .project-name {
@@ -85,12 +95,12 @@ video {
   animation: charReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* ── Intro: overview on the left, results on the right ──
+/* ── Intro: results on the left, overview on the right ──
    Split by space, not a rule (as on the home cards): with nothing under the
    title, a column rule would hang off it. */
 .project-intro {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
   column-gap: clamp(4rem, 8vw, 8rem);
   padding: 0 var(--gutter);
   border-bottom: 1px solid var(--rule);
@@ -110,6 +120,19 @@ video {
   letter-spacing: 0.06em;
   color: var(--muted);
   margin: 0 0 1.5rem;
+}
+
+/* Overview / Results eyebrows: hidden visually, kept for screen readers */
+.project-intro .intro-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .intro-col p {
@@ -193,10 +216,12 @@ video {
   border-bottom: 1px solid var(--rule);
 }
 
+/* Spacing lives on the buttons, not the pill, so the whole pill is tappable
+   (same look as padding 0.75rem 2rem + gap 2rem). */
 .toggle {
   display: flex;
-  gap: 2rem;
-  padding: 0.75rem 2rem;
+  gap: 0;
+  padding: 0 1rem;
   border-radius: 999px;
   border: 1px solid var(--rule);
   animation: fadeUp 0.7s cubic-bezier(0.25, 0.8, 0.25, 1) 0.82s both;
@@ -205,7 +230,7 @@ video {
 .toggle button {
   background: none;
   border: none;
-  padding: 0;
+  padding: 0.75rem 1rem;
   cursor: pointer;
   font-family: 'Oxygen', sans-serif;
   font-size: 0.8125rem;
@@ -343,6 +368,365 @@ video {
    off the captions burned into their lower third. */
 .gallery .gallery-tall {
   aspect-ratio: 9 / 16;
+}
+
+/* ── Live screens (ylac.html) ──
+   Real signage pages embedded as iframes, each in a thin bezel at the
+   screen's own aspect. Four portrait screens in a row, as installed, with
+   the 4K screen under them; two across on a narrow window, a swipeable row
+   on a phone. */
+.live-screens {
+  padding: 4.5rem var(--gutter) 6rem;
+  border-bottom: 1px solid var(--rule);
+  animation: fadeUp 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) 0.2s both;
+}
+
+/* No divider between the overview and the live screens below it. */
+.project-intro:has(+ .live-screens) { border-bottom: none; }
+
+.live-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  column-gap: clamp(4rem, 8vw, 8rem);
+  align-items: baseline;
+  margin-bottom: 3rem;
+}
+
+.live-head .intro-label { margin: 0; }
+.live-head p { margin: 0; max-width: 38rem; color: var(--muted); }
+
+.live-row {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 clamp(3rem, 6vw, 5rem);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+}
+
+.live-row li { margin: 0; }
+
+.live-frame {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  padding: clamp(0.35rem, 0.6vw, 0.6rem);
+  border-radius: clamp(0.9rem, 1.4vw, 1.25rem);
+  background: #121216;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.live-screen-wide .live-frame { aspect-ratio: 16 / 9; }
+
+.live-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: calc(clamp(0.9rem, 1.4vw, 1.25rem) - clamp(0.35rem, 0.6vw, 0.6rem));
+  /* border-radius alone doesn't clip a scaled page inside an iframe in
+     Safari; clip-path does, so the screen's corners follow the bezel. */
+  clip-path: inset(0 round calc(clamp(0.9rem, 1.4vw, 1.25rem) - clamp(0.35rem, 0.6vw, 0.6rem)));
+  background: #1a321c;
+}
+
+/* Click to play. Each screen starts as its screenshot; js/media.js swaps in
+   the live page only when it's asked for, so the page itself never loads
+   five signage apps (or archived sites) up front. On a phone the poster is
+   just a link that opens the live page full size. While the page loads, the
+   poster stays on top of it, then steps aside. */
+.live-poster {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: calc(clamp(0.9rem, 1.4vw, 1.25rem) - clamp(0.35rem, 0.6vw, 0.6rem));
+  background: #1a321c;
+  color: #121216;
+}
+
+.live-poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The pill sits dead centre (below), clear of each screen's own call-to-action
+   bar at the foot, so a soft vignette is all it needs to read apart. */
+.live-poster::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(closest-side, rgba(10, 10, 14, 0.28), rgba(10, 10, 14, 0));
+  pointer-events: none;
+}
+
+.live-play { z-index: 1; }
+
+.live-poster.is-loading {
+  position: absolute;
+  inset: clamp(0.35rem, 0.6vw, 0.6rem);
+  width: auto;
+  height: auto;
+  cursor: progress;
+}
+
+.live-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem 0.5rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
+  font-family: 'Oxygen', sans-serif;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+  transition: transform 0.25s var(--ease-chrome), background-color 0.2s;
+}
+
+.live-play::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0.32rem 0 0.32rem 0.55rem;
+  border-color: transparent transparent transparent currentColor;
+}
+
+.live-poster:hover .live-play,
+.live-poster:focus-visible .live-play { background: #fff; transform: translate(-50%, -50%) scale(1.05); }
+
+.live-poster.is-loading .live-play::before { display: none; }
+
+.live-play-open { display: none; }
+
+@media (max-width: 768px) {
+  .live-play-full { display: none; }
+  .live-play-open { display: inline; }
+  .live-play::before { display: none; }
+  .live-play { padding-left: 1rem; }
+}
+
+.live-cap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.6rem;
+  row-gap: 0.15rem;
+  margin: 1.1rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.live-num {
+  font-family: 'Oxygen', sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.live-cap b {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+}
+
+.live-cap span:not(.live-num) {
+  flex-basis: 100%;
+  color: var(--muted);
+}
+
+.live-cap a {
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.live-cap a:hover { color: var(--accent); border-color: var(--accent); }
+
+.live-screen-wide .live-cap span:not(.live-num) { flex-basis: auto; }
+.live-screen-wide .live-cap a { margin-left: auto; }
+
+@media (max-width: 1100px) and (min-width: 769px) {
+  .live-row { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 3rem; }
+}
+
+@media (max-width: 768px) {
+  .live-screens { padding: 3rem 0 4rem; }
+
+  .live-head {
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+    padding: 0 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  /* A swipeable row, one screen and a peek of the next. */
+  .live-row {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 1.5rem;
+    padding: 0 1.5rem 0.5rem;
+    margin-bottom: 3rem;
+    scrollbar-width: none;
+  }
+
+  .live-row::-webkit-scrollbar { display: none; }
+
+  .live-row li {
+    flex: 0 0 74%;
+    scroll-snap-align: start;
+  }
+
+  .live-screen-wide { padding: 0 1.5rem; }
+  .live-screen-wide .live-cap span:not(.live-num) { flex-basis: 100%; }
+  .live-screen-wide .live-cap a { margin-left: 0; }
+}
+
+/* ── Live before / after (uvu-web.html) ──
+   The same bezel as the signage. Each site gets a pair: the old page
+   (archived) beside the redesign. Each starts as its screenshot; "Try it
+   live" loads the real page, scrollable, in its place. The page inside
+   renders at a real device width, 390px for Phone or 1440px for Desktop, and
+   js/media.js scales it to the bezel (--s), so it lays out as it would on
+   that device rather than squeezed.
+
+   Phone view: four phones in a row on a wide window, as the signage is; the
+   two sites stack below 900px, each pair still side by side, since that's
+   the point. Desktop view: one site per row, two laptop-shaped frames across,
+   stacked on a phone. */
+.live-head-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+/* Phone / Desktop: a two-segment pill, the current one filled. */
+.view-switch {
+  display: inline-flex;
+  padding: 0.25rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+}
+
+.view-switch button {
+  background: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.45rem 1.1rem;
+  cursor: pointer;
+  font-family: 'Oxygen', sans-serif;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  transition: color 0.2s, background-color 0.25s var(--ease-chrome);
+}
+
+.view-switch button:hover { color: var(--text); }
+
+.view-switch button[aria-pressed="true"] {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.view-switch button:focus-visible { outline-offset: 2px; }
+
+.live-sites {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(3rem, 5vw, 6rem);
+  row-gap: clamp(4rem, 7vw, 6rem);
+}
+
+.live-site-title {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0 0 clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.live-pair {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+}
+
+.live-pair li { margin: 0; }
+
+.live-phone {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: calc(clamp(0.9rem, 1.4vw, 1.25rem) - clamp(0.35rem, 0.6vw, 0.6rem));
+  background: #fff var(--shot-m) center top / cover no-repeat;
+}
+
+/* The screenshot is already the background here, so the poster is clear. */
+.live-phone .live-poster,
+.live-phone .live-poster.is-loading {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: none;
+}
+
+.live-phone iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 390px;
+  height: 693px;
+  border-radius: 0;
+  clip-path: none;
+  background: transparent;
+  transform: scale(var(--s, 1));
+  transform-origin: 0 0;
+}
+
+/* Desktop view */
+.live-compare[data-view="desktop"] .live-sites { grid-template-columns: minmax(0, 1fr); }
+.live-compare[data-view="desktop"] .live-frame {
+  aspect-ratio: 16 / 10;
+  padding: clamp(0.3rem, 0.45vw, 0.5rem);
+  border-radius: clamp(0.6rem, 0.9vw, 0.9rem);
+}
+.live-compare[data-view="desktop"] .live-phone {
+  border-radius: calc(clamp(0.6rem, 0.9vw, 0.9rem) - clamp(0.3rem, 0.45vw, 0.5rem));
+  background-image: var(--shot-d);
+}
+
+@media (max-width: 900px) {
+  .live-sites { grid-template-columns: minmax(0, 1fr); }
+
+  .live-compare[data-view="desktop"] .live-pair {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .live-sites { padding: 0 1.5rem; }
+
+  .live-pair { gap: 0.75rem; }
+  .live-pair .live-cap b { font-size: 1.1rem; }
 }
 
 /* ── Next project (bookend of the header) ──
