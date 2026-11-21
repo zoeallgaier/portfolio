@@ -21,6 +21,7 @@
   let io = null;
   let ro = null;
   let frame = 0;
+  let hold = 0;
 
   // Spring-in on first sight.
   function watch() {
@@ -77,6 +78,7 @@
   const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
 
   function wire(root) {
+    clearTimeout(hold);
     io?.disconnect();
     ro?.disconnect();
     const reel = root.querySelector('.life-reel');
@@ -86,7 +88,10 @@
 
     measure(reel);
     reel.classList.add('is-armed');
-    watch();
+    // The reel fades in after the title (about.css); start the spring-in on
+    // the same beat, or the first photos would finish springing unseen.
+    clearTimeout(hold);
+    hold = setTimeout(watch, (parseFloat(getComputedStyle(reel).animationDelay) || 0) * 1000);
     if (copy && 'ResizeObserver' in window) {
       ro = new ResizeObserver(pin);
       ro.observe(copy);

@@ -16,13 +16,16 @@
   padding: 7rem 3rem 2.5rem;
   /* The beat after "Hi," — reveal.js holds the rest of the line back by this
      much so it lands like speech, and everything after it waits the same. */
-  --speech-pause: 0.35s;
+  --speech-pause: 0.25s;
 }
 
 .hero-name {
   font-family: 'Instrument Serif', serif;
   font-style: italic;
-  font-size: clamp(4.5rem, 15vw, 15rem);
+  /* The floor gives way below 4.5rem only on the narrowest phones (Fold-width,
+     under ~315px), where "Hi, I’m Zoe" on one line would otherwise run past
+     the gutters. Everywhere else this is the same 4.5rem → 15vw → 15rem. */
+  font-size: clamp(min(4.5rem, 23vw), 15vw, 15rem);
   line-height: .88;
   letter-spacing: -0.03em;
   font-weight: 400;
@@ -34,11 +37,17 @@
    so the plain text never flashes before the animation. The script sets
    inline opacity:1 once built (and immediately for reduced-motion). */
 @media (scripting: enabled) {
-  .hero-name { opacity: 0; }
+  .hero-name,
+  .about-title,
+  .cv-name { opacity: 0; }
 }
 
-.hero-name .word { display: inline-block; }
+.hero-name .word,
+.about-title .word,
+.cv-name .word { display: inline-block; }
 
+/* ── Letter reveal (built by js/reveal.js) ──
+   Shared by the hero, the about title and the resume name. */
 .char-mask {
   display: inline-block;
   padding-bottom: 0.25em;
@@ -48,19 +57,36 @@
 
 .char {
   display: inline-block;
-  /* WebKit clips a filtered element's ink to its box. At line-height .88 the
-     comma's tail and the italic overhangs reach past each char's box, so
-     Safari sliced them off. reveal.js drops the animation (and its filter) once
-     each letter lands; this padding covers the ink while it's still
-     animating. The matching negative margin leaves the layout unchanged. */
-  padding: 0.1em 0.05em 0.3em;
-  margin: -0.1em -0.05em -0.3em;
-  animation: charReveal 1s cubic-bezier(0.15, 1, 0.3, 1) both;
+  /* WebKit clips a filtered element's ink to its box, and Instrument Serif
+     italic reaches well past its letters' boxes: J's tail 0.15em to the
+     left, f's hook 0.13em right, H/I/Z serifs ~0.09em, g's descender 0.22em
+     down. Measured against the font files; 0.18em sideways covers every
+     glyph (the old 0.05em sliced all of the above mid-animation on iPhone).
+     The matching negative margin leaves the layout unchanged. */
+  padding: 0.12em 0.18em 0.32em;
+  margin: -0.12em -0.18em -0.32em;
+  animation: charReveal 1.05s cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* Layers up front, so no letter stalls a frame being promoted when its
+     turn comes. Released all at once when the title lands (.is-landed). */
+  will-change: transform, opacity, filter;
 }
 
+/* A rise of under half a letter, blur sized to the type (so a 56px phone
+   title isn't smeared the way an 8px blur smears it) and a soft quint-out
+   curve: the motion starts gently instead of snapping off the first frame,
+   and letters overlap enough to read as one wave. Opacity arrives early
+   (by 40%) so a letter is never half-there and still drifting. Ends on
+   `none`, not blur(0)/translateY(0), so a resting letter carries no filter
+   for WebKit to clip. */
 @keyframes charReveal {
-  from { opacity: 0; transform: translateY(110%); filter: blur(8px); }
-  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+  0%   { opacity: 0; transform: translate3d(0, 0.42em, 0); filter: blur(0.11em); }
+  40%  { opacity: 1; }
+  100% { opacity: 1; transform: none; filter: none; }
+}
+
+.is-landed .char {
+  animation: none;
+  will-change: auto;
 }
 
 .hero-tagline {
@@ -69,7 +95,7 @@
   color: var(--muted);
   max-width: 32ch;
   text-wrap: balance;
-  animation: fadeUp 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) calc(0.68s + var(--speech-pause)) both;
+  animation: fadeUp 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) calc(0.45s + var(--speech-pause)) both;
 }
 
 /* The one way out of the hero besides the nav — lands last, after the
@@ -80,20 +106,30 @@
   justify-content: center;   /* a wrapped second pill stays centred under the tagline */
   gap: 0.75rem;
   margin-top: 2.75rem;
-  animation: fadeUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) calc(1.05s + var(--speech-pause)) both;
+  animation: fadeUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) calc(0.7s + var(--speech-pause)) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero { --speech-pause: 0s; }
+  .work { animation: none; }
 }
 
-/* ── Work ── */
+/* ── Work ──
+   Held back until the name has finished arriving, just after the pills, so
+   the title always comes first. Rides the `translate` property rather than
+   `transform`, so nothing is left on the reel once it lands. */
+@keyframes enterAfter {
+  from { opacity: 0; translate: 0 24px; }
+}
+
 .work {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  animation: enterAfter 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) 1.15s both;
 }
 
 .work-item {
+  --card-radius: 8px;
   display: block;
   padding: 2rem;
 }
@@ -101,7 +137,7 @@
 .work-media {
   position: relative;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: var(--card-radius);
   margin-bottom: 1.25rem;
 }
 
@@ -167,13 +203,13 @@
    the rim of a wheel with transforms. column-gap does no layout here: the
    script reads it as the spacing between cards. */
 .work.is-reel {
-  --reel-w: clamp(22rem, 48vw, 50rem);
+  --reel-w: clamp(26rem, 62vw, 66rem);
   grid-template-columns: 1fr;
   justify-items: center;
   align-items: start;
   column-gap: clamp(3rem, 5vw, 6rem);
   /* Little above; more below for the neighbours as they tilt and dip. */
-  padding: 0.5rem 0 clamp(7rem, 12vw, 16rem);
+  padding: 0.5rem 0 clamp(9rem, 15vw, 21rem);
   overflow-x: clip;
   touch-action: pan-y;          /* vertical swipes still scroll the page */
   cursor: grab;
@@ -201,7 +237,8 @@
 .work.is-reel > .work-item:focus-visible {
   outline: 2px solid var(--text);
   outline-offset: 0.75rem;
-  border-radius: 14px;
+  /* The image's radius plus the outline offset, so the ring stays concentric. */
+  border-radius: calc(var(--card-radius) + 0.75rem);
 }
 
 /* —— By the numbers: a ruled row of figures under the work —— */
@@ -242,12 +279,9 @@
 }
 
 @media (max-width: 768px) {
-  .figures { grid-template-columns: 1fr; }
-  .figure { padding: 2.5rem 1.5rem; }
-  .figure + .figure {
-    border-left: none;
-    border-top: 1px solid var(--rule);
-  }
+  .figure { padding: 2rem 1.25rem 2.5rem; gap: 0.6rem; }
+  .figure-num { font-size: clamp(2.25rem, 10vw, 3rem); }
+  .figure-label { font-size: 0.75rem; letter-spacing: 0.02em; }
 }
 
 /* ── Pills ──

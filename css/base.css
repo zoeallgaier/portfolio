@@ -494,9 +494,11 @@ nav a:active { transform: scale(0.94); transition-duration: 0.08s; }
     transition: translate 0.45s var(--ease-chrome), opacity 0.3s ease 0.1s;
   }
 
-  /* Tabs share the capsule evenly, logo (Home) included. Four tabs: Home,
-     Work, About, Resume — Contact is sidebar-only (the footer ends every page). */
+  /* Tabs share the capsule evenly, logo (Home) included. Three tabs: Home,
+     About, Resume. Work and Contact are sidebar-only: the work reel sits right
+     under the hero on Home, and the footer ends every page. */
   .nav-links { display: contents; }
+  .nav-links > .nav-work,
   .nav-links > .nav-contact { display: none; }
 
   nav .nav-logo,

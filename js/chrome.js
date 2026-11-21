@@ -127,13 +127,13 @@
      While the footer is on screen, "Contact" is the current location; on the
      home page, so is "Work" while the grid fills the middle of the screen. A
      location takes the highlight from the page item (see base.css). Contact
-     wins if both are true — on the sidebar only, since the tab bar has no
-     Contact tab to hand the highlight to. */
+     wins if both are true. Both are sidebar-only: the tab bar has neither a
+     Work nor a Contact tab, so Home keeps the highlight there. */
   const sidebar = window.matchMedia('(min-width: 769px)');
   const seen = { work: false, contact: false };
 
   function syncLocation() {
-    const loc = seen.contact && sidebar.matches ? contactLink : seen.work ? workLink : null;
+    const loc = !sidebar.matches ? null : seen.contact ? contactLink : seen.work ? workLink : null;
     [workLink, contactLink].forEach(l => {
       if (l === loc) l.setAttribute('aria-current', 'location');
       else l.removeAttribute('aria-current');

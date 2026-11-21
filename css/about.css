@@ -9,7 +9,7 @@
    for every animated element on this page. */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(18px); filter: blur(5px); }
-  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+  to   { opacity: 1; transform: none;             filter: none; }
 }
 
 /* —— Layout ——
@@ -39,8 +39,19 @@
   justify-content: center;
   max-width: 34rem;
   padding: clamp(5rem, 9vw, 7rem) 0 clamp(3rem, 6vw, 5rem);
-  animation: fadeUp 1s cubic-bezier(0.25, 0.8, 0.25, 1) 0.2s both;
 }
+
+/* The title rises letter by letter, like the home hero (js/reveal.js); the
+   rest of the column follows it in, one block at a time, starting as the
+   last letters land — the same beat as the hero's tagline. Animated per
+   block rather than as one column so no filter sits over the title's. */
+.life-copy > :not(.about-title) {
+  animation: fadeUp 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) 0.45s both;
+}
+.life-copy > :nth-child(3) { animation-delay: 0.53s; }
+.life-copy > :nth-child(4) { animation-delay: 0.61s; }
+.life-copy > :nth-child(5) { animation-delay: 0.69s; }
+.life-copy > :nth-child(n+6) { animation-delay: 0.77s; }
 
 .about-title {
   font-family: 'Instrument Serif', serif;
@@ -106,6 +117,9 @@
   flex-direction: column;
   align-items: center;
   padding: 22svh 0 30svh;
+  /* The photos wait for the title. js/about.js holds the spring-in back by
+     this same delay, so the first photos spring up as they fade in. */
+  animation: fadeUp 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) 0.9s both;
 }
 
 .reel-item {
@@ -145,7 +159,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .life-copy { animation: none; }
+  .life-copy > *,
+  .life-reel { animation: none; }
   .reel-item { transform: none; will-change: auto; }
   .reel-item img,
   .life-reel.is-armed .reel-item:not(.is-in) img { transition: none; scale: 1; translate: none; }

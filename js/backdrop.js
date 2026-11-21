@@ -77,11 +77,15 @@
      it to the brand orange; nothing reloads now, so a rotation would wander
      off somewhere green and stay there. Project pages don't shift at all —
      their colours are the project's. */
-  const BAND = [25, -72];  // degrees: peach at rest, negative wrapping to purple
+  const BAND = [25, -72];  // degrees: peach at one end, negative wrapping to purple
   const TRAIL = 0.3;       // how far the second pool lags the first, 0–1
   const PERIOD = 80;       // seconds for a full there-and-back
   const cycle = clock => 0.5 - 0.5 * Math.cos(clock * 2 * Math.PI / PERIOD);
   const bandHue = u => BAND[0] + (BAND[1] - BAND[0]) * u;
+  // Where in the band a visit begins: 0 = peach, 1 = purple. 0.67 lands on
+  // pink-purple (~320°), and the cycle carries on from there.
+  const START_U = 0.67;
+  const START = Math.acos(1 - 2 * START_U) * PERIOD / (2 * Math.PI);
 
   /* ── Colour helpers ── */
   function parseColor(str) {
@@ -196,8 +200,8 @@
   let nextPre  = null;              // and the palette that link leads to
   let from     = null;              // what was on screen when a change began
   let started  = 0;                 // when it began
-  let shown    = flatten(target, 0);
-  let wave = 0, clock = 0, last = 0, running = false, wrote = 0, wroteNear = -1;
+  let shown    = flatten(target, START);
+  let wave = 0, clock = START, last = 0, running = false, wrote = 0, wroteNear = -1;
 
   function bindNext() {
     nextEl = main.querySelector('.next-project[data-g1]');

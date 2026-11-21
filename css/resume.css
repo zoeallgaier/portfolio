@@ -6,7 +6,7 @@
 /* Blur-in entrances, as on the about page. */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(18px); filter: blur(5px); }
-  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+  to   { opacity: 1; transform: none;             filter: none; }
 }
 
 .cv {
@@ -26,26 +26,36 @@
   padding: clamp(5rem, 9vw, 8rem) 0 clamp(4.5rem, 8vw, 6.5rem) calc(var(--rail) + var(--axis) + 1px);
 }
 
+/* Italic and revealed letter by letter, like the home hero (js/reveal.js). */
 .cv-name {
   font-family: 'Instrument Serif', serif;
+  font-style: italic;
   font-weight: 400;
   font-size: clamp(3.5rem, 7.5vw, 7.5rem);
   line-height: 0.9;
   letter-spacing: -0.03em;
   padding-bottom: 0.08em;               /* room for the g */
   margin-bottom: 1.75rem;
-  animation: fadeUp 1s cubic-bezier(0.25, 0.8, 0.25, 1) 0.1s both;
 }
 
+/* Follows the name in as its last letters land, on the hero's beat. */
 .cv-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  animation: fadeUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) 0.3s both;
+  animation: fadeUp 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) 0.45s both;
 }
 
-/* ── Roles ── */
-.cv-roles { list-style: none; }
+/* ── Roles ── held back until the name has arrived. */
+.cv-roles {
+  list-style: none;
+  animation: fadeUp 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) 0.7s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-actions,
+  .cv-roles { animation: none; }
+}
 
 /* Date in the rail, role on the line; the two share a baseline. */
 .cv-role {
