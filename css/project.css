@@ -560,6 +560,25 @@ video {
 
 .live-cap a:hover { color: var(--accent); border-color: var(--accent); }
 
+/* Up-right "opens elsewhere" arrow, drawn in CSS so it never renders as an
+   emoji glyph: two borders make the head, a diagonal gradient the stem. */
+.live-play-open::after,
+.live-cap a::after {
+  content: '';
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  margin-left: 0.35em;
+  vertical-align: 0.1em;
+  border-top: 1.25px solid currentColor;
+  border-right: 1.25px solid currentColor;
+  background: linear-gradient(to bottom right,
+    transparent calc(50% - 0.65px),
+    currentColor calc(50% - 0.65px),
+    currentColor calc(50% + 0.65px),
+    transparent calc(50% + 0.65px));
+}
+
 .live-screen-wide .live-cap span:not(.live-num) { flex-basis: auto; }
 .live-screen-wide .live-cap a { margin-left: auto; }
 
