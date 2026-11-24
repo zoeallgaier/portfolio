@@ -60,12 +60,17 @@
   // so long stretches of text aren't read over a bright wash.
   const REST_GLOW = 0.7;
 
+  // Saturation boost for every glow, home and projects alike: 1 = the colours
+  // as written, higher pushes them further from grey. Same maths as CSS
+  // filter: saturate(), done on the colours so the layer needs no filter.
+  const SATURATE = 1.5;
+
   /* The dot grid belongs to the hero, so it's gone by the time the hero has
      scrolled off. Kept fine and faint so the name and tagline read cleanly
      over it; the mask on .backdrop-dots (base.css) thins it further behind
      the centred type. */
   const GAP = 14;          // dot spacing, px
-  const ALPHA = 0.2;       // peak dot opacity, at the crest of the wave
+  const ALPHA = 0.32;      // peak dot opacity, at the crest of the wave
   const TINT = 0.55;       // how much of the palette's hue the dots take on
 
   const TWEEN = 1100;      // ms for the glow to cross to a new page's palette
@@ -130,6 +135,16 @@
     const [, s, l] = rgb2hsl(c[0], c[1], c[2]);
     const [r, g, b] = hsl2rgb(bandHue(cycle(clock)), s, l);
     return [r, g, b, c[3]];
+  }
+
+  // The CSS saturate() matrix (filter effects spec), clamped to 0–255.
+  function saturate(r, g, b, k) {
+    const ch = v => (v < 0 ? 0 : v > 255 ? 255 : v) | 0;
+    return [
+      ch((0.213 + 0.787 * k) * r + (0.715 - 0.715 * k) * g + (0.072 - 0.072 * k) * b),
+      ch((0.213 - 0.213 * k) * r + (0.715 + 0.285 * k) * g + (0.072 - 0.072 * k) * b),
+      ch((0.213 - 0.213 * k) * r + (0.715 - 0.715 * k) * g + (0.072 + 0.928 * k) * b),
+    ];
   }
 
   const lerp = (a, b, t) => a + (b - a) * t;
@@ -228,10 +243,11 @@
     const parts = [];
     for (let i = 0; i < 2; i++) {
       const o = i * 9;
+      const [r, g, b] = saturate(a[o], a[o + 1], a[o + 2], SATURATE);
       parts.push(
         `radial-gradient(ellipse ${a[o + 6].toFixed(1)}% ${a[o + 7].toFixed(1)}% ` +
         `at ${a[o + 4].toFixed(1)}% ${a[o + 5].toFixed(1)}%, ` +
-        `rgba(${a[o] | 0},${a[o + 1] | 0},${a[o + 2] | 0},${(a[o + 3] * glowFade).toFixed(3)}) 0%, ` +
+        `rgba(${r},${g},${b},${(a[o + 3] * glowFade).toFixed(3)}) 0%, ` +
         `transparent ${a[o + 8].toFixed(1)}%)`
       );
     }
@@ -255,7 +271,7 @@
     // The dots take a little of the palette's hue; the rest stays neutral, so
     // the grid reads as texture rather than colour.
     const [h] = rgb2hsl(a[0], a[1], a[2]);
-    const tinted = hsl2rgb(h, dark ? 0.4 : 0.5, dark ? 0.86 : 0.16);
+    const tinted = hsl2rgb(h, dark ? 0.4 : 0.5, dark ? 0.9 : 0.12);
     const base = dark ? 255 : 0;
     const r = lerp(base, tinted[0], TINT) | 0;
     const g = lerp(base, tinted[1], TINT) | 0;

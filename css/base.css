@@ -460,9 +460,15 @@ nav a:active { transform: scale(0.94); transition-duration: 0.08s; }
 
 /* Short desktop windows: set the contents a touch tighter so Contact still
    clears the foot of the panel. */
-@media (min-width: 769px) and (max-height: 680px) {
-  .nav-sub a { padding-block: 0.34rem; }
-  .nav-links > a { font-size: 1.875rem; }
+@media (min-width: 769px) and (max-height: 760px) {
+  .nav-sub a { padding-block: 0.3rem; }
+  nav a.nav-logo[href] { padding-bottom: 1rem; margin-bottom: 0.75rem; }
+  .nav-links > a:has(+ .nav-contact) { margin-bottom: 1.25rem; }
+}
+@media (min-width: 769px) and (max-height: 640px) {
+  .nav-sub { margin-block: 0.15rem 0.5rem; }
+  .nav-sub a { padding-block: 0.15rem; }
+  .nav-links > a { font-size: 1.75rem; }
 }
 
 /* Phones: floating tab bar — a glass capsule above the home indicator, icon

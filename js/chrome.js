@@ -174,18 +174,28 @@
   toggle.type = 'button';
   toggle.className = 'nav-toggle';
   toggle.setAttribute('aria-expanded', 'false');
+  nav.id = nav.id || 'site-nav';
+  toggle.setAttribute('aria-controls', nav.id);
   toggle.innerHTML = '<span class="nav-toggle-icon" aria-hidden="true"></span>' +
     '<span class="nav-toggle-label">Menu</span>';
   nav.before(toggle);
 
   const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
+  // Hover-opening stays disarmed after any close until the pointer has left
+  // the trigger zones, so shutting the drawer doesn't bounce it straight open.
+  let hoverArmed = true;
+  let edgeOpened = false, edgeClose = 0;
   function setOpen(open) {
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
+    if (!open) {
+      hoverArmed = false;
+      edgeOpened = false;
+      clearTimeout(edgeClose);
+    }
   }
   setOpen(false);
 
-  toggle.addEventListener('click', () => setOpen(!isOpen()));
   nav.addEventListener('click', e => { if (e.target.closest('a')) setOpen(false); });
   document.addEventListener('pointerdown', e => {
     if (isOpen() && !nav.contains(e.target) && !toggle.contains(e.target)) setOpen(false);
@@ -193,18 +203,38 @@
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && isOpen()) { setOpen(false); toggle.focus(); }
   });
+  // Tabbing out past the last link (or back before the toggle) puts it away.
+  [toggle, nav].forEach(el => el.addEventListener('focusout', e => {
+    const to = e.relatedTarget;
+    if (isOpen() && to && !nav.contains(to) && to !== toggle) setOpen(false);
+  }));
   sidebar.addEventListener('change', () => setOpen(false));
 
   /* ── Edge reveal: bring the pointer within EDGE_ZONE px of the left edge of
      the window and the drawer slides out on its own. Opened that way, it tucks
      itself away again once the pointer wanders off it (a click-opened drawer
-     stays put). ── */
-  const EDGE_ZONE = 20;
+     stays put). The Menu button sits inside that strip, so the band it
+     occupies is left out: reaching for the button never moves it away. ── */
+  const EDGE_ZONE = 56;
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
-  let edgeOpened = false, edgeClose = 0;
+
+  function overToggleBand(y) {
+    const r = toggle.getBoundingClientRect();
+    return y >= r.top - 16 && y <= r.bottom + 16;
+  }
+
+  toggle.addEventListener('click', () => {
+    const open = !isOpen();
+    setOpen(open);
+    edgeOpened = false;
+    clearTimeout(edgeClose);
+  });
+
   document.addEventListener('pointermove', e => {
     if (e.pointerType !== 'mouse' || !sidebar.matches || !finePointer.matches) return;
-    if (!isOpen() && e.clientX <= EDGE_ZONE) {
+    const inZone = e.clientX <= EDGE_ZONE && !overToggleBand(e.clientY);
+    if (!isOpen() && !inZone) hoverArmed = true;
+    if (!isOpen() && inZone && hoverArmed) {
       setOpen(true);
       edgeOpened = true;
     } else if (edgeOpened && isOpen()) {
@@ -215,7 +245,6 @@
       if (!overDrawer) edgeClose = setTimeout(() => { setOpen(false); edgeOpened = false; }, 350);
     }
   }, { passive: true });
-  toggle.addEventListener('click', () => { edgeOpened = false; clearTimeout(edgeClose); });
 
   /* ── Phone tab bar: out of the way while you read ──
      Scrolling down tucks it below the screen; a deliberate scroll back up, or
