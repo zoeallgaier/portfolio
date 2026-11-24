@@ -93,8 +93,8 @@
   aspect-ratio: 365 / 308;
   margin-top: 0.25rem;
   background-color: var(--text);
-  -webkit-mask: url(/_assets/About/signature.png) no-repeat center / contain;
-          mask: url(/_assets/About/signature.png) no-repeat center / contain;
+  -webkit-mask: url(/_projects/About/signature.png) no-repeat center / contain;
+          mask: url(/_projects/About/signature.png) no-repeat center / contain;
 }
 
 /* —— Link buttons under the signature (the .pill itself lives in index.css) —— */

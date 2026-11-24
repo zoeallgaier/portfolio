@@ -32,6 +32,7 @@
     ['/psb25.html',     'PSB 2025'],
     ['/uvusoccer.html', 'UCCU Stadium'],
     ['/hipower.html',   'HIPOWER'],
+    ['/anyhour.html',   'Any Hour'],
     ['/recursia.html',  'Recursia'],
   ];
 

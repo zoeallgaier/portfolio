@@ -95,6 +95,12 @@
     const frame = document.createElement('iframe');
     frame.src = poster.dataset.liveSrc;
     frame.title = poster.dataset.liveTitle || '';
+    // Video players (anyhour.html) need autoplay delegated, or the click
+    // that asked for the video just shows a second play button.
+    if (poster.dataset.liveAllow) {
+      frame.allow = poster.dataset.liveAllow;
+      frame.allowFullscreen = true;
+    }
 
     poster.classList.add('is-loading');
     poster.setAttribute('aria-disabled', 'true');

@@ -417,8 +417,11 @@ video {
 .live-frame {
   position: relative;
   aspect-ratio: 9 / 16;
-  padding: clamp(0.35rem, 0.6vw, 0.6rem);
-  border-radius: clamp(0.9rem, 1.4vw, 1.25rem);
+  /* Bezel thickness and outer corner; inner corners follow. */
+  --bezel: clamp(0.15rem, 0.25vw, 0.25rem);
+  --bezel-r: clamp(0.9rem, 1.4vw, 1.25rem);
+  padding: var(--bezel);
+  border-radius: var(--bezel-r);
   background: #121216;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
@@ -430,10 +433,10 @@ video {
   width: 100%;
   height: 100%;
   border: 0;
-  border-radius: calc(clamp(0.9rem, 1.4vw, 1.25rem) - clamp(0.35rem, 0.6vw, 0.6rem));
+  border-radius: calc(var(--bezel-r) - var(--bezel));
   /* border-radius alone doesn't clip a scaled page inside an iframe in
      Safari; clip-path does, so the screen's corners follow the bezel. */
-  clip-path: inset(0 round calc(clamp(0.9rem, 1.4vw, 1.25rem) - clamp(0.35rem, 0.6vw, 0.6rem)));
+  clip-path: inset(0 round calc(var(--bezel-r) - var(--bezel)));
   background: #1a321c;
 }
 
@@ -448,7 +451,7 @@ video {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-radius: calc(clamp(0.9rem, 1.4vw, 1.25rem) - clamp(0.35rem, 0.6vw, 0.6rem));
+  border-radius: calc(var(--bezel-r) - var(--bezel));
   background: #1a321c;
   color: #121216;
 }
@@ -474,7 +477,7 @@ video {
 
 .live-poster.is-loading {
   position: absolute;
-  inset: clamp(0.35rem, 0.6vw, 0.6rem);
+  inset: var(--bezel);
   width: auto;
   height: auto;
   cursor: progress;
@@ -582,6 +585,18 @@ video {
 .live-screen-wide .live-cap span:not(.live-num) { flex-basis: auto; }
 .live-screen-wide .live-cap a { margin-left: auto; }
 
+/* ── Video episodes (anyhour.html) ──
+   The same click-to-play bezel, at 16:9, three across. */
+.live-row--video {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 0;
+}
+
+.live-row--video .live-frame { aspect-ratio: 16 / 9; }
+
+.live-row--video .live-frame iframe,
+.live-row--video .live-poster { background: #121216; }
+
 @media (max-width: 1100px) and (min-width: 769px) {
   .live-row { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 3rem; }
 }
@@ -614,6 +629,9 @@ video {
     flex: 0 0 74%;
     scroll-snap-align: start;
   }
+
+  .live-row--video { margin-bottom: 0; }
+  .live-row--video li { flex-basis: 86%; }
 
   .live-screen-wide { padding: 0 1.5rem; }
   .live-screen-wide .live-cap span:not(.live-num) { flex-basis: 100%; }
@@ -700,7 +718,7 @@ video {
   position: relative;
   height: 100%;
   overflow: hidden;
-  border-radius: calc(clamp(0.9rem, 1.4vw, 1.25rem) - clamp(0.35rem, 0.6vw, 0.6rem));
+  border-radius: calc(var(--bezel-r) - var(--bezel));
   background: #fff var(--shot-m) center top / cover no-repeat;
 }
 
@@ -732,11 +750,13 @@ video {
 .live-compare[data-view="desktop"] .live-sites { grid-template-columns: minmax(0, 1fr); }
 .live-compare[data-view="desktop"] .live-frame {
   aspect-ratio: 16 / 10;
-  padding: clamp(0.3rem, 0.45vw, 0.5rem);
-  border-radius: clamp(0.6rem, 0.9vw, 0.9rem);
+  --bezel: clamp(0.12rem, 0.2vw, 0.2rem);
+  --bezel-r: clamp(0.6rem, 0.9vw, 0.9rem);
+  padding: var(--bezel);
+  border-radius: var(--bezel-r);
 }
 .live-compare[data-view="desktop"] .live-phone {
-  border-radius: calc(clamp(0.6rem, 0.9vw, 0.9rem) - clamp(0.3rem, 0.45vw, 0.5rem));
+  border-radius: calc(var(--bezel-r) - var(--bezel));
   background-image: var(--shot-d);
 }
 

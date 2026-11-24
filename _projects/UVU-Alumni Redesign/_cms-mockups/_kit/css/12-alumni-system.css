@@ -1,0 +1,1729 @@
+/* =====================================================================
+   UVU ALUMNI WEB SYSTEM · v1
+   ---------------------------------------------------------------------
+   One stylesheet for every alumni page. Loads after UVU's global CSS.
+   CMS path (proposed): /alumni/lib/css/alumni-system.css
+   Icon paths are relative to this file (../icons/). In the CMS they
+   become /alumni/lib/icons/.
+
+   Built on: UVU brand (UVU Green, Rajdhani as the Stratum web fallback,
+   Lato as the uvu.edu body face, IA 10.25° photo frames, UVU icon
+   library) + Apple HIG basics (≥44px tap targets, clear type hierarchy,
+   one primary action per section, visible focus, 8pt spacing).
+
+   Rules of thumb for editors:
+   - Every section gets class "al-section" (+ one modifier at most).
+   - Headings: Title Case. No uppercase helper classes.
+   - One .al-btn (primary) per section. Everything else is secondary or a link.
+   ===================================================================== */
+
+:root {
+	/* ---------- Color (UVU brand) ---------- */
+	--al-green: #185C33;        /* UVU Green · primary */
+	--al-green-dark: #1A321C;   /* IA Dark Green · text, hover */
+	--al-green-bright: #008A40; /* Wolverine Green · secondary, sparingly */
+	--al-warm: #F2F0EB;         /* Warm · alternate section background */
+	--al-haze: #C4D6C1;         /* Sea Haze · borders on green */
+	--al-meadow: #C5D97A;       /* Pale Meadow · frame outline, focus ring */
+	--al-white: #FFFFFF;
+	--al-text: #1A321C;
+	--al-text-muted: #4B5D50;
+	--al-rule: rgba(26, 50, 28, .14);
+
+	/* ---------- Type ---------- */
+	--al-font-display: "Rajdhani", "Arial Narrow", sans-serif;
+	--al-font-body: "Lato", Arial, sans-serif;
+
+	/* ---------- Space (8pt) ---------- */
+	--al-s1: 8px;
+	--al-s2: 16px;
+	--al-s3: 24px;
+	--al-s4: 32px;
+	--al-s6: 48px;
+	--al-s8: 64px;
+	--al-s12: 96px;
+
+	/* ---------- Shape ---------- */
+	--al-radius: 12px;
+	--al-radius-sm: 8px;
+	--al-shadow: 0 1px 2px rgba(26, 50, 28, .06), 0 12px 32px -12px rgba(26, 50, 28, .28);
+}
+
+/* =====================================================================
+   0 · LAYOUT GRID: one content edge for every section, hero included
+   ---------------------------------------------------------------------
+   Every section's .container-fluid gets the same max width and gutter,
+   so hero headlines, section headings, cards, and the contact band all
+   start on the same left edge. Overrides the CMS's container-narrow
+   (992px) on heroes and its 0px phone gutter (which let Bootstrap's
+   -15px row margins push the page sideways).
+   ===================================================================== */
+:root {
+	--al-max: 1280px;   /* container incl. gutters: 1200px of content at desktop */
+	--al-gutter: 24px;  /* phones; 40px from 768px up */
+}
+
+main > .al-section > .container-fluid,
+main > .al-hero > .container-fluid {
+	width: 100%;
+	max-width: var(--al-max) !important;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: var(--al-gutter);   /* Bootstrap row (-15) and col (+15) cancel out, so text sits on the gutter */
+	padding-right: var(--al-gutter);
+}
+
+/* =====================================================================
+   1 · SECTIONS + TYPE
+   ===================================================================== */
+.al-section {
+	padding-top: var(--al-s8);
+	padding-bottom: var(--al-s8);
+	color: var(--al-text);
+	font-family: var(--al-font-body);
+	font-size: 17px;
+	line-height: 1.6;
+}
+
+/* Two plain white sections in a row share one gap instead of doubling it */
+.al-section:not(.al-section--warm):not(.al-section--green):not(.al-section--photo) + .al-section:not(.al-section--warm):not(.al-section--green):not(.al-section--photo):not(.al-contact) {
+	padding-top: 0;
+}
+
+.al-section--warm { background-color: var(--al-warm); }
+.al-section--green { background-color: var(--al-green); color: var(--al-white); }
+.al-section--photo { position: relative; background-size: cover; background-position: center right; background-color: var(--al-green); color: var(--al-white); }
+.al-section--photo > .container-fluid { position: relative; z-index: 1; }
+/* Same phone scrim as the hero: the photo's busy side sits behind the text on narrow screens */
+.al-section--photo::before { content: ""; position: absolute; inset: 0; background: rgba(24, 92, 51, .72); }
+
+.al-section h2,
+.al-section h3,
+.al-section h4 {
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	color: var(--al-green);
+	text-transform: none;
+	letter-spacing: 0;
+}
+
+.al-section h2 { font-size: 34px; line-height: 1.1; margin: 0 0 var(--al-s2); text-wrap: balance; }
+.al-section h3 { font-size: 23px; line-height: 1.2; margin: 0 0 var(--al-s1); }
+.al-section h4 { font-size: 19px; line-height: 1.25; margin: var(--al-s3) 0 var(--al-s1); }
+
+.al-section p,
+.al-section li {
+	font-size: 17px;
+	line-height: 1.6;
+	color: inherit;
+}
+
+.al-section p { margin: 0 0 var(--al-s2); max-width: 62ch; }
+
+.al-lead,
+.al-section p.al-lead {
+	font-size: 19px;
+	line-height: 1.5;
+	margin-bottom: var(--al-s3);
+}
+
+.al-meta,
+.al-section p.al-meta {
+	font-size: 15px;
+	line-height: 1.5;
+	color: var(--al-text-muted);
+}
+
+.al-section a:not(.al-btn):not(.al-card-link):not(.al-news-card):not(.menu-btn):not(.fund-item):not(.button-solid) {
+	color: var(--al-green);
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 3px;
+	border-bottom: 0;
+}
+
+.al-section--green h2, .al-section--green h3, .al-section--green h4,
+.al-section--photo h2, .al-section--photo h3, .al-section--photo h4,
+.al-section--green a:not(.al-btn), .al-section--photo a:not(.al-btn) {
+	color: var(--al-white) !important;
+}
+
+/* Centered section header (intro statements, bands, card sections) */
+.al-section-head {
+	max-width: 780px;
+	margin: 0 auto var(--al-s6);
+	text-align: center;
+}
+
+.al-section-head p { margin-left: auto; margin-right: auto; }
+.al-section-head--left { margin-left: 0; text-align: left; }
+.al-section-head--left p { margin-left: 0; }
+.al-section-head:last-child { margin-bottom: 0; }
+
+.al-fineprint,
+.al-section p.al-fineprint {
+	font-size: 14px;
+	line-height: 1.5;
+	opacity: .85;
+	max-width: none;
+	text-align: center;
+	margin: var(--al-s6) 0 0;
+}
+
+/* Layout helpers (instead of inline styles) */
+.al-section .al-center { text-align: center; margin-left: auto; margin-right: auto; }
+.al-actions--center { justify-content: center; }
+.al-narrow { max-width: 820px; margin-left: auto !important; margin-right: auto !important; }
+
+.sr-only-al {
+	position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+}
+
+/* =====================================================================
+   2 · HERO (header-fullbleed)
+   Photos are uploaded RAW (no baked-in gradient). The green fade is CSS, the same idea as
+   the CMS header-opacity classes.
+   Desktop: 1920x700 photo, headline over the left side with the standard green fade.
+   Phones: a separate VERTICAL photo (1080x1350, people centered, file name ends -mobile.jpg)
+   in the .al-hero-m layer. It fills the whole header and the headline sits on a
+   green fade rising from the bottom, so the photo and the title read as one piece.
+   ===================================================================== */
+.page-header.al-hero {
+	position: relative;
+	display: block;
+	min-height: 0;
+	padding: var(--al-s8) 0 var(--al-s6);
+	background-size: cover;
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-color: var(--al-green);
+	font-size: 100%;
+}
+
+/* Phone photo layer: its own element (not a CSS variable) so the image path resolves the
+   same way in every browser and in the CMS. Hidden on tablet and desktop. */
+.al-hero-m { display: none; }
+
+@media (max-width: 767px) {
+	.page-header.al-hero:not(.al-hero--plain) {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		min-height: 125vw;
+		padding: 62vw 0 var(--al-s6);
+	}
+	.page-header.al-hero:has(.al-hero-m) { background-image: none !important; }
+	/* 4:5 photo pinned to the top at its true ratio (never zooms); if the text runs longer,
+	   the header simply continues in solid green under the fade */
+	.al-hero-m { display: block; position: absolute; top: 0; left: 0; right: 0; height: 125vw; z-index: 0; background-size: 100% auto; background-position: center top; background-repeat: no-repeat; }
+	.al-hero-m::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(0deg, rgba(24, 92, 51, 1) 0%, rgba(24, 92, 51, 1) 18%, rgba(24, 92, 51, .82) 40%, rgba(24, 92, 51, 0) 66%);
+	}
+	.page-header.al-hero > .container-fluid { width: 100%; }
+}
+
+.page-header.al-hero > .container-fluid { position: relative; z-index: 1; }
+
+/* The CMS header wrapper adds its own width and padding; put the text on the grid edge instead */
+.page-header.al-hero header {
+	padding: 0 !important;
+	margin: 0 !important;
+	width: auto !important;
+	max-width: none !important;
+	background: none !important;
+	border-radius: 0;
+}
+
+.page-header.al-hero::before { content: ""; position: absolute; inset: 0; display: none; }
+
+.page-header.al-hero header h1 {
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	font-size: 44px !important;
+	line-height: 1.02;
+	color: var(--al-white) !important; /* production dept.css turns this green on mobile */
+	text-transform: none;
+	max-width: 9em;
+	margin: 0 0 var(--al-s2);
+	text-wrap: balance;
+}
+
+/* Eyebrow: "UVU Alumni" stays inside the H1 for SEO but reads as a small label above it */
+.al-eyebrow {
+	display: block;
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	font-size: 19px;
+	line-height: 1.2;
+	letter-spacing: .03em;
+	color: var(--al-meadow);
+	margin: 0 0 6px;
+}
+.page-header.al-hero p.al-eyebrow { color: var(--al-meadow) !important; font-size: 19px; }
+
+.page-header.al-hero header p.al-hero-lead {
+	color: var(--al-white) !important;
+	font-family: var(--al-font-body);
+	font-size: 19px;
+	font-weight: 400;
+	line-height: 1.45;
+	max-width: 34em;
+	margin: 0;
+}
+
+.page-header.al-hero .al-actions { margin-top: var(--al-s4); }
+.page-header.al-hero header h1:last-child { margin-bottom: 0; } /* title-only hero stays optically centered */
+
+/* =====================================================================
+   3 · SPLIT (two-col: text in region 1, media in region 2)
+   ===================================================================== */
+.al-split { align-items: center !important; }
+.al-split > [data-uvu-region] { margin-bottom: var(--al-s4); }
+.al-split > [data-uvu-region]:last-child { margin-bottom: 0; }
+.al-split-media { text-align: center; }
+
+/* Photos: uvu.edu image style. A plain photo with rounded corners plus APFY shapes
+   (_kit/shapes/*.svg, exported from the APFY_Shapes file) layered around it: one shape set
+   behind the photo, one small mark in front of a corner. Editors upload ordinary photos;
+   nothing is baked into the image. Pick a composition with a modifier; the page builder
+   rotates them so neighbors never repeat. Shapes stay inside the figure's padding box,
+   so they never cause sideways scroll. */
+.al-media {
+	position: relative;
+	isolation: isolate;
+	width: 100%;
+	max-width: 620px;
+	margin: 0 auto;
+	padding: 28px;
+}
+.al-media img {
+	position: relative;
+	z-index: 1;
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+	border-radius: var(--al-radius-sm);
+	box-shadow: 0 10px 30px -14px rgba(26, 50, 28, .45);
+}
+.al-media::before, .al-media::after { content: ""; position: absolute; inset: 0; pointer-events: none; background-repeat: no-repeat; }
+.al-media::before { z-index: 0; }
+.al-media::after { z-index: 2; }
+
+/* 1 · hatch: hatched circle behind the top-left corner + lake ring on the lower-right */
+.al-media--hatch::before { background-image: url("../shapes/hatch-circle-rise.svg"); background-position: left top; background-size: 34% auto; }
+.al-media--hatch::after { background-image: url("../shapes/ring-lake.svg"); background-position: right 6px bottom 6px; background-size: 11% auto; }
+
+/* 2 · stairs: green stairs behind the lower-left + brick square outline on the top-right */
+.al-media--stairs::before { background-image: url("../shapes/stairs-green.svg"); background-position: left bottom; background-size: 28% auto; }
+.al-media--stairs::after { background-image: url("../shapes/square-outline-brick.svg"); background-position: right 4px top 4px; background-size: 10% auto; }
+
+/* 3 · dot: Valley Rise circle behind the top-right + meadow x marks on the lower-left */
+.al-media--dot::before { background-image: url("../shapes/circle-rise.svg"), url("../shapes/hatch-half-meadow.svg"); background-position: right 10% top, left 12% bottom; background-size: 24% auto, 30% auto; }
+.al-media--dot::after { background-image: url("../shapes/x-rise.svg"); background-position: left 4px bottom 10%; background-size: 8% auto; }
+
+/* 4 · half: wolverine half-disc tab on the left edge + meadow steps behind the lower-right */
+.al-media--half::before { background-image: url("../shapes/steps-meadow.svg"); background-position: right bottom; background-size: 26% auto; }
+.al-media--half::after { background-image: url("../shapes/half-wolverine.svg"); background-position: left top 22%; background-size: 7% auto; }
+
+/* Portrait crop (people standing, headshots in splits) */
+.al-media--portrait img { aspect-ratio: 4 / 5; }
+
+/* Product shots (cards, plates) sit unframed */
+.al-product {
+	display: block;
+	width: 100%;
+	max-width: 560px;
+	height: auto;
+	margin: 0 auto;
+}
+
+/* =====================================================================
+   4 · BUTTONS + ACTIONS
+   ===================================================================== */
+.al-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--al-s2);
+	align-items: center;
+	margin: var(--al-s4) 0 0;
+	padding: 0;
+}
+
+/* A section CTA under a grid of cards gets the larger gap so it reads as the section's action, not the last card's */
+.al-grid + .al-actions, .al-narrow + .al-actions { margin-top: var(--al-s6); }
+
+.al-section-head .al-actions { justify-content: center; }
+
+.al-btn,
+a.al-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	min-height: 52px;
+	padding: 12px var(--al-s3);
+	border: 2px solid var(--al-green);
+	border-radius: var(--al-radius-sm);
+	background: var(--al-green);
+	color: var(--al-white) !important;
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 1.15;
+	text-align: center;
+	letter-spacing: .01em;
+	text-transform: none;
+	text-decoration: none !important;
+	transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+
+.al-btn::after {
+	content: "";
+	width: 18px;
+	height: 18px;
+	flex: 0 0 18px;
+	background: url("../icons/white/ui-arrow-right.svg") center / contain no-repeat;
+	transition: transform .15s ease;
+}
+
+.al-btn:hover,
+.al-btn:focus-visible { background: var(--al-green-dark); border-color: var(--al-green-dark); }
+.al-btn:hover::after { transform: translateX(3px); }
+
+.al-btn:focus-visible,
+.al-card-link:focus-visible,
+.al-news-card:focus-visible,
+.al-quicklinks a:focus-visible,
+.al-linklist a:focus-visible,
+summary:focus-visible {
+	outline: 3px solid var(--al-meadow);
+	outline-offset: 3px;
+}
+
+/* Secondary: outline */
+.al-btn--secondary,
+a.al-btn--secondary {
+	background: transparent;
+	color: var(--al-green) !important;
+}
+
+.al-btn--secondary::after { background-image: url("../icons/green/ui-arrow-right.svg"); }
+.al-btn--secondary:hover { background: var(--al-green); color: var(--al-white) !important; }
+.al-btn--secondary:hover::after { background-image: url("../icons/white/ui-arrow-right.svg"); }
+
+/* On photo or green: white */
+.al-btn--light,
+a.al-btn--light {
+	background: var(--al-white);
+	border-color: var(--al-white);
+	color: var(--al-green) !important;
+}
+
+.al-btn--light::after { background-image: url("../icons/green/ui-arrow-right.svg"); }
+
+/* External destinations (target=_blank) swap the arrow for the external glyph; the label also
+   carries hidden "(opens in a new tab)" text. Arrow = stays on uvu.edu. External = leaves. */
+.al-btn--ext::after { background-image: url("../icons/white/ui-external.svg"); }
+.al-btn--ext:hover::after { transform: none; }
+.al-btn--secondary.al-btn--ext::after, .al-btn--light.al-btn--ext::after { background-image: url("../icons/green/ui-external.svg"); }
+.al-btn--secondary.al-btn--ext:hover::after { background-image: url("../icons/white/ui-external.svg"); }
+.al-linklist a[target="_blank"]::after, .al-card-action a[target="_blank"]::after { background-image: url("../icons/green/ui-external.svg"); }
+
+/* One-line expectation under a button: what happens next (login, leaves UVU, cost) */
+.al-btn-note, .al-section p.al-btn-note {
+	display: block;
+	width: 100%;
+	margin: var(--al-s1) 0 0;
+	font-size: 15px;
+	line-height: 1.4;
+	color: var(--al-text-muted);
+}
+.page-header.al-hero .al-btn-note, .al-section--green .al-btn-note { color: var(--al-white) !important; font-weight: 400 !important; font-size: 16px !important; font-family: var(--al-font-body) !important; }
+.al-btn-note { font-weight: 400; }
+.al-btn--light:hover { background: var(--al-warm); border-color: var(--al-warm); }
+
+/* =====================================================================
+   5 · CARDS
+   ===================================================================== */
+.al-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background: var(--al-white);
+	border-radius: var(--al-radius);
+	box-shadow: var(--al-shadow);
+	overflow: hidden;
+	text-align: left;
+}
+
+.al-card-body { padding: var(--al-s3); flex: 1 1 auto; }
+.al-card-body > :last-child { margin-bottom: 0; }
+
+.al-card-tag {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 14px var(--al-s3);
+	background: var(--al-green);
+	color: var(--al-white);
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 1.2;
+}
+
+.al-card-tag img { width: 30px; height: 30px; }
+
+.al-card-foot {
+	padding: var(--al-s2) var(--al-s3);
+	border-top: 1px solid var(--al-rule);
+	font-size: 15px;
+	color: var(--al-text-muted);
+}
+
+.al-card-foot p { margin: 0; }
+
+/* Card grid (any number of cards, wraps) */
+.al-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--al-s3);
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* People (ambassadors, recipients): on phones each card is a compact row (photo left, name right)
+   instead of a cramped 2-up grid; the story accordion spans the full card width. */
+.al-grid--people { grid-template-columns: 1fr; gap: 12px; }
+@media (max-width: 767px) {
+	.al-grid--people .al-person {
+		display: grid;
+		grid-template-columns: 88px 1fr;
+		column-gap: var(--al-s2);
+		align-items: center;
+		text-align: left;
+	}
+	.al-grid--people .al-person img { grid-row: 1 / span 2; width: 88px; margin: 0; }
+	.al-grid--people .al-person h3 { align-self: end; }
+	.al-grid--people .al-person > p { align-self: start; margin: 0; }
+	.al-grid--people .al-person details { grid-column: 1 / -1; margin-top: 12px; }
+}
+
+/* Swipe row on phones (news): cards scroll sideways with a peek of the next one */
+@media (max-width: 767px) {
+	.al-grid--swipe {
+		grid-auto-flow: column;
+		grid-auto-columns: 82%;
+		grid-template-columns: none;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		margin: 0 calc(var(--al-gutter) * -1);
+		padding: 4px var(--al-gutter) var(--al-s3);
+		scroll-padding: 0 var(--al-gutter);
+		-webkit-overflow-scrolling: touch;
+	}
+	.al-grid--swipe > * { scroll-snap-align: start; }
+}
+
+/* News card: the whole card is the link */
+.al-news-card {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background: var(--al-white);
+	border-radius: var(--al-radius);
+	box-shadow: var(--al-shadow);
+	overflow: hidden;
+	color: var(--al-text) !important;
+	text-decoration: none !important;
+	transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.al-news-card:hover { transform: translateY(-3px); }
+
+.al-news-card img {
+	width: 100%;
+	aspect-ratio: 16 / 10;
+	object-fit: cover;
+}
+
+.al-news-card .al-card-body { padding: var(--al-s3); }
+.al-news-card h3 { font-size: 21px !important; margin: 0; }
+.al-news-card .al-meta { margin: 0 0 var(--al-s1); }
+
+/* Person card (ambassadors, award recipients) */
+.al-person {
+	background: var(--al-white);
+	border-radius: var(--al-radius);
+	box-shadow: var(--al-shadow);
+	padding: 12px 12px var(--al-s2);
+	text-align: center;
+}
+
+.al-person img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+	border-radius: var(--al-radius-sm);
+	margin-bottom: var(--al-s2);
+}
+
+.al-person h3 { font-size: 19px !important; line-height: 1.2 !important; margin: 0 0 4px !important; }
+.al-person p { font-size: 15px !important; color: var(--al-text-muted); margin: 0 auto; }
+.al-person details { text-align: left; margin-top: var(--al-s2); border-top: 1px solid var(--al-rule); }
+.al-person details p { font-size: 15px !important; color: var(--al-text); margin-top: var(--al-s1); }
+.al-person summary { font-size: 17px; padding: 12px 0 0; }
+
+/* =====================================================================
+   6 · LISTS
+   ===================================================================== */
+/* Check list */
+.al-checklist {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 var(--al-s2);
+}
+
+.al-checklist li {
+	position: relative;
+	padding: 10px 0 10px 36px;
+	border-bottom: 1px solid var(--al-rule);
+}
+
+.al-checklist li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 12px;
+	width: 22px;
+	height: 22px;
+	background: url("../icons/green/ui-check.svg") center / contain no-repeat;
+}
+
+/* Numbered steps */
+.al-steps {
+	counter-reset: al-step;
+	list-style: none;
+	padding: 0;
+	margin: 0 0 var(--al-s2);
+}
+
+.al-steps li {
+	counter-increment: al-step;
+	position: relative;
+	padding: 6px 0 10px 44px;
+}
+
+.al-steps li::before {
+	content: counter(al-step);
+	position: absolute;
+	left: 0;
+	top: 4px;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background: var(--al-green);
+	color: var(--al-white);
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	font-size: 17px;
+	line-height: 30px;
+	text-align: center;
+}
+
+/* Link list: icon + label + arrow rows (secondary actions) */
+.al-linklist {
+	list-style: none;
+	padding: 0;
+	margin: var(--al-s3) 0 0;
+	border-top: 1px solid var(--al-rule);
+}
+
+.al-linklist a {
+	display: flex;
+	align-items: center;
+	gap: var(--al-s2);
+	min-height: 64px;
+	padding: 8px 4px;
+	border-bottom: 1px solid var(--al-rule);
+	color: var(--al-green) !important;
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	font-size: 20px;
+	text-decoration: none !important;
+}
+
+.al-linklist a img { width: 36px; height: 36px; flex: 0 0 36px; }
+
+.al-linklist a::after {
+	content: "";
+	margin-left: auto;
+	width: 18px;
+	height: 18px;
+	flex: 0 0 18px;
+	background: url("../icons/green/ui-arrow-right.svg") center / contain no-repeat;
+	transition: transform .15s ease;
+}
+
+.al-linklist a:hover { background: var(--al-warm); }
+.al-linklist a:hover::after { transform: translateX(3px); }
+
+/* =====================================================================
+   7 · ACCORDION (details)
+   ===================================================================== */
+details.al-accordion {
+	border: 0;
+	border-bottom: 1px solid var(--al-rule);
+	border-radius: 0;
+	margin: 0;
+	background: transparent;
+}
+
+details.al-accordion:first-of-type { border-top: 1px solid var(--al-rule); }
+
+.al-accordion summary,
+.al-person summary {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--al-s2);
+	min-height: 56px;
+	padding: 14px 0;
+	cursor: pointer;
+	list-style: none;
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	font-size: 21px;
+	line-height: 1.25;
+	color: var(--al-green);
+	background: transparent;
+}
+
+.al-person summary { min-height: 44px; font-size: 17px; }
+
+.al-accordion summary::-webkit-details-marker,
+.al-person summary::-webkit-details-marker { display: none; }
+
+.al-accordion summary::after,
+.al-person summary::after {
+	content: "";
+	width: 20px;
+	height: 20px;
+	flex: 0 0 20px;
+	background: url("../icons/green/ui-chevron-down.svg") center / contain no-repeat;
+	transition: transform .2s ease;
+}
+
+details[open] > summary::after { transform: rotate(180deg); }
+
+.al-accordion .al-accordion-body { padding: 0 0 var(--al-s3); }
+
+/* =====================================================================
+   8 · ICON QUICK LINKS (Home)
+   ===================================================================== */
+.al-quicklinks {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 4px;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.al-quicklinks a {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 10px;
+	min-height: 112px;
+	padding: var(--al-s2) 4px;
+	border-radius: var(--al-radius);
+	color: var(--al-green) !important;
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	font-size: 17px;
+	line-height: 1.15;
+	text-align: center;
+	text-decoration: none !important;
+	transition: background-color .15s ease;
+}
+
+.al-quicklinks img { width: 44px; height: 44px; }
+.al-quicklinks a:hover { background: var(--al-warm); }
+
+/* =====================================================================
+   9 · MEDIA
+   ===================================================================== */
+.al-video {
+	position: relative;
+	display: block;
+	border-radius: var(--al-radius);
+	overflow: hidden;
+	box-shadow: var(--al-shadow);
+}
+
+.al-video img { display: block; width: 100%; height: auto; }
+
+.al-video::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 64px;
+	height: 64px;
+	margin: -32px 0 0 -32px;
+	border-radius: 50%;
+	background: var(--al-white) url("../icons/green/ui-play.svg") 56% 50% / 28px no-repeat;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, .25);
+}
+
+/* Partner logos: one <li> per partner so the CMS can add or drop one without a new graphic */
+.al-logos {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	align-items: center;
+	gap: var(--al-s4) var(--al-s3);
+	list-style: none;
+	padding: 0;
+	margin: var(--al-s6) 0 0;
+}
+.al-logos li { margin: 0; padding: 0; }
+.al-logos img { display: block; width: auto; height: 40px; max-width: 100%; object-fit: contain; object-position: left center; }
+
+/* Social buttons: one treatment, white on green or green on white */
+.al-social {
+	display: flex;
+	gap: var(--al-s2);
+	list-style: none;
+	padding: 0;
+	margin: var(--al-s3) 0 0;
+}
+
+.al-social a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	background: var(--al-white);
+	border-bottom: 0 !important;
+	transition: transform .15s ease;
+}
+
+.al-social a:hover { transform: scale(1.06); }
+.al-social img { width: 24px; height: 24px; }
+
+/* =====================================================================
+   10 · ALUMNI FOOTER (section nav + contact, same on every page)
+   Last CMS section on every alumni page, right above the global footer.
+   Replaces the old full-height contact band. The CMS dept-footer bar
+   (#globalFooter .footerDept) carries the office name, per OU convention.
+   ===================================================================== */
+.al-sitenav {
+	padding-top: var(--al-s8) !important;
+	padding-bottom: var(--al-s6) !important;
+	background-color: var(--al-green-dark);
+	background-image: url("../../_shared-assets/alumni-contact-texture.jpg");
+	/* CMS: /alumni/resources/images/benefits/alumni-benefits-footertexture.png */
+	background-size: cover;
+	background-position: center;
+	color: var(--al-white);
+}
+.al-sitenav a { color: var(--al-white) !important; }
+.al-sitenav-nav { display: grid; grid-template-columns: 1fr; gap: var(--al-s6); }
+.al-sitenav-title a { text-decoration: none !important; }
+.al-sitenav-title a:hover { text-decoration: underline !important; }
+.al-sitenav-title {
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	font-size: 26px !important;
+	line-height: 1.15;
+	margin: 0 0 var(--al-s2) !important;
+}
+.al-sitenav-contact { list-style: none; padding: 0; margin: 0 0 var(--al-s2); }
+.al-sitenav-contact li { display: flex; align-items: center; gap: 12px; margin: 0; }
+.al-sitenav-contact a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	font-size: 20px;
+	text-decoration: underline;
+	text-underline-offset: 4px;
+}
+.al-sitenav-contact img { width: 24px; height: 24px; }
+.al-sitenav .al-social { margin-top: var(--al-s1); }
+.al-sitenav .al-social a { width: 44px; height: 44px; }
+.al-sitenav .al-social img { width: 20px; height: 20px; }
+
+.al-sitenav-groups { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--al-s4) var(--al-s3); }
+.al-sitenav-group h2 {
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	font-size: 18px !important;
+	line-height: 1.2 !important;
+	color: var(--al-meadow) !important;
+	margin: 0 0 var(--al-s1) !important;
+}
+.al-sitenav-group ul { list-style: none; padding: 0; margin: 0; }
+.al-sitenav-group li { margin: 0; }
+.al-sitenav-group a {
+	display: block;
+	padding: 11px 0; /* 44px rows on phones */
+	font-size: 16px;
+	line-height: 1.375;
+	text-decoration: none !important;
+}
+.al-sitenav-group a:hover { text-decoration: underline !important; text-underline-offset: 3px; }
+.al-sitenav-group a[aria-current="page"] { font-weight: 700; box-shadow: inset 3px 0 0 var(--al-meadow); padding-left: 10px; }
+.al-sitenav-fine {
+	grid-column: 1 / -1;
+	margin: 0 !important;
+	padding-top: var(--al-s3);
+	border-top: 1px solid rgba(255, 255, 255, .2);
+	font-size: 14px !important;
+	line-height: 1.5;
+	opacity: .85;
+	max-width: none !important;
+}
+
+/* =====================================================================
+   11 · UTILITY PAGES (v1.1): compact hero, scrim hero, resource cards,
+        roster, events, quotes, notice
+   ===================================================================== */
+/* Compact hero for pages without a hero photo (Board, Job Shadow, Podcast) */
+.page-header.al-hero.al-hero--plain {
+	padding: var(--al-s8) 0;
+	background-image: url("../../_shared-assets/alumni-contact-texture.jpg");
+	background-size: cover;
+	background-position: center;
+}
+
+/* Person card: portraits crop to the face; optional role line (officers) above the meta line */
+.al-person img { object-position: center 18%; }
+.al-person .al-person-role {
+	display: block;
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	font-size: 16px;
+	color: var(--al-green);
+	margin-bottom: 2px;
+}
+
+/* Resource card: icon, heading, one paragraph, one text action in the foot */
+.al-card-icon { display: block; width: 48px; height: 48px; margin-bottom: var(--al-s2); }
+.al-card-body h3 { margin-top: 0; }
+.al-card-action { padding: 0 var(--al-s3); border-top: 1px solid var(--al-rule); }
+.al-card-action a {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-height: 56px;
+	color: var(--al-green) !important;
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	font-size: 18px;
+	text-decoration: none !important;
+}
+.al-card-action a::after {
+	content: "";
+	margin-left: auto;
+	width: 18px;
+	height: 18px;
+	flex: 0 0 18px;
+	background: url("../icons/green/ui-arrow-right.svg") center / contain no-repeat;
+	transition: transform .15s ease;
+}
+.al-card-action a:hover::after { transform: translateX(3px); }
+
+/* Roster: name + years, flows into columns (past presidents, chapter boards) */
+.al-roster {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	column-gap: var(--al-s6);
+	border-top: 1px solid var(--al-rule);
+}
+.al-roster li {
+	display: flex;
+	align-items: baseline;
+	gap: var(--al-s2);
+	padding: 12px 0;
+	border-bottom: 1px solid var(--al-rule);
+	break-inside: avoid;
+	font-size: 17px;
+	margin: 0;
+}
+.al-roster .al-roster-key {
+	flex: 0 0 7.5em;
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	font-size: 17px;
+	color: var(--al-green);
+	font-variant-numeric: tabular-nums;
+}
+
+/* Events: date badge + title + time and place */
+.al-events { list-style: none; padding: 0; margin: 0; }
+.al-events > li {
+	display: grid;
+	grid-template-columns: 72px 1fr;
+	gap: var(--al-s2);
+	align-items: start;
+	padding: var(--al-s2) 0;
+	border-bottom: 1px solid var(--al-rule);
+	margin: 0;
+}
+.al-events > li:first-child { border-top: 1px solid var(--al-rule); }
+.al-event-date {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 72px;
+	border-radius: var(--al-radius-sm);
+	background: var(--al-green);
+	color: var(--al-white);
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	line-height: 1;
+	text-align: center;
+}
+.al-event-date span { font-size: 14px; letter-spacing: .02em; }
+.al-event-date strong { font-size: 30px; margin: 2px 0; }
+.al-events h3 { font-size: 21px !important; margin: 4px 0 4px !important; }
+.al-events p { margin: 0 0 4px; }
+/* Compact archive: date as text, no badge */
+.al-events--compact > li { grid-template-columns: 1fr; gap: 2px; padding: 12px 0; }
+.al-events--compact h3 { font-size: 18px !important; margin: 0 !important; }
+.al-events--compact .al-meta { margin: 0; }
+
+/* Quotes: testimonial cards */
+.al-quotes { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: var(--al-s3); }
+.al-quotes > li { display: flex; margin: 0; }
+.al-quote { flex: 1 1 auto; }
+.al-quote {
+	margin: 0;
+	padding: var(--al-s3);
+	background: var(--al-white);
+	border-radius: var(--al-radius);
+	box-shadow: var(--al-shadow);
+	display: flex;
+	flex-direction: column;
+}
+.al-quote blockquote { margin: 0; padding: 0; border: 0; font-size: inherit; font-style: normal; }
+.al-quote blockquote p { font-size: 17px; line-height: 1.6; margin: 0; }
+.al-quote figcaption {
+	margin-top: auto;
+	padding-top: var(--al-s2);
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	font-size: 16px;
+	color: var(--al-green);
+}
+
+/* Photo: plain rounded image inside text flows (recaps, accordions) */
+.al-photo { display: block; width: 100%; height: auto; border-radius: var(--al-radius); margin: 0 0 var(--al-s2); }
+.al-photo + .al-meta { margin-top: calc(var(--al-s1) * -1); }
+.al-card .al-roster { columns: 1 !important; margin-top: var(--al-s2); }
+.al-card .al-roster .al-roster-key { flex-basis: 6.6em; }
+.al-card .al-roster li { font-size: 16px; }
+.al-accordion-body h3 { margin-top: var(--al-s4); margin-bottom: var(--al-s2); }
+
+/* Embed: 16:9 iframe (Spotify video, YouTube) with the card radius */
+.al-embed {
+	position: relative;
+	aspect-ratio: 16 / 9;
+	border-radius: var(--al-radius);
+	overflow: hidden;
+	background: var(--al-green-dark);
+	box-shadow: var(--al-shadow);
+}
+.al-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* Chips: a row of equal, short external links (podcast platforms) */
+.al-chips { display: flex; flex-wrap: wrap; gap: var(--al-s1); list-style: none; padding: 0; margin: var(--al-s3) 0 0; }
+.al-chips li { margin: 0; }
+.al-chips a {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	min-height: 48px;
+	padding: 0 18px 0 20px;
+	border: 2px solid var(--al-green) !important; /* the body-link rule strips border-bottom; this was the "cut off" pill */
+	border-radius: 24px;
+	background: var(--al-white);
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 1;
+	white-space: nowrap;
+	color: var(--al-green) !important;
+	text-decoration: none !important;
+}
+.al-chips a::after { content: ""; flex: 0 0 14px; width: 14px; height: 14px; background: url("../icons/green/ui-external.svg") center / contain no-repeat; }
+.al-chips a:hover { background: var(--al-green); color: var(--al-white) !important; }
+.al-chips a:hover::after { background-image: url("../icons/white/ui-external.svg"); }
+
+/* Episode grid (podcast): every episode as a card, people-first thumbnail on top.
+   The whole card is the link (stretched link on the guest name), so one tab stop per episode. */
+.al-section .al-episodes-year {
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	font-size: 28px;
+	color: var(--al-green);
+	margin: var(--al-s6) 0 var(--al-s3);
+	padding-bottom: var(--al-s1);
+	border-bottom: 2px solid var(--al-rule);
+}
+.al-section .al-episodes-year:first-of-type { margin-top: 0; }
+.al-episodes { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: var(--al-s3); }
+.al-episode {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	background: var(--al-white);
+	border-radius: var(--al-radius);
+	box-shadow: var(--al-shadow);
+	overflow: hidden;
+	transition: transform .15s ease, box-shadow .15s ease;
+}
+.al-episode:hover { transform: translateY(-3px); }
+.al-episode:focus-within { outline: 3px solid var(--al-green-bright); outline-offset: 3px; }
+.al-episode-media { position: relative; background: var(--al-green-dark); }
+.al-episode-media img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.al-episode-media::after {
+	content: "";
+	position: absolute;
+	left: 16px;
+	bottom: 16px;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	background: var(--al-green) url("../icons/white/ui-play.svg") 55% center / 18px no-repeat;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
+}
+.al-episode-body { display: flex; flex-direction: column; flex: 1; padding: 20px 24px 24px; }
+.al-section .al-episode-body p { margin: 0; }
+.al-section .al-episode-body .al-episode-meta { font-size: 15px; color: var(--al-text-muted); margin-bottom: 6px; }
+.al-section .al-episode-body h4 { font-size: 26px; line-height: 1.1; margin: 0 0 6px; }
+.al-section .al-episode-body h4 a { font: inherit; color: var(--al-green) !important; text-decoration: none !important; }
+.al-episode-body h4 a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.al-episode:hover h4 a { text-decoration: underline !important; }
+.al-section .al-episode-body .al-episode-tag { font-size: 18px; line-height: 1.4; color: var(--al-text); }
+.al-section .al-episode-body .al-episode-host { margin-top: auto; padding-top: var(--al-s2); font-size: 15px; color: var(--al-text-muted); }
+
+/* Logo card: a partner or program wordmark presented on white */
+.al-logo-card { background: var(--al-white); border-radius: var(--al-radius); box-shadow: var(--al-shadow); padding: var(--al-s4); max-width: 560px; margin: 0 auto; }
+.al-logo-card img { display: block; width: 100%; height: auto; }
+
+/* Notice: one-line status (closed applications, deadlines) */
+.al-notice {
+	display: flex;
+	gap: 12px;
+	align-items: flex-start;
+	padding: var(--al-s2) 20px;
+	background: var(--al-white);
+	border: 1px solid var(--al-rule);
+	border-left: 4px solid var(--al-green);
+	border-radius: var(--al-radius-sm);
+	font-size: 16px;
+	line-height: 1.5;
+}
+.al-notice img { width: 24px; height: 24px; flex: 0 0 24px; margin-top: 1px; }
+.al-notice p { margin: 0; font-size: 16px !important; }
+.al-card-foot .al-notice { border: 0; border-left: 4px solid var(--al-green); padding: 4px 0 4px 12px; border-radius: 0; color: var(--al-text); }
+
+/* =====================================================================
+   PHONES ONLY (<768px)
+   ===================================================================== */
+@media (max-width: 767px) {
+	/* Primary actions go full width: no wrapped labels, easy thumb reach */
+	.al-actions .al-btn { width: 100%; }
+	.al-card .al-checklist li, .al-card .al-steps li { font-size: 16px; line-height: 1.5; }
+	.al-card .al-checklist li { padding-top: 8px; padding-bottom: 8px; }
+	.al-card .al-checklist li::before { top: 9px; }
+
+	/* Centered multi-line copy is hard to read at phone width: left-align section intros */
+	.al-section-head { text-align: left; }
+	.al-section-head .al-actions { justify-content: flex-start; }
+	.al-section .al-center { text-align: left; margin-left: 0; }
+
+	/* Quick links become a list (icon · label · arrow), same anatomy as .al-linklist */
+	.al-quicklinks { grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--al-rule); }
+	.al-quicklinks a {
+		flex-direction: row;
+		justify-content: flex-start;
+		gap: var(--al-s2);
+		min-height: 60px;
+		padding: 8px 4px;
+		border-radius: 0;
+		border-bottom: 1px solid var(--al-rule);
+		text-align: left;
+		font-size: 19px;
+	}
+	.al-quicklinks a br { display: none; }
+	.al-quicklinks img { width: 36px; height: 36px; }
+	.al-quicklinks a::after {
+		content: "";
+		margin-left: auto;
+		width: 18px;
+		height: 18px;
+		flex: 0 0 18px;
+		background: url("../icons/green/ui-arrow-right.svg") center / contain no-repeat;
+	}
+
+	/* Media sits a little closer to its text */
+	.al-split > [data-uvu-region] { margin-bottom: var(--al-s6); }
+}
+
+/* =====================================================================
+   RESPONSIVE. ", print" keeps the desktop layout in Save as PDF (Chrome sizes print media queries to Letter width).
+   ===================================================================== */
+@media (min-width: 768px), print {
+	:root { --al-gutter: 40px; }
+	.al-section { padding-top: var(--al-s12); padding-bottom: var(--al-s12); font-size: 18px; }
+	.al-section p, .al-section li { font-size: 18px; }
+	.al-section h2 { font-size: 46px; }
+	.al-section h3 { font-size: 26px; }
+	.al-lead, .al-section p.al-lead { font-size: 21px; }
+
+	.page-header.al-hero { display: flex; align-items: center; min-height: 560px; padding: var(--al-s12) 0; background-size: cover; background-position: right center; }
+	.page-header.al-hero:not(.al-hero--plain)::before {
+		display: block;
+		/* XD hero gradient: 100% green at the left edge, 83% at the headline's end, clear by 85% */
+		background: linear-gradient(90deg, rgba(24, 92, 51, 1) 0%, rgba(24, 92, 51, .83) 42%, rgba(24, 92, 51, 0) 85%);
+	}
+	.al-section--photo::before { display: none; }
+	.al-eyebrow, .page-header.al-hero p.al-eyebrow { font-size: 22px; }
+	.al-card-body { padding: var(--al-s4); }
+	.al-card-tag { padding: 14px var(--al-s4); }
+	.al-card-foot { padding: var(--al-s2) var(--al-s4); }
+	.al-grid { gap: var(--al-s4); }
+	.al-grid--people { grid-template-columns: repeat(2, 1fr); gap: var(--al-s3); }
+	.al-person { padding: var(--al-s2) var(--al-s2) var(--al-s3); }
+	.al-person h3 { font-size: 21px !important; }
+	.al-quicklinks a { min-height: 140px; padding: var(--al-s3) var(--al-s1); font-size: 19px; gap: 12px; }
+	.al-quicklinks img { width: 56px; height: 56px; }
+	.al-video::after { width: 88px; height: 88px; margin: -44px 0 0 -44px; background-size: 36px; }
+	.page-header.al-hero header h1 { font-size: 72px !important; }
+	.page-header.al-hero header p.al-hero-lead { font-size: 22px; }
+
+	.al-split > [data-uvu-region] { margin-bottom: 0; }
+	.al-split--reverse > [data-uvu-region]:first-child { order: 2; }
+	.al-split--reverse > [data-uvu-region]:last-child { order: 1; }
+	.al-split > [data-uvu-region]:not(.al-split-media) { padding-right: var(--al-s6); }
+	.al-split--reverse > [data-uvu-region]:not(.al-split-media) { padding-right: 15px; padding-left: var(--al-s6); }
+
+	.al-grid--2 { grid-template-columns: repeat(2, 1fr); gap: var(--al-s4); }
+	.al-grid--3 { grid-template-columns: repeat(3, 1fr); }
+	.al-grid--4 { grid-template-columns: repeat(2, 1fr); }
+	.al-grid--5 { grid-template-columns: repeat(3, 1fr); }
+	.al-grid--people.al-grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+	.al-quicklinks { grid-template-columns: repeat(4, 1fr); gap: var(--al-s1); }
+
+	.al-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--al-s6) 72px; }
+	.al-sitenav-nav { grid-template-columns: minmax(220px, 1fr) 3.4fr; gap: var(--al-s4) var(--al-s6); }
+	.al-sitenav-groups { grid-template-columns: repeat(3, 1fr); }
+
+	.page-header.al-hero.al-hero--plain { min-height: 0; padding: var(--al-s12) 0; }
+	.al-media { padding: 40px; }
+	.al-episodes { grid-template-columns: repeat(2, 1fr); }
+	.al-roster { columns: 2; }
+	.al-quotes { grid-template-columns: repeat(2, 1fr); }
+	.al-events > li { grid-template-columns: 80px 1fr; gap: var(--al-s3); }
+	.al-logos img { height: 64px; max-width: 190px; }
+}
+
+@media (min-width: 1100px), print {
+	.al-episodes { grid-template-columns: repeat(3, 1fr); }
+	.al-grid--4 { grid-template-columns: repeat(4, 1fr); }
+	.al-grid--5 { grid-template-columns: repeat(5, 1fr); gap: var(--al-s3); }
+	.al-quicklinks { grid-template-columns: repeat(7, 1fr); }
+	.al-roster { columns: 3; }
+	.al-sitenav-groups { grid-template-columns: repeat(4, 1fr); }
+	.al-sitenav-group a { padding: 5px 0; } /* pointer-sized rows on desktop; 44px rows on touch sizes */
+	.al-events--compact > li { grid-template-columns: 9em 1fr; gap: var(--al-s3); align-items: baseline; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.al-btn, .al-btn::after, .al-news-card, .al-social a, details > summary::after { transition: none; }
+}
+
+/*END OF DOCUMENT*/
+
+/* =====================================================================
+   12 · GIVING COMPONENTS (v1.3, added for the Give pages; shared system)
+   ===================================================================== */
+/* Stats: big numbers with a one-line label (impact amounts, campaign results) */
+.al-stats { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: var(--al-s3); }
+.al-stat {
+	margin: 0;
+	padding: var(--al-s4) var(--al-s3);
+	background: var(--al-white);
+	border-radius: var(--al-radius);
+	box-shadow: var(--al-shadow);
+	border-top: 6px solid var(--al-green-bright);
+}
+.al-section .al-stat .al-stat-num { display: block; font-family: var(--al-font-display); font-weight: 700; font-size: 56px; line-height: 1; color: var(--al-green); margin: 0 0 var(--al-s1); }
+.al-section .al-stat .al-stat-label { display: block; font-size: 17px; line-height: 1.5; margin: 0; color: var(--al-text); }
+.al-section--green .al-stat .al-stat-label { color: var(--al-text); }
+
+/* Quote with a person: headshot + name + role under the quote */
+.al-quote--person figcaption { display: flex; align-items: center; gap: 14px; }
+.al-quote-photo { flex: 0 0 64px; width: 64px; height: 64px; border-radius: var(--al-radius-sm); object-fit: cover; object-position: center top; }
+.al-quote-who { display: block; }
+.al-quote-role { display: block; font-family: var(--al-font-body); font-weight: 400; font-size: 15px; line-height: 1.4; color: var(--al-text-muted); margin-top: 2px; }
+
+/* Contact card: a named staff contact (name, title, phone, directory message link) */
+.al-contact-card .al-card-body p { margin: 0 0 6px; }
+.al-section .al-contact-card h3 { margin-bottom: 4px; }
+.al-section .al-contact-card .al-contact-role { font-size: 16px; color: var(--al-text-muted); }
+
+/* Embedded giving form (Blackbaud). Production drops the vendor embed code inside. */
+.al-form-embed {
+	background: var(--al-white);
+	border-radius: var(--al-radius);
+	box-shadow: var(--al-shadow);
+	padding: var(--al-s4);
+	max-width: 760px;
+	margin: 0 auto;
+}
+.al-form-embed-placeholder {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: var(--al-s1);
+	min-height: 280px;
+	border: 2px dashed var(--al-rule);
+	border-radius: var(--al-radius-sm);
+	text-align: center;
+	padding: var(--al-s3);
+}
+
+@media (min-width: 768px), print {
+	.al-stats { grid-template-columns: repeat(2, 1fr); }
+	.al-stats--3 { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1100px), print {
+	.al-stats { grid-template-columns: repeat(4, 1fr); }
+	.al-stats--3 { grid-template-columns: repeat(3, 1fr); }
+	.al-section .al-stat .al-stat-num { font-size: 64px; }
+}
+/* Layout helpers for the Give pages */
+.al-grid--center { grid-template-columns: minmax(0, 420px) !important; justify-content: center; }
+.al-sitenav-title a { color: inherit !important; text-decoration: none !important; }
+@media (min-width: 768px), print {
+	.al-linklist--2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--al-s6); }
+}
+@media (min-width: 1100px), print {
+	.al-quicklinks.al-quicklinks--6 { grid-template-columns: repeat(6, 1fr); }
+	.al-quotes.al-quotes--3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Fund directory (Give: colleges, programs and centers): one accordion per department.
+   Summary = thumbnail + name + counts; body = program and scholarship links (Blackbaud forms). */
+.al-funds { display: grid; gap: 12px; margin: 0; padding: 0; }
+details.al-fund {
+	margin: 0;
+	background: var(--al-white);
+	border: 0;
+	border-radius: var(--al-radius);
+	box-shadow: var(--al-shadow);
+	overflow: hidden;
+}
+.al-fund > summary {
+	display: grid;
+	grid-template-columns: 88px 1fr 20px;
+	align-items: center;
+	gap: var(--al-s2);
+	min-height: 76px;
+	padding: 10px var(--al-s3) 10px 10px;
+	cursor: pointer;
+	list-style: none;
+}
+.al-fund > summary::-webkit-details-marker { display: none; }
+.al-fund > summary::after {
+	content: "";
+	width: 20px;
+	height: 20px;
+	background: url("../icons/green/ui-chevron-down.svg") center / contain no-repeat;
+	transition: transform .2s ease;
+}
+.al-fund-thumb { display: block; width: 88px; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--al-radius-sm); }
+.al-section .al-fund-name { display: block; font-family: var(--al-font-display); font-weight: 700; font-size: 21px; line-height: 1.15; color: var(--al-green); margin: 0; }
+.al-fund-count { display: block; font-family: var(--al-font-body); font-weight: 400; font-size: 15px; color: var(--al-text-muted); margin-top: 3px; }
+.al-fund-body { padding: 0 var(--al-s3) var(--al-s3); border-top: 1px solid var(--al-rule); display: grid; grid-template-columns: 1fr; column-gap: var(--al-s6); }
+.al-section .al-fund-body h4 { font-size: 17px; margin: var(--al-s3) 0 var(--al-s1); color: var(--al-text-muted); text-transform: none; letter-spacing: .02em; }
+.al-fund-links { list-style: none; padding: 0; margin: 0; }
+.al-section .al-fund-links li { margin: 0; border-bottom: 1px solid var(--al-rule); font-size: 16px; }
+.al-section .al-fund-links a {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	min-height: 44px;
+	padding: 8px 0;
+	line-height: 1.35;
+	color: var(--al-text) !important;
+	text-decoration: none !important;
+}
+.al-section .al-fund-links a:hover { color: var(--al-green) !important; text-decoration: underline !important; }
+.al-fund-links a[target="_blank"]::after { content: ""; flex: 0 0 14px; width: 14px; height: 14px; background: url("../icons/green/ui-external.svg") center / contain no-repeat; }
+
+/* Tag on photo cards (sport team, area) */
+.al-section .al-card-tag-text { display: inline-block; font-family: var(--al-font-display); font-weight: 700; font-size: 14px; letter-spacing: .04em; text-transform: uppercase; color: var(--al-green-bright); margin: 0 0 4px; }
+
+/* Disclaimer / info notice inside a section head */
+.al-section-head + .al-notice, .al-notice + .al-section-head { margin-top: var(--al-s3); }
+
+@media (min-width: 768px), print {
+	.al-fund > summary { grid-template-columns: 120px 1fr 20px; gap: var(--al-s3); }
+	.al-fund-thumb { width: 120px; }
+	.al-fund-body { grid-template-columns: repeat(2, 1fr); }
+	.al-fund-body > div:only-child { grid-column: 1 / -1; }
+	.al-fund-body > div:only-child .al-fund-links { columns: 2; column-gap: var(--al-s6); }
+	.al-fund-body > div:only-child .al-fund-links li { break-inside: avoid; }
+}
+/* Eyebrow as a tagline above the H1 (Give college pages): same look as the in-H1 eyebrow */
+.page-header.al-hero header p.al-eyebrow { font-family: var(--al-font-display) !important; font-weight: 700 !important; letter-spacing: .03em; line-height: 1.2; margin: 0 0 6px !important; opacity: 1; }
+.al-actions + .al-funds, .al-funds + .al-actions { margin-top: var(--al-s4); }
+
+/* =====================================================================
+   13 · GIVE HUB (v1.4): fund search, fund finder rows, pull-quote split
+   ===================================================================== */
+/* Search box: posts to Find a Fund (production: the CMS dataview search) */
+.al-search { display: flex; gap: var(--al-s1); max-width: 720px; margin: var(--al-s3) auto 0; }
+.al-search label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.al-search input[type="search"] {
+	flex: 1 1 auto;
+	min-width: 0;
+	min-height: 52px;
+	padding: 0 18px;
+	border: 2px solid var(--al-green);
+	border-radius: var(--al-radius-sm);
+	font-family: var(--al-font-body);
+	font-size: 18px;
+	color: var(--al-text);
+	background: var(--al-white);
+}
+.al-search input[type="search"]:focus { outline: 3px solid var(--al-meadow); outline-offset: 2px; }
+.al-search .al-btn { flex: 0 0 auto; }
+.al-search-hints { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; list-style: none; padding: 0; margin: var(--al-s2) auto 0; max-width: 720px; font-size: 16px; }
+.al-search-hints li { margin: 0; }
+.al-search-hints .al-meta { margin: 0; }
+
+/* Fund finder: one row per fund, the whole row opens the gift form */
+.al-finder-tools { display: grid; grid-template-columns: 1fr; gap: var(--al-s1); max-width: 900px; margin: 0 auto var(--al-s2); }
+.al-finder-tools select {
+	min-height: 52px;
+	padding: 0 14px;
+	border: 2px solid var(--al-green);
+	border-radius: var(--al-radius-sm);
+	font-family: var(--al-font-body);
+	font-size: 17px;
+	color: var(--al-text);
+	background: var(--al-white);
+}
+.al-finder-count { max-width: 900px; margin: 0 auto var(--al-s1); }
+.al-fundrows { list-style: none; padding: 0; margin: 0 auto; max-width: 900px; background: var(--al-white); border-radius: var(--al-radius); box-shadow: var(--al-shadow); }
+.al-fundrows li { margin: 0; border-bottom: 1px solid var(--al-rule); }
+.al-fundrows li:last-child { border-bottom: 0; }
+.al-fundrows li[hidden] { display: none; }
+.al-section .al-fundrows a {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-items: center;
+	gap: 4px var(--al-s2);
+	min-height: 56px;
+	padding: 12px var(--al-s3);
+	color: var(--al-text) !important;
+	text-decoration: none !important;
+}
+.al-section .al-fundrows a:hover { background: var(--al-warm); }
+.al-fundrow-name { font-weight: 700; font-size: 17px; line-height: 1.3; color: var(--al-green); }
+.al-fundrow-meta { grid-column: 1; font-size: 14px; color: var(--al-text-muted); }
+.al-fundrow-go { grid-column: 2; grid-row: 1 / span 2; display: inline-flex; align-items: center; gap: 8px; font-family: var(--al-font-display); font-weight: 700; font-size: 16px; color: var(--al-green); }
+.al-fundrow-go::after { content: ""; width: 14px; height: 14px; background: url("../icons/green/ui-external.svg") center / contain no-repeat; }
+.al-finder-empty { max-width: 900px; margin: var(--al-s2) auto 0; text-align: center; }
+
+/* Pull quote inside a split (story band) */
+.al-pullquote { margin: 0 0 var(--al-s3); padding: 0 0 0 var(--al-s3); border-left: 4px solid var(--al-green-bright); }
+.al-section .al-pullquote p { font-family: var(--al-font-display); font-weight: 700; font-size: 26px; line-height: 1.25; color: var(--al-green); margin: 0 0 var(--al-s1); }
+.al-section .al-pullquote cite { font-style: normal; font-size: 16px; color: var(--al-text-muted); }
+.al-section--green .al-pullquote p { color: var(--al-white); }
+
+/* Featured fund card: photo card with an area tag and a Give line */
+.al-section .al-news-card .al-card-give { display: inline-flex; align-items: center; gap: 8px; margin-top: var(--al-s1); font-family: var(--al-font-display); font-weight: 700; font-size: 16px; color: var(--al-green); }
+.al-section .al-news-card .al-card-give::after { content: ""; width: 14px; height: 14px; background: url("../icons/green/ui-external.svg") center / contain no-repeat; }
+
+/* Larger-gift band: text + contact side by side on the green band */
+.al-section--green .al-contact-card h3 { color: var(--al-green) !important; }
+
+@media (min-width: 768px), print {
+	.al-finder-tools { grid-template-columns: 1fr 280px; }
+	.al-section .al-pullquote p { font-size: 32px; }
+}
+@media (max-width: 767px) {
+	.al-search { flex-direction: column; }
+	.al-search .al-btn { width: 100%; }
+}
+.al-finder-tools input[type="search"] { min-height: 52px; padding: 0 18px; border: 2px solid var(--al-green); border-radius: var(--al-radius-sm); font-family: var(--al-font-body); font-size: 18px; color: var(--al-text); background: var(--al-white); min-width: 0; }
+.al-finder-tools input[type="search"]:focus, .al-finder-tools select:focus { outline: 3px solid var(--al-meadow); outline-offset: 2px; }
+.al-grid--middle { align-items: center; }
+.al-list-reset { list-style: none; padding: 0; margin: 0; }
+@media (min-width: 768px), print { .al-linklist--3 { display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--al-s6); } }
+@media (min-width: 1100px), print { .al-linklist--3 { grid-template-columns: repeat(3, 1fr); } }
+.al-section p.al-finder-count, .al-section p.al-finder-empty { max-width: 900px; margin-left: auto; margin-right: auto; }
+
+/* =====================================================================
+   14 · GIVE VISUAL PASS (v1.5)
+   ===================================================================== */
+/* Contact strip: compact named contacts (initials badge, name, title, phone, message) */
+.al-contact-strip { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--al-s3) var(--al-s6); }
+.al-contact-strip > li.al-contact-card { display: flex; align-items: center; gap: var(--al-s2); margin: 0; text-align: left; max-width: 360px; }
+.al-contact-badge {
+	flex: 0 0 56px;
+	display: grid;
+	place-items: center;
+	width: 56px;
+	height: 56px;
+	border-radius: var(--al-radius-sm);
+	background: var(--al-green);
+	color: var(--al-white);
+	font-family: var(--al-font-display);
+	font-weight: 700;
+	font-size: 21px;
+	letter-spacing: .02em;
+}
+.al-section .al-contact-card p { margin: 0; }
+.al-section .al-contact-card .al-contact-name { font-family: var(--al-font-display); font-weight: 700; font-size: 20px; line-height: 1.2; color: var(--al-green); }
+.al-section .al-contact-card .al-contact-role { font-size: 15px; line-height: 1.4; color: var(--al-text-muted); }
+.al-section .al-contact-card .al-contact-links { font-size: 15px; margin-top: 4px; }
+.al-contact-strip--card { justify-content: flex-start; }
+.al-contact-strip--card > li.al-contact-card { background: var(--al-white); border-radius: var(--al-radius); box-shadow: var(--al-shadow); padding: var(--al-s3); max-width: none; }
+/* Contact-only sections run shorter */
+.al-section:has(.al-contact-strip):not(:has(.al-funds)):not(:has(.al-grid--2)) { padding-top: var(--al-s6) !important; padding-bottom: var(--al-s6) !important; }
+.al-section:has(.al-contact-strip) .al-section-head { margin-bottom: var(--al-s3); }
+
+/* Fund directory reads at a comfortable measure, like Find a Fund */
+.al-funds { max-width: 900px; margin-left: auto; margin-right: auto; }
+
+/* Find a Fund: "show more" for the default view */
+.al-finder-more { display: flex; justify-content: center; margin-top: var(--al-s3); }
+.al-finder-more[hidden] { display: none; }
+/* Embed poster: the latest episode thumbnail shows until (or if) the player loads */
+.al-embed-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.al-embed iframe { z-index: 1; }
+/* Latest episode feature: linked 16:9 photo with a play badge and a caption (replaces the show embed) */
+.al-media--wide img { aspect-ratio: 16 / 9; }
+.al-media--episode > a { position: relative; z-index: 1; display: block; border-radius: var(--al-radius-sm); }
+.al-media--episode .al-play {
+	position: absolute; z-index: 2; left: 16px; bottom: 16px; width: 56px; height: 56px; border-radius: 50%;
+	background: var(--al-green) url("../icons/white/ui-play.svg") 55% center / 22px no-repeat; box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
+}
+.al-media--episode > a:hover .al-play { background-color: var(--al-green-bright); }
+.al-media--episode figcaption { position: relative; z-index: 1; text-align: left; margin-top: var(--al-s2); font-size: 16px; line-height: 1.5; color: var(--al-text); }
+.al-media--episode figcaption .al-card-tag-text { display: block; margin-bottom: 2px; }
+.al-media--episode figcaption strong { font-family: var(--al-font-display); font-size: 20px; color: var(--al-green); display: block; }
+/* Episode feature: keep APFY shapes on the photo's top corners so they never sit behind the caption */
+.al-media--episode::before { background-position: left top !important; }
+.al-media--episode::after { background-position: right top !important; }
+.al-media--episode figcaption { z-index: 3; }
+
+/* =====================================================================
+   v1.6 · FUND DIRECTORY ON CESAR'S NEW-FORMAT-26 (Give)
+   Cesar's markup and new-format-26.css stay as built (sidebar tabs, MAIN MENU
+   popover, content-panel, fund-item). This layer, scoped to .al-nf, puts them
+   on the system: type, color, rows, counts, a department header, and a
+   sticky sidebar. new-format-26.css loads first; its page-wide rules
+   (body background, Arial, #555, .fullbleed overlay) are neutralized here.
+   ===================================================================== */
+body:has(.funds-layout) { background: var(--al-white); font-family: var(--al-font-body); color: var(--al-text); }
+.page-header.al-hero.fullbleed::before { opacity: 1; z-index: auto; }
+
+.al-nf { --nf-line: #E1DED6; padding-top: var(--al-s8); }
+.al-nf .funds-layout { padding: 0; gap: 56px; }
+.al-nf .funds-content { padding: 0; }
+
+/* Sidebar */
+.al-nf .desktop-funds-sidebar { background: none; }
+.al-nf .mobile-funds-sidebar { background: var(--al-white); }
+.al-nf .sidebar-title { font-family: var(--al-font-display); font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--al-green); margin: 0 0 var(--al-s2); }
+.al-nf .funds-sidebar ul li:nth-child(1) { border-top: 0; }
+.al-nf .funds-sidebar ul li:nth-child(2) { border-top: 1px solid var(--nf-line); }
+.al-nf .menu-btn {
+	display: flex; align-items: center; justify-content: space-between; gap: 12px;
+	min-height: 48px; padding: 11px 12px 11px 16px;
+	border: 0; border-bottom: 1px solid var(--nf-line); border-left: 4px solid transparent;
+	font-family: var(--al-font-body); font-size: 16px; line-height: 1.35; color: var(--al-text);
+	background: transparent; text-decoration: none; transition: background-color .15s ease, border-color .15s ease;
+}
+.al-nf .menu-btn:hover { background: var(--al-warm); text-decoration: none; }
+.al-nf .menu-btn.active { background: var(--al-warm); border-left-color: var(--al-green); color: var(--al-green); font-weight: 700; }
+.al-nf .menu-btn:focus-visible { outline: 3px solid var(--al-meadow); outline-offset: -3px; }
+.al-nf-count { flex: none; min-width: 30px; padding: 1px 8px; border: 1px solid var(--nf-line); border-radius: 999px; background: var(--al-white); font-size: 13px; font-weight: 700; line-height: 1.5; text-align: center; color: var(--al-text-muted); }
+.al-nf .menu-btn.active .al-nf-count { border-color: var(--al-green); color: var(--al-green); }
+/* Search sits apart from the departments, styled as a field */
+.al-nf .tabs > li:first-child { margin-bottom: var(--al-s2); }
+.al-nf .tabs > li:first-child .menu-btn { justify-content: flex-start; border: 1px solid #C9C5BB; border-radius: 8px; color: var(--al-text-muted); font-weight: 400; }
+.al-nf .tabs > li:first-child .menu-btn::before { content: ""; flex: none; width: 18px; height: 18px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23185C33' stroke-width='2.5' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M15.5 15.5 21 21'/%3E%3C/svg%3E") center / contain no-repeat; }
+.al-nf .tabs > li:first-child .menu-btn.active { border-color: var(--al-green); color: var(--al-green); background: var(--al-warm); }
+
+/* Department header */
+.al-nf .content-panel h2, .al-nf #search h2 { font-size: 40px; line-height: 1.05; margin: 0 0 var(--al-s2); color: var(--al-green); }
+.al-nf-head { display: grid; grid-template-columns: 240px 1fr; gap: var(--al-s4); align-items: center; padding-bottom: var(--al-s4); margin-bottom: var(--al-s4); border-bottom: 1px solid var(--nf-line); }
+.al-nf-thumb { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
+.al-nf-meta { font-family: var(--al-font-display); font-size: 15px !important; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--al-green); margin: 0 0 6px !important; }
+.al-nf-head p:not(.al-nf-meta) { font-size: 17px; line-height: 1.6; margin: 0 0 var(--al-s2); max-width: 62ch; }
+.al-nf a.al-nf-learn { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; }
+.al-nf a.al-nf-learn::after { content: ""; width: 16px; height: 16px; background: url("../icons/green/ui-arrow-right.svg") center / contain no-repeat; }
+
+/* Fund rows */
+.al-nf .al-nf-group { display: flex; align-items: baseline; gap: 8px; font-size: 17px; text-transform: uppercase; letter-spacing: .06em; margin: var(--al-s4) 0 var(--al-s2); }
+.al-nf .al-nf-group:first-of-type { margin-top: 0; }
+.al-nf .al-nf-group span { font-family: var(--al-font-body); font-size: 14px; font-weight: 400; letter-spacing: 0; color: var(--al-text-muted); }
+.al-nf .content-panel ul { display: grid; gap: 8px; margin: 0; padding: 0; }
+.al-nf .content-panel li { margin: 0; }
+.al-nf a.fund-item {
+	display: flex; align-items: center; justify-content: space-between; gap: var(--al-s2);
+	min-height: 56px; margin: 0; padding: 14px 18px;
+	background: var(--al-white); border: 1px solid #D5D1C7; border-radius: 8px;
+	font-family: var(--al-font-body); font-size: 17px; font-weight: 700; line-height: 1.35; color: var(--al-text); text-decoration: none;
+	transform: none; box-shadow: none; transition: border-color .15s ease, background-color .15s ease;
+}
+.al-nf a.fund-item:hover { background: var(--al-warm); border-color: var(--al-green); color: var(--al-green); transform: none; box-shadow: none; text-decoration: none; }
+.al-nf a.fund-item:focus-visible { outline: 3px solid var(--al-meadow); outline-offset: 2px; }
+.al-nf-give { flex: none; display: inline-flex; align-items: center; gap: 6px; font-family: var(--al-font-display); font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--al-green); }
+.al-nf-give::after { content: ""; width: 14px; height: 14px; background: url("../icons/green/ui-external.svg") center / contain no-repeat; }
+
+/* Search panel */
+.al-nf #search p { max-width: 62ch; }
+.al-search--left { margin-left: 0; }
+
+/* For More Information */
+.al-nf-info .divider-header { margin-bottom: var(--al-s4); }
+
+@media (min-width: 768px) {
+	.al-nf .desktop-funds-sidebar { position: sticky; top: var(--al-s3); width: 300px; max-height: none; overflow: visible; }
+	.al-nf .funds-content { max-width: none; }
+	.al-nf .content-panel, .al-nf #search { max-width: 860px; }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+	.al-nf .funds-layout { gap: var(--al-s4); }
+	.al-nf .desktop-funds-sidebar { width: 240px; }
+	.al-nf-head { grid-template-columns: 1fr; }
+	.al-nf-thumb { aspect-ratio: 16 / 9; }
+}
+@media (max-width: 767px) {
+	.al-nf { padding-top: 0; }
+	.al-nf .mobile-menu-bar { scroll-margin-top: 200px; gap: var(--al-s2); padding: 10px 8px 10px 16px; border-radius: 8px; background: var(--al-green); }
+	.al-nf-bar { display: flex; flex-direction: column; min-width: 0; }
+	.al-nf-bar-label { font-family: var(--al-font-display); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--al-meadow); }
+	.al-nf-bar-current { font-size: 17px; font-weight: 700; letter-spacing: 0; color: var(--al-white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+	.al-nf .menu-toggle { width: 44px; height: 44px; }
+	.al-nf .menu-toggle span { left: 10px; width: 24px; }
+	.al-nf .menu-toggle span:nth-child(1) { top: 14px; }
+	.al-nf .menu-toggle span:nth-child(2) { top: 21px; }
+	.al-nf .menu-toggle span:nth-child(3) { top: 28px; }
+	.al-nf .mobile-funds-sidebar { padding: var(--al-s3); border-radius: 12px; }
+	.al-nf .mobile-popover-header { margin-bottom: var(--al-s2); }
+	.al-nf .mobile-popover-header button { width: 44px; height: 44px; text-align: center; line-height: 44px; }
+	.al-nf .funds-content { padding: var(--al-s6) 0 var(--al-s2); }
+	.al-nf .content-panel h2, .al-nf #search h2 { font-size: 32px; }
+	.al-nf-head { grid-template-columns: 1fr; gap: var(--al-s3); }
+	.al-nf-thumb { aspect-ratio: 16 / 9; }
+	.al-nf a.fund-item { font-size: 16px; padding: 12px 16px; }
+	.al-nf-give { font-size: 0; gap: 0; }
+	.al-nf-give::after { width: 16px; height: 16px; }
+}
+.al-nf-head:not(:has(.al-nf-thumb)) { grid-template-columns: 1fr; }
+
+/* =====================================================================
+   v1.7 · ONE-IMAGE HERO (.al-hero--one)
+   Dev request (Oct 26): one header image per page instead of a desktop + phone pair.
+   2000x1000 photo, subject centered, background-position: center on every screen.
+   Desktop: the green fade is tighter so a centered subject stays clear of the headline.
+   Phones: the same file, cover + center (the middle third shows), green fade rising from the bottom.
+   Pages still using .al-hero-m keep working until they're re-cropped.
+   ===================================================================== */
+.page-header.al-hero.al-hero--one { background-size: cover; background-position: center center; }
+@media (min-width: 768px) {
+	.page-header.al-hero.al-hero--one { background-position: center center; }
+	.page-header.al-hero.al-hero--one:not(.al-hero--plain)::before {
+		background: linear-gradient(90deg, rgba(24, 92, 51, 1) 0%, rgba(24, 92, 51, .86) 34%, rgba(24, 92, 51, .4) 48%, rgba(24, 92, 51, 0) 58%);
+	}
+}
+@media (max-width: 767px) {
+	.page-header.al-hero.al-hero--one { background-position: center top; background-size: auto 125vw; background-color: var(--al-green); }
+	.page-header.al-hero.al-hero--one::before {
+		display: block; height: 125vw; bottom: auto; z-index: 0;
+		background: linear-gradient(0deg, rgba(24, 92, 51, 1) 0%, rgba(24, 92, 51, 1) 18%, rgba(24, 92, 51, .82) 40%, rgba(24, 92, 51, 0) 66%);
+	}
+}
+
+/* v1.7 · IA pages: letter signature, department groups, directory placeholder */
+.al-signature { display: flex; flex-direction: column; gap: var(--al-s1); margin-top: var(--al-s4); }
+.al-signature img { width: 210px; height: auto; }
+.al-funds h3.al-dept-group { font-size: 19px; text-transform: uppercase; letter-spacing: .06em; margin: var(--al-s6) 0 var(--al-s2); }
+.al-funds h3.al-dept-group:first-child { margin-top: 0; }
+.al-funds h3.al-dept-group + details.al-accordion { border-top: 1px solid var(--al-rule); }
+.al-dir-placeholder { margin: 0; }
+
+/* v1.7 · Live header images (IA): one file, toned on the live site, used as-is.
+   --al-hero-x moves the phone slice to the subject when the live photo isn't centered. */
+@media (max-width: 767px) {
+	.page-header.al-hero.al-hero--one { background-position: var(--al-hero-x, center) top; }
+}
+.page-header.al-hero.al-hero--plain.al-hero--live { background-size: cover; background-position: center; }
+
+/* Cutout images (designed PNGs with their own shape) sit unframed */
+.al-cutout { display: block; width: 100%; max-width: 520px; height: auto; margin: 0 auto; }
+
+/* v1.7 · Bio pop-up (native popover, no script): Read Bio opens a centered card over a green scrim */
+.al-bio-btn {
+	display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin-top: var(--al-s1); padding: 0 4px;
+	border: 0; background: none; cursor: pointer;
+	font-family: var(--al-font-display); font-weight: 700; font-size: 17px; color: var(--al-green);
+}
+.al-bio-btn::after { content: ""; width: 14px; height: 14px; background: url("../icons/green/ui-arrow-right.svg") center / contain no-repeat; }
+.al-bio-btn:hover { text-decoration: underline; text-underline-offset: 3px; }
+.al-bio-btn:focus-visible, .al-bio-close:focus-visible { outline: 3px solid var(--al-meadow); outline-offset: 2px; }
+.al-bio[popover] {
+	width: min(640px, calc(100vw - 32px)); max-height: min(80vh, 720px); overflow-y: auto;
+	margin: auto; padding: 0; border: 0; border-radius: 12px;
+	background: var(--al-white); color: var(--al-text); text-align: left;
+	box-shadow: 0 24px 64px rgba(26, 50, 28, .35);
+	font-family: var(--al-font-body);
+}
+.al-bio::backdrop { background: rgba(26, 50, 28, .6); }
+.al-bio-head {
+	position: sticky; top: 0; z-index: 1;
+	display: grid; grid-template-columns: 72px 1fr 44px; gap: var(--al-s2); align-items: center;
+	padding: var(--al-s3); background: var(--al-warm); border-bottom: 1px solid var(--al-rule);
+}
+.al-person .al-bio .al-bio-head img, .al-grid--people .al-person .al-bio .al-bio-head img { grid-row: auto; width: 72px; height: 72px; border-radius: 50%; object-fit: cover; object-position: center 18%; margin: 0; aspect-ratio: auto; }
+.al-bio-head h3 { margin: 0; font-size: 24px; color: var(--al-green); }
+.al-bio-head p { margin: 2px 0 0; }
+.al-bio-close { width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--al-white); color: var(--al-green); font-size: 28px; line-height: 1; cursor: pointer; }
+.al-bio-body { padding: var(--al-s3) var(--al-s4) var(--al-s4); }
+.al-bio-body p { font-size: 17px; line-height: 1.6; margin: 0 0 var(--al-s2); max-width: none; }
+.al-bio-body p:last-child { margin-bottom: 0; }
+@media (max-width: 767px) {
+	.al-grid--people .al-person .al-bio-btn { grid-column: 2; justify-self: start; margin-top: 0; min-height: 36px; padding: 0; }
+	.al-bio-body { padding: var(--al-s2) var(--al-s3) var(--al-s3); }
+}

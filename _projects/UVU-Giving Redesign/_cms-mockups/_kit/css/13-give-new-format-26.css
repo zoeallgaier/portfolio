@@ -1,0 +1,506 @@
+/* MOCKUP COPY of Cesar's /give/lib/css/new-format-26.css (June 2026). Only change: "only screen and" removed so Save as PDF keeps desktop layout, same as the 01-11 snapshot. */
+/* Department CSS Document */
+/*For mobile first adaptive design place styles for mobile and up in the mobile and up area.
+Place styles for tablet and up inside the media query in the tablet and up area.
+Place styles for desktop only inside the media query in the desktop only area.
+
+For questions or media query training contact Web Development Services.
+*/
+/* ====================== Mobile and Up ========================== */
+
+
+
+/* =========================================
+GLOBAL
+========================================= */
+.fullbleed::before {
+    background: linear-gradient(to bottom, #000000b3, #000000b3);
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background: #f4f4f4;
+	font-family: Arial, sans-serif;
+	color: #555;
+}
+
+.tab-container {
+	scroll-margin-top: 120px;
+}
+
+.directory .equal-items {
+	justify-content: center;
+}
+
+
+
+/* =========================================
+ANIMATION
+========================================= */
+
+@keyframes fade {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* =========================================
+MOBILE
+========================================= */
+
+
+body {
+	background: #f4f4f4;
+}
+
+.funds-layout {
+	flex-direction: column;
+	gap: 0;
+	padding: 0;
+}
+
+/* =========================
+MOBILE TOP BAR
+========================= */
+
+.mobile-menu-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: #25623b;
+	color: white;
+	padding: 18px 20px;
+	font-size: 20px;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
+.menu-toggle {
+	width: 32px;
+	height: 24px;
+	position: relative;
+	cursor: pointer;
+	flex-shrink: 0;
+}
+
+.menu-toggle span {
+	position: absolute;
+	width: 100%;
+	height: 3px;
+	background: white;
+	left: 0;
+	transition: 0.3s ease;
+	border-radius: 2px;
+}
+
+.menu-toggle span:nth-child(1) {
+	top: 0;
+}
+
+.menu-toggle span:nth-child(2) {
+	top: 10px;
+}
+
+.menu-toggle span:nth-child(3) {
+	top: 20px;
+}
+
+.mobile-menu-bar button {
+	background: transparent;
+    border: none;
+}
+
+/* ACTIVE X ICON */
+
+.menu-toggle.active span:nth-child(1) {
+	transform: rotate(45deg);
+	top: 10px;
+}
+
+.menu-toggle.active span:nth-child(2) {
+	opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+	transform: rotate(-45deg);
+	top: 10px;
+}
+
+/* =========================
+SIDEBAR
+========================= */
+
+.funds-sidebar {
+	width: 100%;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.4s ease;
+	background: #f4f4f4;
+}
+
+.funds-sidebar ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.funds-sidebar ul li{
+	margin: 0;
+	
+}
+
+.funds-sidebar ul li:nth-child(1) {
+	border-top: 1px solid #aaa;
+}
+
+.funds-sidebar.open {
+	max-height: 1000px;
+}
+
+.sidebar-title {
+	font-size: 18px;
+	font-weight: 700;
+	color: #25623b;
+	margin-bottom: 20px;
+	letter-spacing: 1px;
+	display: block;
+}
+
+.search-box {
+	border-left: none;
+	border-right: none;
+	border-top: none;
+	height: 52px;
+	font-size: 18px;
+}
+
+.search-box {
+	width: 100%;
+	height: 42px;
+	border: 1px solid #aaa;
+	padding: 0 16px;
+	font-size: 18px;
+	outline: none;
+	margin-bottom: 0;
+}
+
+.menu-btn {
+	width: 100%;
+	text-align: left;
+	padding: 16px;
+	border: 1px solid #aaa;
+	border-top: none;
+	background: transparent;
+	cursor: pointer;
+	font-size: 16px;
+	color: #666;
+	transition: all 0.25s ease;
+	display: block;
+	text-decoration: none;
+}
+
+.menu-btn:hover {
+	background: #ececec;
+}
+
+.menu-btn.active {
+	color: #25623b;
+	font-weight: 700;
+	background: #efefef;
+}
+
+/* =========================
+MOBILE MENU ONLY POPOVER
+========================= */
+
+/* Basic popover appearance */
+.mobile-funds-sidebar {
+	display: none;
+}
+
+/* The browser supplies a backdrop for open auto popovers. */
+.mobile-funds-sidebar::backdrop {
+	background: rgb(0 0 0 / 45%);
+}
+
+.mobile-popover-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.mobile-popover-header h2 {
+	margin: 0;
+}
+
+.mobile-popover-header button {
+	all: unset;
+	cursor: pointer;
+	font-size: 2rem;
+	color: #25623b;
+}
+
+.mobile-popover-header button:focus-visible {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+
+.desktop-funds-sidebar {
+	display: none;
+}
+
+.mobile-menu-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.mobile-funds-sidebar {
+	border: 0;
+	padding: 1rem;
+	width: min(24rem, calc(100vw - 2rem));
+	max-height: calc(100vh - 2rem);
+	overflow-y: auto;
+	background: #fff;
+	box-shadow: 0 0.5rem 2rem rgb(0 0 0 / 25%);
+}
+
+
+
+/*
+A popover element is hidden until it is opened.
+:popover-open applies only while it is visible.
+*/
+.mobile-funds-sidebar:popover-open {
+	display: block;
+	position: fixed;
+	inset: 1rem;
+	margin: auto;
+}
+
+/* =========================
+CONTENT
+========================= */
+
+.funds-content {
+	width: 100%;
+	max-width: 100%;
+	padding: 30px 20px 40px;
+}
+
+.content-panel h1 {
+	font-size: 32px;
+	line-height: 1.1;
+}
+
+.content-panel p {
+	font-size: 16px;
+	line-height: 1.6;
+}
+
+.content-panel ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.fund-item {
+	font-size: 16px;
+	padding: 16px;
+}
+
+
+.content-panel {
+	display: none;
+	animation: fade 0.3s ease;
+}
+
+.content-panel.active {
+	display: block;
+}
+
+.content-panel h1 {
+	color: #25623b;
+	font-size: 36px;
+	margin-top: 0;
+	margin-bottom: 24px;
+}
+
+.content-panel p {
+	line-height: 1.7;
+	margin-bottom: 20px;
+	font-size: 17px;
+}
+
+.content-panel hr {
+	border: none;
+	border-top: 1px solid #ccc;
+	margin: 40px 0;
+}
+
+/* =========================================
+FUND ITEMS
+========================================= */
+
+.fund-item {
+	border: 1px solid #b5b5b5;
+	border-radius: 4px;
+	padding: 18px 20px;
+	margin-bottom: 16px;
+	background: #fafafa;
+	font-size: 18px;
+	font-weight: 700;
+	color: #555;
+	transition: all 0.25s ease;
+	cursor: pointer;
+}
+
+.fund-item:hover {
+	background: white;
+	transform: translateY(-2px);
+	box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+/* =========================================
+SEARCH
+========================================= */
+
+.blackbaud-designation_search_dc89e2b3-0391-4cd8-9ce5-f91ab793e01b div {
+	width: 100% !important;
+}
+
+.BB-designation-search[id="designation-search-dc89e2b3-0391-4cd8-9ce5-f91ab793e01b"] {
+	padding: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    width: 98%;
+    max-width: none;
+}
+
+.BB-designation-search[id="designation-search-dc89e2b3-0391-4cd8-9ce5-f91ab793e01b"] div.BB-designation-search-border {
+	flex-wrap: wrap;
+    justify-content: center;
+}
+
+.BB-designation-search-title-text {
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+/*-----------------------*/
+
+#blackbaud-designation_search_dc89e2b3-0391-4cd8-9ce5-f91ab793e01b div {
+	max-height: none !important;
+	
+}
+
+#blackbaud-designation_search_dc89e2b3-0391-4cd8-9ce5-f91ab793e01b div div iframe {
+	position: inherit !important;
+}
+
+iframe body {
+	display: flex;
+	justify-content: center;
+}
+
+#blackbaud-donation-form_0ccaddb1-5e85-4206-b130-757eab64b5e6 div {
+	max-height: none !important;
+}
+
+iframe {
+	position: inherit !important;
+}
+
+
+
+
+/*End mobile and up styles*/
+/* ====================== Tablet and Up (Overrides Mobile Styles) ========================== */
+@media (min-width: 768px) {
+	/* =========================================
+	MOBILE MENU BAR
+	========================================= */
+
+	.mobile-menu-bar,
+	.mobile-funds-sidebar {
+		display: none;
+	}
+	
+
+	/* =========================================
+	LAYOUT
+	========================================= */
+
+	.funds-layout {
+		display: flex;
+		flex-direction: row;
+		gap: 60px;
+		padding: 40px;
+		align-items: flex-start;
+	}
+	
+	.funds-content {
+		flex: 1;
+		max-width: 900px;
+		padding: 0;
+	}
+
+	/* =========================================
+	SIDEBAR
+	========================================= */
+	
+	.desktop-funds-sidebar {
+		display: block;
+	}
+
+	.funds-sidebar {
+		width: 300px;
+		flex-shrink: 0;
+		max-height: 1000px;
+	}
+
+	
+
+
+
+
+}/*end media query*/
+/*End tablet and up styles*/
+/* ====================== Landscape Tablet and Up (Overrides Mobile Styles) ========================== */
+@media (min-width: 992px) {
+
+
+
+
+
+
+
+}/*end media query*/
+/*End landscape tablet and up styles*/
+/* ====================== Desktop Only (Overrides Mobile and Tablet Styles) ========================== */
+@media (min-width: 1200px) {
+
+
+
+
+}/*end media query*/
+/*End desktop only styles*/
+/*END OF DOCUMENT*/
+

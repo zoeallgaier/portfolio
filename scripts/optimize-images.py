@@ -130,7 +130,7 @@ def url_of(path):
 
 def process_tag(tag, layout, done):
     m = SRC.search(tag)
-    if not m or not m.group(1).startswith('/_assets/'):
+    if not m or not m.group(1).startswith('/_projects/'):
         return tag
     path = ROOT / unquote(m.group(1)).lstrip('/')
     if path.suffix.lower() not in ('.jpg', '.jpeg', '.png') or not path.exists():
@@ -166,7 +166,7 @@ def main():
     # Social preview images: not on screen, but shrink them so link unfurls
     # (iMessage, Slack) are quick.
     for page in sorted(ROOT.glob('*.html')):
-        for url in re.findall(r'og:image" content="https://zoeallgaier\.com(/_assets/[^"]+)"', page.read_text()):
+        for url in re.findall(r'og:image" content="https://zoeallgaier\.com(/_projects/[^"]+)"', page.read_text()):
             path = ROOT / unquote(url).lstrip('/')
             if path.exists() and path not in done:
                 shrink_original(path)

@@ -4,5 +4,20 @@
 # Claude Code local config
 .claude/
 
-# Full-res masters (too big to publish; web versions live in _assets)
+# Full-res masters (too big to publish; web versions live in _projects)
 _source/
+
+# —— _projects working files ——
+# The deploy publishes the whole repo, so anything committed under _projects/
+# goes live. Keep the web-ready files; leave the working material local.
+_projects/**/_images/
+_projects/**/_old/
+_projects/**/_work/
+_projects/**/_archive-*/
+_projects/**/_xd-source/
+_projects/**/_review-pdfs/
+_projects/**/_handoff/
+_projects/**/*.ai
+_projects/**/*.psd
+# Raw Any Hour exports (100MB+ each). anyhour.html uses the web cuts beside them.
+_projects/Any Hour Services/* *.mp4

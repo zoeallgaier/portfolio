@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<!-- =====================================================================
+     UVU ALUMNI WEB SYSTEM v1 · CMS MOCKUP · Forever Wolverines Podcast
+     Live URL: https://www.uvu.edu/alumni/connect/forever-wolverines-podcast.html
+     Styles: UVU production CSS snapshot + ../_kit/css/12-alumni-system.css
+     See ../README.md and ../_kit/styleguide.html
+     ===================================================================== -->
+<html lang="en" dir="ltr" style="--headroom-height: 123px;">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+<meta name="color-scheme" content="only light">
+<meta name="description" content="The Forever Wolverines podcast: UVU Student Alumni Ambassadors interview UVU alumni about careers, campus, and advice. New episodes every other week.">
+<title>Forever Wolverines Podcast | Utah Valley University</title>
+
+<!-- ===== UVU production CSS (snapshot) ===== -->
+<link rel="stylesheet" href="../_kit/css/01-bootstrap.min.css">
+<link rel="stylesheet" href="../_kit/css/02-global.css">
+<link rel="stylesheet" href="../_kit/css/03-component.css">
+<link rel="stylesheet" href="../_kit/css/04-helpers-legacy.css">
+<link rel="stylesheet" href="../_kit/css/05-elements.css">
+<link rel="stylesheet" href="../_kit/css/06-helpers.css">
+<link rel="stylesheet" href="../_kit/css/07-wrapper.css">
+<link rel="stylesheet" href="../_kit/css/08-fonts.css">
+<link rel="stylesheet" href="../_kit/css/09-homepage-wrapper.css">
+<link rel="stylesheet" href="../_kit/css/10-homepage-dept.css">
+<link rel="stylesheet" href="../_kit/css/11-fontawesome-pro.css">
+
+<!-- ===== Alumni Web System (the only alumni stylesheet a page needs) ===== -->
+<link rel="stylesheet" href="../_kit/css/12-alumni-system.css">
+<!-- ===== Mockup-only tools. Not for production. ===== -->
+<link rel="stylesheet" href="../_kit/css/99-mockup-tools.css">
+<script src="../_kit/js/mockup-tools.js"></script>
+</head>
+<body id="forever-wolverines-podcast" class="UVU_Public_Site utah-valley-university forever-wolverines-podcast marketing homepage audience DeptNav DeptFooter">
+
+<!-- ===== GLOBAL HEADER (CMS template; context only) ===== -->
+<header id="globalHeader" class="headroom" role="banner" aria-label="Primary Site banner" lang="en" data-import="false">
+					<div id="mquery"></div>
+					<a class="skiptocontent sr-only" href="#content-wrap">Skip to main content</a>
+					<noscript id="noJS">You have JavaScript Disabled! UVU's websites will not work properly without javascript. Please enable JavaScript to continue using UVU's websites as intended.</noscript>
+					<div class="globalHeaderMain">
+						<div class="slideNavToggle classy ready" role="button" aria-label="Open university and departmental navigation" aria-controls="slideNav" tabindex="0" data-classy-action="on" data-classy-declick="body" data-import="false" data-classy-group="all">
+							<img src="../_kit/img/hmbgr-menu.svg" alt="Menu and search icon">
+						</div>
+						<a class="globalTitle" href="https://www.uvu.edu/" title="Utah Valley University Homepage" hreflang="en">
+							<img src="../_kit/img/uvu-mono.svg" alt="Utah Valley University logo">
+						</a>
+						<a class="deptTitle" href="https://www.uvu.edu/" lang="en" hreflang="en" title="Site homepage">
+							Utah Valley University
+						</a>
+						<div class="actionBar">
+							<ul class="global-quicklinks">
+	<li><a href="https://www.uvu.edu/admissions/#degree-type">Apply to UVU</a></li>
+	<li><a href="https://my.uvu.edu/"><svg id="Group_3615" data-name="Group 3615" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.845 24.485">
+  <path id="Path_3937" data-name="Path 3937" d="M388.908,537.07H358.463a.806.806,0,0,1,0-1.611h30.445a.806.806,0,0,1,0,1.611m-29.51-3.757,4.208-6.721a.809.809,0,0,1,.686-.38h5.359l3.193,5.534a1.1,1.1,0,0,0,1.9,0l3.191-5.532H383.1a.81.81,0,0,1,.685.379l4.218,6.724a.81.81,0,0,1-.685,1.24l-27.237-.007a.81.81,0,0,1-.685-1.24m5.4-17.195a.654.654,0,0,1,.924-.875l7.693,5.04a.74.74,0,0,0,.81,0l7.634-5a.655.655,0,0,1,.925.876L374.441,530.6a.74.74,0,0,1-1.281,0Zm25.549,19.23-6-9.542a.978.978,0,0,0-.828-.458l-5.088,0,5.882-10.2a1.1,1.1,0,0,0-1.534-1.476l-8.4,5.3a1.1,1.1,0,0,1-1.17,0l-8.42-5.322a1.1,1.1,0,0,0-1.534,1.476l5.9,10.223-5.315,0a.978.978,0,0,0-.829.46l-5.969,9.5a1.71,1.71,0,0,0,1.427,2.65H388.9a1.71,1.71,0,0,0,1.447-2.619" transform="translate(-356.761 -513.482)" fill="currentColor"></path>
+</svg>
+myUVU</a></li>
+</ul>
+							<div id="mainSearch">
+								<a class="lightbox" href="#" data-lity="true" title="Open search box" data-import="false" data-lity-target="#globalSearch-container"><span class="fas fa-search" aria-hidden="true"></span></a>
+								<div id="globalSearch-container" class="lity-hide">
+									<form id="globalSearch" role="search" aria-label="Search UVU" method="get" action="https://www.uvu.edu/search">
+										<div id="globalSearchArea">
+											<label for="globalSearchInput" class="sr-only">Enter search terms</label>
+											<div class="search-group">
+												<label aria-hidden="true">I'm looking for:</label>
+												<input type="text" id="globalSearchInput" class="quicksearch" name="query" value="" autocomplete="off" data-quicksearch-out="#globalSearchSuggest" data-import="false">
+											</div>
+											<div id="globalSearchSuggest" aria-hidden="true"></div>
+											<input type="submit" title="Search UVU" id="globalSearchSubmit" value="Go">
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<nav id="deptNav" role="navigation" aria-label="Department Navigation">
+						<div class="deptNavWrap" lang="en">
+								<ul><li><a href="https://www.uvu.edu/admissions/">Admissions</a></li><li><a href="https://www.uvu.edu/campus-life/">Campus Life</a></li><li><a href="https://www.uvu.edu/academics/">Academics</a></li><li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li><li><a href="https://www.uvu.edu/news/">Content Hub</a></li><li><a href="https://www.uvu.edu/alumni/">Alumni</a></li><li><a href="https://www.uvu.edu/give/">Give</a></li><li><a href="https://www.uvu.edu/about/">About</a></li></ul>
+						</div>
+					</nav>
+				</header>
+				<section id="slideNav" aria-expanded="false" aria-label="University Navigation" tabindex="-1" lang="en" data-classy-group="all" class="ready">
+					<div class="menu-body">
+						<header>
+							<img src="../_kit/img/uvu-mono.svg" alt="Utah Valley University logo">
+							<p class="h1">Utah Valley University</p>
+							<span class="far fa-times-circle tabClose classy ready" role="button" title="Close Menu" aria-controls="slideNav" aria-label="Close University Navigation" data-classy-action="off" tabindex="-1" aria-hidden="true" data-import="false" data-classy-group="all">&nbsp;</span><span class="sr-only">Close Menu</span>
+						</header>
+						<form id="slideSearch" role="search" aria-label="UVU Search" action="https://www.uvu.edu/search/">
+							<label for="slideSearchInput" class="sr-only">Enter search terms</label><input type="text" id="slideSearchInput" class="quicksearch" name="query" placeholder="I'm looking for..." autocomplete="off" data-quicksearch-out="#slideSearchSuggest" data-import="false">
+							<input type="submit" value="" id="slideSearchSubmit" class="quicksearch" aria-label="Submit Search" title="Submit Search" data-import="false">
+							<div id="slideSearchSuggest" aria-hidden="true"></div>
+						</form>
+						<ul class="global-quicklinks">
+	<li><a href="https://www.uvu.edu/admissions/#degree-type">Apply to UVU</a></li>
+	<li><a href="https://my.uvu.edu/"><svg id="Group_3615" data-name="Group 3615" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.845 24.485">
+  <path id="Path_3937" data-name="Path 3937" d="M388.908,537.07H358.463a.806.806,0,0,1,0-1.611h30.445a.806.806,0,0,1,0,1.611m-29.51-3.757,4.208-6.721a.809.809,0,0,1,.686-.38h5.359l3.193,5.534a1.1,1.1,0,0,0,1.9,0l3.191-5.532H383.1a.81.81,0,0,1,.685.379l4.218,6.724a.81.81,0,0,1-.685,1.24l-27.237-.007a.81.81,0,0,1-.685-1.24m5.4-17.195a.654.654,0,0,1,.924-.875l7.693,5.04a.74.74,0,0,0,.81,0l7.634-5a.655.655,0,0,1,.925.876L374.441,530.6a.74.74,0,0,1-1.281,0Zm25.549,19.23-6-9.542a.978.978,0,0,0-.828-.458l-5.088,0,5.882-10.2a1.1,1.1,0,0,0-1.534-1.476l-8.4,5.3a1.1,1.1,0,0,1-1.17,0l-8.42-5.322a1.1,1.1,0,0,0-1.534,1.476l5.9,10.223-5.315,0a.978.978,0,0,0-.829.46l-5.969,9.5a1.71,1.71,0,0,0,1.427,2.65H388.9a1.71,1.71,0,0,0,1.447-2.619" transform="translate(-356.761 -513.482)" fill="currentColor"></path>
+</svg>
+myUVU</a></li>
+</ul>
+						<div id="breadcrumbContainer">
+							<nav class="breadcrumbNav" id="breadcrumbNav" aria-label="breadcrumb" tabindex="-1">
+								<div class="breadcrumbScroll">
+								</div>
+								<div class="breadcrumbScroll-left"></div>
+								<div class="breadcrumbScroll-right"></div>
+							</nav>
+						</div>
+						<div id="slideMenuDept" class="active" aria-label="Department Menu">
+							<nav class="slideDeptNav" aria-label="Department Navigation in side menu" lang="en">
+									<ul><li><a href="https://www.uvu.edu/admissions/">Admissions</a></li><li><a href="https://www.uvu.edu/campus-life/">Campus Life</a></li><li><a href="https://www.uvu.edu/academics/">Academics</a></li><li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li><li><a href="https://www.uvu.edu/news/">Content Hub</a></li><li><a href="https://www.uvu.edu/alumni/">Alumni</a></li><li><a href="https://www.uvu.edu/give/">Give</a></li><li><a href="https://www.uvu.edu/about/">About</a></li></ul>
+							</nav>
+						</div>
+						<div id="globalNav">
+						</div>
+					</div>
+				</section>
+      
+<main id="content-wrap" class="content-wrap">
+<!-- ===== CMS CONTENT START · each <section> = one OU section ===== -->
+
+<!-- SECTION 1 · template: header-fullbleed
+     ASSET: assets/podcast-header.jpg (1920x700 raw photo; the green fade is CSS). CMS: /alumni/connect/images/podcast-header.jpg
+     PHONES: assets/podcast-header-mobile.jpg (1080x1350 vertical, people centered). CMS: /alumni/connect/images/podcast-header-mobile.jpg -->
+<section class="page-header jumbo fullbleed container-narrow al-hero" style="background-image: url(assets/podcast-header.jpg);" data-cms-bg="/alumni/connect/images/podcast-header.jpg" data-uvu-template="header-fullbleed" data-uvu-section="1">
+   <div class="al-hero-m" style="background-image: url(assets/podcast-header-mobile.jpg);" data-cms-bg="/alumni/connect/images/podcast-header-mobile.jpg" aria-hidden="true"></div>
+   <div class="container-fluid">
+      <header class="fullbleed-overlay contain text-invert">
+            <h1>Forever Wolverines Podcast</h1>
+            <div class="al-actions"><a class="al-btn al-btn--light al-btn--ext" href="https://open.spotify.com/show/0jjnDHtCAWyyTIzDSZYxHp" target="_blank" rel="noopener">Listen on Spotify<span class="sr-only-al"> (opens in a new tab)</span></a></div>
+      </header>
+   </div>
+</section>
+<!-- SECTION 2 · template: two-col
+     Latest episode as a linked photo (guest and host on set). The Spotify show embed was cut: its player shows the show artwork, which is the logo. Update with each new episode (copy the top card’s ID, thumbnail, and text). -->
+<section data-uvu-template="two-col" data-uvu-section="2" class="al-section">
+   <div class="container-fluid">
+      <div class="row equal-height flex-row al-split">
+         <div class="col-xs-12 col-sm-6 col-target region" data-uvu-region="1">
+               <h2><span class="mock-copy-flag" title="Placeholder heading. The live page has none.">About the Show</span></h2>
+               <p class="al-lead">The Forever Wolverines podcast is created and produced by the UVU Student Alumni Ambassadors. Each ambassador selects an alum and meets with them on air. They ask questions about the alum’s career, time at school, advice, and more.</p>
+               <p><span class="mock-copy-flag" title="Live: “Forever Wolverines podcast has episodes drop every other week.” Grammar.">New episodes drop every other week.</span></p>
+               <h3>Listen On</h3>
+               <ul class="al-chips"><li><a href="https://open.spotify.com/show/0jjnDHtCAWyyTIzDSZYxHp" target="_blank" rel="noopener">Spotify<span class="sr-only-al"> (opens in a new tab)</span></a></li><li><a href="https://podcasts.apple.com/us/podcast/forever-wolverines-podcast/id1791808457" target="_blank" rel="noopener">Apple Podcasts<span class="sr-only-al"> (opens in a new tab)</span></a></li><li><a href="https://music.amazon.com/podcasts/0e51ddaf-2ed6-412e-b865-b8e94aab1348/forever-wolverines-podcast" target="_blank" rel="noopener">Amazon Music<span class="sr-only-al"> (opens in a new tab)</span></a></li><li><a href="https://www.iheart.com/podcast/269-forever-wolverines-podcast-255472967/" target="_blank" rel="noopener">iHeartRadio<span class="sr-only-al"> (opens in a new tab)</span></a></li><li><a href="https://goodpods.com/podcasts/forever-wolverines-podcast-623597" target="_blank" rel="noopener">Goodpods<span class="sr-only-al"> (opens in a new tab)</span></a></li><li><a href="https://castbox.fm/channel/id6417318" target="_blank" rel="noopener">Castbox<span class="sr-only-al"> (opens in a new tab)</span></a></li></ul>
+               <ul class="al-linklist">
+                  <li><a href="../about-saa/index.html" data-cms-href="/alumni/students/about-saa.html"><img src="../_kit/icons/green/communicate.svg" data-cms-src="/alumni/lib/icons/green/communicate.svg" alt="" width="48" height="48">Meet the Student Alumni Ambassadors</a></li>
+               </ul>
+         </div>
+         <div class="col-xs-12 col-sm-6 col-target region al-split-media" data-uvu-region="2">
+               <figure class="al-media al-media--hatch al-media--wide al-media--episode">
+                  <a href="https://open.spotify.com/episode/4aORjvhnM070uKeWZNUjMt" target="_blank" rel="noopener"><img src="https://i.scdn.co/image/ab6772ab000030ae35c0bd5bcfc91a07732ef3c9" data-cms-src="/alumni/connect/images/podcast/4aORjvhnM070uKeWZNUjMt.jpg" alt="Krystal Gates ’23 on the Forever Wolverines Podcast set" width="1280" height="719"><span class="al-play" aria-hidden="true"></span><span class="sr-only-al">Listen to Krystal Gates ’23 on Spotify (opens in a new tab)</span></a>
+                  <figcaption><span class="al-card-tag-text">Latest Episode · Oct. 13, 2026 · 29 min</span><strong>Krystal Gates ’23</strong> Welcome the Unexpected Through Internships · Hosted by Ike</figcaption>
+               </figure>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 3 · template: one-col
+     Every episode, newest first, grouped by year. Thumbnails are the Spotify episode covers (guest and host on set), linked from Spotify’s image CDN in this mockup; for production, save each to /alumni/connect/images/podcast/[episode id].jpg (data-cms-src) or keep the CDN link. New episode = copy the top card. 31 episodes as of Oct. 13, 2026. -->
+<section data-uvu-template="one-col" data-uvu-section="3" class="al-section al-section--warm">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <div class="al-section-head">
+                  <h2>All Episodes</h2>
+               </div>
+               <h3 class="al-episodes-year">2026</h3>
+               <ul class="al-episodes">
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae35c0bd5bcfc91a07732ef3c9" data-cms-src="/alumni/connect/images/podcast/4aORjvhnM070uKeWZNUjMt.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">Oct. 13, 2026 · 29 min</p>
+                        <h4><a href="https://open.spotify.com/episode/4aORjvhnM070uKeWZNUjMt" target="_blank" rel="noopener">Krystal Gates ’23<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Welcome the Unexpected Through Internships</p>
+                        <p class="al-episode-host">Hosted by Ike</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae42ef4d12ec8b0721c031b4f8" data-cms-src="/alumni/connect/images/podcast/1rsNiCcRbFivhbQTnD3UQa.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">Sept. 29, 2026 · 39 min</p>
+                        <h4><a href="https://open.spotify.com/episode/1rsNiCcRbFivhbQTnD3UQa" target="_blank" rel="noopener">Kelsie Call ’22<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Use Your Voice, Influence Change</p>
+                        <p class="al-episode-host">Hosted by Nate</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae4bf176f213f5fd6f1ad76a36" data-cms-src="/alumni/connect/images/podcast/1o9pV8sohXYI7Cu7tXjSoY.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">Sept. 15, 2026 · 32 min</p>
+                        <h4><a href="https://open.spotify.com/episode/1o9pV8sohXYI7Cu7tXjSoY" target="_blank" rel="noopener">Michaela King ’22<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Care About the Details, Find Your Fit</p>
+                        <p class="al-episode-host">Hosted by Shelby</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030aebdbed68a637a6919f7a7382c" data-cms-src="/alumni/connect/images/podcast/6aRdqjXn2HDwGGFw8pnKa7.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">June 2, 2026 · 31 min</p>
+                        <h4><a href="https://open.spotify.com/episode/6aRdqjXn2HDwGGFw8pnKa7" target="_blank" rel="noopener">Linda Pomar ’21, CMHC ’23<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Relax and Embrace Imperfection</p>
+                        <p class="al-episode-host">Hosted by Brooke</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae1622bd657a3dcfd6554500c4" data-cms-src="/alumni/connect/images/podcast/5sj2M1DgFRSsXfcJ4T4WA7.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">May 26, 2026 · 46 min</p>
+                        <h4><a href="https://open.spotify.com/episode/5sj2M1DgFRSsXfcJ4T4WA7" target="_blank" rel="noopener">Kevin “DoK” Woods ’12<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Reinvent Yourself, Transform Your World</p>
+                        <p class="al-episode-host">Hosted by Mohamed</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae764438892f9e29d45e4c6ae2" data-cms-src="/alumni/connect/images/podcast/2nMKRzXtzVJFSz6R9R3YbD.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">May 12, 2026 · 31 min</p>
+                        <h4><a href="https://open.spotify.com/episode/2nMKRzXtzVJFSz6R9R3YbD" target="_blank" rel="noopener">Megan Weaver Hillier ’21<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Advocate Often and Put People First</p>
+                        <p class="al-episode-host">Hosted by Shelby</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae8dcbe1e1439e3b9e69aac57d" data-cms-src="/alumni/connect/images/podcast/6FDcQRQj0KqKrndXplBTGv.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">May 5, 2026 · 40 min</p>
+                        <h4><a href="https://open.spotify.com/episode/6FDcQRQj0KqKrndXplBTGv" target="_blank" rel="noopener">Lacey Cherrington ’98<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Regret Nothing and Be Intentional</p>
+                        <p class="al-episode-host">Hosted by Nate</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae46bca0f2c66d27a294f44d9d" data-cms-src="/alumni/connect/images/podcast/2qSFEQ77WuYqaLtXhVVJWS.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">April 28, 2026 · 42 min</p>
+                        <h4><a href="https://open.spotify.com/episode/2qSFEQ77WuYqaLtXhVVJWS" target="_blank" rel="noopener">Salifou Fofana ’17, MBA ’19<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Plan but Know It’s Never Too Late</p>
+                        <p class="al-episode-host">Hosted by Mohamed</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae692c453ba053117ef639533e" data-cms-src="/alumni/connect/images/podcast/3E6WEugZCdjokAfEC3mhet.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">April 21, 2026 · 43 min</p>
+                        <h4><a href="https://open.spotify.com/episode/3E6WEugZCdjokAfEC3mhet" target="_blank" rel="noopener">Matt Bryson ’17<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Build Your Future Through Situations of Opportunity</p>
+                        <p class="al-episode-host">Hosted by Mohamed</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030aed0833ef2847556b419df8118" data-cms-src="/alumni/connect/images/podcast/29ZvYgmTSIUsAsiqckX3RV.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">March 17, 2026 · 50 min</p>
+                        <h4><a href="https://open.spotify.com/episode/29ZvYgmTSIUsAsiqckX3RV" target="_blank" rel="noopener">Amanda Kimball ’11, M.Ed. ’21<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Show Up and Trust Yourself</p>
+                        <p class="al-episode-host">Hosted by Brooke</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030aec8660f81606cfc497feb8ab8" data-cms-src="/alumni/connect/images/podcast/0ZUDDboG1NkhZR7IWmEN4L.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">Feb. 24, 2026 · 34 min</p>
+                        <h4><a href="https://open.spotify.com/episode/0ZUDDboG1NkhZR7IWmEN4L" target="_blank" rel="noopener">Myrna June Rodriguez Whittington ’16<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Know You Belong While Failing Fast</p>
+                        <p class="al-episode-host">Hosted by Larissa</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030aee460b3d154cdf3d7497bbd7c" data-cms-src="/alumni/connect/images/podcast/2HOWhqlJtQc8aqFDhzrloi.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">Feb. 10, 2026 · 32 min</p>
+                        <h4><a href="https://open.spotify.com/episode/2HOWhqlJtQc8aqFDhzrloi" target="_blank" rel="noopener">Kelly Henderson ’20<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Stress Less, Connect More</p>
+                        <p class="al-episode-host">Hosted by Nate</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030aedaf2eddb7ee0d30a34901c1f" data-cms-src="/alumni/connect/images/podcast/5IV9hNqb2Lxobdxirx6xm1.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">Jan. 27, 2026 · 31 min</p>
+                        <h4><a href="https://open.spotify.com/episode/5IV9hNqb2Lxobdxirx6xm1" target="_blank" rel="noopener">Oumar Traore ’22<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Learn, Grow, and Give Back</p>
+                        <p class="al-episode-host">Hosted by Mohamed</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae46374cee1bc61824df7047ad" data-cms-src="/alumni/connect/images/podcast/0f67ZaocvMYT0tEhNhC5Qd.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">Jan. 13, 2026 · 35 min</p>
+                        <h4><a href="https://open.spotify.com/episode/0f67ZaocvMYT0tEhNhC5Qd" target="_blank" rel="noopener">Maddie Heywood ’20<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Adapt With the Chaos to Unlock Your Potential</p>
+                        <p class="al-episode-host">Hosted by Shelby</p>
+                     </div>
+                  </li>
+               </ul>
+               <h3 class="al-episodes-year">2025</h3>
+               <ul class="al-episodes">
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae6d02b9262425577c4d2c6f0d" data-cms-src="/alumni/connect/images/podcast/0nlca5gixn3XcyKEgSAw3p.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">Dec. 3, 2025 · 4 min</p>
+                        <h4><a href="https://open.spotify.com/episode/0nlca5gixn3XcyKEgSAw3p" target="_blank" rel="noopener">Meet the Student Alumni Ambassadors<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">2025–26</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae50e24fa253f20e5767dbca7c" data-cms-src="/alumni/connect/images/podcast/3N5n2c0XxHwooqCGKgGclM.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">Sept. 2, 2025 · 35 min</p>
+                        <h4><a href="https://open.spotify.com/episode/3N5n2c0XxHwooqCGKgGclM" target="_blank" rel="noopener">Kara North ’07<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Evolve Your Success One Goal at a Time</p>
+                        <p class="al-episode-host">Hosted by Kaleah</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030aeb90423e482eebd6bb639ec54" data-cms-src="/alumni/connect/images/podcast/4njFxdt5Rd3JV12TgMAL2K.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">Aug. 12, 2025 · 43 min</p>
+                        <h4><a href="https://open.spotify.com/episode/4njFxdt5Rd3JV12TgMAL2K" target="_blank" rel="noopener">Emilee Henriquez ’19<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Live Your Truth by Making Choices for Who You Are Today</p>
+                        <p class="al-episode-host">Hosted by Savannah</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae8b1b5a5e4cc65f430f66c8bc" data-cms-src="/alumni/connect/images/podcast/4dKUYtY1giD5i6LvMcrBxn.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">July 15, 2025 · 25 min</p>
+                        <h4><a href="https://open.spotify.com/episode/4dKUYtY1giD5i6LvMcrBxn" target="_blank" rel="noopener">David Dekker ’18<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Change Gracefully, Learn Always, and Embrace the Unknown</p>
+                        <p class="al-episode-host">Hosted by Vagner</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae4b2dd176e4c2ece4d36e7931" data-cms-src="/alumni/connect/images/podcast/5uXbpwNLTq54IWjqHTAKNk.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">July 1, 2025 · 50 min</p>
+                        <h4><a href="https://open.spotify.com/episode/5uXbpwNLTq54IWjqHTAKNk" target="_blank" rel="noopener">Brandon Davies ’15<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Ask the “Stupid” Questions and Be True to Yourself</p>
+                        <p class="al-episode-host">Hosted by Callie</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030aec111c1bb7cb4c4422504db7c" data-cms-src="/alumni/connect/images/podcast/5CQIyIpEmgcZ20WE6mIG9p.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">June 17, 2025 · 42 min</p>
+                        <h4><a href="https://open.spotify.com/episode/5CQIyIpEmgcZ20WE6mIG9p" target="_blank" rel="noopener">Colton Simons ’16<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Allow Life to Unfold by Practicing Patience</p>
+                        <p class="al-episode-host">Hosted by Brooke</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae8e70c72766e7d87eb26be767" data-cms-src="/alumni/connect/images/podcast/7nN2EvYmcYiEevNBVUuOKA.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">May 27, 2025 · 44 min</p>
+                        <h4><a href="https://open.spotify.com/episode/7nN2EvYmcYiEevNBVUuOKA" target="_blank" rel="noopener">Wendy Wright ’17<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Prepare for Your Future by Collaborating With Confidence</p>
+                        <p class="al-episode-host">Hosted by Mandy and Savannah</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae2a647ea6236170727741ade5" data-cms-src="/alumni/connect/images/podcast/042snCqgXKqpbAtYLbaFDI.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">May 6, 2025 · 44 min</p>
+                        <h4><a href="https://open.spotify.com/episode/042snCqgXKqpbAtYLbaFDI" target="_blank" rel="noopener">Bakary Camara ’15, MBA ’17<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Mitigate Risk in Your Career by Nurturing Relationships</p>
+                        <p class="al-episode-host">Hosted by Mohamed</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae91673b7d5574950555db1b6f" data-cms-src="/alumni/connect/images/podcast/0UhsbA4wv37T706Rc7v4PQ.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">April 22, 2025 · 34 min</p>
+                        <h4><a href="https://open.spotify.com/episode/0UhsbA4wv37T706Rc7v4PQ" target="_blank" rel="noopener">Andre Jones ’18<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Champion Your Strengths Through Leadership Opportunity</p>
+                        <p class="al-episode-host">Hosted by Mohamed</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae65092fc0a92b988f17ddcaed" data-cms-src="/alumni/connect/images/podcast/7BAK7S999HNe28Kwftfhnj.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">April 8, 2025 · 30 min</p>
+                        <h4><a href="https://open.spotify.com/episode/7BAK7S999HNe28Kwftfhnj" target="_blank" rel="noopener">Melanie Wolfe ’22, MSW ’24<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Tackle Your Fear by Relying on Resources</p>
+                        <p class="al-episode-host">Hosted by Savannah</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae054901b550c858aad29ac324" data-cms-src="/alumni/connect/images/podcast/3LUAXBTDCxsR142TmiwBda.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">March 18, 2025 · 36 min</p>
+                        <h4><a href="https://open.spotify.com/episode/3LUAXBTDCxsR142TmiwBda" target="_blank" rel="noopener">Kim Hopkins ’21<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Embrace Growth in an Ever-Changing Industry</p>
+                        <p class="al-episode-host">Hosted by Kaleah</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030aede8f278feb4c88cadcef448b" data-cms-src="/alumni/connect/images/podcast/7C29sOSn5N0DfUQ9arnHtu.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">March 4, 2025 · 50 min</p>
+                        <h4><a href="https://open.spotify.com/episode/7C29sOSn5N0DfUQ9arnHtu" target="_blank" rel="noopener">Megan Johnson ’08<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Influence Your Community Through the Ability to Listen</p>
+                        <p class="al-episode-host">Hosted by Mandy and Savannah</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030aef09c2f153afc737158f6b71d" data-cms-src="/alumni/connect/images/podcast/6CtORE8AB51NA9IxXxujNx.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">Feb. 25, 2025 · 36 min</p>
+                        <h4><a href="https://open.spotify.com/episode/6CtORE8AB51NA9IxXxujNx" target="_blank" rel="noopener">Chelsea Gipson ’18<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Excel Through Opportunity by Finding Your Niche</p>
+                        <p class="al-episode-host">Hosted by Callie</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030aed2aed177f527bb4cc1f1cd4f" data-cms-src="/alumni/connect/images/podcast/1kjN9i0PUqF3QWDwwJqPuO.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">Feb. 11, 2025 · 30 min</p>
+                        <h4><a href="https://open.spotify.com/episode/1kjN9i0PUqF3QWDwwJqPuO" target="_blank" rel="noopener">Tiana Wynn ’24<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Discover Your Passion and Allow It to Lead You</p>
+                        <p class="al-episode-host">Hosted by Mohamed</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae23cd4be10365cb1f8cbe29ff" data-cms-src="/alumni/connect/images/podcast/4teOEPsiCkX18GJjoo3tA2.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">Jan. 24, 2025 · 3 min</p>
+                        <h4><a href="https://open.spotify.com/episode/4teOEPsiCkX18GJjoo3tA2" target="_blank" rel="noopener">Meet the Student Alumni Ambassadors<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">2024–25</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae7e9385cfaac7deaa82d99a7a" data-cms-src="/alumni/connect/images/podcast/6d8GIf4prozfOqbwTgl2f4.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">Jan. 22, 2025 · 36 min</p>
+                        <h4><a href="https://open.spotify.com/episode/6d8GIf4prozfOqbwTgl2f4" target="_blank" rel="noopener">JC Arauz ’21<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Create Connection Through Confident Communication</p>
+                        <p class="al-episode-host">Hosted by Vagner</p>
+                     </div>
+                  </li>
+                  <li class="al-episode">
+                     <div class="al-episode-media"><img src="https://i.scdn.co/image/ab6772ab000030ae4e7edb2690e588d9415b5cf4" data-cms-src="/alumni/connect/images/podcast/5InPl398yQIjSDF19aHupA.jpg" alt="" width="1280" height="719" loading="lazy"></div>
+                     <div class="al-episode-body">
+                        <p class="al-episode-meta">Jan. 6, 2025 · 41 min</p>
+                        <h4><a href="https://open.spotify.com/episode/5InPl398yQIjSDF19aHupA" target="_blank" rel="noopener">Linda Makin ’02<span class="sr-only-al"> (opens Spotify in a new tab)</span></a></h4>
+                        <p class="al-episode-tag">Leave a Legacy by Believing in Yourself</p>
+                        <p class="al-episode-host">Hosted by Brooke</p>
+                     </div>
+                  </li>
+               </ul>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- SECTION 4 · template: one-col · ALUMNI FOOTER: section nav + contact. Identical on every alumni page
+     (the current page gets aria-current). Replaces the old full-height contact band.
+     The office name also goes in the CMS dept footer (#globalFooter .footerDept). -->
+<section data-uvu-template="one-col" data-uvu-section="4" class="al-section al-sitenav">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+            <nav class="al-sitenav-nav" aria-label="UVU Alumni">
+               <div class="al-sitenav-brand">
+                  <p class="al-sitenav-title"><a href="../alumni-home/index.html" data-cms-href="/alumni/index.html">UVU Alumni Relations</a></p>
+                  <ul class="al-sitenav-contact">
+                     <li><img src="../_kit/icons/white/envelope-1.svg" data-cms-src="/alumni/lib/icons/white/envelope-1.svg" alt="" width="48" height="48"><a href="mailto:alumni@uvu.edu">alumni@uvu.edu</a></li>
+                     <li><img src="../_kit/icons/white/cell.svg" data-cms-src="/alumni/lib/icons/white/cell.svg" alt="" width="48" height="48"><a href="tel:+18018638179">801.863.8179</a></li>
+                  </ul>
+                  <ul class="al-social"><li><a href="https://www.instagram.com/uvualumni/" target="_blank" rel="noopener"><img src="../_kit/icons/green/social-instagram.svg" data-cms-src="/alumni/lib/icons/green/social-instagram.svg" alt="UVU Alumni on Instagram (opens in a new tab)" width="48" height="48"></a></li><li><a href="https://www.facebook.com/uvualumni" target="_blank" rel="noopener"><img src="../_kit/icons/green/social-facebook-f.svg" data-cms-src="/alumni/lib/icons/green/social-facebook-f.svg" alt="UVU Alumni on Facebook (opens in a new tab)" width="48" height="48"></a></li><li><a href="https://www.linkedin.com/showcase/uvualumni" target="_blank" rel="noopener"><img src="../_kit/icons/green/social-linkedin-in.svg" data-cms-src="/alumni/lib/icons/green/social-linkedin-in.svg" alt="UVU Alumni on LinkedIn (opens in a new tab)" width="48" height="48"></a></li><li><a href="https://www.youtube.com/@uvualumni" target="_blank" rel="noopener"><img src="../_kit/icons/green/social-youtube.svg" data-cms-src="/alumni/lib/icons/green/social-youtube.svg" alt="UVU Alumni on YouTube (opens in a new tab)" width="48" height="48"></a></li></ul>
+               </div>
+               <div class="al-sitenav-groups">
+                  <div class="al-sitenav-group"><h2>Connect</h2><ul><li><a href="https://www.uvu.edu/events/index.html">Events</a></li><li><a href="https://www.uvu.edu/news/features/index.html#alumni">Alumni Stories</a></li><li><a href="../forever-wolverines-podcast/index.html" data-cms-href="/alumni/connect/forever-wolverines-podcast.html" aria-current="page">Forever Wolverines Podcast</a></li><li><a href="../aviation-alumni-chapter/index.html" data-cms-href="/alumni/connect/aviation-alumni-chapter.html">Aviation Alumni Chapter</a></li><li><a href="../career-networking-resources/index.html" data-cms-href="/alumni/connect/career-networking-resources.html">Career and Networking Resources</a></li></ul></div>
+                  <div class="al-sitenav-group"><h2>Benefits</h2><ul><li><a href="../alumni-benefits/index.html" data-cms-href="/alumni/resources/benefits/alumni-benefits.html">Alumni Benefits</a></li><li><a href="../alumni-diplomas/index.html" data-cms-href="/alumni/resources/diplomas.html">Diplomas</a></li><li><a href="https://alumni.uvu.edu/profile/me" target="_blank" rel="noopener">Update Your Alumni Profile<span class="sr-only-al"> (opens in a new tab)</span></a></li></ul></div>
+                  <div class="al-sitenav-group"><h2>Make an Impact</h2><ul><li><a href="../alumni-scholarships/index.html" data-cms-href="/alumni/make-an-impact/alumni-scholarships.html">Alumni Scholarships</a></li><li><a href="../uvu-license-plate/index.html" data-cms-href="/alumni/make-an-impact/uvu-license-plate.html">UVU License Plate</a></li><li><a href="../alumni-job-shadow/index.html" data-cms-href="/alumni/volunteer/job-shadow.html">Job Shadow Program</a></li><li><a href="https://www.uvu.edu/give/">Give to UVU</a></li></ul></div>
+                  <div class="al-sitenav-group"><h2>Students and About</h2><ul><li><a href="../graduating-students/index.html" data-cms-href="/alumni/students/graduating-students.html">Graduating Students</a></li><li><a href="../about-saa/index.html" data-cms-href="/alumni/students/about-saa.html">Student Alumni Ambassadors</a></li><li><a href="../alumni-awards/index.html" data-cms-href="/alumni/about/alumni-awards.html">Alumni Awards</a></li><li><a href="../alumni-board/index.html" data-cms-href="/alumni/about/alumni-association-advisory-board.html">Board of Directors</a></li></ul></div>
+               </div>
+               <p class="al-sitenav-fine">A UVU alum is anyone who graduated with a certificate, diploma, or degree from UVU or any of its past eras (CUVS, UTTI, UTC, UVCC, UVSC, or UVU).</p>
+            </nav>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- ===== CMS CONTENT END ===== -->
+</main>
+<!-- ===== GLOBAL FOOTER (CMS template; context only) ===== -->
+<footer id="globalFooter">
+	<div class="footerDept">
+		<ul><li>Office of Alumni Relations</li><li>Utah Valley University</li></ul>
+	</div>
+	<div class="footerUniversity" lang="en">
+		<div class="footerUniversity-top">
+<div class="container-fluid">
+<div class="row equal-height uppercase">
+<div class="col-sm-3">
+<div>
+<h2>Student</h2>
+<ul>
+<li><a href="https://www.uvu.edu/admissions/">Admissions</a></li>
+<li><a href="https://www.uvu.edu/campus-life/index.html">Campus Life</a></li>
+<li><a href="https://www.uvu.edu/students/">Current Student</a></li>
+<li><a href="https://www.uvu.edu/accreditation-academic-assessment/index.html">Accreditation</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Employees</h2>
+<ul>
+<li><a href="https://www.uvu.edu/peopleandculture/jobs/index.html">Career Opportunities</a></li>
+<li><a href="https://www.uvu.edu/facstaff/">Employee Resources</a></li>
+<li><a href="https://www.uvu.edu/directory/">Directory</a></li>
+<li><a href="https://www.uvu.edu/peopleandculture/">People &amp; Culture</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Community</h2>
+<ul>
+<li><a href="https://gouvu.com/" target="_blank" rel="noopener">Athletics</a></li>
+<li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li>
+<li><a href="https://www.uvu.edu/president/">Office of the President</a></li>
+<li><a href="https://www.uvu.edu/visitors/history.html">About UVU / History</a></li>
+<li><a href="https://alumni.uvu.edu/" target="_blank" rel="noopener">Alumni</a></li>
+<li><a href="https://www.uvu.edu/engagement-and-effectiveness/index.html">Engagement &amp; Effectiveness</a></li>
+<li><a href="https://www.uvu.edu/give/index.html" target="_blank" rel="noopener">Give to UVU</a></li>
+<li><a href="https://www.uvu.edu/visitors/contact.html">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Utility</h2>
+<ul>
+<li><a href="https://www.uvu.edu/maps/">Maps / Parking</a></li>
+<li><a href="https://www.uvu.edu/servicedesk/">Service Desk</a></li>
+<li><a href="https://www.uvu.edu/emergencymanagement/index.html">Emergency</a></li>
+<li><a href="https://www.uvu.edu/police/">Police</a></li>
+<li><a href="https://www.uvu.edu/servicedesk/">Get Help</a></li>
+<li><a href="https://www.uvu.edu/search/">Search</a></li>
+<li><a href="https://www.uvu.edu/accessibility-services/index.html">Accessibility</a></li>
+<li><a href="https://www.uvu.edu/accessibility-services/access-barrier.php">Report Access Barrier</a></li>
+<li><a href="https://www.uvu.edu/equityandtitleix/index.html">Title IX / Equal Opportunity</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footerUniversity-bottom">
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-12">
+<ul class="footerUniversity-quicklinks">
+<li><a href="https://www.uvu.edu/news/"><span class="far fa-newspaper" aria-hidden="true">&nbsp;</span>News</a></li>
+<li><a href="https://www.uvu.edu/events/"><span class="far fa-calendar-day" aria-hidden="true">&nbsp;</span>Events</a></li>
+</ul>
+<div class="footerUniversity-title uppercase">Utah Valley University</div>
+<ul class="footerUniversity-contact uppercase">
+<li><a title="See Utah Valley University on Google Maps" href="https://goo.gl/maps/9SQ5CSuqAoG1gw6J8">800&nbsp;West&nbsp;University&nbsp;Parkway,&nbsp;Orem,&nbsp;UT&nbsp;84058</a></li>
+<li>(801)&nbsp;863-8888</li>
+<li><a href="https://www.uvu.edu/legal/copyright/">© Utah Valley University</a></li>
+</ul>
+<ul class="footerUniversity-legalinfo">
+<li><a href="https://www.uvu.edu/legal/index.html">Terms of Use</a></li>
+<li><a href="https://www.uvu.edu/legal/privacy.html">Privacy Statement</a></li>
+<li><a href="https://www.uvu.edu/legal/copyright/copyright-infringement.html">Copyright Complaints</a></li>
+<li><a href="https://www.uvu.edu/legal/non-discrimination.html">Non-Discrimination and Accessibility Statement</a></li>
+</ul>
+<ul class="university-social"><li><a title="Opens UVU's Linkedin profile in a new tab" href="https://www.linkedin.com/school/utah-valley-university/" target="_blank" rel="external noopener"> <span class="fab fa-linkedin" aria-hidden="true"></span> <span class="sr-only">Linkedin</span> </a></li>
+<li><a title="Opens UVU's Instagram profile in a new tab" href="https://www.instagram.com/utah.valley.university/" target="_blank" rel="external noopener"> <span class="fab fa-instagram" aria-hidden="true"></span> <span class="sr-only">Instagram</span> </a></li>
+<li><a title="Opens UVU's Facebook profile in a new tab" href="https://www.facebook.com/UtahValleyUniversity/" target="_blank" rel="external noopener"> <span class="fab fa-facebook-square" aria-hidden="true"></span> <span class="sr-only">Facebook</span> </a></li>
+<li><a title="Opens UVU's YouTube channel in a new tab" href="https://www.youtube.com/user/UtahValleyUniversity" target="_blank" rel="external noopener"> <span class="fab fa-youtube-square" aria-hidden="true"></span> <span class="sr-only">YouTube</span> </a></li>
+<li><a title="Opens the UVU Athletics site in a new tab" href="https://gouvu.com/" target="_blank" rel="external noopener"><img src="../_kit/img/wolverine-logo.svg" alt="UVU Athletics logo" aria-hidden="true"><span class="sr-only">Athletics</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+	</div>
+</footer>
+</body>
+</html>

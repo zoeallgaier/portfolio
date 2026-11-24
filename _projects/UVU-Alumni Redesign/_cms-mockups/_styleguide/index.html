@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<!-- =====================================================================
+     UVU ALUMNI WEB SYSTEM v1 · CMS MOCKUP · Alumni Web System
+     Live URL: n/a
+     Styles: UVU production CSS snapshot + ../_kit/css/12-alumni-system.css
+     See ../README.md and ../_kit/styleguide.html
+     ===================================================================== -->
+<html lang="en" dir="ltr" style="--headroom-height: 123px;">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+<meta name="color-scheme" content="only light">
+<meta name="description" content="UVU Alumni web design system: type, color, icons, imagery, components, and overhaul flags.">
+<title>Alumni Web System | Utah Valley University</title>
+
+<!-- ===== UVU production CSS (snapshot) ===== -->
+<link rel="stylesheet" href="../_kit/css/01-bootstrap.min.css">
+<link rel="stylesheet" href="../_kit/css/02-global.css">
+<link rel="stylesheet" href="../_kit/css/03-component.css">
+<link rel="stylesheet" href="../_kit/css/04-helpers-legacy.css">
+<link rel="stylesheet" href="../_kit/css/05-elements.css">
+<link rel="stylesheet" href="../_kit/css/06-helpers.css">
+<link rel="stylesheet" href="../_kit/css/07-wrapper.css">
+<link rel="stylesheet" href="../_kit/css/08-fonts.css">
+<link rel="stylesheet" href="../_kit/css/09-homepage-wrapper.css">
+<link rel="stylesheet" href="../_kit/css/10-homepage-dept.css">
+<link rel="stylesheet" href="../_kit/css/11-fontawesome-pro.css">
+
+<!-- ===== Alumni Web System (the only alumni stylesheet a page needs) ===== -->
+<link rel="stylesheet" href="../_kit/css/12-alumni-system.css">
+<!-- ===== Mockup-only tools. Not for production. ===== -->
+<link rel="stylesheet" href="../_kit/css/99-mockup-tools.css">
+<script src="../_kit/js/mockup-tools.js"></script>
+</head>
+<body id="alumni-styleguide" class="UVU_Public_Site utah-valley-university alumni-styleguide marketing homepage audience DeptNav DeptFooter">
+
+<!-- ===== GLOBAL HEADER (CMS template; context only) ===== -->
+<header id="globalHeader" class="headroom" role="banner" aria-label="Primary Site banner" lang="en" data-import="false">
+					<div id="mquery"></div>
+					<a class="skiptocontent sr-only" href="#content-wrap">Skip to main content</a>
+					<noscript id="noJS">You have JavaScript Disabled! UVU's websites will not work properly without javascript. Please enable JavaScript to continue using UVU's websites as intended.</noscript>
+					<div class="globalHeaderMain">
+						<div class="slideNavToggle classy ready" role="button" aria-label="Open university and departmental navigation" aria-controls="slideNav" tabindex="0" data-classy-action="on" data-classy-declick="body" data-import="false" data-classy-group="all">
+							<img src="../_kit/img/hmbgr-menu.svg" alt="Menu and search icon">
+						</div>
+						<a class="globalTitle" href="https://www.uvu.edu/" title="Utah Valley University Homepage" hreflang="en">
+							<img src="../_kit/img/uvu-mono.svg" alt="Utah Valley University logo">
+						</a>
+						<a class="deptTitle" href="https://www.uvu.edu/" lang="en" hreflang="en" title="Site homepage">
+							Utah Valley University
+						</a>
+						<div class="actionBar">
+							<ul class="global-quicklinks">
+	<li><a href="https://www.uvu.edu/admissions/#degree-type">Apply to UVU</a></li>
+	<li><a href="https://my.uvu.edu/"><svg id="Group_3615" data-name="Group 3615" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.845 24.485">
+  <path id="Path_3937" data-name="Path 3937" d="M388.908,537.07H358.463a.806.806,0,0,1,0-1.611h30.445a.806.806,0,0,1,0,1.611m-29.51-3.757,4.208-6.721a.809.809,0,0,1,.686-.38h5.359l3.193,5.534a1.1,1.1,0,0,0,1.9,0l3.191-5.532H383.1a.81.81,0,0,1,.685.379l4.218,6.724a.81.81,0,0,1-.685,1.24l-27.237-.007a.81.81,0,0,1-.685-1.24m5.4-17.195a.654.654,0,0,1,.924-.875l7.693,5.04a.74.74,0,0,0,.81,0l7.634-5a.655.655,0,0,1,.925.876L374.441,530.6a.74.74,0,0,1-1.281,0Zm25.549,19.23-6-9.542a.978.978,0,0,0-.828-.458l-5.088,0,5.882-10.2a1.1,1.1,0,0,0-1.534-1.476l-8.4,5.3a1.1,1.1,0,0,1-1.17,0l-8.42-5.322a1.1,1.1,0,0,0-1.534,1.476l5.9,10.223-5.315,0a.978.978,0,0,0-.829.46l-5.969,9.5a1.71,1.71,0,0,0,1.427,2.65H388.9a1.71,1.71,0,0,0,1.447-2.619" transform="translate(-356.761 -513.482)" fill="currentColor"></path>
+</svg>
+myUVU</a></li>
+</ul>
+							<div id="mainSearch">
+								<a class="lightbox" href="#" data-lity="true" title="Open search box" data-import="false" data-lity-target="#globalSearch-container"><span class="fas fa-search" aria-hidden="true"></span></a>
+								<div id="globalSearch-container" class="lity-hide">
+									<form id="globalSearch" role="search" aria-label="Search UVU" method="get" action="https://www.uvu.edu/search">
+										<div id="globalSearchArea">
+											<label for="globalSearchInput" class="sr-only">Enter search terms</label>
+											<div class="search-group">
+												<label aria-hidden="true">I'm looking for:</label>
+												<input type="text" id="globalSearchInput" class="quicksearch" name="query" value="" autocomplete="off" data-quicksearch-out="#globalSearchSuggest" data-import="false">
+											</div>
+											<div id="globalSearchSuggest" aria-hidden="true"></div>
+											<input type="submit" title="Search UVU" id="globalSearchSubmit" value="Go">
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<nav id="deptNav" role="navigation" aria-label="Department Navigation">
+						<div class="deptNavWrap" lang="en">
+								<ul><li><a href="https://www.uvu.edu/admissions/">Admissions</a></li><li><a href="https://www.uvu.edu/campus-life/">Campus Life</a></li><li><a href="https://www.uvu.edu/academics/">Academics</a></li><li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li><li><a href="https://www.uvu.edu/news/">Content Hub</a></li><li><a href="https://www.uvu.edu/alumni/">Alumni</a></li><li><a href="https://www.uvu.edu/give/">Give</a></li><li><a href="https://www.uvu.edu/about/">About</a></li></ul>
+						</div>
+					</nav>
+				</header>
+				<section id="slideNav" aria-expanded="false" aria-label="University Navigation" tabindex="-1" lang="en" data-classy-group="all" class="ready">
+					<div class="menu-body">
+						<header>
+							<img src="../_kit/img/uvu-mono.svg" alt="Utah Valley University logo">
+							<p class="h1">Utah Valley University</p>
+							<span class="far fa-times-circle tabClose classy ready" role="button" title="Close Menu" aria-controls="slideNav" aria-label="Close University Navigation" data-classy-action="off" tabindex="-1" aria-hidden="true" data-import="false" data-classy-group="all">&nbsp;</span><span class="sr-only">Close Menu</span>
+						</header>
+						<form id="slideSearch" role="search" aria-label="UVU Search" action="https://www.uvu.edu/search/">
+							<label for="slideSearchInput" class="sr-only">Enter search terms</label><input type="text" id="slideSearchInput" class="quicksearch" name="query" placeholder="I'm looking for..." autocomplete="off" data-quicksearch-out="#slideSearchSuggest" data-import="false">
+							<input type="submit" value="" id="slideSearchSubmit" class="quicksearch" aria-label="Submit Search" title="Submit Search" data-import="false">
+							<div id="slideSearchSuggest" aria-hidden="true"></div>
+						</form>
+						<ul class="global-quicklinks">
+	<li><a href="https://www.uvu.edu/admissions/#degree-type">Apply to UVU</a></li>
+	<li><a href="https://my.uvu.edu/"><svg id="Group_3615" data-name="Group 3615" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.845 24.485">
+  <path id="Path_3937" data-name="Path 3937" d="M388.908,537.07H358.463a.806.806,0,0,1,0-1.611h30.445a.806.806,0,0,1,0,1.611m-29.51-3.757,4.208-6.721a.809.809,0,0,1,.686-.38h5.359l3.193,5.534a1.1,1.1,0,0,0,1.9,0l3.191-5.532H383.1a.81.81,0,0,1,.685.379l4.218,6.724a.81.81,0,0,1-.685,1.24l-27.237-.007a.81.81,0,0,1-.685-1.24m5.4-17.195a.654.654,0,0,1,.924-.875l7.693,5.04a.74.74,0,0,0,.81,0l7.634-5a.655.655,0,0,1,.925.876L374.441,530.6a.74.74,0,0,1-1.281,0Zm25.549,19.23-6-9.542a.978.978,0,0,0-.828-.458l-5.088,0,5.882-10.2a1.1,1.1,0,0,0-1.534-1.476l-8.4,5.3a1.1,1.1,0,0,1-1.17,0l-8.42-5.322a1.1,1.1,0,0,0-1.534,1.476l5.9,10.223-5.315,0a.978.978,0,0,0-.829.46l-5.969,9.5a1.71,1.71,0,0,0,1.427,2.65H388.9a1.71,1.71,0,0,0,1.447-2.619" transform="translate(-356.761 -513.482)" fill="currentColor"></path>
+</svg>
+myUVU</a></li>
+</ul>
+						<div id="breadcrumbContainer">
+							<nav class="breadcrumbNav" id="breadcrumbNav" aria-label="breadcrumb" tabindex="-1">
+								<div class="breadcrumbScroll">
+								</div>
+								<div class="breadcrumbScroll-left"></div>
+								<div class="breadcrumbScroll-right"></div>
+							</nav>
+						</div>
+						<div id="slideMenuDept" class="active" aria-label="Department Menu">
+							<nav class="slideDeptNav" aria-label="Department Navigation in side menu" lang="en">
+									<ul><li><a href="https://www.uvu.edu/admissions/">Admissions</a></li><li><a href="https://www.uvu.edu/campus-life/">Campus Life</a></li><li><a href="https://www.uvu.edu/academics/">Academics</a></li><li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li><li><a href="https://www.uvu.edu/news/">Content Hub</a></li><li><a href="https://www.uvu.edu/alumni/">Alumni</a></li><li><a href="https://www.uvu.edu/give/">Give</a></li><li><a href="https://www.uvu.edu/about/">About</a></li></ul>
+							</nav>
+						</div>
+						<div id="globalNav">
+						</div>
+					</div>
+				</section>
+      
+<main id="content-wrap" class="content-wrap">
+<!-- ===== CMS CONTENT START · each <section> = one OU section ===== -->
+
+<!-- SECTION 1 · template: header-fullbleed (styleguide, not a CMS page)
+     ASSET: ../alumni-home/assets/alumni-home-header.jpg (1920x700 raw photo; the green fade is CSS). CMS: 
+     PHONES: ../alumni-home/assets/alumni-home-header-mobile.jpg (1080x1350 vertical, people centered). CMS:  -->
+<section class="page-header jumbo fullbleed container-narrow al-hero" style="background-image: url(../alumni-home/assets/alumni-home-header.jpg);" data-cms-bg="" data-uvu-template="header-fullbleed" data-uvu-section="1">
+   <div class="al-hero-m" style="background-image: url(../alumni-home/assets/alumni-home-header-mobile.jpg);" data-cms-bg="" aria-hidden="true"></div>
+   <div class="container-fluid">
+      <header class="fullbleed-overlay contain text-invert">
+            <h1>Alumni Web System</h1>
+            <p class="al-hero-lead">One system for every UVU Alumni page: type, color, icons, imagery, components, and the rules that hold them together.</p>
+      </header>
+   </div>
+</section>
+<!-- SECTION 2 · template: one-col -->
+<section data-uvu-template="one-col" data-uvu-section="2" class="al-section">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <div class="al-section-head">
+                  <h2>Principles</h2>
+               </div>
+               <div class="al-grid al-grid--3">
+                  <article class="al-card"><div class="al-card-body"><h3>One of Everything</h3><p>One green, one heading style per level, one image style, one icon library, one primary button per section.</p></div></article>
+                  <article class="al-card"><div class="al-card-body"><h3>CMS-Native</h3><p>Built on OU section templates and UVU's global CSS. One extra stylesheet. Editors type headings and paragraphs; the section class does the rest.</p></div></article>
+                  <article class="al-card"><div class="al-card-body"><h3>Readable First</h3><p>Title Case headings, 1.6 line-height, 62-character lines, 52px tap targets, visible focus rings, AA contrast.</p></div></article>
+               </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 3 · template: one-col -->
+<section data-uvu-template="one-col" data-uvu-section="3" class="al-section al-section--warm">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <div class="al-section-head">
+                  <h2>Color</h2>
+                  <p class="al-lead">UVU Green leads. Accents stay under 20% of any page.</p>
+               </div><ul class="al-grid al-grid--4" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))"><li style="list-style:none"><div style="height:96px;border-radius:12px;background:#185C33;border:1px solid rgba(26,50,28,.12)"></div><p style="margin:10px 0 0"><strong>UVU Green</strong><br><span class="al-meta">#185C33 · Primary. Headings, buttons, icons, links.</span></p></li><li style="list-style:none"><div style="height:96px;border-radius:12px;background:#1A321C;border:1px solid rgba(26,50,28,.12)"></div><p style="margin:10px 0 0"><strong>Dark Green</strong><br><span class="al-meta">#1A321C · IA. Body text, button hover.</span></p></li><li style="list-style:none"><div style="height:96px;border-radius:12px;background:#008A40;border:1px solid rgba(26,50,28,.12)"></div><p style="margin:10px 0 0"><strong>Wolverine Green</strong><br><span class="al-meta">#008A40 · Secondary. Sparingly.</span></p></li><li style="list-style:none"><div style="height:96px;border-radius:12px;background:#F2F0EB;border:1px solid rgba(26,50,28,.12)"></div><p style="margin:10px 0 0"><strong>Warm</strong><br><span class="al-meta">#F2F0EB · Alternate section background.</span></p></li><li style="list-style:none"><div style="height:96px;border-radius:12px;background:#C5D97A;border:1px solid rgba(26,50,28,.12)"></div><p style="margin:10px 0 0"><strong>Pale Meadow</strong><br><span class="al-meta">#C5D97A · Accent. Hero eyebrow, focus ring, footer headings.</span></p></li><li style="list-style:none"><div style="height:96px;border-radius:12px;background:#C4D6C1;border:1px solid rgba(26,50,28,.12)"></div><p style="margin:10px 0 0"><strong>Sea Haze</strong><br><span class="al-meta">#C4D6C1 · Accent. Rules on green.</span></p></li><li style="list-style:none"><div style="height:96px;border-radius:12px;background:#FFFFFF;border:1px solid rgba(26,50,28,.12)"></div><p style="margin:10px 0 0"><strong>White</strong><br><span class="al-meta">#FFFFFF · Background, text on green.</span></p></li></ul>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 4 · template: one-col -->
+<section data-uvu-template="one-col" data-uvu-section="4" class="al-section">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <div class="al-section-head">
+                  <h2>Type</h2>
+                  <p class="al-lead">Rajdhani (Stratum’s web fallback) for display. Lato for everything you read. Title Case for every heading and button.</p>
+               </div><table style="width:100%;border-collapse:collapse"><tr><td style="padding:18px 24px 18px 0;vertical-align:top;width:200px"><strong>H1 · Hero</strong><br><span class="al-meta">Rajdhani Bold 72 / 44 mobile · 1.02</span></td><td style="padding:18px 0;border-bottom:1px solid rgba(26,50,28,.14)"><span style="font-family:Rajdhani;font-weight:700;font-size:72px;line-height:1;color:#185C33">Show Your School Spirit</span></td></tr><tr><td style="padding:18px 24px 18px 0;vertical-align:top;width:200px"><strong>H2 · Section</strong><br><span class="al-meta">Rajdhani Bold 46 / 34 · 1.1</span></td><td style="padding:18px 0;border-bottom:1px solid rgba(26,50,28,.14)"><span style="font-family:Rajdhani;font-weight:700;font-size:46px;line-height:1.1;color:#185C33">Once a Wolverine, Always a Wolverine</span></td></tr><tr><td style="padding:18px 24px 18px 0;vertical-align:top;width:200px"><strong>H3 · Card</strong><br><span class="al-meta">Rajdhani Bold 26 / 23 · 1.2</span></td><td style="padding:18px 0;border-bottom:1px solid rgba(26,50,28,.14)"><span style="font-family:Rajdhani;font-weight:700;font-size:26px;color:#185C33">Future UVU Alumni Scholarship</span></td></tr><tr><td style="padding:18px 24px 18px 0;vertical-align:top;width:200px"><strong>H4 · Label</strong><br><span class="al-meta">Rajdhani Bold 19 · 1.25</span></td><td style="padding:18px 0;border-bottom:1px solid rgba(26,50,28,.14)"><span style="font-family:Rajdhani;font-weight:700;font-size:19px;color:#185C33">Eligibility</span></td></tr><tr><td style="padding:18px 24px 18px 0;vertical-align:top;width:200px"><strong>Lead</strong><br><span class="al-meta">Lato Regular 21 / 19 · 1.5</span></td><td style="padding:18px 0;border-bottom:1px solid rgba(26,50,28,.14)"><span style="font-size:21px;line-height:1.5">The Office of Alumni Relations helps our UVU alumni community thrive.</span></td></tr><tr><td style="padding:18px 24px 18px 0;vertical-align:top;width:200px"><strong>Body</strong><br><span class="al-meta">Lato Regular 18 / 17 · 1.6 · max 62ch</span></td><td style="padding:18px 0;border-bottom:1px solid rgba(26,50,28,.14)"><span style="font-size:18px;line-height:1.6">Membership is free for all graduated alumni. Log into your alumni profile to access the benefits.</span></td></tr><tr><td style="padding:18px 24px 18px 0;vertical-align:top;width:200px"><strong>Meta</strong><br><span class="al-meta">Lato Regular 15 · 1.5 · #4B5D50</span></td><td style="padding:18px 0;border-bottom:1px solid rgba(26,50,28,.14)"><span class="al-meta" style="font-size:15px">Sept. 1, 2026</span></td></tr><tr><td style="padding:18px 24px 18px 0;vertical-align:top;width:200px"><strong>Button</strong><br><span class="al-meta">Rajdhani Bold 20 · Title Case · 52px tall</span></td><td style="padding:18px 0;border-bottom:1px solid rgba(26,50,28,.14)"><a class="al-btn" href="#">Update Your Profile</a></td></tr></table>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 5 · template: one-col -->
+<section data-uvu-template="one-col" data-uvu-section="5" class="al-section al-section--warm">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <div class="al-section-head">
+                  <h2>Buttons and Actions</h2>
+                  <p class="al-lead">One primary per section. Secondary for the second option. Light on photos and green.</p>
+               </div><div class="al-actions" style="justify-content:center"><a class="al-btn" href="#">Primary</a><a class="al-btn al-btn--secondary" href="#">Secondary</a><a class="al-btn al-btn--ext" href="https://example.com" target="_blank" rel="noopener">Leaves UVU<span class="sr-only-al"> (opens in a new tab)</span></a></div><p class="al-meta" style="text-align:center;margin:16px auto 0">Labels say where the button goes (“See Your Alumni Benefits,” never “I’m an Alum” or “Click Here”). Arrow = stays on uvu.edu. External glyph = leaves UVU; those open in a new tab and carry hidden “(opens in a new tab)” text. When a login, a fee, or another site is on the other side, an <code>al-btn-note</code> line says so under the button. PDFs say “(PDF)” in the label.</p><div style="background:#185C33;border-radius:12px;padding:32px;margin-top:32px;text-align:center"><a class="al-btn al-btn--light" href="#">Light (on green or photo)</a></div><div style="max-width:560px;margin:48px auto 0"><h4>Link List (secondary actions)</h4><ul class="al-linklist"><li><a href="#"><img src="../_kit/icons/green/graduation.svg" data-cms-src="/alumni/lib/icons/green/graduation.svg" alt="" width="48" height="48">Alumni 101</a></li><li><a href="#"><img src="../_kit/icons/green/calendar.svg" data-cms-src="/alumni/lib/icons/green/calendar.svg" alt="" width="48" height="48">Plan Your Party</a></li></ul></div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 6 · template: two-col -->
+<section data-uvu-template="two-col" data-uvu-section="6" class="al-section">
+   <div class="container-fluid">
+      <div class="row equal-height flex-row al-split">
+         <div class="col-xs-12 col-sm-6 col-target region" data-uvu-region="1">
+               <h2>Imagery</h2>
+               <p class="al-lead">Photos follow the uvu.edu image style: a plain 4:3 photo (4:5 for a standing person) with 8px corners and APFY shapes from the APFY_Shapes file (_kit/shapes). The shapes are CSS layers (al-media--hatch, --stairs, --dot, --half); the page rotates them so neighbors never match.</p>
+               <p>Heroes are raw 1920×700 photos with the subject in the right half. The green fade is CSS. Phones get their own vertical photo (1080×1350, people centered) with the headline on a green fade rising from the bottom. Product shots (cards, plates) sit unframed. Headshots are square with 8px corners.</p>
+         </div>
+         <div class="col-xs-12 col-sm-6 col-target region al-split-media" data-uvu-region="2">
+               <figure class="al-media al-media--hatch"><img src="../graduating-students/assets/alumni-grads-celebrate.jpg" data-cms-src="" alt="Example photo: graduates hugging" width="1200" height="900" loading="lazy"></figure>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 6b · template: one-col
+     The four APFY shape compositions. -->
+<section data-uvu-template="one-col" data-uvu-section="6b" class="al-section">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+<ul class="al-grid al-grid--4" style="padding:0"><li style="list-style:none"><figure class="al-media al-media--hatch"><img src="../graduating-students/assets/alumni-grads-celebrate.jpg" data-cms-src="" alt="Example" width="1200" height="900" loading="lazy"></figure><p class="al-meta" style="text-align:center">al-media--hatch</p></li><li style="list-style:none"><figure class="al-media al-media--stairs"><img src="../graduating-students/assets/alumni-grads-celebrate.jpg" data-cms-src="" alt="Example" width="1200" height="900" loading="lazy"></figure><p class="al-meta" style="text-align:center">al-media--stairs</p></li><li style="list-style:none"><figure class="al-media al-media--dot"><img src="../graduating-students/assets/alumni-grads-celebrate.jpg" data-cms-src="" alt="Example" width="1200" height="900" loading="lazy"></figure><p class="al-meta" style="text-align:center">al-media--dot</p></li><li style="list-style:none"><figure class="al-media al-media--half"><img src="../graduating-students/assets/alumni-grads-celebrate.jpg" data-cms-src="" alt="Example" width="1200" height="900" loading="lazy"></figure><p class="al-meta" style="text-align:center">al-media--half</p></li></ul>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 7 · template: one-col -->
+<section data-uvu-template="one-col" data-uvu-section="7" class="al-section al-section--warm">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <div class="al-section-head">
+                  <h2>Icons</h2>
+                  <p class="al-lead">UVU Icon Library only, in UVU Green on light backgrounds and white on green. 2.5pt stroke, square caps. These are the ones the alumni pages use today.</p>
+               </div><ul class="al-grid" style="grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:24px"><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/calendar.svg" data-cms-src="/alumni/lib/icons/green/calendar.svg" alt="" width="48" height="48"><br><span class="al-meta" style="font-size:13px">calendar</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/business.svg" data-cms-src="/alumni/lib/icons/green/business.svg" alt="" width="48" height="48"><br><span class="al-meta" style="font-size:13px">business</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/automotive.svg" data-cms-src="/alumni/lib/icons/green/automotive.svg" alt="" width="48" height="48"><br><span class="al-meta" style="font-size:13px">automotive</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/diploma-3.svg" data-cms-src="/alumni/lib/icons/green/diploma-3.svg" alt="" width="48" height="48"><br><span class="al-meta" style="font-size:13px">diploma-3</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/communicate.svg" data-cms-src="/alumni/lib/icons/green/communicate.svg" alt="" width="48" height="48"><br><span class="al-meta" style="font-size:13px">communicate</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/graduation.svg" data-cms-src="/alumni/lib/icons/green/graduation.svg" alt="" width="48" height="48"><br><span class="al-meta" style="font-size:13px">graduation</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/credit-cards.svg" data-cms-src="/alumni/lib/icons/green/credit-cards.svg" alt="" width="48" height="48"><br><span class="al-meta" style="font-size:13px">credit-cards</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/cash-1.svg" data-cms-src="/alumni/lib/icons/green/cash-1.svg" alt="" width="48" height="48"><br><span class="al-meta" style="font-size:13px">cash-1</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/award.svg" data-cms-src="/alumni/lib/icons/green/award.svg" alt="" width="48" height="48"><br><span class="al-meta" style="font-size:13px">award</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/student-life.svg" data-cms-src="/alumni/lib/icons/green/student-life.svg" alt="" width="48" height="48"><br><span class="al-meta" style="font-size:13px">student-life</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/photography.svg" data-cms-src="/alumni/lib/icons/green/photography.svg" alt="" width="48" height="48"><br><span class="al-meta" style="font-size:13px">photography</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/video.svg" data-cms-src="/alumni/lib/icons/green/video.svg" alt="" width="48" height="48"><br><span class="al-meta" style="font-size:13px">video</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/envelope-1.svg" data-cms-src="/alumni/lib/icons/green/envelope-1.svg" alt="" width="48" height="48"><br><span class="al-meta" style="font-size:13px">envelope-1</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/cell.svg" data-cms-src="/alumni/lib/icons/green/cell.svg" alt="" width="48" height="48"><br><span class="al-meta" style="font-size:13px">cell</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/ui-check.svg" data-cms-src="/alumni/lib/icons/green/ui-check.svg" alt="" width="48" height="48"><br><span class="al-meta" style="font-size:13px">ui-check</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/ui-arrow-right.svg" data-cms-src="/alumni/lib/icons/green/ui-arrow-right.svg" alt="" width="48" height="48"><br><span class="al-meta" style="font-size:13px">ui-arrow-right</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/ui-chevron-down.svg" data-cms-src="/alumni/lib/icons/green/ui-chevron-down.svg" alt="" width="48" height="48"><br><span class="al-meta" style="font-size:13px">ui-chevron-down</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/ui-external.svg" data-cms-src="/alumni/lib/icons/green/ui-external.svg" alt="" width="48" height="48"><br><span class="al-meta" style="font-size:13px">ui-external</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/ui-play.svg" data-cms-src="/alumni/lib/icons/green/ui-play.svg" alt="" width="48" height="48"><br><span class="al-meta" style="font-size:13px">ui-play</span></li></ul><details class="al-accordion accordion-unstyled" style="margin-top:48px"><summary>Full library (168 icons, in _kit/icons/)</summary><div class="al-accordion-body"><ul class="al-grid" style="grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:16px"><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/24-hours.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">24-hours</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/accounting.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">accounting</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/alarm-clock.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">alarm-clock</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/anatomy.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">anatomy</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/anthropology.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">anthropology</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/art-history.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">art-history</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/astronomy.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">astronomy</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/athletics.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">athletics</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/audio.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">audio</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/automotive.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">automotive</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/aviation.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">aviation</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/award.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">award</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/bicycle.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">bicycle</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/biology.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">biology</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/book.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">book</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/botany.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">botany</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/bus.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">bus</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/business.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">business</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/calendar.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">calendar</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/cash-1.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">cash-1</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/cash-2.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">cash-2</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/cash-3.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">cash-3</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/cell.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">cell</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/cell-experience.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">cell-experience</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/chair.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">chair</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/chemistry.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">chemistry</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/clock.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">clock</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/communicate.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">communicate</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/communications.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">communications</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/community-health.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">community-health</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/computer.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">computer</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/computers.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">computers</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/connection.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">connection</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/construction.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">construction</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/credit-cards.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">credit-cards</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/criminal-justice.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">criminal-justice</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/culinary.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">culinary</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/dance.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">dance</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/deaf-studies.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">deaf-studies</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/dental.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">dental</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/design.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">design</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/desk.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">desk</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/digital-books-1.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">digital-books-1</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/digital-books-2.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">digital-books-2</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/digital-books-3.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">digital-books-3</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/diploma-1.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">diploma-1</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/diploma-2.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">diploma-2</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/diploma-3.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">diploma-3</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/donation.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">donation</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/earth-science-geology.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">earth-science-geology</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/eco-home-1.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">eco-home-1</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/eco-home-2.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">eco-home-2</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/economics.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">economics</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/education.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">education</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/emergency-services.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">emergency-services</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/engineering.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">engineering</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/english.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">english</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/envelope-1.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">envelope-1</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/envelope-2.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">envelope-2</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/envelope-3.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">envelope-3</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/environmental-science.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">environmental-science</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/exam.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">exam</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/exercise-science.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">exercise-science</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/family-studies.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">family-studies</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/film-cinema.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">film-cinema</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/finance.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">finance</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/financial-growth.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">financial-growth</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/fine-arts.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">fine-arts</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/folder.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">folder</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/game-development.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">game-development</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/geography.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">geography</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/globe-1.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">globe-1</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/globe-2.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">globe-2</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/globe-3.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">globe-3</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/graduate.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">graduate</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/graduation.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">graduation</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/history.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">history</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/human-resources.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">human-resources</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/humanities.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">humanities</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/hydro-power.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">hydro-power</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/info-1.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">info-1</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/info-2.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">info-2</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/language.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">language</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/laptop.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">laptop</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/laptop-user.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">laptop-user</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/light-bulb.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">light-bulb</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/light-bulb-bright.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">light-bulb-bright</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/map-1.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">map-1</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/map-2.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">map-2</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/marketing.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">marketing</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/mathematics.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">mathematics</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/messaging-1.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">messaging-1</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/messaging-2.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">messaging-2</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/messaging-3.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">messaging-3</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/mobile-transfer.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">mobile-transfer</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/music.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">music</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/music-edu.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">music-edu</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/notes.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">notes</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/nursing.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">nursing</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/on-the-clock.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">on-the-clock</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/online-class-1.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">online-class-1</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/online-class-2.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">online-class-2</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/online-class-3.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">online-class-3</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/online-diploma-1.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">online-diploma-1</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/online-diploma-2.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">online-diploma-2</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/online-education-1.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">online-education-1</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/online-education-2.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">online-education-2</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/online-education-3.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">online-education-3</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/online-education-4.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">online-education-4</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/online-education-5.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">online-education-5</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/online-education-6.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">online-education-6</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/online-education-7.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">online-education-7</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/online-experience.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">online-experience</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/online-video-1.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">online-video-1</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/online-video-2.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">online-video-2</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/online-video-3.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">online-video-3</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/outdoor-rec.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">outdoor-rec</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/paper.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">paper</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/pen.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">pen</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/person.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">person</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/person-1.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">person-1</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/person-10.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">person-10</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/person-11.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">person-11</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/person-12.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">person-12</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/person-13.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">person-13</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/person-2.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">person-2</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/person-3.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">person-3</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/person-4.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">person-4</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/person-5.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">person-5</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/person-6.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">person-6</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/person-7.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">person-7</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/person-8.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">person-8</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/person-9.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">person-9</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/philosophy.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">philosophy</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/photography.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">photography</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/physics.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">physics</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/pin.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">pin</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/political-science.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">political-science</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/presentation.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">presentation</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/program.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">program</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/psychology.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">psychology</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/question-1.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">question-1</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/question-2.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">question-2</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/recycle-1.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">recycle-1</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/recycle-2.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">recycle-2</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/recycle-3.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">recycle-3</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/relationship.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">relationship</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/report.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">report</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/resources.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">resources</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/science.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">science</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/sociology.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">sociology</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/solar-panels.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">solar-panels</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/solar-power.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">solar-power</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/structure.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">structure</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/student-life.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">student-life</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/tablet.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">tablet</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/team.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">team</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/textbooks-1.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">textbooks-1</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/textbooks-2.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">textbooks-2</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/theater.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">theater</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/time.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">time</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/trade.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">trade</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/university.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">university</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/ux-ui-design.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">ux-ui-design</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/video.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">video</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/wind-power.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">wind-power</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/world-technical.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">world-technical</span></li><li style="list-style:none;text-align:center"><img src="../_kit/icons/green/writing.svg" alt="" width="40" height="40"><br><span style="font-size:11px;color:#4B5D50">writing</span></li></ul></div></details>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 8 · template: one-col -->
+<section data-uvu-template="one-col" data-uvu-section="8" class="al-section">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <div class="al-section-head">
+                  <h2>Components</h2>
+                  <p class="al-lead">Everything below is live markup from the pages.</p>
+               </div>
+               <div class="al-grid al-grid--3">
+                  <article class="al-card"><div class="al-card-tag"><img src="../_kit/icons/white/award.svg" data-cms-src="/alumni/lib/icons/white/award.svg" alt="" width="48" height="48">Card Tag</div><div class="al-card-body"><h3>Card</h3><p class="al-meta">al-card · al-card-tag · al-card-body · al-card-foot</p><ul class="al-checklist"><li>Check list</li><li>For requirements</li></ul><ol class="al-steps"><li>Steps</li><li>For sequences</li></ol></div><div class="al-card-foot"><p>Footnote</p></div></article>
+                  <ul class="al-grid" style="padding:0"><li class="al-person" style="list-style:none"><img src="../about-saa/assets/saa-callie-ross.jpg" alt="Callie Ross" width="353" height="358"><h3>Person Card</h3><p>Ambassadors, recipients</p><details class="accordion-unstyled"><summary>Read More</summary><p>Optional story or quote.</p></details></li></ul>
+                  <ul class="al-grid" style="padding:0"><li style="list-style:none"><a class="al-news-card" href="#"><img src="../alumni-home/assets/news-1.jpg" alt="" width="1200" height="750"><div class="al-card-body"><p class="al-meta">Sept. 1, 2026</p><h3>News Card: the Whole Card Is the Link</h3></div></a></li></ul>
+               </div>
+               <div style="max-width:820px;margin:64px auto 0"><h4>Accordion</h4><details class="al-accordion accordion-unstyled"><summary>Question in Title Case?</summary><div class="al-accordion-body"><p>Answer in sentence case.</p></div></details><details class="al-accordion accordion-unstyled"><summary>Another Question?</summary><div class="al-accordion-body"><p>Answer.</p></div></details></div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 8b · template: one-col -->
+<section data-uvu-template="one-col" data-uvu-section="8b" class="al-section al-section--warm">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <div class="al-section-head">
+                  <h2>Utility Page Components</h2>
+                  <p class="al-lead">Added in v1.1 for the Board, Diplomas, Career, Aviation, and Job Shadow pages. Same tokens, no new colors or type.</p>
+               </div>
+               <div class="al-grid al-grid--3">
+                  <article class="al-card"><div class="al-card-body"><img class="al-card-icon" src="../_kit/icons/green/human-resources.svg" data-cms-src="/alumni/lib/icons/green/human-resources.svg" alt="" width="48" height="48"><h3>Resource Card</h3><p>Icon, heading, one paragraph. One text action in the foot.</p></div><div class="al-card-action"><a href="#">Text Action</a></div></article>
+                  <div><h4 style="margin-top:0">Roster</h4><ul class="al-roster" style="columns:1"><li><span class="al-roster-key">2022–25</span><span>Name</span></li><li><span class="al-roster-key">President</span><span>Name ’13</span></li></ul>
+                     <h4>Notice</h4><div class="al-notice"><img src="../_kit/icons/green/info-1.svg" data-cms-src="/alumni/lib/icons/green/info-1.svg" alt="" width="48" height="48"><p>Applications are currently closed.</p></div></div>
+                  <figure class="al-quote"><blockquote><p>“Testimonial in the speaker’s words. Typos are flagged, never silently fixed.”</p></blockquote><figcaption>Student</figcaption></figure>
+               </div>
+               <div style="max-width:820px;margin:48px auto 0"><h4>Event</h4>
+                  <ul class="al-events"><li><time class="al-event-date" datetime="2026-11-06"><span>Nov.</span><strong>6</strong><span>2026</span></time><div><h3>Event Title in Title Case</h3><p class="al-meta">Noon–1:30 pm · Place</p><div class="al-actions" style="margin-top:12px"><a class="al-btn al-btn--secondary" href="#">RSVP</a></div></div></li></ul>
+                  <h4>Past Events (compact)</h4>
+                  <ul class="al-events al-events--compact"><li><p class="al-meta">Oct. 3, 2025</p><div><h3>Event Title</h3><p class="al-meta">Noon–1:30 pm · Place</p></div></li></ul>
+                  <h4>Heroes</h4>
+                  <p><code>al-hero--plain</code>: compact green hero for pages with no hero photo (Board, Job Shadow). <code>al-hero--scrim</code>: CSS gradient over a raw photo, for heroes not yet re-cut to the 1920×700 spec.</p>
+               </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 9 · template: one-col -->
+<section data-uvu-template="one-col" data-uvu-section="9" class="al-section al-section--warm">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <div class="al-section-head">
+                  <h2>Page Rhythm</h2>
+               </div>
+               <ol class="al-steps" style="max-width:780px;margin:0 auto">
+                  <li><strong>Hero</strong> (header-fullbleed): H1, optional lead, one light button.</li>
+                  <li><strong>Intro</strong> (one-col, centered) or a first split.</li>
+                  <li><strong>Splits</strong> (two-col): text in region 1, media in region 2. Alternate with <code>al-split--reverse</code>. Max two in a row.</li>
+                  <li><strong>Bands</strong> break the run: warm (<code>al-section--warm</code>), photo (<code>al-section--photo</code>), card grids, or a centered statement.</li>
+                  <li><strong>Alumni footer</strong> (<code>al-sitenav</code>): section nav, contact, and social, identical on every page; the current page is marked with <code>aria-current</code>. The CMS dept footer carries the office name.</li>
+               </ol>
+               <h4 style="max-width:780px;margin:48px auto 8px">Grid and Phones</h4>
+               <ol class="al-steps" style="max-width:780px;margin:0 auto">
+                  <li><strong>One edge.</strong> Container 1280px max, 40px gutter (24px under 768px). Heroes and sections share it.</li>
+                  <li><strong>Breakpoints.</strong> Under 768px is the phone layout; 768px up is two-column; 1100px up opens the 4- and 5-up grids.</li>
+                  <li><strong>Phones read left.</strong> Centered section heads turn left-aligned. Buttons go full width. Tap targets stay 44px or taller.</li>
+                  <li><strong>Phone patterns.</strong> Quick links become a list with arrows, person cards become rows, news cards swipe sideways, partner logos sit three across.</li>
+                  <li><strong>No inline styles.</strong> Use <code>al-center</code>, <code>al-actions--center</code>, <code>al-narrow</code>, and <code>al-section-head--left</code> so phone rules can override them.</li>
+               </ol>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 10 · template: one-col -->
+<section data-uvu-template="one-col" data-uvu-section="10" class="al-section">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <div class="al-section-head">
+                  <h2>What Needs Overhauling</h2>
+                  <p class="al-lead">Found while standardizing. System items are already fixed in the mockups; brand and content items need a decision or an owner.</p>
+               </div><div style="max-width:880px;margin:0 auto"><h3 style="margin-top:48px">System</h3><ol class="al-steps"><li><strong>Two greens on every page.</strong> The CMS styles headings and buttons in #275D38. UVU Green is #185C33. The hero overlays already use #185C33, so the live pages mix both. The system uses #185C33 only. Ask the web team to align the global value.</li><li><strong>LIVE BUG: hero H1 is green on green on phones.</strong> Confirmed on the live Benefits page at phone width: the title “UVU Alumni Benefits” renders in #275D38 on the green hero and is nearly invisible. Cause: production dept.css sets <code>.jumbo header h1 { color: #275D38 !important }</code> below 768px. Any alumni page using that hero is affected. Send to the web team now; the system already overrides it.</li><li><strong>Body line-height is 1.2.</strong> CMS default. Readable body copy needs about 1.5–1.6 (Apple HIG and WCAG reflow both point there). The system sets 1.6 and caps lines at 62 characters.</li><li><strong>12 paragraph styles, 6 H2 styles.</strong> Audit of the first mockups: 12 paragraph size/color combos and 6 H2 variants across seven pages. The system has 4 text roles (lead, body, meta, fine print) and one style per heading level.</li><li><strong>Buttons: 3 looks, 3 heights.</strong> Weights 400 and 700, sizes 18 and 22, heights 56/60/77 (77 was a wrapped label). Now: primary, secondary, light. All 52px tall (HIG minimum is 44), Title Case, arrow glyph.</li><li><strong>12 section spacings.</strong> Mixed 40/60/80 padding combos. Now one rhythm: 96px desktop, 64px mobile, and two white sections in a row share one gap.</li><li><strong>Three icon systems.</strong> Custom XD line icons, Font Awesome solid, and brand-colored social circles. Now: the UVU Icon Library only, plus five UI glyphs (check, arrow, chevron, external, play) drawn to its 2.5pt square-cap stroke. Social marks are one-color.</li><li><strong>Photo frames at ~6°, then 10.25°.</strong> The XD frames tilted about 6°. v1 re-cut them at the IA 10.25° with an offset outline, which read as a one-off gimmick next to uvu.edu. v1.2 adopts the university site’s image style: plain photos with rounded corners and APFY shapes (circles, half-discs, hatching, stairs, rings, x marks) layered around them in CSS, so editors upload ordinary photos.</li><li><strong>Zigzag fatigue.</strong> Benefits and Graduates alternated image/text 3–4 times in a row. Rule now: max two splits in a row, then a band (warm, photo, cards, or centered statement).</li><li><strong>Buttons that didn’t say where they go.</strong> “I’m an Alum,” “Access Membership,” “Get Your Plates,” and “Click the button below” fail WCAG 2.4.4 (link purpose) and give no warning about logins or leaving UVU. Labels now name the destination; external links show a glyph and announce “opens in a new tab”; a note under the button flags a login, a fee, or another site.</li><li><strong>A contact band that repeated everything.</strong> The same tall photo band ended every page (about 850px desktop, 1,000px phone) with grad-specific copy. It’s now one compact alumni footer: section nav, contact, and social, with the current page marked. The alumni section finally has wayfinding.</li><li><strong>Edges didn’t line up.</strong> Heroes sat in a 992px container while sections used the full width, so headline and body text started at different x positions on every page. Now one container: 1280px max with a 40px gutter (24px on phones). Every hero headline, heading, and paragraph shares the same left edge.</li><li><strong>Phones were desktop, shrunk.</strong> The partner logos were one flat image (unreadable at 390px), person cards squeezed two-up with three-line labels, buttons wrapped awkwardly, and long centered paragraphs were hard to read. Phone rules now: full-width buttons, left-aligned text, logos as a list, person cards as rows, quick links as a list, news as a swipe row.</li><li><strong>Four buttons where one belongs.</strong> Graduates (Alumni 101 etc.) and Alumni Awards (photos, videos, recipients) used grids of solid buttons, so nothing was primary. They’re now link lists: one style for secondary actions sitewide.</li></ol><h3 style="margin-top:48px">Brand</h3><ol class="al-steps"><li><strong>All-caps headings.</strong> Retired for Title Case per the UVU style guide. The university global nav stays uppercase (CMS chrome, out of scope).</li><li><strong>Athletics Wolverine mark in the Benefits logo strip.</strong> The Wolverine head is an Athletics-only mark. If it stands in for “sporting events,” confirm Athletics approved it as a partner logo, or swap it for a text label.</li><li><strong>Stratum isn’t on the web.</strong> Rajdhani is the approved web fallback, so the system uses it. If UVU’s Adobe Fonts web kit can serve Stratum, it’s a one-variable swap (<code>--al-font-display</code>).</li><li><strong>Imagery skews current students.</strong> The photo set is almost all APFY student lifestyle. Fine for Grads, SAA, and Scholarships. Home, Benefits, and Alumni Awards need alumni-aged imagery: GOLD alumni at events, at work, with families. Worth a shoot request.</li></ol><h3 style="margin-top:48px">Content</h3><ol class="al-steps"><li><strong>Duplicate and repeated headings.</strong> Scholarships repeated the H1 as its first H2 (placeholder swapped in). Graduates had two sections starting “Connect with…” (one shortened). Benefits repeated the hero button label in the first section.</li><li><strong>Stale and conflicting facts.</strong> License plate “New design coming July 1, 2026” has passed. SAA application dates are last cycle. SAA eligibility differs between the SAA and Scholarships pages.</li><li><strong>Missing pieces.</strong> Nomination form URL, full YouTube playlist URL, plate design graphic, and the alumni stories feed hookup on Home.</li><li><strong>Style fixes applied.</strong> AP/UVU: “11:59 pm,” lowercase seasons, “Aug. 15,” “and” for “&amp;” in running copy, comma in “Congratulations, Graduates,” typos (“opportinities,” “lifstyle,” “an Utah”). Each is highlighted in the copy-review PDFs.</li></ol></div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- ===== CMS CONTENT END ===== -->
+</main>
+<!-- ===== GLOBAL FOOTER (CMS template; context only) ===== -->
+<footer id="globalFooter">
+	<div class="footerDept">
+		<ul><li>Office of Alumni Relations</li><li>Utah Valley University</li></ul>
+	</div>
+	<div class="footerUniversity" lang="en">
+		<div class="footerUniversity-top">
+<div class="container-fluid">
+<div class="row equal-height uppercase">
+<div class="col-sm-3">
+<div>
+<h2>Student</h2>
+<ul>
+<li><a href="https://www.uvu.edu/admissions/">Admissions</a></li>
+<li><a href="https://www.uvu.edu/campus-life/index.html">Campus Life</a></li>
+<li><a href="https://www.uvu.edu/students/">Current Student</a></li>
+<li><a href="https://www.uvu.edu/accreditation-academic-assessment/index.html">Accreditation</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Employees</h2>
+<ul>
+<li><a href="https://www.uvu.edu/peopleandculture/jobs/index.html">Career Opportunities</a></li>
+<li><a href="https://www.uvu.edu/facstaff/">Employee Resources</a></li>
+<li><a href="https://www.uvu.edu/directory/">Directory</a></li>
+<li><a href="https://www.uvu.edu/peopleandculture/">People &amp; Culture</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Community</h2>
+<ul>
+<li><a href="https://gouvu.com/" target="_blank" rel="noopener">Athletics</a></li>
+<li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li>
+<li><a href="https://www.uvu.edu/president/">Office of the President</a></li>
+<li><a href="https://www.uvu.edu/visitors/history.html">About UVU / History</a></li>
+<li><a href="https://alumni.uvu.edu/" target="_blank" rel="noopener">Alumni</a></li>
+<li><a href="https://www.uvu.edu/engagement-and-effectiveness/index.html">Engagement &amp; Effectiveness</a></li>
+<li><a href="https://www.uvu.edu/give/index.html" target="_blank" rel="noopener">Give to UVU</a></li>
+<li><a href="https://www.uvu.edu/visitors/contact.html">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Utility</h2>
+<ul>
+<li><a href="https://www.uvu.edu/maps/">Maps / Parking</a></li>
+<li><a href="https://www.uvu.edu/servicedesk/">Service Desk</a></li>
+<li><a href="https://www.uvu.edu/emergencymanagement/index.html">Emergency</a></li>
+<li><a href="https://www.uvu.edu/police/">Police</a></li>
+<li><a href="https://www.uvu.edu/servicedesk/">Get Help</a></li>
+<li><a href="https://www.uvu.edu/search/">Search</a></li>
+<li><a href="https://www.uvu.edu/accessibility-services/index.html">Accessibility</a></li>
+<li><a href="https://www.uvu.edu/accessibility-services/access-barrier.php">Report Access Barrier</a></li>
+<li><a href="https://www.uvu.edu/equityandtitleix/index.html">Title IX / Equal Opportunity</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footerUniversity-bottom">
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-12">
+<ul class="footerUniversity-quicklinks">
+<li><a href="https://www.uvu.edu/news/"><span class="far fa-newspaper" aria-hidden="true">&nbsp;</span>News</a></li>
+<li><a href="https://www.uvu.edu/events/"><span class="far fa-calendar-day" aria-hidden="true">&nbsp;</span>Events</a></li>
+</ul>
+<div class="footerUniversity-title uppercase">Utah Valley University</div>
+<ul class="footerUniversity-contact uppercase">
+<li><a title="See Utah Valley University on Google Maps" href="https://goo.gl/maps/9SQ5CSuqAoG1gw6J8">800&nbsp;West&nbsp;University&nbsp;Parkway,&nbsp;Orem,&nbsp;UT&nbsp;84058</a></li>
+<li>(801)&nbsp;863-8888</li>
+<li><a href="https://www.uvu.edu/legal/copyright/">© Utah Valley University</a></li>
+</ul>
+<ul class="footerUniversity-legalinfo">
+<li><a href="https://www.uvu.edu/legal/index.html">Terms of Use</a></li>
+<li><a href="https://www.uvu.edu/legal/privacy.html">Privacy Statement</a></li>
+<li><a href="https://www.uvu.edu/legal/copyright/copyright-infringement.html">Copyright Complaints</a></li>
+<li><a href="https://www.uvu.edu/legal/non-discrimination.html">Non-Discrimination and Accessibility Statement</a></li>
+</ul>
+<ul class="university-social"><li><a title="Opens UVU's Linkedin profile in a new tab" href="https://www.linkedin.com/school/utah-valley-university/" target="_blank" rel="external noopener"> <span class="fab fa-linkedin" aria-hidden="true"></span> <span class="sr-only">Linkedin</span> </a></li>
+<li><a title="Opens UVU's Instagram profile in a new tab" href="https://www.instagram.com/utah.valley.university/" target="_blank" rel="external noopener"> <span class="fab fa-instagram" aria-hidden="true"></span> <span class="sr-only">Instagram</span> </a></li>
+<li><a title="Opens UVU's Facebook profile in a new tab" href="https://www.facebook.com/UtahValleyUniversity/" target="_blank" rel="external noopener"> <span class="fab fa-facebook-square" aria-hidden="true"></span> <span class="sr-only">Facebook</span> </a></li>
+<li><a title="Opens UVU's YouTube channel in a new tab" href="https://www.youtube.com/user/UtahValleyUniversity" target="_blank" rel="external noopener"> <span class="fab fa-youtube-square" aria-hidden="true"></span> <span class="sr-only">YouTube</span> </a></li>
+<li><a title="Opens the UVU Athletics site in a new tab" href="https://gouvu.com/" target="_blank" rel="external noopener"><img src="../_kit/img/wolverine-logo.svg" alt="UVU Athletics logo" aria-hidden="true"><span class="sr-only">Athletics</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+	</div>
+</footer>
+</body>
+</html>

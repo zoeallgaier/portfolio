@@ -17,7 +17,7 @@ is never hidden behind a browser's cached copy of the old stylesheet.
 
 `.nojekyll` matters more than it looks — without it GitHub Pages runs Jekyll,
 which silently drops every folder starting with an underscore, and all of the
-site's imagery lives in `_assets/`.
+site's imagery lives in `_projects/`.
 
 ## Layout
 
@@ -32,7 +32,7 @@ js/app.js             Swaps <main> between pages instead of reloading
 js/backdrop.js        The one fixed glow behind every page (+ dot grid on the home hero)
 marginalia/           The feed: content.json (data) + main.js (renderer)
 marginalia/posts/     Long-form written posts, one HTML file each
-_assets/              All imagery, grouped by project
+_projects/            All imagery, grouped by project (working files are gitignored)
 fonts/                Self-hosted Instrument Serif + Oxygen (woff2)
 scripts/              optimize-images.py — run after adding imagery
 ```
@@ -73,7 +73,7 @@ The feed renders from [`marginalia/content.json`](marginalia/content.json).
 Add a new entry to the **top** of the array and push:
 
 ```jsonc
-{ "type": "photo", "image": "/_assets/marginalia/my-photo.jpg",
+{ "type": "photo", "image": "/_projects/marginalia/my-photo.jpg",
   "note": "Caption goes here.", "date": "2026-08-28" }
 ```
 
@@ -81,7 +81,7 @@ Add a new entry to the **top** of the array and push:
 colour treatment. Any entry may carry an `image`; a bare image opens in the
 lightbox, one paired with a `url` becomes a link instead.
 
-Drop the image in `_assets/marginalia/` alongside it. Resize before committing
+Drop the image in `_projects/marginalia/` alongside it. Resize before committing
 — nothing on the site needs to be wider than about 2400px.
 
 A long-form piece gets its own file in `marginalia/posts/` (copy the nearest
@@ -105,7 +105,7 @@ grid and in a project gallery has WebP copies at display sizes beside it
 at them, so a phone pulls an 800px WebP instead of a multi-megabyte JPEG.
 
 After adding or replacing an image in a page's `.work` grid or `.gallery`,
-just put the plain `<img src="/_assets/…">` in the HTML and run:
+just put the plain `<img src="/_projects/…">` in the HTML and run:
 
 ```sh
 python3 scripts/optimize-images.py
@@ -128,7 +128,7 @@ ffmpeg -i out.mp4 -frames:v 1 -c:v libwebp -quality 78 out-poster.webp
 every clip on page load; `js/media.js` plays each one as it scrolls into view):
 
 ```html
-<video src="/_assets/…/out.mp4" poster="/_assets/…/out-poster.webp" muted loop playsinline preload="none" data-autoplay aria-hidden="true"></video>
+<video src="/_projects/…/out.mp4" poster="/_projects/…/out-poster.webp" muted loop playsinline preload="none" data-autoplay aria-hidden="true"></video>
 ```
 
 Add `class="gallery-wide"` for 16:9 pieces or `class="gallery-tall"` for 9:16

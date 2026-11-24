@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<!-- =====================================================================
+     UVU GIVING · IA WEB SYSTEM v1.3 · CMS MOCKUP · Support the School of the Arts
+     Live URL: https://www.uvu.edu/give/colleges-schools/school-of-arts/index.html
+     Styles: UVU production CSS snapshot + ../_kit/css/12-alumni-system.css
+     See ../README.md and ../_kit/styleguide.html
+     ===================================================================== -->
+<html lang="en" dir="ltr" style="--headroom-height: 123px;">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+<meta name="color-scheme" content="only light">
+<meta name="description" content="Give to the UVU School of the Arts: scholarships and programs that support art students.">
+<title>Support the School of the Arts | Utah Valley University</title>
+
+<!-- ===== UVU production CSS (snapshot) ===== -->
+<link rel="stylesheet" href="../_kit/css/01-bootstrap.min.css">
+<link rel="stylesheet" href="../_kit/css/02-global.css">
+<link rel="stylesheet" href="../_kit/css/03-component.css">
+<link rel="stylesheet" href="../_kit/css/04-helpers-legacy.css">
+<link rel="stylesheet" href="../_kit/css/05-elements.css">
+<link rel="stylesheet" href="../_kit/css/06-helpers.css">
+<link rel="stylesheet" href="../_kit/css/07-wrapper.css">
+<link rel="stylesheet" href="../_kit/css/08-fonts.css">
+<link rel="stylesheet" href="../_kit/css/09-homepage-wrapper.css">
+<link rel="stylesheet" href="../_kit/css/10-homepage-dept.css">
+<link rel="stylesheet" href="../_kit/css/11-fontawesome-pro.css">
+
+<!-- ===== IA Web System (shared with Alumni; the only system stylesheet a page needs) ===== -->
+<!-- Cesar's fund-page stylesheet (production: /give/lib/css/new-format-26.css). Loads before the system file so the hero and type stay on system. -->
+<link rel="stylesheet" href="../_kit/css/13-give-new-format-26.css">
+<link rel="stylesheet" href="../_kit/css/12-alumni-system.css">
+<!-- ===== Mockup-only tools. Not for production. ===== -->
+<link rel="stylesheet" href="../_kit/css/99-mockup-tools.css">
+<script src="../_kit/js/mockup-tools.js"></script>
+<script src="../_kit/js/funds-tabs.js" defer></script>
+</head>
+<body id="school-of-arts" class="UVU_Public_Site utah-valley-university school-of-arts marketing homepage audience DeptNav DeptFooter">
+
+<!-- ===== GLOBAL HEADER (CMS template; context only) ===== -->
+<header id="globalHeader" class="headroom" role="banner" aria-label="Primary Site banner" lang="en" data-import="false">
+					<div id="mquery"></div>
+					<a class="skiptocontent sr-only" href="#content-wrap">Skip to main content</a>
+					<noscript id="noJS">You have JavaScript Disabled! UVU's websites will not work properly without javascript. Please enable JavaScript to continue using UVU's websites as intended.</noscript>
+					<div class="globalHeaderMain">
+						<div class="slideNavToggle classy ready" role="button" aria-label="Open university and departmental navigation" aria-controls="slideNav" tabindex="0" data-classy-action="on" data-classy-declick="body" data-import="false" data-classy-group="all">
+							<img src="../_kit/img/hmbgr-menu.svg" alt="Menu and search icon">
+						</div>
+						<a class="globalTitle" href="https://www.uvu.edu/" title="Utah Valley University Homepage" hreflang="en">
+							<img src="../_kit/img/uvu-mono.svg" alt="Utah Valley University logo">
+						</a>
+						<a class="deptTitle" href="https://www.uvu.edu/" lang="en" hreflang="en" title="Site homepage">
+							Utah Valley University
+						</a>
+						<div class="actionBar">
+							<ul class="global-quicklinks">
+	<li><a href="https://www.uvu.edu/admissions/#degree-type">Apply to UVU</a></li>
+	<li><a href="https://my.uvu.edu/"><svg id="Group_3615" data-name="Group 3615" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.845 24.485">
+  <path id="Path_3937" data-name="Path 3937" d="M388.908,537.07H358.463a.806.806,0,0,1,0-1.611h30.445a.806.806,0,0,1,0,1.611m-29.51-3.757,4.208-6.721a.809.809,0,0,1,.686-.38h5.359l3.193,5.534a1.1,1.1,0,0,0,1.9,0l3.191-5.532H383.1a.81.81,0,0,1,.685.379l4.218,6.724a.81.81,0,0,1-.685,1.24l-27.237-.007a.81.81,0,0,1-.685-1.24m5.4-17.195a.654.654,0,0,1,.924-.875l7.693,5.04a.74.74,0,0,0,.81,0l7.634-5a.655.655,0,0,1,.925.876L374.441,530.6a.74.74,0,0,1-1.281,0Zm25.549,19.23-6-9.542a.978.978,0,0,0-.828-.458l-5.088,0,5.882-10.2a1.1,1.1,0,0,0-1.534-1.476l-8.4,5.3a1.1,1.1,0,0,1-1.17,0l-8.42-5.322a1.1,1.1,0,0,0-1.534,1.476l5.9,10.223-5.315,0a.978.978,0,0,0-.829.46l-5.969,9.5a1.71,1.71,0,0,0,1.427,2.65H388.9a1.71,1.71,0,0,0,1.447-2.619" transform="translate(-356.761 -513.482)" fill="currentColor"></path>
+</svg>
+myUVU</a></li>
+</ul>
+							<div id="mainSearch">
+								<a class="lightbox" href="#" data-lity="true" title="Open search box" data-import="false" data-lity-target="#globalSearch-container"><span class="fas fa-search" aria-hidden="true"></span></a>
+								<div id="globalSearch-container" class="lity-hide">
+									<form id="globalSearch" role="search" aria-label="Search UVU" method="get" action="https://www.uvu.edu/search">
+										<div id="globalSearchArea">
+											<label for="globalSearchInput" class="sr-only">Enter search terms</label>
+											<div class="search-group">
+												<label aria-hidden="true">I'm looking for:</label>
+												<input type="text" id="globalSearchInput" class="quicksearch" name="query" value="" autocomplete="off" data-quicksearch-out="#globalSearchSuggest" data-import="false">
+											</div>
+											<div id="globalSearchSuggest" aria-hidden="true"></div>
+											<input type="submit" title="Search UVU" id="globalSearchSubmit" value="Go">
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<nav id="deptNav" role="navigation" aria-label="Department Navigation">
+						<div class="deptNavWrap" lang="en">
+								<ul><li><a href="https://www.uvu.edu/admissions/">Admissions</a></li><li><a href="https://www.uvu.edu/campus-life/">Campus Life</a></li><li><a href="https://www.uvu.edu/academics/">Academics</a></li><li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li><li><a href="https://www.uvu.edu/news/">Content Hub</a></li><li><a href="https://www.uvu.edu/alumni/">Alumni</a></li><li><a href="https://www.uvu.edu/give/">Give</a></li><li><a href="https://www.uvu.edu/about/">About</a></li></ul>
+						</div>
+					</nav>
+				</header>
+				<section id="slideNav" aria-expanded="false" aria-label="University Navigation" tabindex="-1" lang="en" data-classy-group="all" class="ready">
+					<div class="menu-body">
+						<header>
+							<img src="../_kit/img/uvu-mono.svg" alt="Utah Valley University logo">
+							<p class="h1">Utah Valley University</p>
+							<span class="far fa-times-circle tabClose classy ready" role="button" title="Close Menu" aria-controls="slideNav" aria-label="Close University Navigation" data-classy-action="off" tabindex="-1" aria-hidden="true" data-import="false" data-classy-group="all">&nbsp;</span><span class="sr-only">Close Menu</span>
+						</header>
+						<form id="slideSearch" role="search" aria-label="UVU Search" action="https://www.uvu.edu/search/">
+							<label for="slideSearchInput" class="sr-only">Enter search terms</label><input type="text" id="slideSearchInput" class="quicksearch" name="query" placeholder="I'm looking for..." autocomplete="off" data-quicksearch-out="#slideSearchSuggest" data-import="false">
+							<input type="submit" value="" id="slideSearchSubmit" class="quicksearch" aria-label="Submit Search" title="Submit Search" data-import="false">
+							<div id="slideSearchSuggest" aria-hidden="true"></div>
+						</form>
+						<ul class="global-quicklinks">
+	<li><a href="https://www.uvu.edu/admissions/#degree-type">Apply to UVU</a></li>
+	<li><a href="https://my.uvu.edu/"><svg id="Group_3615" data-name="Group 3615" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.845 24.485">
+  <path id="Path_3937" data-name="Path 3937" d="M388.908,537.07H358.463a.806.806,0,0,1,0-1.611h30.445a.806.806,0,0,1,0,1.611m-29.51-3.757,4.208-6.721a.809.809,0,0,1,.686-.38h5.359l3.193,5.534a1.1,1.1,0,0,0,1.9,0l3.191-5.532H383.1a.81.81,0,0,1,.685.379l4.218,6.724a.81.81,0,0,1-.685,1.24l-27.237-.007a.81.81,0,0,1-.685-1.24m5.4-17.195a.654.654,0,0,1,.924-.875l7.693,5.04a.74.74,0,0,0,.81,0l7.634-5a.655.655,0,0,1,.925.876L374.441,530.6a.74.74,0,0,1-1.281,0Zm25.549,19.23-6-9.542a.978.978,0,0,0-.828-.458l-5.088,0,5.882-10.2a1.1,1.1,0,0,0-1.534-1.476l-8.4,5.3a1.1,1.1,0,0,1-1.17,0l-8.42-5.322a1.1,1.1,0,0,0-1.534,1.476l5.9,10.223-5.315,0a.978.978,0,0,0-.829.46l-5.969,9.5a1.71,1.71,0,0,0,1.427,2.65H388.9a1.71,1.71,0,0,0,1.447-2.619" transform="translate(-356.761 -513.482)" fill="currentColor"></path>
+</svg>
+myUVU</a></li>
+</ul>
+						<div id="breadcrumbContainer">
+							<nav class="breadcrumbNav" id="breadcrumbNav" aria-label="breadcrumb" tabindex="-1">
+								<div class="breadcrumbScroll">
+								</div>
+								<div class="breadcrumbScroll-left"></div>
+								<div class="breadcrumbScroll-right"></div>
+							</nav>
+						</div>
+						<div id="slideMenuDept" class="active" aria-label="Department Menu">
+							<nav class="slideDeptNav" aria-label="Department Navigation in side menu" lang="en">
+									<ul><li><a href="https://www.uvu.edu/admissions/">Admissions</a></li><li><a href="https://www.uvu.edu/campus-life/">Campus Life</a></li><li><a href="https://www.uvu.edu/academics/">Academics</a></li><li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li><li><a href="https://www.uvu.edu/news/">Content Hub</a></li><li><a href="https://www.uvu.edu/alumni/">Alumni</a></li><li><a href="https://www.uvu.edu/give/">Give</a></li><li><a href="https://www.uvu.edu/about/">About</a></li></ul>
+							</nav>
+						</div>
+						<div id="globalNav">
+						</div>
+					</div>
+				</section>
+      
+<main id="content-wrap" class="content-wrap">
+<!-- ===== CMS CONTENT START · each <section> = one OU section ===== -->
+
+<!-- SECTION 1 · template: header-fullbleed
+     ASSET: assets/school-of-arts-header.jpg (1920x700 raw photo; the green fade is CSS). CMS: /give/colleges-schools/school-of-arts/images/school-of-arts-header.jpg
+     PHONES: assets/school-of-arts-header-mobile.jpg (1080x1350 vertical, people centered). CMS: /give/colleges-schools/school-of-arts/images/school-of-arts-header-mobile.jpg -->
+<section class="page-header jumbo fullbleed container-narrow al-hero" style="background-image: url(assets/school-of-arts-header.jpg);" data-cms-bg="/give/colleges-schools/school-of-arts/images/school-of-arts-header.jpg" data-uvu-template="header-fullbleed" data-uvu-section="1">
+   <div class="al-hero-m" style="background-image: url(assets/school-of-arts-header-mobile.jpg);" data-cms-bg="/give/colleges-schools/school-of-arts/images/school-of-arts-header-mobile.jpg" aria-hidden="true"></div>
+   <div class="container-fluid">
+      <header class="fullbleed-overlay contain text-invert">
+            <p class="al-eyebrow">Support Future Artists</p>
+            <h1>School of the Arts</h1>
+            <p class="al-hero-lead">Your gift impacts UVU art students for a lifetime.</p>
+            <div class="al-actions"><a class="al-btn al-btn--light al-btn--ext" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&formId=9e42341c-c985-413d-8a2d-59e14bcdfafc&envid=p-15SOd3UsHUO8MRNYFSnBvg&zone=usa" target="_blank" rel="noopener">Give to SOA Scholarships<span class="sr-only-al"> (opens in a new tab)</span></a></div>
+      </header>
+   </div>
+</section>
+<!-- SECTION 2 · template: one-col · Cesar's new-format-26 fund directory (/give/lib/css/new-format-26.css).
+     Sidebar tabs (desktop) + MAIN MENU popover (phones) + one content panel per department, each fund a link to its Blackbaud form. -->
+<section data-uvu-template="one-col" data-uvu-section="2" class="al-section al-nf">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+            <!-- MOBILE MENU BAR -->
+            <div class="mobile-menu-bar">
+               <div class="al-nf-bar"><span class="al-nf-bar-label"><span class="mock-copy-flag" title="Cesar’s template: “MAIN MENU.”">Browse Funds</span></span><span class="al-nf-bar-current">Art and Design</span></div>
+               <button class="menu-toggle" id="menuToggle" type="button" popovertarget="mobileFundsMenu" popovertargetaction="toggle" aria-label="Open main menu"><span></span><span></span><span></span></button>
+            </div>
+            <!-- MOBILE-ONLY POPOVER MENU -->
+            <nav id="mobileFundsMenu" class="funds-sidebar mobile-funds-sidebar" popover="auto" aria-label="Funds menu">
+               <div class="mobile-popover-header">
+                  <h2 class="sidebar-title"><span class="mock-copy-flag" title="Cesar’s template: “MAIN MENU.”">Browse Funds</span></h2>
+                  <button type="button" class="close-menu" popovertarget="mobileFundsMenu" popovertargetaction="hide" aria-label="Close main menu">×</button>
+               </div>
+               <ul class="tabs">
+                     <li><a href="#search" class="anchorTab menu-btn noScroll" aria-controls="search" aria-expanded="false" role="tab"><span class="al-nf-tab"><span class="mock-copy-flag" title="Cesar’s template: “Search.”">Search All Funds</span></span></a></li>
+                     <li><a href="#art-and-design" class="anchorTab menu-btn active noScroll" aria-controls="art-and-design" aria-expanded="true" role="tab"><span class="al-nf-tab">Art and Design</span></a></li>
+                     <li><a href="#dance" class="anchorTab menu-btn noScroll" aria-controls="dance" aria-expanded="false" role="tab"><span class="al-nf-tab">Dance</span></a></li>
+                     <li><a href="#music" class="anchorTab menu-btn noScroll" aria-controls="music" aria-expanded="false" role="tab"><span class="al-nf-tab">Music</span></a></li>
+                     <li><a href="#theatre" class="anchorTab menu-btn noScroll" aria-controls="theatre" aria-expanded="false" role="tab"><span class="al-nf-tab">Theatre</span></a></li>
+                     <li><a href="#the-uvu-museum-of-art-at-lakemount" class="anchorTab menu-btn noScroll" aria-controls="the-uvu-museum-of-art-at-lakemount" aria-expanded="false" role="tab"><span class="al-nf-tab">The UVU Museum of Art at Lakemount</span></a></li>
+                     <li><a href="#noorda-center-for-the-performing-arts" class="anchorTab menu-btn noScroll" aria-controls="noorda-center-for-the-performing-arts" aria-expanded="false" role="tab"><span class="al-nf-tab">Noorda Center for the Performing Arts</span></a></li>
+               </ul>
+            </nav>
+            <!-- MAIN LAYOUT -->
+            <section class="funds-layout">
+               <nav class="funds-sidebar desktop-funds-sidebar" aria-label="Funds menu">
+                  <h2 class="sidebar-title"><span class="mock-copy-flag" title="Cesar’s template: “MAIN MENU.”">Browse Funds</span></h2>
+                  <ul class="tabs">
+                     <li><a href="#search" class="anchorTab menu-btn noScroll" data-target="search" aria-controls="search" aria-expanded="false" role="tab"><span class="al-nf-tab"><span class="mock-copy-flag" title="Cesar’s template: “Search.”">Search All Funds</span></span></a></li>
+                     <li><a href="#art-and-design" class="anchorTab menu-btn active noScroll" data-target="art-and-design" aria-controls="art-and-design" aria-expanded="true" role="tab"><span class="al-nf-tab">Art and Design</span></a></li>
+                     <li><a href="#dance" class="anchorTab menu-btn noScroll" data-target="dance" aria-controls="dance" aria-expanded="false" role="tab"><span class="al-nf-tab">Dance</span></a></li>
+                     <li><a href="#music" class="anchorTab menu-btn noScroll" data-target="music" aria-controls="music" aria-expanded="false" role="tab"><span class="al-nf-tab">Music</span></a></li>
+                     <li><a href="#theatre" class="anchorTab menu-btn noScroll" data-target="theatre" aria-controls="theatre" aria-expanded="false" role="tab"><span class="al-nf-tab">Theatre</span></a></li>
+                     <li><a href="#the-uvu-museum-of-art-at-lakemount" class="anchorTab menu-btn noScroll" data-target="the-uvu-museum-of-art-at-lakemount" aria-controls="the-uvu-museum-of-art-at-lakemount" aria-expanded="false" role="tab"><span class="al-nf-tab">The UVU Museum of Art at Lakemount</span></a></li>
+                     <li><a href="#noorda-center-for-the-performing-arts" class="anchorTab menu-btn noScroll" data-target="noorda-center-for-the-performing-arts" aria-controls="noorda-center-for-the-performing-arts" aria-expanded="false" role="tab"><span class="al-nf-tab">Noorda Center for the Performing Arts</span></a></li>
+                  </ul>
+               </nav>
+               <section class="funds-content tabs-content">
+                     <!-- ART &AMP; DESIGN -->
+                     <div class="content-panel tab-container open" id="art-and-design">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-uvu-place-for-you.jpg" data-cms-src="/give/images/funds/fund-uvu-place-for-you.jpg" alt="three female students in front of a banner" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">9 programs · 2 scholarships</p>
+                              <h2>Art and Design</h2>
+                              <p><span class="mock-todo">COPY: 2 or 3 sentences on what a gift to Art & Design does for art students.</span></p>
+                              <a class="al-nf-learn" href="#"><span class="mock-copy-flag" title="Cesar’s template: “Learn More” button. Needs the department page URL.">About Art and Design</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>9</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=7768e694-760f-4271-a754-8a1612b45bf6&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Art%20and%20Design&amp;desid=914" target="_blank" rel="noopener"><span class="al-nf-name">Art & Design</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=7768e694-760f-4271-a754-8a1612b45bf6&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Art%20Education&amp;desid=914" target="_blank" rel="noopener"><span class="al-nf-name">Art Education</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=7768e694-760f-4271-a754-8a1612b45bf6&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Art%20History&amp;desid=914" target="_blank" rel="noopener"><span class="al-nf-name">Art History</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=7768e694-760f-4271-a754-8a1612b45bf6&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Entertainment%20Design&amp;desid=914" target="_blank" rel="noopener"><span class="al-nf-name">Entertainment Design</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=7768e694-760f-4271-a754-8a1612b45bf6&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Graphic%20Design&amp;desid=914" target="_blank" rel="noopener"><span class="al-nf-name">Graphic Design</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=7768e694-760f-4271-a754-8a1612b45bf6&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Illustration&amp;desid=914" target="_blank" rel="noopener"><span class="al-nf-name">Illustration</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=7768e694-760f-4271-a754-8a1612b45bf6&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Painting%20and%20Drawing&amp;desid=914" target="_blank" rel="noopener"><span class="al-nf-name">Painting & Drawing</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=7768e694-760f-4271-a754-8a1612b45bf6&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Photography&amp;desid=914" target="_blank" rel="noopener"><span class="al-nf-name">Photography</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=7768e694-760f-4271-a754-8a1612b45bf6&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Sculpture%20and%20Ceramics&amp;desid=914" target="_blank" rel="noopener"><span class="al-nf-name">Sculpture & Ceramics</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>2</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=7a4d43be-ea5f-4d27-9e81-22e98e1f293d&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Talisman%20Endowed%20Scholarship&amp;desid=1057" target="_blank" rel="noopener"><span class="al-nf-name">Talisman Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=7a4d43be-ea5f-4d27-9e81-22e98e1f293d&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=The%20Haslam%20Family%20Opportunity%20Fund%20in%20Photography&amp;desid=3092" target="_blank" rel="noopener"><span class="al-nf-name">The Haslam Family Opportunity Fund in Photography</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- DANCE -->
+                     <div class="content-panel tab-container" id="dance">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-dance-green.jpg" data-cms-src="/give/images/funds/fund-dance-green.jpg" alt="dance partners dancing ballet" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">7 programs · 4 scholarships</p>
+                              <h2>Dance</h2>
+                              <p><span class="mock-todo">COPY: 2 or 3 sentences on what a gift to Dance does for art students.</span></p>
+                              <a class="al-nf-learn" href="#"><span class="mock-copy-flag" title="Cesar’s template: “Learn More” button. Needs the department page URL.">About Dance</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>7</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=73135d85-6e47-478b-abb2-028568a5a5ba&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desid=458&amp;desname=Dance%20Department" target="_blank" rel="noopener"><span class="al-nf-name">Dance Department</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=73135d85-6e47-478b-abb2-028568a5a5ba&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desid=385&amp;desname=Ballroom" target="_blank" rel="noopener"><span class="al-nf-name">Ballroom</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=14a72781-8d31-410c-b722-2ab8c27ae661&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desid=458&amp;desname=Contemporary%20Dance%20Ensemble" target="_blank" rel="noopener"><span class="al-nf-name">Contemporary Dance Ensemble</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=14a72781-8d31-410c-b722-2ab8c27ae661&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desid=458&amp;desname=Esprit%20d.c.%20Hip%20Hop%20Crew" target="_blank" rel="noopener"><span class="al-nf-name">Esprit d.c. Hip Hop Crew</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=14a72781-8d31-410c-b722-2ab8c27ae661&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desid=458&amp;desname=Repertory%20Ballet%20Ensemble" target="_blank" rel="noopener"><span class="al-nf-name">Repertory Ballet Ensemble</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=14a72781-8d31-410c-b722-2ab8c27ae661&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desid=458&amp;desname=Rhythmic%20Tap%20Company" target="_blank" rel="noopener"><span class="al-nf-name">Rhythmic Tap Company</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=14a72781-8d31-410c-b722-2ab8c27ae661&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desid=458&amp;desname=Synergy%20Dance%20Company" target="_blank" rel="noopener"><span class="al-nf-name">Synergy Dance Company</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>4</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=ec767b75-b980-4262-b684-bf5036432517&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Connie%20Reynolds%20Memorial%20Dance%20Endowed%20Scholarship&amp;desid=1226" target="_blank" rel="noopener"><span class="al-nf-name">Connie Reynolds Memorial Dance Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=ec767b75-b980-4262-b684-bf5036432517&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Leap%20Into%20the%20Future%20Endowed%20Scholarship&amp;desid=1318" target="_blank" rel="noopener"><span class="al-nf-name">Leap Into the Future Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=14a72781-8d31-410c-b722-2ab8c27ae661&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desid=458&amp;desname=Doris%20Trujillo%20Memorial%20Scholarship" target="_blank" rel="noopener"><span class="al-nf-name">Doris Trujillo Memorial Scholarship</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&amp;formId=14a72781-8d31-410c-b722-2ab8c27ae661&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desid=458&amp;desname=Monica%20Campbell%20Memorial%20Scholarship" target="_blank" rel="noopener"><span class="al-nf-name">Monica Campbell Memorial Scholarship</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- MUSIC -->
+                     <div class="content-panel tab-container" id="music">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-music.jpg" data-cms-src="/give/images/funds/fund-music.jpg" alt="female student playing violin" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">8 programs · 9 scholarships</p>
+                              <h2>Music</h2>
+                              <p><span class="mock-todo">COPY: 2 or 3 sentences on what a gift to Music does for art students.</span></p>
+                              <a class="al-nf-learn" href="#"><span class="mock-copy-flag" title="Cesar’s template: “Learn More” button. Needs the department page URL.">About Music</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>8</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=3bccd125-d23f-4224-8195-556a69f0be5b&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Collaborative%20Piano-Chamber%20Music&amp;desid=1294" target="_blank" rel="noopener"><span class="al-nf-name">Collaborative Piano-Chamber Music</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=3bccd125-d23f-4224-8195-556a69f0be5b&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Collaborative%20Piano-Vocal%20Coaching&amp;desid=1294" target="_blank" rel="noopener"><span class="al-nf-name">Collaborative Piano-Vocal Coaching</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=3bccd125-d23f-4224-8195-556a69f0be5b&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Commercial%20Music&amp;desid=1294" target="_blank" rel="noopener"><span class="al-nf-name">Commercial Music</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=3bccd125-d23f-4224-8195-556a69f0be5b&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Music&amp;desid=1294" target="_blank" rel="noopener"><span class="al-nf-name">Music</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=3bccd125-d23f-4224-8195-556a69f0be5b&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Music%20Education&amp;desid=1294" target="_blank" rel="noopener"><span class="al-nf-name">Music Education</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=3bccd125-d23f-4224-8195-556a69f0be5b&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Music%20Technology&amp;desid=1294" target="_blank" rel="noopener"><span class="al-nf-name">Music Technology</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=3bccd125-d23f-4224-8195-556a69f0be5b&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Performance&amp;desid=1294" target="_blank" rel="noopener"><span class="al-nf-name">Performance</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=3bccd125-d23f-4224-8195-556a69f0be5b&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Piano%20Pedagogy&amp;desid=1294" target="_blank" rel="noopener"><span class="al-nf-name">Piano Pedagogy</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>9</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=e8f29744-04a9-478b-aeb1-9eb5f1427eaf&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Amanda%20M%20Clifford%20Memorial%20Endowed%20Scholarship&amp;desid=1338" target="_blank" rel="noopener"><span class="al-nf-name">Amanda M Clifford Memorial Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=e8f29744-04a9-478b-aeb1-9eb5f1427eaf&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Marie%20Gappmayer%20Endowment%20Scholarship&amp;desid=1553" target="_blank" rel="noopener"><span class="al-nf-name">Marie Gappmayer Endowment Scholarship</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=e8f29744-04a9-478b-aeb1-9eb5f1427eaf&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=The%20Marilyn%20Tolk%20Endowed%20Scholarship&amp;desid=3138" target="_blank" rel="noopener"><span class="al-nf-name">The Marilyn Tolk Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=e8f29744-04a9-478b-aeb1-9eb5f1427eaf&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=The%20Marilyn%20Tolk%20Piano%20Recital%20Endowment&amp;desid=3136" target="_blank" rel="noopener"><span class="al-nf-name">The Marilyn Tolk Piano Recital Endowment</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=e8f29744-04a9-478b-aeb1-9eb5f1427eaf&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=%20Rebecca%20Marriott%20Champion%20String%20Endowment&amp;desid=1499" target="_blank" rel="noopener"><span class="al-nf-name">Rebecca Marriott Champion String Endowment</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=e8f29744-04a9-478b-aeb1-9eb5f1427eaf&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Rebecca%20Marriott%20Champion%20Woodwind%20Endowment&amp;desid=1500" target="_blank" rel="noopener"><span class="al-nf-name">Rebecca Marriott Champion Woodwind Endowment</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=e8f29744-04a9-478b-aeb1-9eb5f1427eaf&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=%20Rebecca%20Marriott%20Champion%20Brass%20Endowment&amp;desid=1501" target="_blank" rel="noopener"><span class="al-nf-name">Rebecca Marriott Champion Brass Endowment</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=e8f29744-04a9-478b-aeb1-9eb5f1427eaf&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Rebecca%20Marriott%20Champion%20Harp,%20Percussion%20and%20Music%20Composition%20Endowment&amp;desid=1502" target="_blank" rel="noopener"><span class="al-nf-name">Rebecca Marriott Champion Harp, Percussion and Music Composition Endowment</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=e8f29744-04a9-478b-aeb1-9eb5f1427eaf&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Nancy%20P%20Marriott%20Endowed%20Scholarship&amp;desid=1379" target="_blank" rel="noopener"><span class="al-nf-name">Nancy P Marriott Endowed Scholarship</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- THEATRE -->
+                     <div class="content-panel tab-container" id="theatre">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-theatre.jpg" data-cms-src="/give/images/funds/fund-theatre.jpg" alt="students playing as romeo and juliet" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">6 programs · 2 scholarships</p>
+                              <h2>Theatre</h2>
+                              <p><span class="mock-todo">COPY: 2 or 3 sentences on what a gift to Theatre does for art students.</span></p>
+                              <a class="al-nf-learn" href="#"><span class="mock-copy-flag" title="Cesar’s template: “Learn More” button. Needs the department page URL.">About Theatre</span></a>
+                           </div>
+                        </div>
+                        <h3 class="al-nf-group">Programs <span>6</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=31f7be80-e182-41ea-acf9-d1bb3c566c30&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Acting&amp;desid=918" target="_blank" rel="noopener"><span class="al-nf-name">Acting</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=31f7be80-e182-41ea-acf9-d1bb3c566c30&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Design%20and%20Production&amp;desid=918" target="_blank" rel="noopener"><span class="al-nf-name">Design & Production</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=31f7be80-e182-41ea-acf9-d1bb3c566c30&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Musical%20Theatre&amp;desid=918" target="_blank" rel="noopener"><span class="al-nf-name">Musical Theatre</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=31f7be80-e182-41ea-acf9-d1bb3c566c30&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Theatre%20Arts%20Studies&amp;desid=918" target="_blank" rel="noopener"><span class="al-nf-name">Theatre Arts/Studies</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=31f7be80-e182-41ea-acf9-d1bb3c566c30&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Theatre%20Education&amp;desid=918" target="_blank" rel="noopener"><span class="al-nf-name">Theatre Education</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=31f7be80-e182-41ea-acf9-d1bb3c566c30&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Theatre%20Technology&amp;desid=918" target="_blank" rel="noopener"><span class="al-nf-name">Theatre Technology</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                        <h3 class="al-nf-group">Scholarships <span>2</span></h3>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=465a2339-e8e4-467e-b519-fcb4d0426a3a&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Christopher%20Clark%20Endowed%20Scholarship%20in%20Directing&amp;desid=1865" target="_blank" rel="noopener"><span class="al-nf-name">Christopher Clark Endowed Scholarship in Directing</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=465a2339-e8e4-467e-b519-fcb4d0426a3a&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Cameron%20Ward%20Memorial%20Scholarship%20in%20Theatre&amp;desid=3252" target="_blank" rel="noopener"><span class="al-nf-name">Cameron Ward Memorial Endowed Scholarship in Theatre</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- THE UVU MUSEUM OF ART AT LAKEMOUNT -->
+                     <div class="content-panel tab-container" id="the-uvu-museum-of-art-at-lakemount">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-museum-lakemount.jpg" data-cms-src="/give/images/funds/fund-museum-lakemount.jpg" alt="Lakemount Museum" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">1 fund</p>
+                              <h2>The UVU Museum of Art at Lakemount</h2>
+                              <p><span class="mock-todo">COPY: 2 or 3 sentences on what a gift to The UVU Museum of Art at Lakemount does for art students.</span></p>
+                              <a class="al-nf-learn" href="#"><span class="mock-copy-flag" title="Cesar’s template: “Learn More” button. Needs the department page URL.">About The UVU Museum of Art at Lakemount</span></a>
+                           </div>
+                        </div>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=d7c6dea7-593b-4205-bf78-a409f649b35f&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=The%20UVU%20Museum%20of%20Art%20at%20Lakemount%20Programs%20and%20Collections&amp;desid=3095" target="_blank" rel="noopener"><span class="al-nf-name">The UVU Museum of Art at Lakemount Programs and Collections</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- NOORDA CENTER FOR THE PERFORMING ARTS -->
+                     <div class="content-panel tab-container" id="noorda-center-for-the-performing-arts">
+                        <div class="al-nf-head">
+                           <img class="al-nf-thumb" src="assets/fund-norda-performing-arts.jpg" data-cms-src="/give/images/funds/fund-norda-performing-arts.jpg" alt="students standing on stage for curtain call" width="600" height="400" loading="lazy">
+                           <div>
+                              <p class="al-nf-meta">2 funds</p>
+                              <h2>Noorda Center for the Performing Arts</h2>
+                              <p><span class="mock-todo">COPY: 2 or 3 sentences on what a gift to Noorda Center for the Performing Arts does for art students.</span></p>
+                              <a class="al-nf-learn" href="#"><span class="mock-copy-flag" title="Cesar’s template: “Learn More” button. Needs the department page URL.">About Noorda Center for the Performing Arts</span></a>
+                           </div>
+                        </div>
+                        <ul>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=95ef9ef9-7d1f-4b31-90d5-9b446187f2c3&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=The%20Circle%20at%20The%20Noorda%20Center&amp;desid=1917" target="_blank" rel="noopener"><span class="al-nf-name">The Circle at The Noorda Center</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                           <li><a class="fund-item" href="https://host.nxt.blackbaud.com/donor-form?svcid=renxt&amp;formId=95ef9ef9-7d1f-4b31-90d5-9b446187f2c3&amp;envid=p-15SOd3UsHUO8MRNYFSnBvg&amp;zone=usa&amp;desname=Noorda%20Center%20for%20the%20Performing%20Arts&amp;desid=1921" target="_blank" rel="noopener"><span class="al-nf-name">Noorda Center for the Performing Arts General Endowment</span><span class="al-nf-give" aria-hidden="true"><span class="mock-copy-flag" title="New label on each fund row.">Give</span></span><span class="sr-only-al"> (opens the giving form in a new tab)</span></a></li>
+                        </ul>
+                     </div>
+                     <!-- SEARCH -->
+                     <div class="tab-container" id="search">
+                        <h2>Search All SOA Funds</h2>
+                        <!-- Production: Cesar's Blackbaud designation search embed goes here (one per college; the CHPS embed id is dc89e2b3-…).
+                             Mockup: the same search as the Give page, filtered to this area on Find a Fund. -->
+                        <form class="al-search al-search--left" action="../find-a-fund/index.html" method="get" role="search">
+                           <label for="area-q">Search SOA funds</label>
+                           <input type="hidden" name="area" value="School+of+the+Arts">
+                           <input id="area-q" name="q" type="search" placeholder="Fund, program, or scholarship name">
+                           <button type="submit" class="al-btn al-btn--primary">Search</button>
+                        </form>
+                     </div>
+               </section>
+            </section>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 3 · template: one-col (header region + region 1), as in Cesar's template -->
+<section data-uvu-template="one-col" data-uvu-section="3" class="al-section al-section--warm al-nf-info">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region padding-bottom-0 container-wide" data-uvu-region="header">
+            <h2 class="divider-header"><span class="mock-copy-flag" title="Cesar’s template and live: “For More Information.”">Questions? Contact Us</span></h2>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-xs-12 col-target region padding-top-0" data-uvu-region="1">
+            <ul class="al-contact-strip">
+                  <li class="al-contact-card"><span class="al-contact-badge" aria-hidden="true">VH</span><div>
+                     <p class="al-contact-name">Varden Hadfield</p>
+                     <p class="al-contact-role">Director of Development, School of the Arts</p>
+                     <p class="al-contact-links"><a href="tel:+18018638568">801-863-8568</a> · <a href="https://www.uvu.edu/directory/message/?id=T0hOSGNQZHB1TkdXVm1Wak8xdkxkUT09">Message Varden</a></p>
+                  </div></li>
+               </ul>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- SECTION 4 · template: one-col · GIVING FOOTER: section nav + contact + mail-a-check. Identical on every Give page
+     (the current page gets aria-current). Replaces the "Ways to Give: Give Online / Mail a Check" block the live
+     pages repeat at the bottom of Annual Giving, Gifts of Securities, Memorial Gifts, and Ways to Give. -->
+<section data-uvu-template="one-col" data-uvu-section="4" class="al-section al-sitenav">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+            <nav class="al-sitenav-nav" aria-label="Give to UVU">
+               <div class="al-sitenav-brand">
+                  <p class="al-sitenav-title"><a href="../give-home/index.html" data-cms-href="/give/index.html">Give to UVU</a></p>
+                  <ul class="al-sitenav-contact">
+                     <li><img src="../_kit/icons/white/envelope-1.svg" data-cms-src="/alumni/lib/icons/white/envelope-1.svg" alt="" width="48" height="48"><a href="mailto:giving@uvu.edu">giving@uvu.edu</a></li>
+                     <li><img src="../_kit/icons/white/cell.svg" data-cms-src="/alumni/lib/icons/white/cell.svg" alt="" width="48" height="48"><a href="tel:+18018638568">801.863.8568</a></li>
+                  </ul>
+               </div>
+               <div class="al-sitenav-groups">
+                  <div class="al-sitenav-group"><h2>Where to Give</h2><ul><li><a href="../find-a-fund/index.html" data-cms-href="/give/find-a-fund.html">Find a Fund</a></li><li><a href="../give-home/index.html#give-by-area">Colleges and Schools</a></li><li><a href="../programs-centers/index.html" data-cms-href="/give/programs-centers/index.html">Programs and Centers</a></li><li><a href="../student-affairs/index.html" data-cms-href="/give/student-affairs/index.html">Student Support</a></li><li><a href="../athletics/index.html" data-cms-href="/give/athletics/wolverine-club/index.html">Athletics</a></li><li><a href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&formId=3ebce5df-6a4a-4f44-89b7-ef3d89fcad79&envid=p-15SOd3UsHUO8MRNYFSnBvg&zone=usa" target="_blank" rel="noopener">General Scholarships<span class="sr-only-al"> (opens in a new tab)</span></a></li></ul></div>
+                  <div class="al-sitenav-group"><h2>Ways to Give</h2><ul><li><a href="../ways-to-give/index.html" data-cms-href="/give/ways-to-give/index.html">All Ways to Give</a></li><li><a href="../employee-giving/index.html" data-cms-href="/give/ways-to-give/employeegiving.html">Employee Giving</a></li><li><a href="../memorial-gifts/index.html" data-cms-href="/give/ways-to-give/memorial-gifts.html">Memorial Gifts</a></li><li><a href="../ways-to-give/index.html#give-stock">Gifts of Stock</a></li><li><a href="https://uvgift.org/" target="_blank" rel="noopener">Gift Planning<span class="sr-only-al"> (opens in a new tab)</span></a></li><li><a href="https://www.uvu.edu/give/ways-to-give/matching-gifts.html">Matching Gifts</a></li></ul></div>
+                  <div class="al-sitenav-group"><h2>More</h2><ul><li><a href="../give-home/index.html#larger-gift">Planning a Larger Gift</a></li><li><a href="https://www.uvu.edu/alumni/make-an-impact/uvu-license-plate.html">UVU License Plate</a></li><li><a href="https://www.uvu.edu/advancement/events/archive/scholarship-ball.html">Event Sponsorship</a></li><li><a href="https://www.uvu.edu/give/ways-to-give/in-kind-donation.html">In-Kind Donation</a></li><li><a href="https://www.uvu.edu/give/ways-to-give/service.html">Service</a></li></ul></div>
+               </div>
+               <p class="al-sitenav-fine"><strong>Mail a check</strong> payable to UVU Foundation, 800 W. University Parkway, MS 111, Orem, UT 84058. All donations are processed through the Utah Valley University Foundation, a 501(c)(3) <span class="mock-copy-flag" title="Live: “non-profit.” AP: nonprofit.">nonprofit</span> organization. <span class="mock-todo">TAX ID: add the UVU Foundation EIN here; major donors and advisors look for it.</span> <a href="#"><span class="mock-copy-flag" title="New link: report URL needed.">Annual Impact Report</span></a> · <a href="#"><span class="mock-copy-flag" title="New link: 990 URL needed.">IRS Form 990</span></a></p>
+            </nav>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- ===== CMS CONTENT END ===== -->
+</main>
+<!-- ===== GLOBAL FOOTER (CMS template; context only) ===== -->
+<footer id="globalFooter">
+	<div class="footerDept">
+		<ul><li>Institutional Advancement</li><li>Utah Valley University</li></ul>
+	</div>
+	<div class="footerUniversity" lang="en">
+		<div class="footerUniversity-top">
+<div class="container-fluid">
+<div class="row equal-height uppercase">
+<div class="col-sm-3">
+<div>
+<h2>Student</h2>
+<ul>
+<li><a href="https://www.uvu.edu/admissions/">Admissions</a></li>
+<li><a href="https://www.uvu.edu/campus-life/index.html">Campus Life</a></li>
+<li><a href="https://www.uvu.edu/students/">Current Student</a></li>
+<li><a href="https://www.uvu.edu/accreditation-academic-assessment/index.html">Accreditation</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Employees</h2>
+<ul>
+<li><a href="https://www.uvu.edu/peopleandculture/jobs/index.html">Career Opportunities</a></li>
+<li><a href="https://www.uvu.edu/facstaff/">Employee Resources</a></li>
+<li><a href="https://www.uvu.edu/directory/">Directory</a></li>
+<li><a href="https://www.uvu.edu/peopleandculture/">People &amp; Culture</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Community</h2>
+<ul>
+<li><a href="https://gouvu.com/" target="_blank" rel="noopener">Athletics</a></li>
+<li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li>
+<li><a href="https://www.uvu.edu/president/">Office of the President</a></li>
+<li><a href="https://www.uvu.edu/visitors/history.html">About UVU / History</a></li>
+<li><a href="https://alumni.uvu.edu/" target="_blank" rel="noopener">Alumni</a></li>
+<li><a href="https://www.uvu.edu/engagement-and-effectiveness/index.html">Engagement &amp; Effectiveness</a></li>
+<li><a href="https://www.uvu.edu/give/index.html" target="_blank" rel="noopener">Give to UVU</a></li>
+<li><a href="https://www.uvu.edu/visitors/contact.html">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Utility</h2>
+<ul>
+<li><a href="https://www.uvu.edu/maps/">Maps / Parking</a></li>
+<li><a href="https://www.uvu.edu/servicedesk/">Service Desk</a></li>
+<li><a href="https://www.uvu.edu/emergencymanagement/index.html">Emergency</a></li>
+<li><a href="https://www.uvu.edu/police/">Police</a></li>
+<li><a href="https://www.uvu.edu/servicedesk/">Get Help</a></li>
+<li><a href="https://www.uvu.edu/search/">Search</a></li>
+<li><a href="https://www.uvu.edu/accessibility-services/index.html">Accessibility</a></li>
+<li><a href="https://www.uvu.edu/accessibility-services/access-barrier.php">Report Access Barrier</a></li>
+<li><a href="https://www.uvu.edu/equityandtitleix/index.html">Title IX / Equal Opportunity</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footerUniversity-bottom">
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-12">
+<ul class="footerUniversity-quicklinks">
+<li><a href="https://www.uvu.edu/news/"><span class="far fa-newspaper" aria-hidden="true">&nbsp;</span>News</a></li>
+<li><a href="https://www.uvu.edu/events/"><span class="far fa-calendar-day" aria-hidden="true">&nbsp;</span>Events</a></li>
+</ul>
+<div class="footerUniversity-title uppercase">Utah Valley University</div>
+<ul class="footerUniversity-contact uppercase">
+<li><a title="See Utah Valley University on Google Maps" href="https://goo.gl/maps/9SQ5CSuqAoG1gw6J8">800&nbsp;West&nbsp;University&nbsp;Parkway,&nbsp;Orem,&nbsp;UT&nbsp;84058</a></li>
+<li>(801)&nbsp;863-8888</li>
+<li><a href="https://www.uvu.edu/legal/copyright/">© Utah Valley University</a></li>
+</ul>
+<ul class="footerUniversity-legalinfo">
+<li><a href="https://www.uvu.edu/legal/index.html">Terms of Use</a></li>
+<li><a href="https://www.uvu.edu/legal/privacy.html">Privacy Statement</a></li>
+<li><a href="https://www.uvu.edu/legal/copyright/copyright-infringement.html">Copyright Complaints</a></li>
+<li><a href="https://www.uvu.edu/legal/non-discrimination.html">Non-Discrimination and Accessibility Statement</a></li>
+</ul>
+<ul class="university-social"><li><a title="Opens UVU's Linkedin profile in a new tab" href="https://www.linkedin.com/school/utah-valley-university/" target="_blank" rel="external noopener"> <span class="fab fa-linkedin" aria-hidden="true"></span> <span class="sr-only">Linkedin</span> </a></li>
+<li><a title="Opens UVU's Instagram profile in a new tab" href="https://www.instagram.com/utah.valley.university/" target="_blank" rel="external noopener"> <span class="fab fa-instagram" aria-hidden="true"></span> <span class="sr-only">Instagram</span> </a></li>
+<li><a title="Opens UVU's Facebook profile in a new tab" href="https://www.facebook.com/UtahValleyUniversity/" target="_blank" rel="external noopener"> <span class="fab fa-facebook-square" aria-hidden="true"></span> <span class="sr-only">Facebook</span> </a></li>
+<li><a title="Opens UVU's YouTube channel in a new tab" href="https://www.youtube.com/user/UtahValleyUniversity" target="_blank" rel="external noopener"> <span class="fab fa-youtube-square" aria-hidden="true"></span> <span class="sr-only">YouTube</span> </a></li>
+<li><a title="Opens the UVU Athletics site in a new tab" href="https://gouvu.com/" target="_blank" rel="external noopener"><img src="../_kit/img/wolverine-logo.svg" alt="UVU Athletics logo" aria-hidden="true"><span class="sr-only">Athletics</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+	</div>
+</footer>
+</body>
+</html>

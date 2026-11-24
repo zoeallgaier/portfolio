@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<!-- =====================================================================
+     UVU ALUMNI WEB SYSTEM v1 · CMS MOCKUP · Alumni Association Board of Directors
+     Live URL: https://www.uvu.edu/alumni/about/alumni-association-advisory-board.html
+     Styles: UVU production CSS snapshot + ../_kit/css/12-alumni-system.css
+     See ../README.md and ../_kit/styleguide.html
+     ===================================================================== -->
+<html lang="en" dir="ltr" style="--headroom-height: 123px;">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+<meta name="color-scheme" content="only light">
+<meta name="description" content="The UVU Alumni Association Board of Directors: members, expectations, and past presidents.">
+<title>Alumni Association Board of Directors | Utah Valley University</title>
+
+<!-- ===== UVU production CSS (snapshot) ===== -->
+<link rel="stylesheet" href="../_kit/css/01-bootstrap.min.css">
+<link rel="stylesheet" href="../_kit/css/02-global.css">
+<link rel="stylesheet" href="../_kit/css/03-component.css">
+<link rel="stylesheet" href="../_kit/css/04-helpers-legacy.css">
+<link rel="stylesheet" href="../_kit/css/05-elements.css">
+<link rel="stylesheet" href="../_kit/css/06-helpers.css">
+<link rel="stylesheet" href="../_kit/css/07-wrapper.css">
+<link rel="stylesheet" href="../_kit/css/08-fonts.css">
+<link rel="stylesheet" href="../_kit/css/09-homepage-wrapper.css">
+<link rel="stylesheet" href="../_kit/css/10-homepage-dept.css">
+<link rel="stylesheet" href="../_kit/css/11-fontawesome-pro.css">
+
+<!-- ===== Alumni Web System (the only alumni stylesheet a page needs) ===== -->
+<link rel="stylesheet" href="../_kit/css/12-alumni-system.css">
+<!-- ===== Mockup-only tools. Not for production. ===== -->
+<link rel="stylesheet" href="../_kit/css/99-mockup-tools.css">
+<script src="../_kit/js/mockup-tools.js"></script>
+</head>
+<body id="alumni-board" class="UVU_Public_Site utah-valley-university alumni-board marketing homepage audience DeptNav DeptFooter">
+
+<!-- ===== GLOBAL HEADER (CMS template; context only) ===== -->
+<header id="globalHeader" class="headroom" role="banner" aria-label="Primary Site banner" lang="en" data-import="false">
+					<div id="mquery"></div>
+					<a class="skiptocontent sr-only" href="#content-wrap">Skip to main content</a>
+					<noscript id="noJS">You have JavaScript Disabled! UVU's websites will not work properly without javascript. Please enable JavaScript to continue using UVU's websites as intended.</noscript>
+					<div class="globalHeaderMain">
+						<div class="slideNavToggle classy ready" role="button" aria-label="Open university and departmental navigation" aria-controls="slideNav" tabindex="0" data-classy-action="on" data-classy-declick="body" data-import="false" data-classy-group="all">
+							<img src="../_kit/img/hmbgr-menu.svg" alt="Menu and search icon">
+						</div>
+						<a class="globalTitle" href="https://www.uvu.edu/" title="Utah Valley University Homepage" hreflang="en">
+							<img src="../_kit/img/uvu-mono.svg" alt="Utah Valley University logo">
+						</a>
+						<a class="deptTitle" href="https://www.uvu.edu/" lang="en" hreflang="en" title="Site homepage">
+							Utah Valley University
+						</a>
+						<div class="actionBar">
+							<ul class="global-quicklinks">
+	<li><a href="https://www.uvu.edu/admissions/#degree-type">Apply to UVU</a></li>
+	<li><a href="https://my.uvu.edu/"><svg id="Group_3615" data-name="Group 3615" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.845 24.485">
+  <path id="Path_3937" data-name="Path 3937" d="M388.908,537.07H358.463a.806.806,0,0,1,0-1.611h30.445a.806.806,0,0,1,0,1.611m-29.51-3.757,4.208-6.721a.809.809,0,0,1,.686-.38h5.359l3.193,5.534a1.1,1.1,0,0,0,1.9,0l3.191-5.532H383.1a.81.81,0,0,1,.685.379l4.218,6.724a.81.81,0,0,1-.685,1.24l-27.237-.007a.81.81,0,0,1-.685-1.24m5.4-17.195a.654.654,0,0,1,.924-.875l7.693,5.04a.74.74,0,0,0,.81,0l7.634-5a.655.655,0,0,1,.925.876L374.441,530.6a.74.74,0,0,1-1.281,0Zm25.549,19.23-6-9.542a.978.978,0,0,0-.828-.458l-5.088,0,5.882-10.2a1.1,1.1,0,0,0-1.534-1.476l-8.4,5.3a1.1,1.1,0,0,1-1.17,0l-8.42-5.322a1.1,1.1,0,0,0-1.534,1.476l5.9,10.223-5.315,0a.978.978,0,0,0-.829.46l-5.969,9.5a1.71,1.71,0,0,0,1.427,2.65H388.9a1.71,1.71,0,0,0,1.447-2.619" transform="translate(-356.761 -513.482)" fill="currentColor"></path>
+</svg>
+myUVU</a></li>
+</ul>
+							<div id="mainSearch">
+								<a class="lightbox" href="#" data-lity="true" title="Open search box" data-import="false" data-lity-target="#globalSearch-container"><span class="fas fa-search" aria-hidden="true"></span></a>
+								<div id="globalSearch-container" class="lity-hide">
+									<form id="globalSearch" role="search" aria-label="Search UVU" method="get" action="https://www.uvu.edu/search">
+										<div id="globalSearchArea">
+											<label for="globalSearchInput" class="sr-only">Enter search terms</label>
+											<div class="search-group">
+												<label aria-hidden="true">I'm looking for:</label>
+												<input type="text" id="globalSearchInput" class="quicksearch" name="query" value="" autocomplete="off" data-quicksearch-out="#globalSearchSuggest" data-import="false">
+											</div>
+											<div id="globalSearchSuggest" aria-hidden="true"></div>
+											<input type="submit" title="Search UVU" id="globalSearchSubmit" value="Go">
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<nav id="deptNav" role="navigation" aria-label="Department Navigation">
+						<div class="deptNavWrap" lang="en">
+								<ul><li><a href="https://www.uvu.edu/admissions/">Admissions</a></li><li><a href="https://www.uvu.edu/campus-life/">Campus Life</a></li><li><a href="https://www.uvu.edu/academics/">Academics</a></li><li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li><li><a href="https://www.uvu.edu/news/">Content Hub</a></li><li><a href="https://www.uvu.edu/alumni/">Alumni</a></li><li><a href="https://www.uvu.edu/give/">Give</a></li><li><a href="https://www.uvu.edu/about/">About</a></li></ul>
+						</div>
+					</nav>
+				</header>
+				<section id="slideNav" aria-expanded="false" aria-label="University Navigation" tabindex="-1" lang="en" data-classy-group="all" class="ready">
+					<div class="menu-body">
+						<header>
+							<img src="../_kit/img/uvu-mono.svg" alt="Utah Valley University logo">
+							<p class="h1">Utah Valley University</p>
+							<span class="far fa-times-circle tabClose classy ready" role="button" title="Close Menu" aria-controls="slideNav" aria-label="Close University Navigation" data-classy-action="off" tabindex="-1" aria-hidden="true" data-import="false" data-classy-group="all">&nbsp;</span><span class="sr-only">Close Menu</span>
+						</header>
+						<form id="slideSearch" role="search" aria-label="UVU Search" action="https://www.uvu.edu/search/">
+							<label for="slideSearchInput" class="sr-only">Enter search terms</label><input type="text" id="slideSearchInput" class="quicksearch" name="query" placeholder="I'm looking for..." autocomplete="off" data-quicksearch-out="#slideSearchSuggest" data-import="false">
+							<input type="submit" value="" id="slideSearchSubmit" class="quicksearch" aria-label="Submit Search" title="Submit Search" data-import="false">
+							<div id="slideSearchSuggest" aria-hidden="true"></div>
+						</form>
+						<ul class="global-quicklinks">
+	<li><a href="https://www.uvu.edu/admissions/#degree-type">Apply to UVU</a></li>
+	<li><a href="https://my.uvu.edu/"><svg id="Group_3615" data-name="Group 3615" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.845 24.485">
+  <path id="Path_3937" data-name="Path 3937" d="M388.908,537.07H358.463a.806.806,0,0,1,0-1.611h30.445a.806.806,0,0,1,0,1.611m-29.51-3.757,4.208-6.721a.809.809,0,0,1,.686-.38h5.359l3.193,5.534a1.1,1.1,0,0,0,1.9,0l3.191-5.532H383.1a.81.81,0,0,1,.685.379l4.218,6.724a.81.81,0,0,1-.685,1.24l-27.237-.007a.81.81,0,0,1-.685-1.24m5.4-17.195a.654.654,0,0,1,.924-.875l7.693,5.04a.74.74,0,0,0,.81,0l7.634-5a.655.655,0,0,1,.925.876L374.441,530.6a.74.74,0,0,1-1.281,0Zm25.549,19.23-6-9.542a.978.978,0,0,0-.828-.458l-5.088,0,5.882-10.2a1.1,1.1,0,0,0-1.534-1.476l-8.4,5.3a1.1,1.1,0,0,1-1.17,0l-8.42-5.322a1.1,1.1,0,0,0-1.534,1.476l5.9,10.223-5.315,0a.978.978,0,0,0-.829.46l-5.969,9.5a1.71,1.71,0,0,0,1.427,2.65H388.9a1.71,1.71,0,0,0,1.447-2.619" transform="translate(-356.761 -513.482)" fill="currentColor"></path>
+</svg>
+myUVU</a></li>
+</ul>
+						<div id="breadcrumbContainer">
+							<nav class="breadcrumbNav" id="breadcrumbNav" aria-label="breadcrumb" tabindex="-1">
+								<div class="breadcrumbScroll">
+								</div>
+								<div class="breadcrumbScroll-left"></div>
+								<div class="breadcrumbScroll-right"></div>
+							</nav>
+						</div>
+						<div id="slideMenuDept" class="active" aria-label="Department Menu">
+							<nav class="slideDeptNav" aria-label="Department Navigation in side menu" lang="en">
+									<ul><li><a href="https://www.uvu.edu/admissions/">Admissions</a></li><li><a href="https://www.uvu.edu/campus-life/">Campus Life</a></li><li><a href="https://www.uvu.edu/academics/">Academics</a></li><li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li><li><a href="https://www.uvu.edu/news/">Content Hub</a></li><li><a href="https://www.uvu.edu/alumni/">Alumni</a></li><li><a href="https://www.uvu.edu/give/">Give</a></li><li><a href="https://www.uvu.edu/about/">About</a></li></ul>
+							</nav>
+						</div>
+						<div id="globalNav">
+						</div>
+					</div>
+				</section>
+      
+<main id="content-wrap" class="content-wrap">
+<!-- ===== CMS CONTENT START · each <section> = one OU section ===== -->
+
+<!-- SECTION 1 · template: header-fullbleed (compact: no hero photo) · Live page uses header-default with no photo. Compact hero keeps the title on the system edge. -->
+<section class="page-header jumbo fullbleed al-hero al-hero--plain" data-uvu-template="header-fullbleed" data-uvu-section="1">
+   <div class="container-fluid">
+      <header class="fullbleed-overlay contain text-invert">
+            <h1><span class="al-eyebrow">UVU Alumni Association</span> <span class="mock-copy-flag" title="Visual title; the H1 still reads “UVU Alumni Association Board of Directors” for search. Naming mismatch on the live page: the H1 says “Board of Directors,” but the browser title and URL say “Advisory Board.” Pick one name and match the title tag (and ideally the URL) to it.">Board of Directors</span></h1>
+      </header>
+   </div>
+</section>
+<!-- SECTION 2 · template: two-col
+     Intro + expectations card. The card replaces the live bullet list so the six commitments scan as a checklist, and the “closed” status sits right under them. -->
+<section data-uvu-template="two-col" data-uvu-section="2" class="al-section">
+   <div class="container-fluid">
+      <div class="row equal-height flex-row al-split">
+         <div class="col-xs-12 col-sm-6 col-target region" data-uvu-region="1">
+               <h2><span class="mock-copy-flag" title="Placeholder heading. The live intro has no heading.">About the Board</span></h2>
+               <p class="al-lead">The UVU Alumni Association (UVUAA) Board of Directors augments the knowledge, understanding, and strategic thinking of the Office of Alumni Relations team in order to help deliver exceptional results with exceptional care for the UVU Alumni Community.</p>
+               <p>Experienced board members can provide technical or specialist advice and extend the range of skills and understanding of team members. Board members serve as public advocates for UVU Alumni, support fundraising, and help expand the community of UVU supporters.</p>
+         </div>
+         <div class="col-xs-12 col-sm-6 col-target region al-split-media" data-uvu-region="2">
+               <article class="al-card">
+                  <div class="al-card-tag"><img src="../_kit/icons/white/team.svg" data-cms-src="/alumni/lib/icons/white/team.svg" alt="" width="48" height="48"><span class="mock-copy-flag" title="Placeholder label. Live: “Members are expected to:” at the end of the intro.">Member Expectations</span></div>
+                  <div class="al-card-body">
+                     <ul class="al-checklist">
+                        <li>Attend three board meetings per year and participate in task forces, events, and functions as requested.</li>
+                        <li>Review agenda and supporting materials prior to board meetings.</li>
+                        <li>Be familiar with the programs and activities sponsored, organized, and coordinated by the Office of Alumni Relations.</li>
+                        <li>Understand and help contribute to reaching the UVU Alumni goals around engagement and impact.</li>
+                        <li>Make an annual financial contribution to the UVU Foundation.</li>
+                        <li>Volunteer for at least one UVU Alumni program per year to experience the impact of our collective effort and provide feedback and insights on what went well in addition to opportunities for improvement.</li>
+                     </ul>
+                  </div>
+                  <div class="al-card-foot"><div class="al-notice"><img src="../_kit/icons/green/info-1.svg" data-cms-src="/alumni/lib/icons/green/info-1.svg" alt="" width="48" height="48"><p>Requests to join are currently closed. Please check back later.</p></div></div>
+               </article>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 3 · template: one-col
+     Board grid. Officers first, then A–Z (live order). The live page hides every photo and title inside a closed accordion; cards show them at a glance. Alt text is the name only (live alt “photo of …” repeats what a screen reader already announces). -->
+<section data-uvu-template="one-col" data-uvu-section="3" class="al-section al-section--warm">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <div class="al-section-head">
+                  <h2><span class="mock-copy-flag" title="Live: “The Alumni Board of Directors.” Adding the term tells visitors the list is current and reminds editors to update it each year.">2025–26 Board of Directors</span></h2>
+               </div>
+               <ul class="al-grid al-grid--4 al-grid--people">
+                  <li class="al-person">
+                     <img src="assets/jared-finch.png" data-cms-src="/alumni/about/images/alumni-association-advisory-board/2025-26/jared-finch.png" alt="Jared Finch" width="400" height="600" loading="lazy">
+                     <h3>Jared Finch ’01</h3>
+                     <p><span class="al-person-role">Board President</span>Senior Global Sales Executive, Morris Meetings &amp; Incentives</p>
+                  </li>
+                  <li class="al-person">
+                     <img src="assets/matthew-bryson.png" data-cms-src="/alumni/about/images/alumni-association-advisory-board/2025-26/matthew-bryson.png" alt="Matt Bryson" width="400" height="600" loading="lazy">
+                     <h3>Matt Bryson ’17</h3>
+                     <p><span class="al-person-role">Board Vice President</span>Head of Product and Engineering, Velvet</p>
+                  </li>
+                  <li class="al-person">
+                     <img src="assets/mikelle_blackner_2.png" data-cms-src="/alumni/about/images/alumni-association-advisory-board/2025-26/mikelle_blackner_2.png" alt="Mikelle Blackner" width="400" height="600" loading="lazy">
+                     <h3>Mikelle Blackner ’03</h3>
+                     <p>Educator</p>
+                  </li>
+                  <li class="al-person">
+                     <img src="assets/brandon-davies.png" data-cms-src="/alumni/about/images/alumni-association-advisory-board/2025-26/brandon-davies.png" alt="Brandon Davies" width="400" height="600" loading="lazy">
+                     <h3>Brandon Davies ’15</h3>
+                     <p>Senior Associate Analytical Chemist, Rhyz Labs</p>
+                  </li>
+                  <li class="al-person">
+                     <img src="assets/madison-heywood.png" data-cms-src="/alumni/about/images/alumni-association-advisory-board/2025-26/madison-heywood.png" alt="Maddie Heywood" width="400" height="600" loading="lazy">
+                     <h3>Maddie Heywood ’20</h3>
+                     <p>Senior Events Coordinator, Cardone Ventures</p>
+                  </li>
+                  <li class="al-person">
+                     <img src="assets/megan-johnson.png" data-cms-src="/alumni/about/images/alumni-association-advisory-board/2025-26/megan-johnson.png" alt="Megan Johnson" width="400" height="600" loading="lazy">
+                     <h3>Megan Johnson ’08</h3>
+                     <p>President, Spanish Fork Hospital</p>
+                  </li>
+                  <li class="al-person">
+                     <img src="assets/andre-jones.png" data-cms-src="/alumni/about/images/alumni-association-advisory-board/2025-26/andre-jones.png" alt="Andre Jones" width="400" height="600" loading="lazy">
+                     <h3>Andre Jones ’18</h3>
+                     <p>Alumni in Residence, DC Wolverines</p>
+                  </li>
+                  <li class="al-person">
+                     <img src="assets/skyler-payne.jpg" data-cms-src="/alumni/about/images/alumni-association-advisory-board/skyler-payne.jpg" alt="Skyler Payne" width="400" height="600" loading="lazy">
+                     <h3><span class="mock-copy-flag" title="Live: “Skyler Payne ’19 FPA ’23.” Reformatted to the UVU A–Z citation for two degrees. Note: the UVU style guide’s own example lists Skyler Payne as ’18, Personal Financial Planning. Confirm the year.">Skyler Payne ’19 and ’23, FPA</span></h3>
+                     <p>Private Banker, J.P. Morgan</p>
+                  </li>
+                  <li class="al-person">
+                     <img src="assets/ben-perkins.png" data-cms-src="/alumni/about/images/alumni-association-advisory-board/2025-26/ben-perkins.png" alt="Ben Perkins" width="400" height="600" loading="lazy">
+                     <h3>Ben Perkins ’19</h3>
+                     <p>Founder, &amp;Collar</p>
+                  </li>
+                  <li class="al-person">
+                     <img src="assets/jordan-perry.png" data-cms-src="/alumni/about/images/alumni-association-advisory-board/2025-26/jordan-perry.png" alt="Jordan Perry" width="400" height="600" loading="lazy">
+                     <h3><span class="mock-copy-flag" title="No class year on the live page. Confirm whether Jordan is an alum (add the year) or a community member.">Jordan Perry</span></h3>
+                     <p><span class="mock-copy-flag" title="Live: “AVP of Digital Marketing.” Spelled out to match the other titles.">Assistant Vice President of Digital Marketing, UCCU</span></p>
+                  </li>
+                  <li class="al-person">
+                     <img src="assets/cassidy-read.png" data-cms-src="/alumni/about/images/alumni-association-advisory-board/2025-26/cassidy-read.png" alt="Cassidy Read" width="400" height="600" loading="lazy">
+                     <h3>Cassidy Read ’13</h3>
+                     <p>Senior Vice President, Goldman Sachs</p>
+                  </li>
+                  <li class="al-person">
+                     <img src="assets/ryan-teeples.jpg" data-cms-src="/alumni/about/images/alumni-association-advisory-board/ryan-teeples.jpg" alt="Ryan Teeples" width="400" height="600" loading="lazy">
+                     <h3>Ryan Teeples ’05</h3>
+                     <p>Enterprise Technology and AI Strategy Leader</p>
+                  </li>
+               </ul>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 4 · template: one-col
+     Past presidents, most recent first. Live keeps this inside an accordion; 20 short rows read fine open. -->
+<section data-uvu-template="one-col" data-uvu-section="4" class="al-section">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <div class="al-section-head">
+                  <h2>Past Presidents</h2>
+               </div>
+               <ul class="al-roster">
+                  <li><span class="al-roster-key">2022–25</span><span><span class="mock-copy-flag" title="Live: “2022–2025.” Shortened to match every other entry.">Kara H. North</span></span></li>
+                  <li><span class="al-roster-key">2019–22</span><span>Dru A. Huffaker</span></li>
+                  <li><span class="al-roster-key">2016–19</span><span><span class="mock-copy-flag" title="Gap on the live list: nobody is listed for 2016–19.">—</span></span></li>
+                  <li><span class="al-roster-key">2013–16</span><span><span class="mock-copy-flag" title="Live lists both Gappmayer and Blair for 2013–16 and nobody for 2016–19. Likely Gappmayer is 2016–19. Confirm.">John R. Gappmayer</span></span></li>
+                  <li><span class="al-roster-key">2013–16</span><span>Curtis B. Blair</span></li>
+                  <li><span class="al-roster-key">2011–13</span><span>Curtis J. Morley</span></li>
+                  <li><span class="al-roster-key">2009–11</span><span>T.J. Fund</span></li>
+                  <li><span class="al-roster-key">2008–09</span><span>J. Scott Jenkins</span></li>
+                  <li><span class="al-roster-key">2006–08</span><span>Thomas C. Powell</span></li>
+                  <li><span class="al-roster-key">2004–06</span><span>B.J. Wright</span></li>
+                  <li><span class="al-roster-key">2002–04</span><span>Tom Heal</span></li>
+                  <li><span class="al-roster-key">2000–02</span><span>Barbara A. Smith</span></li>
+                  <li><span class="al-roster-key">1997–2000</span><span>Dave F. Adams</span></li>
+                  <li><span class="al-roster-key">1995–97</span><span>Jeffery Kahn</span></li>
+                  <li><span class="al-roster-key">1994–95</span><span>Geri S. Clements</span></li>
+                  <li><span class="al-roster-key">1993–94</span><span>Bill A. Brown</span></li>
+                  <li><span class="al-roster-key">1992–93</span><span>Greg S. Nelson</span></li>
+                  <li><span class="al-roster-key">1991–92</span><span>David D. Halladay</span></li>
+                  <li><span class="al-roster-key">1990–91</span><span>Brent J. DeMille</span></li>
+                  <li><span class="al-roster-key">1989–90</span><span>John W. Startup</span></li>
+               </ul>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- SECTION 5 · template: one-col · ALUMNI FOOTER: section nav + contact. Identical on every alumni page
+     (the current page gets aria-current). Replaces the old full-height contact band.
+     The office name also goes in the CMS dept footer (#globalFooter .footerDept). -->
+<section data-uvu-template="one-col" data-uvu-section="5" class="al-section al-sitenav">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+            <nav class="al-sitenav-nav" aria-label="UVU Alumni">
+               <div class="al-sitenav-brand">
+                  <p class="al-sitenav-title"><a href="../alumni-home/index.html" data-cms-href="/alumni/index.html">UVU Alumni Relations</a></p>
+                  <ul class="al-sitenav-contact">
+                     <li><img src="../_kit/icons/white/envelope-1.svg" data-cms-src="/alumni/lib/icons/white/envelope-1.svg" alt="" width="48" height="48"><a href="mailto:alumni@uvu.edu">alumni@uvu.edu</a></li>
+                     <li><img src="../_kit/icons/white/cell.svg" data-cms-src="/alumni/lib/icons/white/cell.svg" alt="" width="48" height="48"><a href="tel:+18018638179">801.863.8179</a></li>
+                  </ul>
+                  <ul class="al-social"><li><a href="https://www.instagram.com/uvualumni/" target="_blank" rel="noopener"><img src="../_kit/icons/green/social-instagram.svg" data-cms-src="/alumni/lib/icons/green/social-instagram.svg" alt="UVU Alumni on Instagram (opens in a new tab)" width="48" height="48"></a></li><li><a href="https://www.facebook.com/uvualumni" target="_blank" rel="noopener"><img src="../_kit/icons/green/social-facebook-f.svg" data-cms-src="/alumni/lib/icons/green/social-facebook-f.svg" alt="UVU Alumni on Facebook (opens in a new tab)" width="48" height="48"></a></li><li><a href="https://www.linkedin.com/showcase/uvualumni" target="_blank" rel="noopener"><img src="../_kit/icons/green/social-linkedin-in.svg" data-cms-src="/alumni/lib/icons/green/social-linkedin-in.svg" alt="UVU Alumni on LinkedIn (opens in a new tab)" width="48" height="48"></a></li><li><a href="https://www.youtube.com/@uvualumni" target="_blank" rel="noopener"><img src="../_kit/icons/green/social-youtube.svg" data-cms-src="/alumni/lib/icons/green/social-youtube.svg" alt="UVU Alumni on YouTube (opens in a new tab)" width="48" height="48"></a></li></ul>
+               </div>
+               <div class="al-sitenav-groups">
+                  <div class="al-sitenav-group"><h2>Connect</h2><ul><li><a href="https://www.uvu.edu/events/index.html">Events</a></li><li><a href="https://www.uvu.edu/news/features/index.html#alumni">Alumni Stories</a></li><li><a href="../forever-wolverines-podcast/index.html" data-cms-href="/alumni/connect/forever-wolverines-podcast.html">Forever Wolverines Podcast</a></li><li><a href="../aviation-alumni-chapter/index.html" data-cms-href="/alumni/connect/aviation-alumni-chapter.html">Aviation Alumni Chapter</a></li><li><a href="../career-networking-resources/index.html" data-cms-href="/alumni/connect/career-networking-resources.html">Career and Networking Resources</a></li></ul></div>
+                  <div class="al-sitenav-group"><h2>Benefits</h2><ul><li><a href="../alumni-benefits/index.html" data-cms-href="/alumni/resources/benefits/alumni-benefits.html">Alumni Benefits</a></li><li><a href="../alumni-diplomas/index.html" data-cms-href="/alumni/resources/diplomas.html">Diplomas</a></li><li><a href="https://alumni.uvu.edu/profile/me" target="_blank" rel="noopener">Update Your Alumni Profile<span class="sr-only-al"> (opens in a new tab)</span></a></li></ul></div>
+                  <div class="al-sitenav-group"><h2>Make an Impact</h2><ul><li><a href="../alumni-scholarships/index.html" data-cms-href="/alumni/make-an-impact/alumni-scholarships.html">Alumni Scholarships</a></li><li><a href="../uvu-license-plate/index.html" data-cms-href="/alumni/make-an-impact/uvu-license-plate.html">UVU License Plate</a></li><li><a href="../alumni-job-shadow/index.html" data-cms-href="/alumni/volunteer/job-shadow.html">Job Shadow Program</a></li><li><a href="https://www.uvu.edu/give/">Give to UVU</a></li></ul></div>
+                  <div class="al-sitenav-group"><h2>Students and About</h2><ul><li><a href="../graduating-students/index.html" data-cms-href="/alumni/students/graduating-students.html">Graduating Students</a></li><li><a href="../about-saa/index.html" data-cms-href="/alumni/students/about-saa.html">Student Alumni Ambassadors</a></li><li><a href="../alumni-awards/index.html" data-cms-href="/alumni/about/alumni-awards.html">Alumni Awards</a></li><li><a href="../alumni-board/index.html" data-cms-href="/alumni/about/alumni-association-advisory-board.html" aria-current="page">Board of Directors</a></li></ul></div>
+               </div>
+               <p class="al-sitenav-fine">A UVU alum is anyone who graduated with a certificate, diploma, or degree from UVU or any of its past eras (CUVS, UTTI, UTC, UVCC, UVSC, or UVU).</p>
+            </nav>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- ===== CMS CONTENT END ===== -->
+</main>
+<!-- ===== GLOBAL FOOTER (CMS template; context only) ===== -->
+<footer id="globalFooter">
+	<div class="footerDept">
+		<ul><li>Office of Alumni Relations</li><li>Utah Valley University</li></ul>
+	</div>
+	<div class="footerUniversity" lang="en">
+		<div class="footerUniversity-top">
+<div class="container-fluid">
+<div class="row equal-height uppercase">
+<div class="col-sm-3">
+<div>
+<h2>Student</h2>
+<ul>
+<li><a href="https://www.uvu.edu/admissions/">Admissions</a></li>
+<li><a href="https://www.uvu.edu/campus-life/index.html">Campus Life</a></li>
+<li><a href="https://www.uvu.edu/students/">Current Student</a></li>
+<li><a href="https://www.uvu.edu/accreditation-academic-assessment/index.html">Accreditation</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Employees</h2>
+<ul>
+<li><a href="https://www.uvu.edu/peopleandculture/jobs/index.html">Career Opportunities</a></li>
+<li><a href="https://www.uvu.edu/facstaff/">Employee Resources</a></li>
+<li><a href="https://www.uvu.edu/directory/">Directory</a></li>
+<li><a href="https://www.uvu.edu/peopleandculture/">People &amp; Culture</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Community</h2>
+<ul>
+<li><a href="https://gouvu.com/" target="_blank" rel="noopener">Athletics</a></li>
+<li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li>
+<li><a href="https://www.uvu.edu/president/">Office of the President</a></li>
+<li><a href="https://www.uvu.edu/visitors/history.html">About UVU / History</a></li>
+<li><a href="https://alumni.uvu.edu/" target="_blank" rel="noopener">Alumni</a></li>
+<li><a href="https://www.uvu.edu/engagement-and-effectiveness/index.html">Engagement &amp; Effectiveness</a></li>
+<li><a href="https://www.uvu.edu/give/index.html" target="_blank" rel="noopener">Give to UVU</a></li>
+<li><a href="https://www.uvu.edu/visitors/contact.html">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Utility</h2>
+<ul>
+<li><a href="https://www.uvu.edu/maps/">Maps / Parking</a></li>
+<li><a href="https://www.uvu.edu/servicedesk/">Service Desk</a></li>
+<li><a href="https://www.uvu.edu/emergencymanagement/index.html">Emergency</a></li>
+<li><a href="https://www.uvu.edu/police/">Police</a></li>
+<li><a href="https://www.uvu.edu/servicedesk/">Get Help</a></li>
+<li><a href="https://www.uvu.edu/search/">Search</a></li>
+<li><a href="https://www.uvu.edu/accessibility-services/index.html">Accessibility</a></li>
+<li><a href="https://www.uvu.edu/accessibility-services/access-barrier.php">Report Access Barrier</a></li>
+<li><a href="https://www.uvu.edu/equityandtitleix/index.html">Title IX / Equal Opportunity</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footerUniversity-bottom">
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-12">
+<ul class="footerUniversity-quicklinks">
+<li><a href="https://www.uvu.edu/news/"><span class="far fa-newspaper" aria-hidden="true">&nbsp;</span>News</a></li>
+<li><a href="https://www.uvu.edu/events/"><span class="far fa-calendar-day" aria-hidden="true">&nbsp;</span>Events</a></li>
+</ul>
+<div class="footerUniversity-title uppercase">Utah Valley University</div>
+<ul class="footerUniversity-contact uppercase">
+<li><a title="See Utah Valley University on Google Maps" href="https://goo.gl/maps/9SQ5CSuqAoG1gw6J8">800&nbsp;West&nbsp;University&nbsp;Parkway,&nbsp;Orem,&nbsp;UT&nbsp;84058</a></li>
+<li>(801)&nbsp;863-8888</li>
+<li><a href="https://www.uvu.edu/legal/copyright/">© Utah Valley University</a></li>
+</ul>
+<ul class="footerUniversity-legalinfo">
+<li><a href="https://www.uvu.edu/legal/index.html">Terms of Use</a></li>
+<li><a href="https://www.uvu.edu/legal/privacy.html">Privacy Statement</a></li>
+<li><a href="https://www.uvu.edu/legal/copyright/copyright-infringement.html">Copyright Complaints</a></li>
+<li><a href="https://www.uvu.edu/legal/non-discrimination.html">Non-Discrimination and Accessibility Statement</a></li>
+</ul>
+<ul class="university-social"><li><a title="Opens UVU's Linkedin profile in a new tab" href="https://www.linkedin.com/school/utah-valley-university/" target="_blank" rel="external noopener"> <span class="fab fa-linkedin" aria-hidden="true"></span> <span class="sr-only">Linkedin</span> </a></li>
+<li><a title="Opens UVU's Instagram profile in a new tab" href="https://www.instagram.com/utah.valley.university/" target="_blank" rel="external noopener"> <span class="fab fa-instagram" aria-hidden="true"></span> <span class="sr-only">Instagram</span> </a></li>
+<li><a title="Opens UVU's Facebook profile in a new tab" href="https://www.facebook.com/UtahValleyUniversity/" target="_blank" rel="external noopener"> <span class="fab fa-facebook-square" aria-hidden="true"></span> <span class="sr-only">Facebook</span> </a></li>
+<li><a title="Opens UVU's YouTube channel in a new tab" href="https://www.youtube.com/user/UtahValleyUniversity" target="_blank" rel="external noopener"> <span class="fab fa-youtube-square" aria-hidden="true"></span> <span class="sr-only">YouTube</span> </a></li>
+<li><a title="Opens the UVU Athletics site in a new tab" href="https://gouvu.com/" target="_blank" rel="external noopener"><img src="../_kit/img/wolverine-logo.svg" alt="UVU Athletics logo" aria-hidden="true"><span class="sr-only">Athletics</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+	</div>
+</footer>
+</body>
+</html>

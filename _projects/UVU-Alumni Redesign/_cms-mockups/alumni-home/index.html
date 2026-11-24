@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<!-- =====================================================================
+     UVU ALUMNI WEB SYSTEM v1 · CMS MOCKUP · Alumni
+     Live URL: https://www.uvu.edu/alumni/
+     Styles: UVU production CSS snapshot + ../_kit/css/12-alumni-system.css
+     See ../README.md and ../_kit/styleguide.html
+     ===================================================================== -->
+<html lang="en" dir="ltr" style="--headroom-height: 123px;">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+<meta name="color-scheme" content="only light">
+<meta name="description" content="Utah Valley University Alumni Association: events, benefits, scholarships, and ways to stay connected.">
+<title>Alumni | Utah Valley University</title>
+
+<!-- ===== UVU production CSS (snapshot) ===== -->
+<link rel="stylesheet" href="../_kit/css/01-bootstrap.min.css">
+<link rel="stylesheet" href="../_kit/css/02-global.css">
+<link rel="stylesheet" href="../_kit/css/03-component.css">
+<link rel="stylesheet" href="../_kit/css/04-helpers-legacy.css">
+<link rel="stylesheet" href="../_kit/css/05-elements.css">
+<link rel="stylesheet" href="../_kit/css/06-helpers.css">
+<link rel="stylesheet" href="../_kit/css/07-wrapper.css">
+<link rel="stylesheet" href="../_kit/css/08-fonts.css">
+<link rel="stylesheet" href="../_kit/css/09-homepage-wrapper.css">
+<link rel="stylesheet" href="../_kit/css/10-homepage-dept.css">
+<link rel="stylesheet" href="../_kit/css/11-fontawesome-pro.css">
+
+<!-- ===== Alumni Web System (the only alumni stylesheet a page needs) ===== -->
+<link rel="stylesheet" href="../_kit/css/12-alumni-system.css">
+<!-- ===== Mockup-only tools. Not for production. ===== -->
+<link rel="stylesheet" href="../_kit/css/99-mockup-tools.css">
+<script src="../_kit/js/mockup-tools.js"></script>
+</head>
+<body id="alumni-home" class="UVU_Public_Site utah-valley-university alumni-home marketing homepage audience DeptNav DeptFooter">
+
+<!-- ===== GLOBAL HEADER (CMS template; context only) ===== -->
+<header id="globalHeader" class="headroom" role="banner" aria-label="Primary Site banner" lang="en" data-import="false">
+					<div id="mquery"></div>
+					<a class="skiptocontent sr-only" href="#content-wrap">Skip to main content</a>
+					<noscript id="noJS">You have JavaScript Disabled! UVU's websites will not work properly without javascript. Please enable JavaScript to continue using UVU's websites as intended.</noscript>
+					<div class="globalHeaderMain">
+						<div class="slideNavToggle classy ready" role="button" aria-label="Open university and departmental navigation" aria-controls="slideNav" tabindex="0" data-classy-action="on" data-classy-declick="body" data-import="false" data-classy-group="all">
+							<img src="../_kit/img/hmbgr-menu.svg" alt="Menu and search icon">
+						</div>
+						<a class="globalTitle" href="https://www.uvu.edu/" title="Utah Valley University Homepage" hreflang="en">
+							<img src="../_kit/img/uvu-mono.svg" alt="Utah Valley University logo">
+						</a>
+						<a class="deptTitle" href="https://www.uvu.edu/" lang="en" hreflang="en" title="Site homepage">
+							Utah Valley University
+						</a>
+						<div class="actionBar">
+							<ul class="global-quicklinks">
+	<li><a href="https://www.uvu.edu/admissions/#degree-type">Apply to UVU</a></li>
+	<li><a href="https://my.uvu.edu/"><svg id="Group_3615" data-name="Group 3615" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.845 24.485">
+  <path id="Path_3937" data-name="Path 3937" d="M388.908,537.07H358.463a.806.806,0,0,1,0-1.611h30.445a.806.806,0,0,1,0,1.611m-29.51-3.757,4.208-6.721a.809.809,0,0,1,.686-.38h5.359l3.193,5.534a1.1,1.1,0,0,0,1.9,0l3.191-5.532H383.1a.81.81,0,0,1,.685.379l4.218,6.724a.81.81,0,0,1-.685,1.24l-27.237-.007a.81.81,0,0,1-.685-1.24m5.4-17.195a.654.654,0,0,1,.924-.875l7.693,5.04a.74.74,0,0,0,.81,0l7.634-5a.655.655,0,0,1,.925.876L374.441,530.6a.74.74,0,0,1-1.281,0Zm25.549,19.23-6-9.542a.978.978,0,0,0-.828-.458l-5.088,0,5.882-10.2a1.1,1.1,0,0,0-1.534-1.476l-8.4,5.3a1.1,1.1,0,0,1-1.17,0l-8.42-5.322a1.1,1.1,0,0,0-1.534,1.476l5.9,10.223-5.315,0a.978.978,0,0,0-.829.46l-5.969,9.5a1.71,1.71,0,0,0,1.427,2.65H388.9a1.71,1.71,0,0,0,1.447-2.619" transform="translate(-356.761 -513.482)" fill="currentColor"></path>
+</svg>
+myUVU</a></li>
+</ul>
+							<div id="mainSearch">
+								<a class="lightbox" href="#" data-lity="true" title="Open search box" data-import="false" data-lity-target="#globalSearch-container"><span class="fas fa-search" aria-hidden="true"></span></a>
+								<div id="globalSearch-container" class="lity-hide">
+									<form id="globalSearch" role="search" aria-label="Search UVU" method="get" action="https://www.uvu.edu/search">
+										<div id="globalSearchArea">
+											<label for="globalSearchInput" class="sr-only">Enter search terms</label>
+											<div class="search-group">
+												<label aria-hidden="true">I'm looking for:</label>
+												<input type="text" id="globalSearchInput" class="quicksearch" name="query" value="" autocomplete="off" data-quicksearch-out="#globalSearchSuggest" data-import="false">
+											</div>
+											<div id="globalSearchSuggest" aria-hidden="true"></div>
+											<input type="submit" title="Search UVU" id="globalSearchSubmit" value="Go">
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<nav id="deptNav" role="navigation" aria-label="Department Navigation">
+						<div class="deptNavWrap" lang="en">
+								<ul><li><a href="https://www.uvu.edu/admissions/">Admissions</a></li><li><a href="https://www.uvu.edu/campus-life/">Campus Life</a></li><li><a href="https://www.uvu.edu/academics/">Academics</a></li><li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li><li><a href="https://www.uvu.edu/news/">Content Hub</a></li><li><a href="https://www.uvu.edu/alumni/">Alumni</a></li><li><a href="https://www.uvu.edu/give/">Give</a></li><li><a href="https://www.uvu.edu/about/">About</a></li></ul>
+						</div>
+					</nav>
+				</header>
+				<section id="slideNav" aria-expanded="false" aria-label="University Navigation" tabindex="-1" lang="en" data-classy-group="all" class="ready">
+					<div class="menu-body">
+						<header>
+							<img src="../_kit/img/uvu-mono.svg" alt="Utah Valley University logo">
+							<p class="h1">Utah Valley University</p>
+							<span class="far fa-times-circle tabClose classy ready" role="button" title="Close Menu" aria-controls="slideNav" aria-label="Close University Navigation" data-classy-action="off" tabindex="-1" aria-hidden="true" data-import="false" data-classy-group="all">&nbsp;</span><span class="sr-only">Close Menu</span>
+						</header>
+						<form id="slideSearch" role="search" aria-label="UVU Search" action="https://www.uvu.edu/search/">
+							<label for="slideSearchInput" class="sr-only">Enter search terms</label><input type="text" id="slideSearchInput" class="quicksearch" name="query" placeholder="I'm looking for..." autocomplete="off" data-quicksearch-out="#slideSearchSuggest" data-import="false">
+							<input type="submit" value="" id="slideSearchSubmit" class="quicksearch" aria-label="Submit Search" title="Submit Search" data-import="false">
+							<div id="slideSearchSuggest" aria-hidden="true"></div>
+						</form>
+						<ul class="global-quicklinks">
+	<li><a href="https://www.uvu.edu/admissions/#degree-type">Apply to UVU</a></li>
+	<li><a href="https://my.uvu.edu/"><svg id="Group_3615" data-name="Group 3615" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.845 24.485">
+  <path id="Path_3937" data-name="Path 3937" d="M388.908,537.07H358.463a.806.806,0,0,1,0-1.611h30.445a.806.806,0,0,1,0,1.611m-29.51-3.757,4.208-6.721a.809.809,0,0,1,.686-.38h5.359l3.193,5.534a1.1,1.1,0,0,0,1.9,0l3.191-5.532H383.1a.81.81,0,0,1,.685.379l4.218,6.724a.81.81,0,0,1-.685,1.24l-27.237-.007a.81.81,0,0,1-.685-1.24m5.4-17.195a.654.654,0,0,1,.924-.875l7.693,5.04a.74.74,0,0,0,.81,0l7.634-5a.655.655,0,0,1,.925.876L374.441,530.6a.74.74,0,0,1-1.281,0Zm25.549,19.23-6-9.542a.978.978,0,0,0-.828-.458l-5.088,0,5.882-10.2a1.1,1.1,0,0,0-1.534-1.476l-8.4,5.3a1.1,1.1,0,0,1-1.17,0l-8.42-5.322a1.1,1.1,0,0,0-1.534,1.476l5.9,10.223-5.315,0a.978.978,0,0,0-.829.46l-5.969,9.5a1.71,1.71,0,0,0,1.427,2.65H388.9a1.71,1.71,0,0,0,1.447-2.619" transform="translate(-356.761 -513.482)" fill="currentColor"></path>
+</svg>
+myUVU</a></li>
+</ul>
+						<div id="breadcrumbContainer">
+							<nav class="breadcrumbNav" id="breadcrumbNav" aria-label="breadcrumb" tabindex="-1">
+								<div class="breadcrumbScroll">
+								</div>
+								<div class="breadcrumbScroll-left"></div>
+								<div class="breadcrumbScroll-right"></div>
+							</nav>
+						</div>
+						<div id="slideMenuDept" class="active" aria-label="Department Menu">
+							<nav class="slideDeptNav" aria-label="Department Navigation in side menu" lang="en">
+									<ul><li><a href="https://www.uvu.edu/admissions/">Admissions</a></li><li><a href="https://www.uvu.edu/campus-life/">Campus Life</a></li><li><a href="https://www.uvu.edu/academics/">Academics</a></li><li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li><li><a href="https://www.uvu.edu/news/">Content Hub</a></li><li><a href="https://www.uvu.edu/alumni/">Alumni</a></li><li><a href="https://www.uvu.edu/give/">Give</a></li><li><a href="https://www.uvu.edu/about/">About</a></li></ul>
+							</nav>
+						</div>
+						<div id="globalNav">
+						</div>
+					</div>
+				</section>
+      
+<main id="content-wrap" class="content-wrap">
+<!-- ===== CMS CONTENT START · each <section> = one OU section ===== -->
+
+<!-- SECTION 1 · template: header-fullbleed
+     ASSET: assets/alumni-home-header.jpg (1920x700 raw photo; the green fade is CSS). CMS: /alumni/images/alumni-home-header.jpg
+     PHONES: assets/alumni-home-header-mobile.jpg (1080x1350 vertical, people centered). CMS: /alumni/images/alumni-home-header-mobile.jpg -->
+<section class="page-header jumbo fullbleed container-narrow al-hero" style="background-image: url(assets/alumni-home-header.jpg);" data-cms-bg="/alumni/images/alumni-home-header.jpg" data-uvu-template="header-fullbleed" data-uvu-section="1">
+   <div class="al-hero-m" style="background-image: url(assets/alumni-home-header-mobile.jpg);" data-cms-bg="/alumni/images/alumni-home-header-mobile.jpg" aria-hidden="true"></div>
+   <div class="container-fluid">
+      <header class="fullbleed-overlay contain text-invert">
+            <h1>Show Your School Spirit as UVU Alumni</h1>
+            <div class="al-actions"><a class="al-btn al-btn--light al-btn--ext" href="https://alumni.uvu.edu/profile/me" target="_blank" rel="noopener">Claim Your Alumni Profile<span class="sr-only-al"> (opens in a new tab)</span></a></div>
+      </header>
+   </div>
+</section>
+<!-- SECTION 2 · template: one-col
+     Quick links. Icons: UVU Icon Library (green). -->
+<section data-uvu-template="one-col" data-uvu-section="2" class="al-section">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <h2 class="sr-only-al">Explore Alumni Relations</h2>
+               <ul class="al-quicklinks">
+                  <li><a href="https://www.uvu.edu/events/index.html"><img src="../_kit/icons/green/calendar.svg" data-cms-src="/alumni/lib/icons/green/calendar.svg" alt="" width="48" height="48"><span>Events</span></a></li>
+                  <li><a href="https://alumni.uvu.edu/page/business-directory" target="_blank" rel="noopener"><img src="../_kit/icons/green/business.svg" data-cms-src="/alumni/lib/icons/green/business.svg" alt="" width="48" height="48"><span>Alumni Businesses</span><span class="sr-only-al"> (opens in a new tab)</span></a></li>
+                  <li><a href="https://www.uvu.edu/alumni/make-an-impact/uvu-license-plate.html"><img src="../_kit/icons/green/automotive.svg" data-cms-src="/alumni/lib/icons/green/automotive.svg" alt="" width="48" height="48"><span>License Plate</span></a></li>
+                  <li><a href="https://www.uvu.edu/alumni/make-an-impact/alumni-scholarships.html"><img src="../_kit/icons/green/diploma-3.svg" data-cms-src="/alumni/lib/icons/green/diploma-3.svg" alt="" width="48" height="48"><span>Scholarships</span></a></li>
+                  <li><a href="https://www.uvu.edu/alumni/students/about-saa.html"><img src="../_kit/icons/green/communicate.svg" data-cms-src="/alumni/lib/icons/green/communicate.svg" alt="" width="48" height="48"><span>Alumni Ambassadors</span></a></li>
+                  <li><a href="https://www.uvu.edu/alumni/students/graduating-students.html"><img src="../_kit/icons/green/graduation.svg" data-cms-src="/alumni/lib/icons/green/graduation.svg" alt="" width="48" height="48"><span>Graduates</span></a></li>
+                  <li><a href="https://www.uvu.edu/alumni/resources/benefits/alumni-benefits.html"><img src="../_kit/icons/green/credit-cards.svg" data-cms-src="/alumni/lib/icons/green/credit-cards.svg" alt="" width="48" height="48"><span>Alumni Benefits</span></a></li>
+               </ul>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 3 · template: one-col
+     Intro statement. Same pattern opens every page that has one. -->
+<section data-uvu-template="one-col" data-uvu-section="3" class="al-section">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <div class="al-section-head">
+                  <h2>Once a Wolverine, Always a Wolverine</h2>
+                  <p class="al-lead">The Office of Alumni Relations helps our UVU alumni community—more than 120,000 strong—thrive. We connect alumni to UVU, current students, and each other through diverse and impactful programs, communications, and volunteer opportunities.</p>
+               </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 4 · template: two-col -->
+<section data-uvu-template="two-col" data-uvu-section="4" class="al-section">
+   <div class="container-fluid">
+      <div class="row equal-height flex-row al-split">
+         <div class="col-xs-12 col-sm-6 col-target region" data-uvu-region="1">
+               <h2>Stay Connected</h2>
+               <p class="al-lead">Be the first to know about UVU alumni events, benefits, and volunteer opportunities by making sure your contact information is up to date.</p>
+               <p>Manage your subscriptions and start receiving the Wolverine Minute monthly newsletter through <a href="https://alumni.uvu.edu/profile/me">your alumni profile</a>.</p>
+               <div class="al-actions"><a class="al-btn al-btn--ext" href="https://alumni.uvu.edu/login" target="_blank" rel="noopener">Update Your Alumni Profile<span class="sr-only-al"> (opens in a new tab)</span></a><p class="al-btn-note"><span class="mock-copy-flag" title="New microcopy: sets the login expectation before the click.">You’ll log in on the UVU alumni site.</span></p></div>
+         </div>
+         <div class="col-xs-12 col-sm-6 col-target region al-split-media" data-uvu-region="2">
+               <figure class="al-media al-media--hatch"><img src="assets/alumni-home-stayconnected.jpg" data-cms-src="/alumni/images/alumni-home-stayconnected.jpg" alt="UVU alum working on a laptop by a window overlooking campus" width="1200" height="900" loading="lazy"></figure>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 5 · template: two-col
+     Promo band. Replaces the XD "[Rotating CTA]" header: the promo itself is the heading. White now: the podcast band below is warm. -->
+<section data-uvu-template="two-col" data-uvu-section="5" class="al-section">
+   <div class="container-fluid">
+      <div class="row equal-height flex-row al-split">
+         <div class="col-xs-12 col-sm-6 col-target region" data-uvu-region="1">
+               <h2>Wolverine Pride Wherever You Go</h2>
+               <p class="al-lead">With three unique options to choose from, there’s a card designed to fit your lifestyle. Each one offers distinct advantages to support your financial journey while celebrating your connection to UVU.</p>
+               <div class="al-actions"><a class="al-btn" href="https://uvu.edu/wolverinecard">Apply for the Wolverine Card</a></div>
+               <p class="al-meta"><span class="mock-todo">ROTATING PROMO SLOT · current item: Wolverine Card</span></p>
+         </div>
+         <div class="col-xs-12 col-sm-6 col-target region al-split-media" data-uvu-region="2">
+               <img class="al-product" src="assets/alumni-wolverinecard.png" data-cms-src="/alumni/images/alumni-wolverinecard.png" alt="Green and black UVU Wolverine Visa cards" width="828" height="572">
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 6 · template: two-col
+     Latest episode as a linked photo (guest and host, not the show logo; the Spotify show embed displayed the logo artwork). Update with each new episode. Replaces the Alumni Stories card row (per Zoe): the podcast is the alumni-made story channel. Stories now link out to UVU News features (alumni filter), which Central is building anyway. Events link to the university calendar. -->
+<section data-uvu-template="two-col" data-uvu-section="6" class="al-section al-section--warm">
+   <div class="container-fluid">
+      <div class="row equal-height flex-row al-split">
+         <div class="col-xs-12 col-sm-6 col-target region" data-uvu-region="1">
+               <h2>Forever Wolverines Podcast</h2>
+               <p class="al-lead">The Forever Wolverines podcast is created and produced by the UVU Student Alumni Ambassadors. Each ambassador selects an alum and meets with them on air.</p>
+               <p>They ask about the alum’s career, time at school, advice, and more. New episodes drop every other week.</p>
+               <div class="al-actions"><a class="al-btn" href="../forever-wolverines-podcast/index.html">Listen to the Podcast</a></div>
+               <ul class="al-linklist">
+                  <li><a href="https://www.uvu.edu/news/features/index.html#alumni"><img src="../_kit/icons/green/report.svg" data-cms-src="/alumni/lib/icons/green/report.svg" alt="" width="48" height="48">Read Alumni Stories</a></li>
+                  <li><a href="https://www.uvu.edu/events/index.html"><img src="../_kit/icons/green/calendar.svg" data-cms-src="/alumni/lib/icons/green/calendar.svg" alt="" width="48" height="48">See Upcoming Events</a></li>
+               </ul>
+         </div>
+         <div class="col-xs-12 col-sm-6 col-target region al-split-media" data-uvu-region="2">
+               <figure class="al-media al-media--stairs al-media--wide al-media--episode">
+                  <a href="https://open.spotify.com/episode/4aORjvhnM070uKeWZNUjMt" target="_blank" rel="noopener"><img src="https://i.scdn.co/image/ab6772ab000030ae35c0bd5bcfc91a07732ef3c9" data-cms-src="/alumni/connect/images/podcast/4aORjvhnM070uKeWZNUjMt.jpg" alt="Krystal Gates ’23 on the Forever Wolverines Podcast set" width="1280" height="719"><span class="al-play" aria-hidden="true"></span><span class="sr-only-al">Listen to Krystal Gates ’23 on Spotify (opens in a new tab)</span></a>
+                  <figcaption><span class="al-card-tag-text">Latest Episode · Oct. 13, 2026 · 29 min</span><strong>Krystal Gates ’23</strong> Welcome the Unexpected Through Internships · Hosted by Ike</figcaption>
+               </figure>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- SECTION 7 · template: one-col · ALUMNI FOOTER: section nav + contact. Identical on every alumni page
+     (the current page gets aria-current). Replaces the old full-height contact band.
+     The office name also goes in the CMS dept footer (#globalFooter .footerDept). -->
+<section data-uvu-template="one-col" data-uvu-section="7" class="al-section al-sitenav">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+            <nav class="al-sitenav-nav" aria-label="UVU Alumni">
+               <div class="al-sitenav-brand">
+                  <p class="al-sitenav-title"><a href="../alumni-home/index.html" data-cms-href="/alumni/index.html" aria-current="page">UVU Alumni Relations</a></p>
+                  <ul class="al-sitenav-contact">
+                     <li><img src="../_kit/icons/white/envelope-1.svg" data-cms-src="/alumni/lib/icons/white/envelope-1.svg" alt="" width="48" height="48"><a href="mailto:alumni@uvu.edu">alumni@uvu.edu</a></li>
+                     <li><img src="../_kit/icons/white/cell.svg" data-cms-src="/alumni/lib/icons/white/cell.svg" alt="" width="48" height="48"><a href="tel:+18018638179">801.863.8179</a></li>
+                  </ul>
+                  <ul class="al-social"><li><a href="https://www.instagram.com/uvualumni/" target="_blank" rel="noopener"><img src="../_kit/icons/green/social-instagram.svg" data-cms-src="/alumni/lib/icons/green/social-instagram.svg" alt="UVU Alumni on Instagram (opens in a new tab)" width="48" height="48"></a></li><li><a href="https://www.facebook.com/uvualumni" target="_blank" rel="noopener"><img src="../_kit/icons/green/social-facebook-f.svg" data-cms-src="/alumni/lib/icons/green/social-facebook-f.svg" alt="UVU Alumni on Facebook (opens in a new tab)" width="48" height="48"></a></li><li><a href="https://www.linkedin.com/showcase/uvualumni" target="_blank" rel="noopener"><img src="../_kit/icons/green/social-linkedin-in.svg" data-cms-src="/alumni/lib/icons/green/social-linkedin-in.svg" alt="UVU Alumni on LinkedIn (opens in a new tab)" width="48" height="48"></a></li><li><a href="https://www.youtube.com/@uvualumni" target="_blank" rel="noopener"><img src="../_kit/icons/green/social-youtube.svg" data-cms-src="/alumni/lib/icons/green/social-youtube.svg" alt="UVU Alumni on YouTube (opens in a new tab)" width="48" height="48"></a></li></ul>
+               </div>
+               <div class="al-sitenav-groups">
+                  <div class="al-sitenav-group"><h2>Connect</h2><ul><li><a href="https://www.uvu.edu/events/index.html">Events</a></li><li><a href="https://www.uvu.edu/news/features/index.html#alumni">Alumni Stories</a></li><li><a href="../forever-wolverines-podcast/index.html" data-cms-href="/alumni/connect/forever-wolverines-podcast.html">Forever Wolverines Podcast</a></li><li><a href="../aviation-alumni-chapter/index.html" data-cms-href="/alumni/connect/aviation-alumni-chapter.html">Aviation Alumni Chapter</a></li><li><a href="../career-networking-resources/index.html" data-cms-href="/alumni/connect/career-networking-resources.html">Career and Networking Resources</a></li></ul></div>
+                  <div class="al-sitenav-group"><h2>Benefits</h2><ul><li><a href="../alumni-benefits/index.html" data-cms-href="/alumni/resources/benefits/alumni-benefits.html">Alumni Benefits</a></li><li><a href="../alumni-diplomas/index.html" data-cms-href="/alumni/resources/diplomas.html">Diplomas</a></li><li><a href="https://alumni.uvu.edu/profile/me" target="_blank" rel="noopener">Update Your Alumni Profile<span class="sr-only-al"> (opens in a new tab)</span></a></li></ul></div>
+                  <div class="al-sitenav-group"><h2>Make an Impact</h2><ul><li><a href="../alumni-scholarships/index.html" data-cms-href="/alumni/make-an-impact/alumni-scholarships.html">Alumni Scholarships</a></li><li><a href="../uvu-license-plate/index.html" data-cms-href="/alumni/make-an-impact/uvu-license-plate.html">UVU License Plate</a></li><li><a href="../alumni-job-shadow/index.html" data-cms-href="/alumni/volunteer/job-shadow.html">Job Shadow Program</a></li><li><a href="https://www.uvu.edu/give/">Give to UVU</a></li></ul></div>
+                  <div class="al-sitenav-group"><h2>Students and About</h2><ul><li><a href="../graduating-students/index.html" data-cms-href="/alumni/students/graduating-students.html">Graduating Students</a></li><li><a href="../about-saa/index.html" data-cms-href="/alumni/students/about-saa.html">Student Alumni Ambassadors</a></li><li><a href="../alumni-awards/index.html" data-cms-href="/alumni/about/alumni-awards.html">Alumni Awards</a></li><li><a href="../alumni-board/index.html" data-cms-href="/alumni/about/alumni-association-advisory-board.html">Board of Directors</a></li></ul></div>
+               </div>
+               <p class="al-sitenav-fine">A UVU alum is anyone who graduated with a certificate, diploma, or degree from UVU or any of its past eras (CUVS, UTTI, UTC, UVCC, UVSC, or UVU).</p>
+            </nav>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- ===== CMS CONTENT END ===== -->
+</main>
+<!-- ===== GLOBAL FOOTER (CMS template; context only) ===== -->
+<footer id="globalFooter">
+	<div class="footerDept">
+		<ul><li>Office of Alumni Relations</li><li>Utah Valley University</li></ul>
+	</div>
+	<div class="footerUniversity" lang="en">
+		<div class="footerUniversity-top">
+<div class="container-fluid">
+<div class="row equal-height uppercase">
+<div class="col-sm-3">
+<div>
+<h2>Student</h2>
+<ul>
+<li><a href="https://www.uvu.edu/admissions/">Admissions</a></li>
+<li><a href="https://www.uvu.edu/campus-life/index.html">Campus Life</a></li>
+<li><a href="https://www.uvu.edu/students/">Current Student</a></li>
+<li><a href="https://www.uvu.edu/accreditation-academic-assessment/index.html">Accreditation</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Employees</h2>
+<ul>
+<li><a href="https://www.uvu.edu/peopleandculture/jobs/index.html">Career Opportunities</a></li>
+<li><a href="https://www.uvu.edu/facstaff/">Employee Resources</a></li>
+<li><a href="https://www.uvu.edu/directory/">Directory</a></li>
+<li><a href="https://www.uvu.edu/peopleandculture/">People &amp; Culture</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Community</h2>
+<ul>
+<li><a href="https://gouvu.com/" target="_blank" rel="noopener">Athletics</a></li>
+<li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li>
+<li><a href="https://www.uvu.edu/president/">Office of the President</a></li>
+<li><a href="https://www.uvu.edu/visitors/history.html">About UVU / History</a></li>
+<li><a href="https://alumni.uvu.edu/" target="_blank" rel="noopener">Alumni</a></li>
+<li><a href="https://www.uvu.edu/engagement-and-effectiveness/index.html">Engagement &amp; Effectiveness</a></li>
+<li><a href="https://www.uvu.edu/give/index.html" target="_blank" rel="noopener">Give to UVU</a></li>
+<li><a href="https://www.uvu.edu/visitors/contact.html">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Utility</h2>
+<ul>
+<li><a href="https://www.uvu.edu/maps/">Maps / Parking</a></li>
+<li><a href="https://www.uvu.edu/servicedesk/">Service Desk</a></li>
+<li><a href="https://www.uvu.edu/emergencymanagement/index.html">Emergency</a></li>
+<li><a href="https://www.uvu.edu/police/">Police</a></li>
+<li><a href="https://www.uvu.edu/servicedesk/">Get Help</a></li>
+<li><a href="https://www.uvu.edu/search/">Search</a></li>
+<li><a href="https://www.uvu.edu/accessibility-services/index.html">Accessibility</a></li>
+<li><a href="https://www.uvu.edu/accessibility-services/access-barrier.php">Report Access Barrier</a></li>
+<li><a href="https://www.uvu.edu/equityandtitleix/index.html">Title IX / Equal Opportunity</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footerUniversity-bottom">
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-12">
+<ul class="footerUniversity-quicklinks">
+<li><a href="https://www.uvu.edu/news/"><span class="far fa-newspaper" aria-hidden="true">&nbsp;</span>News</a></li>
+<li><a href="https://www.uvu.edu/events/"><span class="far fa-calendar-day" aria-hidden="true">&nbsp;</span>Events</a></li>
+</ul>
+<div class="footerUniversity-title uppercase">Utah Valley University</div>
+<ul class="footerUniversity-contact uppercase">
+<li><a title="See Utah Valley University on Google Maps" href="https://goo.gl/maps/9SQ5CSuqAoG1gw6J8">800&nbsp;West&nbsp;University&nbsp;Parkway,&nbsp;Orem,&nbsp;UT&nbsp;84058</a></li>
+<li>(801)&nbsp;863-8888</li>
+<li><a href="https://www.uvu.edu/legal/copyright/">© Utah Valley University</a></li>
+</ul>
+<ul class="footerUniversity-legalinfo">
+<li><a href="https://www.uvu.edu/legal/index.html">Terms of Use</a></li>
+<li><a href="https://www.uvu.edu/legal/privacy.html">Privacy Statement</a></li>
+<li><a href="https://www.uvu.edu/legal/copyright/copyright-infringement.html">Copyright Complaints</a></li>
+<li><a href="https://www.uvu.edu/legal/non-discrimination.html">Non-Discrimination and Accessibility Statement</a></li>
+</ul>
+<ul class="university-social"><li><a title="Opens UVU's Linkedin profile in a new tab" href="https://www.linkedin.com/school/utah-valley-university/" target="_blank" rel="external noopener"> <span class="fab fa-linkedin" aria-hidden="true"></span> <span class="sr-only">Linkedin</span> </a></li>
+<li><a title="Opens UVU's Instagram profile in a new tab" href="https://www.instagram.com/utah.valley.university/" target="_blank" rel="external noopener"> <span class="fab fa-instagram" aria-hidden="true"></span> <span class="sr-only">Instagram</span> </a></li>
+<li><a title="Opens UVU's Facebook profile in a new tab" href="https://www.facebook.com/UtahValleyUniversity/" target="_blank" rel="external noopener"> <span class="fab fa-facebook-square" aria-hidden="true"></span> <span class="sr-only">Facebook</span> </a></li>
+<li><a title="Opens UVU's YouTube channel in a new tab" href="https://www.youtube.com/user/UtahValleyUniversity" target="_blank" rel="external noopener"> <span class="fab fa-youtube-square" aria-hidden="true"></span> <span class="sr-only">YouTube</span> </a></li>
+<li><a title="Opens the UVU Athletics site in a new tab" href="https://gouvu.com/" target="_blank" rel="external noopener"><img src="../_kit/img/wolverine-logo.svg" alt="UVU Athletics logo" aria-hidden="true"><span class="sr-only">Athletics</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+	</div>
+</footer>
+</body>
+</html>

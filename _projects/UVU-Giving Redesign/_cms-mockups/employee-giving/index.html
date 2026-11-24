@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<!-- =====================================================================
+     UVU GIVING · IA WEB SYSTEM v1.3 · CMS MOCKUP · Employee Giving Initiative
+     Live URL: https://www.uvu.edu/give/ways-to-give/employeegiving.html
+     Styles: UVU production CSS snapshot + ../_kit/css/12-alumni-system.css
+     See ../README.md and ../_kit/styleguide.html
+     ===================================================================== -->
+<html lang="en" dir="ltr" style="--headroom-height: 123px;">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+<meta name="color-scheme" content="only light">
+<meta name="description" content="UVU Employee Giving: support students through payroll deduction or a one-time gift. Gifts start at $1 per paycheck.">
+<title>Employee Giving Initiative | Utah Valley University</title>
+
+<!-- ===== UVU production CSS (snapshot) ===== -->
+<link rel="stylesheet" href="../_kit/css/01-bootstrap.min.css">
+<link rel="stylesheet" href="../_kit/css/02-global.css">
+<link rel="stylesheet" href="../_kit/css/03-component.css">
+<link rel="stylesheet" href="../_kit/css/04-helpers-legacy.css">
+<link rel="stylesheet" href="../_kit/css/05-elements.css">
+<link rel="stylesheet" href="../_kit/css/06-helpers.css">
+<link rel="stylesheet" href="../_kit/css/07-wrapper.css">
+<link rel="stylesheet" href="../_kit/css/08-fonts.css">
+<link rel="stylesheet" href="../_kit/css/09-homepage-wrapper.css">
+<link rel="stylesheet" href="../_kit/css/10-homepage-dept.css">
+<link rel="stylesheet" href="../_kit/css/11-fontawesome-pro.css">
+
+<!-- ===== IA Web System (shared with Alumni; the only system stylesheet a page needs) ===== -->
+<link rel="stylesheet" href="../_kit/css/12-alumni-system.css">
+<!-- ===== Mockup-only tools. Not for production. ===== -->
+<link rel="stylesheet" href="../_kit/css/99-mockup-tools.css">
+<script src="../_kit/js/mockup-tools.js"></script>
+</head>
+<body id="employee-giving" class="UVU_Public_Site utah-valley-university employee-giving marketing homepage audience DeptNav DeptFooter">
+
+<!-- ===== GLOBAL HEADER (CMS template; context only) ===== -->
+<header id="globalHeader" class="headroom" role="banner" aria-label="Primary Site banner" lang="en" data-import="false">
+					<div id="mquery"></div>
+					<a class="skiptocontent sr-only" href="#content-wrap">Skip to main content</a>
+					<noscript id="noJS">You have JavaScript Disabled! UVU's websites will not work properly without javascript. Please enable JavaScript to continue using UVU's websites as intended.</noscript>
+					<div class="globalHeaderMain">
+						<div class="slideNavToggle classy ready" role="button" aria-label="Open university and departmental navigation" aria-controls="slideNav" tabindex="0" data-classy-action="on" data-classy-declick="body" data-import="false" data-classy-group="all">
+							<img src="../_kit/img/hmbgr-menu.svg" alt="Menu and search icon">
+						</div>
+						<a class="globalTitle" href="https://www.uvu.edu/" title="Utah Valley University Homepage" hreflang="en">
+							<img src="../_kit/img/uvu-mono.svg" alt="Utah Valley University logo">
+						</a>
+						<a class="deptTitle" href="https://www.uvu.edu/" lang="en" hreflang="en" title="Site homepage">
+							Utah Valley University
+						</a>
+						<div class="actionBar">
+							<ul class="global-quicklinks">
+	<li><a href="https://www.uvu.edu/admissions/#degree-type">Apply to UVU</a></li>
+	<li><a href="https://my.uvu.edu/"><svg id="Group_3615" data-name="Group 3615" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.845 24.485">
+  <path id="Path_3937" data-name="Path 3937" d="M388.908,537.07H358.463a.806.806,0,0,1,0-1.611h30.445a.806.806,0,0,1,0,1.611m-29.51-3.757,4.208-6.721a.809.809,0,0,1,.686-.38h5.359l3.193,5.534a1.1,1.1,0,0,0,1.9,0l3.191-5.532H383.1a.81.81,0,0,1,.685.379l4.218,6.724a.81.81,0,0,1-.685,1.24l-27.237-.007a.81.81,0,0,1-.685-1.24m5.4-17.195a.654.654,0,0,1,.924-.875l7.693,5.04a.74.74,0,0,0,.81,0l7.634-5a.655.655,0,0,1,.925.876L374.441,530.6a.74.74,0,0,1-1.281,0Zm25.549,19.23-6-9.542a.978.978,0,0,0-.828-.458l-5.088,0,5.882-10.2a1.1,1.1,0,0,0-1.534-1.476l-8.4,5.3a1.1,1.1,0,0,1-1.17,0l-8.42-5.322a1.1,1.1,0,0,0-1.534,1.476l5.9,10.223-5.315,0a.978.978,0,0,0-.829.46l-5.969,9.5a1.71,1.71,0,0,0,1.427,2.65H388.9a1.71,1.71,0,0,0,1.447-2.619" transform="translate(-356.761 -513.482)" fill="currentColor"></path>
+</svg>
+myUVU</a></li>
+</ul>
+							<div id="mainSearch">
+								<a class="lightbox" href="#" data-lity="true" title="Open search box" data-import="false" data-lity-target="#globalSearch-container"><span class="fas fa-search" aria-hidden="true"></span></a>
+								<div id="globalSearch-container" class="lity-hide">
+									<form id="globalSearch" role="search" aria-label="Search UVU" method="get" action="https://www.uvu.edu/search">
+										<div id="globalSearchArea">
+											<label for="globalSearchInput" class="sr-only">Enter search terms</label>
+											<div class="search-group">
+												<label aria-hidden="true">I'm looking for:</label>
+												<input type="text" id="globalSearchInput" class="quicksearch" name="query" value="" autocomplete="off" data-quicksearch-out="#globalSearchSuggest" data-import="false">
+											</div>
+											<div id="globalSearchSuggest" aria-hidden="true"></div>
+											<input type="submit" title="Search UVU" id="globalSearchSubmit" value="Go">
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<nav id="deptNav" role="navigation" aria-label="Department Navigation">
+						<div class="deptNavWrap" lang="en">
+								<ul><li><a href="https://www.uvu.edu/admissions/">Admissions</a></li><li><a href="https://www.uvu.edu/campus-life/">Campus Life</a></li><li><a href="https://www.uvu.edu/academics/">Academics</a></li><li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li><li><a href="https://www.uvu.edu/news/">Content Hub</a></li><li><a href="https://www.uvu.edu/alumni/">Alumni</a></li><li><a href="https://www.uvu.edu/give/">Give</a></li><li><a href="https://www.uvu.edu/about/">About</a></li></ul>
+						</div>
+					</nav>
+				</header>
+				<section id="slideNav" aria-expanded="false" aria-label="University Navigation" tabindex="-1" lang="en" data-classy-group="all" class="ready">
+					<div class="menu-body">
+						<header>
+							<img src="../_kit/img/uvu-mono.svg" alt="Utah Valley University logo">
+							<p class="h1">Utah Valley University</p>
+							<span class="far fa-times-circle tabClose classy ready" role="button" title="Close Menu" aria-controls="slideNav" aria-label="Close University Navigation" data-classy-action="off" tabindex="-1" aria-hidden="true" data-import="false" data-classy-group="all">&nbsp;</span><span class="sr-only">Close Menu</span>
+						</header>
+						<form id="slideSearch" role="search" aria-label="UVU Search" action="https://www.uvu.edu/search/">
+							<label for="slideSearchInput" class="sr-only">Enter search terms</label><input type="text" id="slideSearchInput" class="quicksearch" name="query" placeholder="I'm looking for..." autocomplete="off" data-quicksearch-out="#slideSearchSuggest" data-import="false">
+							<input type="submit" value="" id="slideSearchSubmit" class="quicksearch" aria-label="Submit Search" title="Submit Search" data-import="false">
+							<div id="slideSearchSuggest" aria-hidden="true"></div>
+						</form>
+						<ul class="global-quicklinks">
+	<li><a href="https://www.uvu.edu/admissions/#degree-type">Apply to UVU</a></li>
+	<li><a href="https://my.uvu.edu/"><svg id="Group_3615" data-name="Group 3615" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.845 24.485">
+  <path id="Path_3937" data-name="Path 3937" d="M388.908,537.07H358.463a.806.806,0,0,1,0-1.611h30.445a.806.806,0,0,1,0,1.611m-29.51-3.757,4.208-6.721a.809.809,0,0,1,.686-.38h5.359l3.193,5.534a1.1,1.1,0,0,0,1.9,0l3.191-5.532H383.1a.81.81,0,0,1,.685.379l4.218,6.724a.81.81,0,0,1-.685,1.24l-27.237-.007a.81.81,0,0,1-.685-1.24m5.4-17.195a.654.654,0,0,1,.924-.875l7.693,5.04a.74.74,0,0,0,.81,0l7.634-5a.655.655,0,0,1,.925.876L374.441,530.6a.74.74,0,0,1-1.281,0Zm25.549,19.23-6-9.542a.978.978,0,0,0-.828-.458l-5.088,0,5.882-10.2a1.1,1.1,0,0,0-1.534-1.476l-8.4,5.3a1.1,1.1,0,0,1-1.17,0l-8.42-5.322a1.1,1.1,0,0,0-1.534,1.476l5.9,10.223-5.315,0a.978.978,0,0,0-.829.46l-5.969,9.5a1.71,1.71,0,0,0,1.427,2.65H388.9a1.71,1.71,0,0,0,1.447-2.619" transform="translate(-356.761 -513.482)" fill="currentColor"></path>
+</svg>
+myUVU</a></li>
+</ul>
+						<div id="breadcrumbContainer">
+							<nav class="breadcrumbNav" id="breadcrumbNav" aria-label="breadcrumb" tabindex="-1">
+								<div class="breadcrumbScroll">
+								</div>
+								<div class="breadcrumbScroll-left"></div>
+								<div class="breadcrumbScroll-right"></div>
+							</nav>
+						</div>
+						<div id="slideMenuDept" class="active" aria-label="Department Menu">
+							<nav class="slideDeptNav" aria-label="Department Navigation in side menu" lang="en">
+									<ul><li><a href="https://www.uvu.edu/admissions/">Admissions</a></li><li><a href="https://www.uvu.edu/campus-life/">Campus Life</a></li><li><a href="https://www.uvu.edu/academics/">Academics</a></li><li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li><li><a href="https://www.uvu.edu/news/">Content Hub</a></li><li><a href="https://www.uvu.edu/alumni/">Alumni</a></li><li><a href="https://www.uvu.edu/give/">Give</a></li><li><a href="https://www.uvu.edu/about/">About</a></li></ul>
+							</nav>
+						</div>
+						<div id="globalNav">
+						</div>
+					</div>
+				</section>
+      
+<main id="content-wrap" class="content-wrap">
+<!-- ===== CMS CONTENT START · each <section> = one OU section ===== -->
+
+<!-- SECTION 1 · template: header-fullbleed
+     ASSET: assets/employee-giving-header.jpg (1920x700 raw photo; the green fade is CSS). CMS: /give/ways-to-give/images/employee-giving-header.jpg
+     PHONES: assets/employee-giving-header-mobile.jpg (1080x1350 vertical, people centered). CMS: /give/ways-to-give/images/employee-giving-header-mobile.jpg -->
+<section class="page-header jumbo fullbleed container-narrow al-hero" style="background-image: url(assets/employee-giving-header.jpg);" data-cms-bg="/give/ways-to-give/images/employee-giving-header.jpg" data-uvu-template="header-fullbleed" data-uvu-section="1">
+   <div class="al-hero-m" style="background-image: url(assets/employee-giving-header-mobile.jpg);" data-cms-bg="/give/ways-to-give/images/employee-giving-header-mobile.jpg" aria-hidden="true"></div>
+   <div class="container-fluid">
+      <header class="fullbleed-overlay contain text-invert">
+            <h1><span class="al-eyebrow">UVU</span> Employee Giving</h1>
+            <div class="al-actions"><a class="al-btn al-btn--light al-btn--ext" href="https://apps.uvu.edu/employee-form-hub/forms/foundation_deduction_form?bbeml=tp-15SOd3UsHUO8MRNYFSnBvg.jaaFzp9xt9kKWRKc0XU7OXw.rrijxJts6iEiqW-7jAopktA.l9L54vzla_U-Evl_tqKK1Ow" target="_blank" rel="noopener"><span class="mock-copy-flag" title="Live: “Payroll Deduction” and “PAYROLL DEDUCTION FORM.” The label now says what you’ll do.">Set Up Payroll Deduction</span><span class="sr-only-al"> (opens in a new tab)</span></a><p class="al-btn-note"><span class="mock-copy-flag" title="New microcopy built from the FAQ’s $1 minimum.">Opens the Employee Form Hub. Gifts start at $1 per paycheck.</span></p></div>
+      </header>
+   </div>
+</section>
+<!-- SECTION 2 · template: one-col
+     Intro. -->
+<section data-uvu-template="one-col" data-uvu-section="2" class="al-section">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <div class="al-section-head">
+                  <h2><span class="mock-copy-flag" title="Placeholder heading from the intro’s first line. Live heading repeats “EMPLOYEE GIVING.”">More Than Colleagues</span></h2>
+                  <p class="al-lead">At UVU, we are more than just colleagues; we are a community united by a shared mission to shape the future through empowering students to achieve their educational dreams.</p>
+                  <p>Your time, energy, and passion already make UVU a better place. Employee Giving is an ongoing invitation to amplify your support by giving back to programs and initiatives that matter most to you.</p>
+                  <p>This is an opportunity to extend your passion further. Every gift, no matter the size, makes a difference in students’ lives now and in the future. This is your chance to make your impact go beyond what you already contribute every day.</p>
+               </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 3 · template: one-col
+     Stat cards replace three clip-art PNG icons (gift, letter, backpack). -->
+<section data-uvu-template="one-col" data-uvu-section="3" class="al-section al-section--warm">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <div class="al-section-head">
+                  <h2>Employee Giving in 2025</h2>
+               </div>
+               <ul class="al-stats al-stats--3">
+                  <li class="al-stat"><span class="al-stat-num">2,359</span><span class="al-stat-label">gifts</span></li>
+                  <li class="al-stat"><span class="al-stat-num">$310,428</span><span class="al-stat-label">raised</span></li>
+                  <li class="al-stat"><span class="al-stat-num">107</span><span class="al-stat-label">semesters of tuition</span></li>
+               </ul>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 4 · template: one-col
+     Three ways as cards. -->
+<section data-uvu-template="one-col" data-uvu-section="4" class="al-section">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <div class="al-section-head">
+                  <h2>Ways to Support UVU Students</h2>
+               </div>
+               <ul class="al-grid al-grid--3">
+                  <li><article class="al-card">
+                     <div class="al-card-body"><img class="al-card-icon" src="../_kit/icons/green/cash-2.svg" data-cms-src="/alumni/lib/icons/green/cash-2.svg" alt="" width="48" height="48">
+                        <h3>Payroll Deduction</h3>
+                        <p>This is the quickest and easiest method to support an area on campus or a community partner that is meaningful to you without incurring a big hit on the wallet. If all UVU employees donate, the cumulative effort will have a significant impact in supporting students. Donations can be as little as $1 per paycheck. We welcome all amounts and are grateful for your contribution!</p>
+                     </div>
+                     <div class="al-card-action"><a href="https://apps.uvu.edu/employee-form-hub/forms/foundation_deduction_form?bbeml=tp-15SOd3UsHUO8MRNYFSnBvg.jaaFzp9xt9kKWRKc0XU7OXw.rrijxJts6iEiqW-7jAopktA.l9L54vzla_U-Evl_tqKK1Ow" target="_blank" rel="noopener">Set Up Payroll Deduction<span class="sr-only-al"> (opens in a new tab)</span></a></div>
+                  </article></li>
+                  <li><article class="al-card">
+                     <div class="al-card-body"><img class="al-card-icon" src="../_kit/icons/green/credit-cards.svg" data-cms-src="/alumni/lib/icons/green/credit-cards.svg" alt="" width="48" height="48">
+                        <h3><span class="mock-copy-flag" title="Live: “One-time Gifts.” Title Case.">One-Time Gifts</span></h3>
+                        <p>One-time gifts are also appreciated! You are welcome to make a one-time, recurring, or pledge gift <span class="mock-copy-flag" title="Live: “by visiting uvu.edu/give.” The card action is now the link.">online</span>. If you prefer to donate using other means, please call the Annual Giving office at <a href="tel:+18018634962">801-863-4962</a> or send an email to <a href="mailto:annualgiving@uvu.edu">annualgiving@uvu.edu</a>.</p>
+                     </div>
+                     <div class="al-card-action"><a href="https://www.uvu.edu/give/employee-giving/index.html">Give Online</a></div>
+                  </article></li>
+                  <li><article class="al-card">
+                     <div class="al-card-body"><img class="al-card-icon" src="../_kit/icons/green/paper.svg" data-cms-src="/alumni/lib/icons/green/paper.svg" alt="" width="48" height="48">
+                        <h3>Tax-Deductible</h3>
+                        <p>All donations are processed through the Utah Valley University Foundation, a 501(c)(3) nonprofit organization. Please keep the official receipt for your tax records. Contributions are tax-deductible to the extent allowed by law. Please consult with your tax advisor to determine if your gift is tax-deductible as a charitable contribution.</p>
+                     </div>
+                  </article></li>
+               </ul>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 5 · template: one-col
+     The six “I AM UVU” graphics had every quote baked into the image (unreadable to screen readers and search, cropped on phones). Now real text with headshots cropped from the same photos. Quotes transcribed verbatim from the graphics. -->
+<section data-uvu-template="one-col" data-uvu-section="5" class="al-section al-section--warm">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <div class="al-section-head">
+                  <h2>I Am UVU</h2>
+               </div>
+               <ul class="al-quotes al-quotes--3">
+                  <li><figure class="al-quote al-quote--person"><blockquote><p>“As a first-generation student, I endured many financial challenges, but I got the support from UVU to get through college. I am grateful that I am able to donate to do the same for our students now. Remember, it takes a village to help a student graduate. Be part of that village.”</p></blockquote><figcaption><img class="al-quote-photo" src="assets/iamuvu-kyrsi-zamora.jpg" data-cms-src="/give/ways-to-give/images/iamuvu-kyrsi-zamora.jpg" alt="" width="240" height="240" loading="lazy"><span class="al-quote-who">Kyrsi Zamora<span class="al-quote-role">Coordinator, UVU Latino Initiative</span></span></figcaption></figure></li>
+                  <li><figure class="al-quote al-quote--person"><blockquote><p>“I give because I believe in education. Both of my parents were public school teachers and I see the value of education. I like to donate because I know how difficult it can be to balance work and school, and it is nice to know that I can help my students.”</p></blockquote><figcaption><img class="al-quote-photo" src="assets/iamuvu-garth-tino.jpg" data-cms-src="/give/ways-to-give/images/iamuvu-garth-tino.jpg" alt="" width="240" height="240" loading="lazy"><span class="al-quote-who">Garth Tino<span class="al-quote-role">Program Risk Manager, College of Science</span></span></figcaption></figure></li>
+                  <li><figure class="al-quote al-quote--person"><blockquote><p>“When it all starts to click for our students, and I can see the ‘light bulb’ turn on by the look in their eyes. That’s when it comes full circle for me. That’s when I know that my small contribution monthly really has made a difference in someone’s life.”</p></blockquote><figcaption><img class="al-quote-photo" src="assets/iamuvu-troy-wilson.jpg" data-cms-src="/give/ways-to-give/images/iamuvu-troy-wilson.jpg" alt="" width="240" height="240" loading="lazy"><span class="al-quote-who">Chef Troy Wilson<span class="al-quote-role">Chef, Culinary Arts Institute</span></span></figcaption></figure></li>
+                  <li><figure class="al-quote al-quote--person"><blockquote><p>“I shifted my payroll deduction in 2020 to the Student Emergency and Care Fund which helps students with basic but essential survival needs. These small, quick emergency grants are so essential to helping students stay at UVU and succeed. If each one of us donated just $5 a month to the SEC Fund, we could raise a significant amount to help students stay in school.”</p></blockquote><figcaption><img class="al-quote-photo" src="assets/iamuvu-deborah-marrott.jpg" data-cms-src="/give/ways-to-give/images/iamuvu-deborah-marrott.jpg" alt="" width="240" height="240" loading="lazy"><span class="al-quote-who">Deborah Marrott<span class="al-quote-role">Associate Dean, College of Humanities and Social Sciences</span></span></figcaption></figure></li>
+                  <li><figure class="al-quote al-quote--person"><blockquote><p>“Education has helped me to be healthier, think better, and has given me the confidence to face challenges in my life. I give so that someone else can receive similar empowerment in their life.”</p></blockquote><figcaption><img class="al-quote-photo" src="assets/iamuvu-raymundo-yazzie.jpg" data-cms-src="/give/ways-to-give/images/iamuvu-raymundo-yazzie.jpg" alt="" width="240" height="240" loading="lazy"><span class="al-quote-who">Raymundo Yazzie<span class="al-quote-role">GEAR UP Mentor, Student Affairs</span></span></figcaption></figure></li>
+                  <li><figure class="al-quote al-quote--person"><blockquote><p>“I have seen firsthand the benefits of giving and creating opportunities for individuals who are in need and it makes me happy knowing I have been able to contribute to the success of others.”</p></blockquote><figcaption><img class="al-quote-photo" src="assets/iamuvu-karen-cushing.jpg" data-cms-src="/give/ways-to-give/images/iamuvu-karen-cushing.jpg" alt="" width="240" height="240" loading="lazy"><span class="al-quote-who">Karen Cushing<span class="al-quote-role">Executive Assistant, School of Education</span></span></figcaption></figure></li>
+               </ul>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 6 · template: one-col
+     FAQ (al-accordion). Twelve questions, Title Case. -->
+<section data-uvu-template="one-col" data-uvu-section="6" class="al-section">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <div class="al-section-head"><h2>Employee Giving FAQ</h2></div>
+               <div class="al-narrow">
+               <details class="al-accordion accordion-unstyled">
+                  <summary>Why Should I Give to UVU?</summary>
+                  <div class="al-accordion-body"><p>Your gift will support students and help fulfill UVU’s mission of providing exceptional care when you give to scholarship, program, or building funds.</p><p>It’s an easy way to show your support of UVU as an institution and as an employer.</p><p>Research shows that giving increases your overall happiness.</p></div>
+               </details>
+               <details class="al-accordion accordion-unstyled">
+                  <summary>How Can I Donate?</summary>
+                  <div class="al-accordion-body"><p>The quickest and easiest method is via payroll deduction. You can set up or change your payroll deduction through the <a href="https://apps.uvu.edu/employee-form-hub/forms/foundation_deduction_form?bbeml=tp-15SOd3UsHUO8MRNYFSnBvg.jaaFzp9xt9kKWRKc0XU7OXw.rrijxJts6iEiqW-7jAopktA.l9L54vzla_U-Evl_tqKK1Ow" target="_blank" rel="noopener">Employee Payroll Deduction Hub<span class="sr-only-al"> (opens in a new tab)</span></a>. You can also make a one-time or recurring gift on our <a href="https://www.uvu.edu/give/employee-giving/index.html">donation page</a>. If you prefer to give via check or cash, please contact Tess Fontanetti-Rice at <a href="mailto:tessf@uvu.edu">tessf@uvu.edu</a>.</p></div>
+               </details>
+               <details class="al-accordion accordion-unstyled">
+                  <summary>What Is the Minimum Amount I Can Donate?</summary>
+                  <div class="al-accordion-body"><p>The minimum amount for payroll deduction is $1 per paycheck and $10 for credit card donations.</p></div>
+               </details>
+               <details class="al-accordion accordion-unstyled">
+                  <summary>What Are the Advantages of Payroll Deduction?</summary>
+                  <div class="al-accordion-body"><p>Payroll deduction is fast and easy. A payroll deduction of just $5 per paycheck adds up to a $120 contribution by the end of the year. If every employee on campus gave just $5 per paycheck, it would equal nearly half <span class="mock-copy-flag" title="Live: “half of a million.”">a million dollars</span> for the <span class="mock-copy-flag" title="Live: “University.” UVU style: lowercase on its own.">university</span> to use for scholarships, program development, and building construction.</p></div>
+               </details>
+               <details class="al-accordion accordion-unstyled">
+                  <summary>How Do I Set Up, Manage, or Change My Payroll Deduction?</summary>
+                  <div class="al-accordion-body"><p>Once you complete the <a href="https://apps.uvu.edu/employee-form-hub/forms/foundation_deduction_form?bbeml=tp-15SOd3UsHUO8MRNYFSnBvg.jaaFzp9xt9kKWRKc0XU7OXw.rrijxJts6iEiqW-7jAopktA.l9L54vzla_U-Evl_tqKK1Ow" target="_blank" rel="noopener">Employee Payroll Deduction Form<span class="sr-only-al"> (opens in a new tab)</span></a>, the amount you specify will be automatically deducted from each paycheck. Please note that it may take one or two pay periods for a new or updated deduction to take effect due to the payroll processing cycle and the timing of form submission.</p><p>Your payroll deduction will continue until you choose to make a change. To manage your deduction, whether you want to adjust the amount, add a new gift, or cancel it altogether, revisit the <a href="https://apps.uvu.edu/employee-form-hub/forms/foundation_deduction_form?bbeml=tp-15SOd3UsHUO8MRNYFSnBvg.jaaFzp9xt9kKWRKc0XU7OXw.rrijxJts6iEiqW-7jAopktA.l9L54vzla_U-Evl_tqKK1Ow" target="_blank" rel="noopener">Employee Giving Hub<span class="sr-only-al"> (opens in a new tab)</span></a> and select the appropriate option:</p><ul><li>Terminate my current donation</li><li>Replace it with a new donation</li><li>Keep my existing donation and add an additional one</li></ul><p>A charitable receipt summarizing your payroll deductions will be mailed to you in January for tax purposes.</p></div>
+               </details>
+               <details class="al-accordion accordion-unstyled">
+                  <summary>Can Part-Time Employees Donate Using Payroll Deduction?</summary>
+                  <div class="al-accordion-body"><p>Part-time employees may sign up for payroll deduction. If there is a pay period in which you did not receive a paycheck, no donations will be processed. Your usual donation amount will be deducted from your next paycheck. Donations will not be deducted “in arrears” in a cumulative amount.</p></div>
+               </details>
+               <details class="al-accordion accordion-unstyled">
+                  <summary>What if I Don’t Want to Give Through Payroll Deduction?</summary>
+                  <div class="al-accordion-body"><p>One-time or recurring gifts are also appreciated and simple to do on our <a href="https://www.uvu.edu/give/employee-giving/index.html">donation page</a>. If you prefer to donate via check, stocks, property, using a donor-advised fund, or utilizing an IRA rollover, please contact Vicky Hopper at <a href="tel:+18018635426">801-863-5426</a> or <a href="mailto:vicky.hopper@uvu.edu">vicky.hopper@uvu.edu</a>.</p></div>
+               </details>
+               <details class="al-accordion accordion-unstyled">
+                  <summary>Is My Gift Tax-Deductible?</summary>
+                  <div class="al-accordion-body"><p>Yes. All donations are processed through the Utah Valley University Foundation, a 501(c)(3) nonprofit organization. Please keep the official receipt for your tax records. Contributions are tax-deductible to the extent allowed by law. Please consult with your tax advisor to determine if your gift is tax-deductible as a charitable contribution.</p></div>
+               </details>
+               <details class="al-accordion accordion-unstyled">
+                  <summary>When Will I Receive My Receipt?</summary>
+                  <div class="al-accordion-body"><p>For one-time gifts, you will receive an email receipt right away. Please keep this for your records.</p><p>For payroll deductions, you will receive a receipt in January for all gifts made during the previous calendar year.</p></div>
+               </details>
+               <details class="al-accordion accordion-unstyled">
+                  <summary>How Is Donating Different Than Giving to PACE?</summary>
+                  <div class="al-accordion-body"><p>PACE provides an opportunity to create a culture of exceptional care by contributing a non-charitable $0.50 per paycheck through the Goodwill Association. Funds are used to send well wishes and floral baskets for various reasons to UVU employees. <span class="mock-copy-flag" title="Live link text: “click here.” WCAG 2.4.4: link text names the destination.">Learn more about the Goodwill Association</span> on <a href="https://my.uvu.edu/workplace/pace/involved/goodwill-association.html">myUVU</a>.</p></div>
+               </details>
+               <details class="al-accordion accordion-unstyled">
+                  <summary>Does My Donation Qualify for a Matching Gift?</summary>
+                  <div class="al-accordion-body"><p>Even though UVU does not offer a matching gift program, many employers will match a spouse’s charitable contribution and/or volunteer hours. To find out if a company you have connections with offers a matching gift program, see <a href="https://www.uvu.edu/advancement/ways-to-give/matching-gifts.html"><span class="mock-copy-flag" title="Live link text: “click here.”">Matching Gifts</span></a>. If your company is eligible, request a matching gift form and submit it to <a href="mailto:matchinggifts@uvu.edu">matchinggifts@uvu.edu</a>.</p></div>
+               </details>
+               <details class="al-accordion accordion-unstyled">
+                  <summary>What’s the Best Way to Leave a Legacy on Campus?</summary>
+                  <div class="al-accordion-body"><h3>Gift Planning</h3><p>Many people choose a long-term approach to giving using a bequest, will, annuity, or trust. The tax benefits vary depending on the type of gift chosen. Different gift types allow you access to your funds in case you need them, as your donation will take place after you have passed on. If you are interested, please visit us at <a href="https://uvgift.org/" target="_blank" rel="noopener">uvgift.org<span class="sr-only-al"> (opens in a new tab)</span></a>.</p><h3>Presidential Scholar Commemorative Bench</h3><p>You may also leave a physical imprint on campus by naming a UVU bench. A named bench can also be used to honor the accomplishments of individuals or organizations or can be designated in memoriam of a loved one, professor, colleague, friend, etc. Your gift to the Presidential Commemorative Bench project will <span class="mock-copy-flag" title="Live: “FOREVER” in caps.">forever</span> improve the campus landscape and help support the academic success of a UVU Presidential Scholar. Learn more about <a href="https://uvu.edu/give/fund/commemorative.html"><span class="mock-copy-flag" title="Live link text: “click here.”">commemorative benches</span></a>.</p></div>
+               </details>
+               </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- SECTION 7 · template: one-col
+     Contact. -->
+<section data-uvu-template="one-col" data-uvu-section="7" class="al-section al-section--warm">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+               <div class="al-section-head">
+                  <h2><span class="mock-copy-flag" title="Live: “QUESTIONS? Contact us!”">Questions? Contact Us</span></h2>
+               </div>
+               <ul class="al-contact-strip">
+                  <li class="al-contact-card"><span class="al-contact-badge" aria-hidden="true">TF</span><div>
+                     <p class="al-contact-name">Tess Fontanetti-Rice</p>
+                     <p class="al-contact-role">Director of Annual Giving</p>
+                     <p class="al-contact-links"><a href="tel:+18018638568">801-863-8568</a> · <a href="https://www.uvu.edu/directory/message/?id=K0NqdWZaMXlvSER0SzJWMmt6NjU1QT09">Message Tess</a></p>
+                  </div></li>
+               </ul>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- SECTION 8 · template: one-col · GIVING FOOTER: section nav + contact + mail-a-check. Identical on every Give page
+     (the current page gets aria-current). Replaces the "Ways to Give: Give Online / Mail a Check" block the live
+     pages repeat at the bottom of Annual Giving, Gifts of Securities, Memorial Gifts, and Ways to Give. -->
+<section data-uvu-template="one-col" data-uvu-section="8" class="al-section al-sitenav">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-xs-12 col-target region" data-uvu-region="1">
+            <nav class="al-sitenav-nav" aria-label="Give to UVU">
+               <div class="al-sitenav-brand">
+                  <p class="al-sitenav-title"><a href="../give-home/index.html" data-cms-href="/give/index.html">Give to UVU</a></p>
+                  <ul class="al-sitenav-contact">
+                     <li><img src="../_kit/icons/white/envelope-1.svg" data-cms-src="/alumni/lib/icons/white/envelope-1.svg" alt="" width="48" height="48"><a href="mailto:giving@uvu.edu">giving@uvu.edu</a></li>
+                     <li><img src="../_kit/icons/white/cell.svg" data-cms-src="/alumni/lib/icons/white/cell.svg" alt="" width="48" height="48"><a href="tel:+18018638568">801.863.8568</a></li>
+                  </ul>
+               </div>
+               <div class="al-sitenav-groups">
+                  <div class="al-sitenav-group"><h2>Where to Give</h2><ul><li><a href="../find-a-fund/index.html" data-cms-href="/give/find-a-fund.html">Find a Fund</a></li><li><a href="../give-home/index.html#give-by-area">Colleges and Schools</a></li><li><a href="../programs-centers/index.html" data-cms-href="/give/programs-centers/index.html">Programs and Centers</a></li><li><a href="../student-affairs/index.html" data-cms-href="/give/student-affairs/index.html">Student Support</a></li><li><a href="../athletics/index.html" data-cms-href="/give/athletics/wolverine-club/index.html">Athletics</a></li><li><a href="https://host.nxt.blackbaud.com/donor-form/?svcid=renxt&formId=3ebce5df-6a4a-4f44-89b7-ef3d89fcad79&envid=p-15SOd3UsHUO8MRNYFSnBvg&zone=usa" target="_blank" rel="noopener">General Scholarships<span class="sr-only-al"> (opens in a new tab)</span></a></li></ul></div>
+                  <div class="al-sitenav-group"><h2>Ways to Give</h2><ul><li><a href="../ways-to-give/index.html" data-cms-href="/give/ways-to-give/index.html">All Ways to Give</a></li><li><a href="../employee-giving/index.html" data-cms-href="/give/ways-to-give/employeegiving.html" aria-current="page">Employee Giving</a></li><li><a href="../memorial-gifts/index.html" data-cms-href="/give/ways-to-give/memorial-gifts.html">Memorial Gifts</a></li><li><a href="../ways-to-give/index.html#give-stock">Gifts of Stock</a></li><li><a href="https://uvgift.org/" target="_blank" rel="noopener">Gift Planning<span class="sr-only-al"> (opens in a new tab)</span></a></li><li><a href="https://www.uvu.edu/give/ways-to-give/matching-gifts.html">Matching Gifts</a></li></ul></div>
+                  <div class="al-sitenav-group"><h2>More</h2><ul><li><a href="../give-home/index.html#larger-gift">Planning a Larger Gift</a></li><li><a href="https://www.uvu.edu/alumni/make-an-impact/uvu-license-plate.html">UVU License Plate</a></li><li><a href="https://www.uvu.edu/advancement/events/archive/scholarship-ball.html">Event Sponsorship</a></li><li><a href="https://www.uvu.edu/give/ways-to-give/in-kind-donation.html">In-Kind Donation</a></li><li><a href="https://www.uvu.edu/give/ways-to-give/service.html">Service</a></li></ul></div>
+               </div>
+               <p class="al-sitenav-fine"><strong>Mail a check</strong> payable to UVU Foundation, 800 W. University Parkway, MS 111, Orem, UT 84058. All donations are processed through the Utah Valley University Foundation, a 501(c)(3) <span class="mock-copy-flag" title="Live: “non-profit.” AP: nonprofit.">nonprofit</span> organization. <span class="mock-todo">TAX ID: add the UVU Foundation EIN here; major donors and advisors look for it.</span> <a href="#"><span class="mock-copy-flag" title="New link: report URL needed.">Annual Impact Report</span></a> · <a href="#"><span class="mock-copy-flag" title="New link: 990 URL needed.">IRS Form 990</span></a></p>
+            </nav>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- ===== CMS CONTENT END ===== -->
+</main>
+<!-- ===== GLOBAL FOOTER (CMS template; context only) ===== -->
+<footer id="globalFooter">
+	<div class="footerDept">
+		<ul><li>Institutional Advancement</li><li>Utah Valley University</li></ul>
+	</div>
+	<div class="footerUniversity" lang="en">
+		<div class="footerUniversity-top">
+<div class="container-fluid">
+<div class="row equal-height uppercase">
+<div class="col-sm-3">
+<div>
+<h2>Student</h2>
+<ul>
+<li><a href="https://www.uvu.edu/admissions/">Admissions</a></li>
+<li><a href="https://www.uvu.edu/campus-life/index.html">Campus Life</a></li>
+<li><a href="https://www.uvu.edu/students/">Current Student</a></li>
+<li><a href="https://www.uvu.edu/accreditation-academic-assessment/index.html">Accreditation</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Employees</h2>
+<ul>
+<li><a href="https://www.uvu.edu/peopleandculture/jobs/index.html">Career Opportunities</a></li>
+<li><a href="https://www.uvu.edu/facstaff/">Employee Resources</a></li>
+<li><a href="https://www.uvu.edu/directory/">Directory</a></li>
+<li><a href="https://www.uvu.edu/peopleandculture/">People &amp; Culture</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Community</h2>
+<ul>
+<li><a href="https://gouvu.com/" target="_blank" rel="noopener">Athletics</a></li>
+<li><a href="https://www.uvu.edu/visitors/">Visitors &amp; Community</a></li>
+<li><a href="https://www.uvu.edu/president/">Office of the President</a></li>
+<li><a href="https://www.uvu.edu/visitors/history.html">About UVU / History</a></li>
+<li><a href="https://alumni.uvu.edu/" target="_blank" rel="noopener">Alumni</a></li>
+<li><a href="https://www.uvu.edu/engagement-and-effectiveness/index.html">Engagement &amp; Effectiveness</a></li>
+<li><a href="https://www.uvu.edu/give/index.html" target="_blank" rel="noopener">Give to UVU</a></li>
+<li><a href="https://www.uvu.edu/visitors/contact.html">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3">
+<div>
+<h2>Utility</h2>
+<ul>
+<li><a href="https://www.uvu.edu/maps/">Maps / Parking</a></li>
+<li><a href="https://www.uvu.edu/servicedesk/">Service Desk</a></li>
+<li><a href="https://www.uvu.edu/emergencymanagement/index.html">Emergency</a></li>
+<li><a href="https://www.uvu.edu/police/">Police</a></li>
+<li><a href="https://www.uvu.edu/servicedesk/">Get Help</a></li>
+<li><a href="https://www.uvu.edu/search/">Search</a></li>
+<li><a href="https://www.uvu.edu/accessibility-services/index.html">Accessibility</a></li>
+<li><a href="https://www.uvu.edu/accessibility-services/access-barrier.php">Report Access Barrier</a></li>
+<li><a href="https://www.uvu.edu/equityandtitleix/index.html">Title IX / Equal Opportunity</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footerUniversity-bottom">
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-12">
+<ul class="footerUniversity-quicklinks">
+<li><a href="https://www.uvu.edu/news/"><span class="far fa-newspaper" aria-hidden="true">&nbsp;</span>News</a></li>
+<li><a href="https://www.uvu.edu/events/"><span class="far fa-calendar-day" aria-hidden="true">&nbsp;</span>Events</a></li>
+</ul>
+<div class="footerUniversity-title uppercase">Utah Valley University</div>
+<ul class="footerUniversity-contact uppercase">
+<li><a title="See Utah Valley University on Google Maps" href="https://goo.gl/maps/9SQ5CSuqAoG1gw6J8">800&nbsp;West&nbsp;University&nbsp;Parkway,&nbsp;Orem,&nbsp;UT&nbsp;84058</a></li>
+<li>(801)&nbsp;863-8888</li>
+<li><a href="https://www.uvu.edu/legal/copyright/">© Utah Valley University</a></li>
+</ul>
+<ul class="footerUniversity-legalinfo">
+<li><a href="https://www.uvu.edu/legal/index.html">Terms of Use</a></li>
+<li><a href="https://www.uvu.edu/legal/privacy.html">Privacy Statement</a></li>
+<li><a href="https://www.uvu.edu/legal/copyright/copyright-infringement.html">Copyright Complaints</a></li>
+<li><a href="https://www.uvu.edu/legal/non-discrimination.html">Non-Discrimination and Accessibility Statement</a></li>
+</ul>
+<ul class="university-social"><li><a title="Opens UVU's Linkedin profile in a new tab" href="https://www.linkedin.com/school/utah-valley-university/" target="_blank" rel="external noopener"> <span class="fab fa-linkedin" aria-hidden="true"></span> <span class="sr-only">Linkedin</span> </a></li>
+<li><a title="Opens UVU's Instagram profile in a new tab" href="https://www.instagram.com/utah.valley.university/" target="_blank" rel="external noopener"> <span class="fab fa-instagram" aria-hidden="true"></span> <span class="sr-only">Instagram</span> </a></li>
+<li><a title="Opens UVU's Facebook profile in a new tab" href="https://www.facebook.com/UtahValleyUniversity/" target="_blank" rel="external noopener"> <span class="fab fa-facebook-square" aria-hidden="true"></span> <span class="sr-only">Facebook</span> </a></li>
+<li><a title="Opens UVU's YouTube channel in a new tab" href="https://www.youtube.com/user/UtahValleyUniversity" target="_blank" rel="external noopener"> <span class="fab fa-youtube-square" aria-hidden="true"></span> <span class="sr-only">YouTube</span> </a></li>
+<li><a title="Opens the UVU Athletics site in a new tab" href="https://gouvu.com/" target="_blank" rel="external noopener"><img src="../_kit/img/wolverine-logo.svg" alt="UVU Athletics logo" aria-hidden="true"><span class="sr-only">Athletics</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+	</div>
+</footer>
+</body>
+</html>

@@ -2,6 +2,7 @@
 User-agent: *
 Allow: /
 # Embedded UVU web mockups (framed on uvu-web.html), not pages of their own.
-Disallow: /_mockups/
+Disallow: /_projects/UVU-Giving%20Redesign/_cms-mockups/
+Disallow: /_projects/UVU-Alumni%20Redesign/_cms-mockups/
 
 Sitemap: https://zoeallgaier.com/sitemap.xml
