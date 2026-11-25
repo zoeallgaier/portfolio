@@ -164,9 +164,13 @@
 
 .cv-work-label {
   margin-right: 0.5rem;
+  min-width: 5.75rem;    /* "Selected work" and "Awards" chips start on one edge */
   font-size: 0.8125rem;
   color: var(--muted);
 }
+
+/* A second row (Awards) sits close under the first, as one block. */
+.cv-work + .cv-work { margin-top: 0.75rem; }
 
 .cv-work a {
   padding: 0.35rem 0.85rem;

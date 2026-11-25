@@ -16,6 +16,7 @@
     ['/psb26.html',     'PSB 2026'],
     ['/elysium.html',   'Elysium'],
     ['/tria.html',      'Tria'],
+    ['/motion.html',    'Motion Reel'],
     ['/uvu-web.html',   'UVU Giving & Alumni'],
     ['/evergreen.html', 'EverGREEN'],
     ['/ylac.html',      'YLAC Signage'],

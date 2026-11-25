@@ -61,6 +61,37 @@ video {
   animation: fadeUp 0.7s cubic-bezier(0.25, 0.8, 0.25, 1) 0.7s both;
 }
 
+/* Client and credits, under the role line: a muted label beside each value,
+   one credit per line, lined up like the Results rows. Sentence case, no
+   eyebrows. Arrives just after the role. */
+.project-credits {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 1.5rem;
+  row-gap: 0.7rem;
+  max-width: 38rem;
+  margin: 1.75rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  animation: fadeUp 0.7s cubic-bezier(0.25, 0.8, 0.25, 1) 0.76s both;
+}
+
+.project-credits dt { color: var(--muted); }
+
+.project-credits dd {
+  margin: 0;
+  color: color-mix(in srgb, var(--text) 80%, transparent);
+}
+
+.project-credits dd span { display: block; }
+
+.project-credits a {
+  border-bottom: 1px solid var(--rule);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.project-credits a:hover { color: var(--text); border-color: var(--text); }
+
 .project-name {
   font-family: 'Instrument Serif', serif;
   font-size: clamp(3rem, 6.2vw, 6.5rem);
@@ -72,10 +103,12 @@ video {
 
 /* Where JS is available, hide the title until reveal.js has split it,
    so the plain text never flashes before the animation. reveal.js sets
-   inline opacity:1 once built (and immediately for reduced-motion). */
+   inline opacity:1 once built (and immediately for reduced-motion).
+   titleFailsafe shows the plain title after 3s if the script never runs. */
 @media (scripting: enabled) {
-  .project-name { opacity: 0; }
+  .project-name { opacity: 0; animation: titleFailsafe 0s 3s forwards; }
 }
+@keyframes titleFailsafe { to { opacity: 1; } }
 
 /* Per-character reveal (populated by js/reveal.js) */
 .project-name .word {
@@ -200,6 +233,8 @@ video {
   color: var(--muted);
   margin: 1.5rem 0 0;
 }
+
+.intro-col .note + .note { margin-top: 0.6rem; }
 
 .intro-col a {
   color: var(--muted);
@@ -357,20 +392,25 @@ video {
   height: 100%;
   object-fit: cover;
   display: block;
-  aspect-ratio: 1 / 1;
   background: var(--bg);
 }
 
+.gallery > :not(.gallery-wide) { aspect-ratio: 1 / 1; }
+
 /* Wide pieces (16:9 motion, spreads) break the grid at their own aspect
-   rather than losing their edges to a square. An odd last square (counting
-   squares only) does the same, so the grid never ends on a blank half-row. */
+   rather than losing their edges to a square. No aspect-ratio is set on
+   them here, so the width/height attributes in the HTML hold the row open
+   before the file arrives and nothing below jumps. An odd last square
+   (counting squares only) does the same, so the grid never ends on a blank
+   half-row. */
 .gallery .gallery-wide,
 .gallery > :last-child:nth-child(odd of :not(.gallery-wide)) {
   grid-column: 1 / -1;
   height: auto;
   max-height: 88svh;
-  aspect-ratio: auto;
 }
+
+.gallery > :last-child:nth-child(odd of :not(.gallery-wide)) { aspect-ratio: auto; }
 
 /* Vertical social clips keep their full 9:16 frame: a square crop would cut
    off the captions burned into their lower third. */

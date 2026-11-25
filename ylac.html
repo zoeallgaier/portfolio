@@ -9,7 +9,6 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#e1e1e8" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0e0e15" media="(prefers-color-scheme: dark)" />
-  <meta name="robots" content="noindex" />
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
   <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/icons/sig-180.png" />
@@ -24,6 +23,7 @@
   <title>Zoe Allgaier — Young Living Alumni Center Signage</title>
   <link rel="stylesheet" href="/css/base.css" />
   <link rel="stylesheet" href="/css/project.css" />
+  <link rel="preload" href="/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/oxygen-300.woff2" as="font" type="font/woff2" crossorigin>
 </head>
@@ -42,6 +42,10 @@
         <h1 class="project-name">Young Living Alumni Center Signage</h1>
       </div>
       <p class="project-role">Designer II</p>
+      <dl class="project-credits">
+        <dt>Client</dt>
+        <dd>Utah Valley University</dd>
+      </dl>
     </div>
 
     <!-- ── Overview + results ── -->
@@ -53,12 +57,12 @@
           <li><span class="result-num">700+</span><span class="result-label">event guests pass the screens every week</span></li>
           <li><span class="result-num">32</span><span class="result-label">division staff surveyed before the redesign</span></li>
         </ul>
-        <p class="note"><a href="https://zoeallgaier.github.io/ylac-signage/wall.html" target="_blank" rel="noopener noreferrer">See the live screens →</a></p>
       </div>
       <div class="intro-col overview">
         <h2 class="intro-label">Overview</h2>
         <p>UVU’s <b>Young Living Alumni Center</b> has four touch screens and a horizontal 4K screen. After running a division-wide survey, I designed each screen as an extension of the <a href="/uvu-web.html">system I built for giving &amp; alumni pages</a>, with one direct action each: alumni benefits, student stories, giving, or donor info.</p>
         <p>Left alone, each screen is animated and pulls its QR code to center every 25 seconds, so anyone across the room knows where to look.</p>
+        <p class="note"><a href="https://zoeallgaier.github.io/ylac-signage/wall.html" target="_blank" rel="noopener noreferrer">See the live screens →</a></p>
       </div>
     </section>
 
@@ -71,36 +75,36 @@
       <ol class="live-row">
         <li class="live-screen">
           <div class="live-frame">
-            <a class="live-poster" href="https://zoeallgaier.github.io/ylac-signage/alumni/" target="_blank" rel="noopener noreferrer" data-live-src="https://zoeallgaier.github.io/ylac-signage/alumni/" data-live-title="Live Alumni touch screen: Welcome Home, Wolverines" aria-label="Play the Alumni screen live">
+            <a class="live-poster" href="https://zoeallgaier.github.io/ylac-signage/alumni/" target="_blank" rel="noopener noreferrer" data-live-src="https://zoeallgaier.github.io/ylac-signage/alumni/" data-live-title="Live Alumni touch screen: Welcome Home, Wolverines">
               <img loading="lazy" decoding="async" src="/_projects/YLAC/screen-alumni.jpg" srcset="/_projects/YLAC/screen-alumni-600.webp 600w, /_projects/YLAC/screen-alumni-1080.webp 1080w" sizes="(max-width: 768px) 74vw, (max-width: 1100px) calc(100vw / 2), calc(100vw / 4)" alt="">
-              <span class="live-play" aria-hidden="true"><span class="live-play-full">Play live</span><span class="live-play-open">Open live</span></span>
+              <span class="live-play"><span class="live-play-full">Play live</span><span class="live-play-open">Open live</span></span><span class="sr-only">: Alumni screen</span>
             </a>
           </div>
           <p class="live-cap"><span class="live-num">01</span><b>Alumni</b><span>Claim Your Alumni Profile</span><a href="https://zoeallgaier.github.io/ylac-signage/alumni/" target="_blank" rel="noopener noreferrer" aria-label="Open the Alumni screen full size">Full size</a></p>
         </li>
         <li class="live-screen">
           <div class="live-frame">
-            <a class="live-poster" href="https://zoeallgaier.github.io/ylac-signage/impact/" target="_blank" rel="noopener noreferrer" data-live-src="https://zoeallgaier.github.io/ylac-signage/impact/" data-live-title="Live Students touch screen: Meeting Needs, Changing Lives" aria-label="Play the Students screen live">
+            <a class="live-poster" href="https://zoeallgaier.github.io/ylac-signage/impact/" target="_blank" rel="noopener noreferrer" data-live-src="https://zoeallgaier.github.io/ylac-signage/impact/" data-live-title="Live Students touch screen: Meeting Needs, Changing Lives">
               <img loading="lazy" decoding="async" src="/_projects/YLAC/screen-students.jpg" srcset="/_projects/YLAC/screen-students-600.webp 600w, /_projects/YLAC/screen-students-1080.webp 1080w" sizes="(max-width: 768px) 74vw, (max-width: 1100px) calc(100vw / 2), calc(100vw / 4)" alt="">
-              <span class="live-play" aria-hidden="true"><span class="live-play-full">Play live</span><span class="live-play-open">Open live</span></span>
+              <span class="live-play"><span class="live-play-full">Play live</span><span class="live-play-open">Open live</span></span><span class="sr-only">: Students screen</span>
             </a>
           </div>
           <p class="live-cap"><span class="live-num">02</span><b>Students</b><span>Read Student Stories</span><a href="https://zoeallgaier.github.io/ylac-signage/impact/" target="_blank" rel="noopener noreferrer" aria-label="Open the Students screen full size">Full size</a></p>
         </li>
         <li class="live-screen">
           <div class="live-frame">
-            <a class="live-poster" href="https://zoeallgaier.github.io/ylac-signage/give/" target="_blank" rel="noopener noreferrer" data-live-src="https://zoeallgaier.github.io/ylac-signage/give/" data-live-title="Live Giving touch screen: Your Gift Opens Doors" aria-label="Play the Giving screen live">
+            <a class="live-poster" href="https://zoeallgaier.github.io/ylac-signage/give/" target="_blank" rel="noopener noreferrer" data-live-src="https://zoeallgaier.github.io/ylac-signage/give/" data-live-title="Live Giving touch screen: Your Gift Opens Doors">
               <img loading="lazy" decoding="async" src="/_projects/YLAC/screen-giving.jpg" srcset="/_projects/YLAC/screen-giving-600.webp 600w, /_projects/YLAC/screen-giving-1080.webp 1080w" sizes="(max-width: 768px) 74vw, (max-width: 1100px) calc(100vw / 2), calc(100vw / 4)" alt="">
-              <span class="live-play" aria-hidden="true"><span class="live-play-full">Play live</span><span class="live-play-open">Open live</span></span>
+              <span class="live-play"><span class="live-play-full">Play live</span><span class="live-play-open">Open live</span></span><span class="sr-only">: Giving screen</span>
             </a>
           </div>
           <p class="live-cap"><span class="live-num">03</span><b>Giving</b><span>Give to UVU</span><a href="https://zoeallgaier.github.io/ylac-signage/give/" target="_blank" rel="noopener noreferrer" aria-label="Open the Giving screen full size">Full size</a></p>
         </li>
         <li class="live-screen">
           <div class="live-frame">
-            <a class="live-poster" href="https://zoeallgaier.github.io/ylac-signage/gratitude/" target="_blank" rel="noopener noreferrer" data-live-src="https://zoeallgaier.github.io/ylac-signage/gratitude/" data-live-title="Live Donors touch screen: Thank You to Our Donors" aria-label="Play the Donors screen live">
+            <a class="live-poster" href="https://zoeallgaier.github.io/ylac-signage/gratitude/" target="_blank" rel="noopener noreferrer" data-live-src="https://zoeallgaier.github.io/ylac-signage/gratitude/" data-live-title="Live Donors touch screen: Thank You to Our Donors">
               <img loading="lazy" decoding="async" src="/_projects/YLAC/screen-donors.jpg" srcset="/_projects/YLAC/screen-donors-600.webp 600w, /_projects/YLAC/screen-donors-1080.webp 1080w" sizes="(max-width: 768px) 74vw, (max-width: 1100px) calc(100vw / 2), calc(100vw / 4)" alt="">
-              <span class="live-play" aria-hidden="true"><span class="live-play-full">Play live</span><span class="live-play-open">Open live</span></span>
+              <span class="live-play"><span class="live-play-full">Play live</span><span class="live-play-open">Open live</span></span><span class="sr-only">: Donors screen</span>
             </a>
           </div>
           <p class="live-cap"><span class="live-num">04</span><b>Donors</b><span>Plan a Legacy Gift</span><a href="https://zoeallgaier.github.io/ylac-signage/gratitude/" target="_blank" rel="noopener noreferrer" aria-label="Open the Donors screen full size">Full size</a></p>
@@ -109,9 +113,9 @@
 
       <div class="live-screen live-screen-wide">
         <div class="live-frame">
-          <a class="live-poster" href="https://zoeallgaier.github.io/ylac-signage/alumni-4k/" target="_blank" rel="noopener noreferrer" data-live-src="https://zoeallgaier.github.io/ylac-signage/alumni-4k/" data-live-title="Live horizontal 4K alumni screen" aria-label="Play the 4K alumni screen live">
-            <img loading="lazy" decoding="async" src="/_projects/YLAC/screen-alumni-4k.jpg" srcset="/_projects/YLAC/screen-alumni-4k-1200.webp 1200w, /_projects/YLAC/screen-alumni-4k-2400.webp 2400w" sizes="(max-width: 768px) calc(100vw - 3rem), calc100vw" alt="">
-            <span class="live-play" aria-hidden="true"><span class="live-play-full">Play live</span><span class="live-play-open">Open live</span></span>
+          <a class="live-poster" href="https://zoeallgaier.github.io/ylac-signage/alumni-4k/" target="_blank" rel="noopener noreferrer" data-live-src="https://zoeallgaier.github.io/ylac-signage/alumni-4k/" data-live-title="Live horizontal 4K alumni screen">
+            <img loading="lazy" decoding="async" src="/_projects/YLAC/screen-alumni-4k.jpg" srcset="/_projects/YLAC/screen-alumni-4k-1200.webp 1200w, /_projects/YLAC/screen-alumni-4k-2400.webp 2400w" sizes="(max-width: 768px) calc(100vw - 3rem), 100vw" alt="">
+            <span class="live-play"><span class="live-play-full">Play live</span><span class="live-play-open">Open live</span></span><span class="sr-only">: 4K alumni screen</span>
           </a>
         </div>
         <p class="live-cap"><span class="live-num">05</span><b>Alumni 4K</b><span>Plays on its own: spotlights, history, campuses, traditions</span><a href="https://zoeallgaier.github.io/ylac-signage/alumni-4k/" target="_blank" rel="noopener noreferrer" aria-label="Open the 4K alumni screen full size">Full size</a></p>
@@ -130,10 +134,11 @@
   <footer id="contact" data-chrome="footer"></footer>
 
   <script src="/js/chrome.js"></script>
+
+  <script src="/js/reveal.js" fetchpriority="high"></script>
   <script src="/js/backdrop.js"></script>
   <script src="/js/footer.js"></script>
   <script src="/js/tabs.js"></script>
-  <script src="/js/reveal.js"></script>
   <script src="/js/media.js"></script>
   <script src="/js/app.js"></script>
 </body>

@@ -89,9 +89,13 @@ a {
   border-radius: 2px;
 }
 
+/* <main> takes focus from the skip link and after every route change
+   (js/app.js) so the next Tab starts at the content. It isn't a control,
+   so no ring around the whole page. */
+main[tabindex="-1"]:focus { outline: none; }
+
 /* ── Backdrop ──
-   The site's one background: a warm radial glow (plus a faint dot grid on
-   the home hero), locked to the viewport and built once per visit by js/backdrop.js.
+   The site's one background: a warm radial glow, locked to the viewport and built once per visit by js/backdrop.js.
    Pages no longer carry their own hero gradient or canvas — content scrolls
    over this, and on a route change the glow eases across to the next page's
    palette. Sized in lvh so a collapsing mobile
@@ -109,20 +113,12 @@ a {
   background-color: var(--bg);
 }
 
-.backdrop-glow,
-.backdrop-dots {
+.backdrop-glow {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   display: block;
-}
-
-/* Thins the grid behind the centred hero type so the name and tagline sit on
-   a quieter patch; the dots come up to full strength toward the edges. */
-.backdrop-dots {
-  -webkit-mask-image: radial-gradient(ellipse 60% 42% at 50% 42%, rgba(0, 0, 0, 0.2), #000);
-          mask-image: radial-gradient(ellipse 60% 42% at 50% 42%, rgba(0, 0, 0, 0.2), #000);
 }
 
 /* Announcements for swapped-in pages (js/app.js) — nothing reloads, so this

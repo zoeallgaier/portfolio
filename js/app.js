@@ -178,10 +178,13 @@
 
   /* ── A move ── */
   let seq = 0;
+  let shownPath = location.pathname;   // the document whose <main> is on screen
+  let moving = false;                  // a move is between tap and swap
 
   async function navigate(href, opts) {
     const url = new URL(href, location.href);
     const token = ++seq;
+    moving = true;
     const job = fetchDoc(url);
     const leaving = fade('out');
 
@@ -201,6 +204,8 @@
 
     const next = document.importNode(incoming, true);
     document.querySelector('main#main-content').replaceWith(next);
+    shownPath = url.pathname;
+    moving = false;
     styles.drop();
     document.title = doc.title;
     setScroll(url, opts.y);
@@ -230,8 +235,14 @@
   });
 
   window.addEventListener('popstate', e => {
-    const y = e.state && typeof e.state.y === 'number' ? e.state.y : 0;
-    navigate(location.href, { push: false, y });
+    const y = e.state && typeof e.state.y === 'number' ? e.state.y : undefined;
+    // Back/Forward between #hash entries of the page already on screen (the
+    // skip link, an in-page anchor): nothing to swap, only the scroll moves.
+    if (!moving && location.pathname === shownPath) {
+      setScroll(new URL(location.href), y);
+      return;
+    }
+    navigate(location.href, { push: false, y: y === undefined ? 0 : y });
   });
 
   // Warm the next page up on intent, so most taps have nothing left to wait for.

@@ -89,9 +89,9 @@
    without a second asset. */
 .life-signature {
   display: block;
-  width: clamp(6rem, 9vw, 8.5rem);
+  width: clamp(4.25rem, 6vw, 6rem);
   aspect-ratio: 365 / 308;
-  margin-top: 0.25rem;
+  margin-block: 1.75rem 2rem;
   background-color: var(--text);
   -webkit-mask: url(/_projects/About/signature.png) no-repeat center / contain;
           mask: url(/_projects/About/signature.png) no-repeat center / contain;

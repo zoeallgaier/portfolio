@@ -21,3 +21,6 @@ _projects/**/*.ai
 _projects/**/*.psd
 # Raw Any Hour exports (100MB+ each). anyhour.html uses the web cuts beside them.
 _projects/Any Hour Services/* *.mp4
+
+# Files no page uses, moved out of the site. Review, then delete or move.
+_unused/

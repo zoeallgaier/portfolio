@@ -1,10 +1,9 @@
 /* backdrop.js — the site's one living background.
 
-   A single fixed layer sits behind every page: a warm radial glow, with a
-   fine, faint dot grid over it on the home hero only. It is built once and
-   never torn down, so when js/app.js swaps <main> for the next page the
-   background doesn't reload — the glow eases across to the new page's palette
-   (the dots fading in or out with it), and the content fades over the top. Replaces the old per-section
+   A single fixed layer sits behind every page: a warm radial glow. It is
+   built once and never torn down, so when js/app.js swaps <main> for the
+   next page the background doesn't reload — the glow eases across to the
+   new page's palette, and the content fades over the top. Replaces the old per-section
    .hero-canvas / .hero-bg / .project-canvas / .project-title-bg pairs.
 
    A page declares its palette on <main>:
@@ -17,19 +16,18 @@
   if (!main) return;
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const darkQ   = window.matchMedia('(prefers-color-scheme: dark)');
 
   /* ── Palettes ──
      Carried over from the stylesheets these replaced: positions and radii are
      percentages of the viewport, the stop is where the gradient reaches
      transparent. `drift` turns on the slow ambient hue rotation the home hero
-     used to run in CSS; `dots` turns on the dot grid (home only). */
+     used to run in CSS. */
   const ORANGE = [255, 110, 70];
   const ROSE   = [235,  80, 120];
 
   const PRESETS = {
     home: {
-      dots: 1, band: true,
+      band: true,
       g1: { c: [...ORANGE, 0.20], x:  95, y:  0, w: 109, h: 138, s: 70 },
       g2: { c: [...ROSE,   0.20], x:  70, y:  0, w: 109, h:  86, s: 70 },
     },
@@ -64,14 +62,6 @@
   // as written, higher pushes them further from grey. Same maths as CSS
   // filter: saturate(), done on the colours so the layer needs no filter.
   const SATURATE = 1.5;
-
-  /* The dot grid belongs to the hero, so it's gone by the time the hero has
-     scrolled off. Kept fine and faint so the name and tagline read cleanly
-     over it; the mask on .backdrop-dots (base.css) thins it further behind
-     the centred type. */
-  const GAP = 14;          // dot spacing, px
-  const ALPHA = 0.32;      // peak dot opacity, at the crest of the wave
-  const TINT = 0.55;       // how much of the palette's hue the dots take on
 
   const TWEEN = 1100;      // ms for the glow to cross to a new page's palette
 
@@ -161,7 +151,6 @@
       out.push(...(p.band ? banded(g.c, clock + i * TRAIL * PERIOD) : g.c));
       KEYS.forEach(k => out.push(g[k]));
     });
-    out.push(p.dots || 0);
     return out;
   }
 
@@ -187,27 +176,8 @@
   layer.setAttribute('aria-hidden', 'true');
   const glow = document.createElement('div');
   glow.className = 'backdrop-glow';
-  const canvas = document.createElement('canvas');
-  canvas.className = 'backdrop-dots';
-  layer.append(glow, canvas);
+  layer.append(glow);
   document.body.prepend(layer);
-
-  const ctx = canvas.getContext('2d');
-
-  let W = 0, H = 0, cols = 0, rows = 0, blank = true;
-  function resize() {
-    const w = layer.offsetWidth, h = layer.offsetHeight;
-    if (!w || !h) return;
-    W = w; H = h;
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width  = Math.round(W * dpr);
-    canvas.height = Math.round(H * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    cols = Math.ceil(W / GAP) + 1;
-    rows = Math.ceil(H / GAP) + 1;
-    blank = false;
-    frame();
-  }
 
   /* ── State ── */
   let target   = presetFor(main);   // the page we're on
@@ -216,7 +186,7 @@
   let from     = null;              // what was on screen when a change began
   let started  = 0;                 // when it began
   let shown    = flatten(target, START);
-  let wave = 0, clock = START, last = 0, running = false, wrote = 0, wroteNear = -1;
+  let clock = START, last = 0, running = false, wrote = 0, wroteNear = -1;
 
   function bindNext() {
     nextEl = main.querySelector('.next-project[data-g1]');
@@ -254,54 +224,11 @@
     glow.style.backgroundImage = parts.join(',');
   }
 
-  // The wave keeps the old grid's on-screen size (it was tuned at a 24px
-  // spacing), so the finer grid ripples the same way rather than faster.
-  const K = GAP / 24;
-
-  function drawDots(a) {
-    if (!W || !H) return;
-    const vh = window.innerHeight || 1;
-    const dark = darkQ.matches;
-    const intensity = a[18] * (1 - clamp01(window.scrollY / (vh * 0.6)));
-    if (intensity < 0.003) {
-      if (!blank) { ctx.clearRect(0, 0, W, H); blank = true; }
-      return;
-    }
-    blank = false;
-    // The dots take a little of the palette's hue; the rest stays neutral, so
-    // the grid reads as texture rather than colour.
-    const [h] = rgb2hsl(a[0], a[1], a[2]);
-    const tinted = hsl2rgb(h, dark ? 0.4 : 0.5, dark ? 0.9 : 0.12);
-    const base = dark ? 255 : 0;
-    const r = lerp(base, tinted[0], TINT) | 0;
-    const g = lerp(base, tinted[1], TINT) | 0;
-    const b = lerp(base, tinted[2], TINT) | 0;
-
-    ctx.clearRect(0, 0, W, H);
-    ctx.fillStyle = `rgb(${r},${g},${b})`;
-    for (let row = 0; row < rows; row++) {
-      for (let col = 0; col < cols; col++) {
-        const w1 = 0.5 + 0.5 * Math.sin((col * 0.22 + row * 0.14) * K - wave * 0.7);
-        const w2 = 0.5 + 0.5 * Math.sin((col * 0.11 - row * 0.18) * K - wave * 0.43);
-        const mix = w1 * 0.6 + w2 * 0.4;
-        ctx.globalAlpha = (0.015 + ALPHA * mix) * intensity;
-        ctx.beginPath();
-        ctx.arc(col * GAP, row * GAP, 0.4 + 0.3 * mix, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-    ctx.globalAlpha = 1;
-  }
-
   function frame(now) {
     const t = now || 0;
-    const dt = last ? Math.min((t - last) / 1000, 0.1) : 0;
+    const dt = last && !reduced.matches ? Math.max(0, Math.min((t - last) / 1000, 0.1)) : 0;
     last = t;
-
-    if (!reduced.matches) {
-      wave += dt * 0.66;
-      clock += dt;
-    }
+    clock += dt;
 
     const nextP = nextProgress();
     let want = flatten(target, clock);
@@ -317,9 +244,9 @@
       shown = want;
     }
 
-    // With nothing drifting, rippling or tweening there's nothing to animate;
-    // a scroll wakes the loop again to follow the fade.
-    const drifting = target.band || target.dots || (nextP > 0 && nextPre.band);
+    // With nothing drifting or tweening there's nothing to animate; a scroll
+    // wakes the loop again to follow the fade.
+    const drifting = target.band || (nextP > 0 && nextPre.band);
     const more = running && (tweening || drifting);
 
     const near = presence(nextP);
@@ -331,8 +258,6 @@
       wrote = t;
       wroteNear = near;
     }
-
-    drawDots(shown);
 
     if (more) requestAnimationFrame(frame);
     else running = false;
@@ -350,8 +275,8 @@
     last = 0;
   }
 
-  // Under reduced motion nothing animates on its own: the glow and grid are
-  // drawn once, and again whenever the page (or the window) changes.
+  // Under reduced motion nothing animates on its own: the glow is drawn
+  // once, and again whenever the page (or the window) changes.
   function schedule() {
     if (reduced.matches) { stop(); requestAnimationFrame(frame); }
     else start();
@@ -379,12 +304,9 @@
     schedule();
   });
 
-  new ResizeObserver(resize).observe(layer);
-  darkQ.addEventListener('change', schedule);
   reduced.addEventListener('change', schedule);
   window.addEventListener('scroll', () => { if (!running) schedule(); }, { passive: true });
 
   bindNext();
-  resize();
   schedule();
 }());

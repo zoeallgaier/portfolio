@@ -1,6 +1,6 @@
 
 /* ── Hero ──
-   Transparent: the glow and dot grid behind it belong to the sitewide
+   Transparent: the glow behind it belongs to the sitewide
    backdrop now (js/backdrop.js, .backdrop in base.css), which stays put while
    the hero scrolls off it. */
 .hero {
@@ -35,12 +35,15 @@
 
 /* Where JS is available, hide the name until the inline splitter has run,
    so the plain text never flashes before the animation. The script sets
-   inline opacity:1 once built (and immediately for reduced-motion). */
+   inline opacity:1 once built (and immediately for reduced-motion).
+   If the script never arrives (blocked, failed, a very slow connection),
+   titleFailsafe shows the plain name after 3s rather than leaving a blank. */
 @media (scripting: enabled) {
   .hero-name,
   .about-title,
-  .cv-name { opacity: 0; }
+  .cv-name { opacity: 0; animation: titleFailsafe 0s 3s forwards; }
 }
+@keyframes titleFailsafe { to { opacity: 1; } }
 
 .hero-name .word,
 .about-title .word,
@@ -129,7 +132,7 @@
 }
 
 .work-item {
-  --card-radius: 8px;
+  --card-radius: 16px;
   display: block;
   padding: 2rem;
 }
@@ -209,7 +212,7 @@
   align-items: start;
   column-gap: clamp(3rem, 5vw, 6rem);
   /* Little above; more below for the neighbours as they tilt and dip. */
-  padding: 0.5rem 0 clamp(9rem, 15vw, 21rem);
+  padding: 0.5rem 0 clamp(4rem, 7vw, 8rem);
   overflow-x: clip;
   touch-action: pan-y;          /* vertical swipes still scroll the page */
   cursor: grab;
@@ -241,11 +244,13 @@
   border-radius: calc(var(--card-radius) + 0.75rem);
 }
 
-/* —— By the numbers: a ruled row of figures under the work —— */
+/* Home footer drops the top rule, matching the unruled figures above it */
+footer.footer-unruled { border-top: none; }
+
+/* —— By the numbers: a row of figures under the work —— */
 .figures {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid var(--rule);
 }
 
 .figure {
@@ -254,8 +259,6 @@
   gap: 0.75rem;
   padding: 3.5rem 3rem 4rem;
 }
-
-.figure + .figure { border-left: 1px solid var(--rule); }
 
 .figure-num {
   font-family: 'Instrument Serif', serif;
@@ -274,8 +277,6 @@
 
 @media (max-width: 1100px) {
   .figures { grid-template-columns: repeat(2, 1fr); }
-  .figure:nth-child(3) { border-left: none; }
-  .figure:nth-child(n + 3) { border-top: 1px solid var(--rule); }
 }
 
 @media (max-width: 768px) {
@@ -357,7 +358,7 @@
   .work.is-reel {
     --reel-w: 76vw;
     column-gap: 2.75rem;
-    padding: 0.75rem 0 6rem;
+    padding: 0.75rem 0 3rem;
   }
 
   /* Phones show one card at a time; tilting from its middle lets the

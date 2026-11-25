@@ -122,7 +122,7 @@ main {
   font-size: 0.82rem;
   color: var(--muted);
   font-weight: 300;
-  opacity: 0.8;
+  opacity: 0.9;   /* lowest that keeps 4.5:1 contrast in both themes */
 }
 
 .entry-title {
@@ -203,7 +203,7 @@ a.entry-caption { transition: color 0.2s; }
 .entry-date,
 .meta-sep {
   color: var(--muted);
-  opacity: 0.75;
+  opacity: 0.9;   /* lowest that keeps 4.5:1 contrast in both themes */
 }
 
 /* —— Type —— metadata, not a label: lowercase, same size as the date, carried
