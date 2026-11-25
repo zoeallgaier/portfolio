@@ -335,16 +335,6 @@
   transform: translateY(-0.22em);
 }
 
-/* ── Desktop: centre the hero on the whole window rather than on the column
-   beside the sidebar — the backdrop already runs under the glass, the way
-   iPadOS extends content beneath a floating sidebar. ── */
-@media (min-width: 769px) {
-  .hero {
-    margin-left: calc(-1 * var(--nav-inset));
-    padding-left: calc(3rem + var(--nav-inset));
-  }
-}
-
 /* ── Mobile ── */
 @media (max-width: 768px) {
   .hero {
@@ -352,7 +342,7 @@
        nudges the block down, off the top edge. The bottom stays short so the
        work follows close under the pills. */
     padding: calc(11rem + env(safe-area-inset-top, 0px)) 1.5rem 3.5rem;
-    /* Shorter still on phones, so the first project shows above the tab bar. */
+    /* Shorter still on phones, so the first project peeks above the fold. */
     min-height: 62svh;
   }
 

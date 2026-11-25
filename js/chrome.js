@@ -1,27 +1,17 @@
-/* chrome.js — single source of truth for the portfolio's shared nav + footer.
-   Each portfolio page carries empty shells — <nav data-chrome="nav"> and
-   <footer id="contact" data-chrome="footer"> — and this fills them, so the
-   markup lives in one place instead of being copy-pasted across every page.
-   Loaded FIRST (before backdrop/footer/tabs/reveal.js) so those enhance the
-   built DOM. Marginalia has its own nav (built/enhanced in marginalia/main.js).
+/* chrome.js — single source of truth for the site's shared nav + footer, and
+   the Menu toggle that opens the nav. Every page carries an empty
+   <nav data-chrome="nav"> shell (portfolio pages a
+   <footer id="contact" data-chrome="footer"> one too; Marginalia keeps its
+   own footer), and this fills them, so the markup lives in one place instead
+   of being copy-pasted across every page. Loaded FIRST (before
+   backdrop/footer/tabs/reveal.js) so those enhance the built DOM.
 
    Both shells sit outside <main>, so js/app.js never replaces them: the nav
    and footer are built once for the whole visit and only re-point themselves
    (current page, scroll-spy) when a route lands — see syncNav/watchWork. */
 (function () {
-  // Line icons (24px / 1.9 stroke, same style as marginalia's tab icons).
-  // Shown in the phone tab bar; the editorial desktop sidebar is type-only.
-  const icon = paths =>
-    '<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
-    'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-    paths + '</svg>';
-  const WORK_ICON    = icon('<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>');
-  const ABOUT_ICON   = icon('<circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/>');
-  const RESUME_ICON  = icon('<path d="M14 3H7.5A2.5 2.5 0 0 0 5 5.5v13A2.5 2.5 0 0 0 7.5 21h9a2.5 2.5 0 0 0 2.5-2.5V8z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 16.5h4"/>');
-  const CONTACT_ICON = icon('<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7.5 8.5 6 8.5-6"/>');
-
-  // Projects listed under "Work" in the desktop sidebar, in the same order as
-  // the home page grid. Short names so they fit the sidebar on one line.
+  // Projects listed under "Work", in the same order as the home page grid.
+  // Short names so they fit the menu on one line.
   const PROJECTS = [
     ['/psb26.html',     'PSB 2026'],
     ['/elysium.html',   'Elysium'],
@@ -50,34 +40,29 @@
   const nav = document.querySelector('nav[data-chrome="nav"]');
   if (!nav) return;
 
-  // One DOM for both shapes: CSS makes it an editorial sidebar on desktop and
-  // a bottom tab bar on phones. The monogram is the Home tab's icon on phones
-  // and the sidebar's masthead on desktop. "Work" is an in-page
-  // anchor on the home page and a cross-page link elsewhere (syncNav), and
-  // carries the project index (sidebar only). "Contact" scrolls to the footer
-  // of whatever page you're on (sidebar only — phones get Resume in its place,
-  // and every page ends in the footer anyway). aria-current marks the page.
+  // One contents page for every size: CSS sets it as a glass drawer on
+  // desktop and a full-screen sheet on phones. The monogram is the masthead
+  // (and the way Home). "Work" is an in-page anchor on the home page and a
+  // cross-page link elsewhere (syncNav), and carries the project index.
+  // "Contact" scrolls to the footer of whatever page you're on.
+  // aria-current marks the page.
   nav.setAttribute('aria-label', 'Primary');
   nav.innerHTML =
     '<a href="/" class="nav-logo">' +
       '<img src="/icons/mono-dark.png" alt="">' +
       '<span class="nav-label">Home</span></a>' +
     '<div class="nav-links">' +
-      '<a href="/#work" class="nav-work">' + WORK_ICON + '<span class="nav-label">Work</span></a>' +
+      '<a href="/#work" class="nav-work">Work</a>' +
       '<div class="nav-sub" role="group" aria-label="Projects">' +
         PROJECTS.map(([href, name], i) =>
           '<a href="' + href + '">' +
             '<span class="nav-num" aria-hidden="true">' + String(i + 1).padStart(2, '0') + '</span>' +
             name + '</a>').join('') +
       '</div>' +
-      '<a href="/about.html">' + ABOUT_ICON + '<span class="nav-label">About</span></a>' +
-      '<a href="/resume.html">' + RESUME_ICON + '<span class="nav-label">Resume</span></a>' +
-      '<a href="#contact" class="nav-contact">' + CONTACT_ICON + '<span class="nav-label">Contact</span></a>' +
+      '<a href="/about.html">About</a>' +
+      '<a href="/resume.html">Resume</a>' +
+      '<a href="#contact" class="nav-contact">Contact</a>' +
     '</div>';
-
-  // Row order for the staggered entrance when the desktop drawer opens.
-  nav.querySelectorAll('.nav-links > a, .nav-sub a')
-    .forEach((a, i) => a.style.setProperty('--i', i));
 
   const logo        = nav.querySelector('.nav-logo');
   const workLink    = nav.querySelector('.nav-work');
@@ -128,20 +113,16 @@
      While the footer is on screen, "Contact" is the current location; on the
      home page, so is "Work" while the grid fills the middle of the screen. A
      location takes the highlight from the page item (see base.css). Contact
-     wins if both are true. Both are sidebar-only: the tab bar has neither a
-     Work nor a Contact tab, so Home keeps the highlight there. */
-  const sidebar = window.matchMedia('(min-width: 769px)');
+     wins if both are true. */
   const seen = { work: false, contact: false };
 
   function syncLocation() {
-    const loc = !sidebar.matches ? null : seen.contact ? contactLink : seen.work ? workLink : null;
+    const loc = seen.contact ? contactLink : seen.work ? workLink : null;
     [workLink, contactLink].forEach(l => {
       if (l === loc) l.setAttribute('aria-current', 'location');
       else l.removeAttribute('aria-current');
     });
   }
-
-  sidebar.addEventListener('change', syncLocation);
 
   // The grid belongs to the page, so its observer is rebuilt on every route.
   let watching = null;
@@ -159,21 +140,28 @@
 
   // Footer almost fully on screen = you've reached the end of the page. It
   // outlives every route, so this one is set up once.
-  if (footer && 'IntersectionObserver' in window) {
+  const end = document.getElementById('contact');
+  if (end && 'IntersectionObserver' in window) {
     new IntersectionObserver(([en]) => { seen.contact = en.intersectionRatio >= 0.85; syncLocation(); },
-      { threshold: [0, 0.85, 1] }).observe(footer);
+      { threshold: [0, 0.85, 1] }).observe(end);
   }
 
-  /* ── Desktop drawer ──
-     The sidebar stays tucked away so the work gets the whole window. A glass
-     "Menu" toggle opens it over the page; choosing anything, Escape, or a
-     click elsewhere puts it away again. The toggle sits right before the nav,
-     so the CSS reads the open state straight off its aria-expanded, and Tab
+  /* ── Menu ──
+     The contents stay out of the way so the work gets the whole window. A
+     glass "Menu" toggle opens them over the page — a drawer on desktop, a
+     full-screen sheet on phones; choosing anything, Escape, or a click
+     elsewhere puts them away again. The toggle sits right before the nav, so
+     base.css reads the open state straight off its aria-expanded, and Tab
      moves from it into the contents. */
+  const desktop     = window.matchMedia('(min-width: 769px)');
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+  // Row order for the staggered entrance (base.css reads --i).
+  nav.querySelectorAll('.nav-links a').forEach((a, i) => a.style.setProperty('--i', i));
+
   const toggle = document.createElement('button');
   toggle.type = 'button';
   toggle.className = 'nav-toggle';
-  toggle.setAttribute('aria-expanded', 'false');
   nav.id = nav.id || 'site-nav';
   toggle.setAttribute('aria-controls', nav.id);
   toggle.innerHTML = '<span class="nav-toggle-icon" aria-hidden="true"></span>' +
@@ -185,6 +173,7 @@
   // the trigger zones, so shutting the drawer doesn't bounce it straight open.
   let hoverArmed = true;
   let edgeOpened = false, edgeClose = 0;
+
   function setOpen(open) {
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
@@ -196,7 +185,15 @@
   }
   setOpen(false);
 
-  nav.addEventListener('click', e => { if (e.target.closest('a')) setOpen(false); });
+  toggle.addEventListener('click', () => {
+    setOpen(!isOpen());
+    edgeOpened = false;
+    clearTimeout(edgeClose);
+  });
+
+  // Capture phase: the menu closes (and the phone sheet releases the page's
+  // scroll) before a link's own handler starts its glide.
+  nav.addEventListener('click', e => { if (e.target.closest('a')) setOpen(false); }, true);
   document.addEventListener('pointerdown', e => {
     if (isOpen() && !nav.contains(e.target) && !toggle.contains(e.target)) setOpen(false);
   });
@@ -208,30 +205,25 @@
     const to = e.relatedTarget;
     if (isOpen() && to && !nav.contains(to) && to !== toggle) setOpen(false);
   }));
-  sidebar.addEventListener('change', () => setOpen(false));
+  // Crossing the breakpoint swaps drawer for sheet; start it closed.
+  desktop.addEventListener('change', () => setOpen(false));
+  document.addEventListener('page:navigate', () => setOpen(false));
 
-  /* ── Edge reveal: bring the pointer within EDGE_ZONE px of the left edge of
-     the window and the drawer slides out on its own. Opened that way, it tucks
-     itself away again once the pointer wanders off it (a click-opened drawer
-     stays put). The Menu button sits inside that strip, so the band it
-     occupies is left out: reaching for the button never moves it away. ── */
+  /* ── Edge reveal (desktop): bring the pointer within EDGE_ZONE px of the
+     left edge of the window and the drawer slides out on its own. Opened that
+     way, it tucks itself away again once the pointer wanders off it (a
+     click-opened drawer stays put). The Menu button sits inside that strip,
+     so the band it occupies is left out: reaching for the button never moves
+     it away. ── */
   const EDGE_ZONE = 56;
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 
   function overToggleBand(y) {
     const r = toggle.getBoundingClientRect();
     return y >= r.top - 16 && y <= r.bottom + 16;
   }
 
-  toggle.addEventListener('click', () => {
-    const open = !isOpen();
-    setOpen(open);
-    edgeOpened = false;
-    clearTimeout(edgeClose);
-  });
-
   document.addEventListener('pointermove', e => {
-    if (e.pointerType !== 'mouse' || !sidebar.matches || !finePointer.matches) return;
+    if (e.pointerType !== 'mouse' || !desktop.matches || !finePointer.matches) return;
     const inZone = e.clientX <= EDGE_ZONE && !overToggleBand(e.clientY);
     if (!isOpen() && !inZone) hoverArmed = true;
     if (!isOpen() && inZone && hoverArmed) {
@@ -246,42 +238,9 @@
     }
   }, { passive: true });
 
-  /* ── Phone tab bar: out of the way while you read ──
-     Scrolling down tucks it below the screen; a deliberate scroll back up, or
-     reaching the top or the end of the page, brings it back. Small
-     back-and-forth drift is ignored by measuring travel in one direction. */
-  let lastY = window.scrollY, travel = 0, ticking = false;
-
-  function tuck(hide) { nav.classList.toggle('is-tucked', hide); }
-
-  function onScroll() {
-    ticking = false;
-    if (sidebar.matches) return;
-    const y = Math.max(0, window.scrollY);          // ignore the iOS bounce above the top
-    const dy = y - lastY;
-    lastY = y;
-    if (!dy) return;
-    travel = Math.sign(dy) === Math.sign(travel) ? travel + dy : dy;
-    const atEnds = y < 80 ||
-      y + window.innerHeight >= document.documentElement.scrollHeight - 80;
-    if (atEnds || travel < -40) tuck(false);
-    else if (travel > 24) tuck(true);
-  }
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
-  }, { passive: true });
-  // Keyboard users tabbing into a tucked bar should see where they are.
-  nav.addEventListener('focusin', () => tuck(false));
-  sidebar.addEventListener('change', () => tuck(false));
-
-  document.addEventListener('page:navigate', () => setOpen(false));
   document.addEventListener('page:load', () => {
     syncNav();
     watchWork();
-    lastY = window.scrollY;
-    travel = 0;
-    tuck(false);
   });
   syncNav();
   watchWork();

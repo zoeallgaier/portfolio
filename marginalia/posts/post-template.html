@@ -25,15 +25,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <nav>
-    <a href="/" class="nav-logo"><img src="/icons/mono-dark.png" alt="Zoe Allgaier — Home"></a>
-    <div class="nav-links">
-      <a href="/marginalia/">All</a>
-      <a href="/marginalia/?filter=posts">Posts</a>
-      <a href="/marginalia/?filter=finds">Finds</a>
-      <a href="/marginalia/?filter=library">Library</a>
-    </div>
-  </nav>
+  <nav data-chrome="nav"></nav>
 
   <main id="main-content" tabindex="-1">
     <article class="post-wrap">
@@ -45,7 +37,7 @@
 
       <div class="post-meta">
         <!-- Update date -->
-        <span class="post-type">post</span>
+        <a class="post-type" href="/marginalia/?filter=posts">post</a>
         <span class="meta-sep" aria-hidden="true">–</span>
         <span class="post-date">Month DD, YYYY</span>
       </div>
@@ -78,6 +70,7 @@
     </div>
   </footer>
 
+  <script src="/js/chrome.js"></script>
   <script src="../main.js"></script>
 
   <script src="/js/footer.js"></script>

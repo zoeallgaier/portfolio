@@ -1,5 +1,17 @@
 [
     {
+        "type": "photo",
+        "pinned": true,
+        "title": "Gallery",
+        "url": "posts/gallery.html",
+        "gallery": "./photos.json",
+        "note": "Everything I shoot on my Sony Cyber-shot.",
+        "date": "2026-11-24",
+        "tags": [
+            "art"
+        ]
+    },
+    {
         "type": "post",
         "title": "The Sound of Freedom",
         "url": "posts/sound-of-freedom.html",

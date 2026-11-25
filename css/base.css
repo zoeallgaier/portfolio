@@ -25,13 +25,10 @@
   /* No accent hue — interactive states resolve to full-strength foreground. */
   --accent: var(--text);
 
-  /* Nav geometry. --nav-inset is the horizontal room reserved for the desktop
-     sidebar (0 on phones, where the nav is a bottom tab bar). */
+  /* Nav geometry: the desktop drawer and the Menu toggle. */
   --sidebar-w: clamp(15rem, 19vw, 18.5rem);
   --sidebar-gap: 0.75rem;
-  --nav-inset: 0px;
-  /* Vertical room the floating tab bar needs at the bottom (0 on desktop). */
-  --tabbar-clear: 0px;
+  --toggle-size: 2.75rem;
   /* Chrome motion: a quick start that settles slowly, like an iOS sheet. */
   --ease-chrome: cubic-bezier(0.32, 0.72, 0, 1);
 }
@@ -156,14 +153,13 @@ a {
 .skip-link:focus { top: 0; }
 
 /* ── Nav ──
-   ONE nav DOM that the breakpoints reshape — an editorial glass sidebar on
-   desktop (masthead, big italic serif sections, numbered project index), an
-   iOS-style glass tab bar (capsule) at the bottom on phones. Items are
-   `.nav-logo` + `.nav-links a`, each an optional `.nav-icon` + `.nav-label`.
-   The current item wears a soft neutral capsule (no accent hue). Both shapes
-   sit well clear of the viewport edges, which also keeps Safari 26 from
-   sampling the glass to tint its own bars. */
+   ONE menu for the whole site (built by js/chrome.js), set as a contents
+   page and kept out of the way behind the Menu toggle: a tall glass drawer
+   on desktop, a full-screen sheet on phones. Items are `.nav-logo` +
+   `.nav-links a`. The current item wears a soft neutral capsule (no accent
+   hue). */
 nav {
+  --item-radius: 0.9rem;
   /* Translucent tint behind the blur so nav text keeps contrast over busy
      images; derived from --bg, so it adapts to light/dark automatically. */
   background: color-mix(in srgb, var(--bg) 55%, transparent);
@@ -173,8 +169,9 @@ nav {
   position: fixed;
   z-index: 100;
   display: flex;
+  flex-direction: column;
   /* Native-feeling controls: no grey tap flash, no long-press callout, no
-     accidental text selection while thumbing between tabs. */
+     accidental text selection while thumbing between items. */
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -185,23 +182,15 @@ nav a {
   display: flex;
   align-items: center;
   color: var(--muted);
-  border-radius: var(--item-radius, 0.75rem);
+  border-radius: var(--item-radius);
   transition: color 0.2s, background-color 0.2s, transform 0.15s;
 }
 
 nav .nav-logo img {
-  width: 28px;
-  height: 28px;
+  width: 2rem;
+  height: 2rem;
   object-fit: contain;
   display: block;
-  transition: opacity 0.2s;
-}
-
-.nav-icon {
-  display: block;
-  flex: none;
-  width: 1.25rem;
-  height: 1.25rem;
 }
 
 nav a[aria-current] {
@@ -218,7 +207,7 @@ nav:has([aria-current="location"]) a[aria-current="page"] {
 
 nav a:focus-visible {
   color: var(--accent);
-  border-radius: var(--item-radius, 0.75rem);   /* keep the capsule shape on focus */
+  border-radius: var(--item-radius);   /* keep the capsule shape on focus */
   outline-offset: 2px;
 }
 
@@ -234,228 +223,221 @@ nav a:active { transform: scale(0.94); transition-duration: 0.08s; }
 
 .nav-label { white-space: nowrap; }
 
-/* Sidebar-only piece (shown in the desktop block below): the project index
-   nested under "Work". */
-.nav-sub { display: none; }
+/* ── Contents ──
+   Set like a magazine contents page: the monogram as masthead, section names
+   in large Instrument Serif italic, a numbered project index under "Work" in
+   Oxygen, Contact at the foot like a colophon. Shared by the desktop panel
+   and the phone sheet. */
 
-/* Desktop: editorial sidebar — a tall glass panel, inset from the window,
-   set like a magazine contents page: masthead up top, section names in large
-   Instrument Serif italic, a numbered project index, Contact at the foot. */
+/* The masthead never takes the capsule or dims — it's the title, not a row.
+   (The doubled a.nav-logo[href] out-ranks the aria-current/hover rules.) */
+nav a.nav-logo[href] {
+  flex: none;
+  align-self: flex-start;
+  border-radius: 0;
+  color: var(--text);
+  background: none;
+  transform: none;
+}
+.nav-logo .nav-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+/* Contents fill the panel so Contact can sit at its foot. */
+.nav-links {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.nav-links > a {
+  padding: 0.3rem 0.75rem 0.4rem;
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: var(--section-size, 2rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.nav-sub {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin: 0.3rem 0 0.9rem;
+}
+.nav-sub a {
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.45rem 0.75rem;
+  font-family: 'Oxygen', sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nav-num {
+  flex: none;
+  width: 1.6em;                  /* fixed column, so every title lines up */
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.75;
+}
+
+.nav-links > .nav-contact { margin-top: auto; }
+/* Keep it apart even when a short window leaves no slack. */
+.nav-links > a:has(+ .nav-contact) { margin-bottom: 2rem; }
+
+/* ── Behind the toggle: the contents stay out of the way ──
+   The work gets the whole window; the Menu toggle opens the contents over
+   the page, the open state read straight off its aria-expanded (it sits
+   right before the nav). The rows set themselves in a beat behind the glass,
+   top to bottom: --i is each row's position (from chrome.js), --enter the
+   offset they arrive from (set per breakpoint). */
+nav {
+  opacity: 0;
+  visibility: hidden;
+  transition: translate 0.4s var(--ease-chrome), scale 0.4s var(--ease-chrome),
+              opacity 0.25s ease, visibility 0s 0.4s;
+}
+.nav-toggle[aria-expanded="true"] + nav {
+  translate: 0 0;
+  scale: 1;
+  opacity: 1;
+  visibility: visible;
+  transition: translate 0.55s var(--ease-chrome), scale 0.55s var(--ease-chrome),
+              opacity 0.3s ease, visibility 0s;
+}
+
+nav .nav-links a {
+  opacity: 0;
+  translate: var(--enter, 0 0);
+  transition: color 0.2s, background-color 0.2s, transform 0.15s,
+              opacity 0.2s ease, translate 0.2s ease;
+}
+.nav-toggle[aria-expanded="true"] + nav .nav-links a {
+  opacity: 1;
+  translate: 0 0;
+  transition: color 0.2s, background-color 0.2s, transform 0.15s,
+              opacity 0.45s ease calc(0.08s + var(--i, 0) * 0.022s),
+              translate 0.6s var(--ease-chrome) calc(0.08s + var(--i, 0) * 0.022s);
+}
+
+/* Menu toggle: a small glass capsule ("≡ Menu") pinned to a corner (top-left
+   on desktop, top-right on phones). Opened, it drops its label and glass
+   and becomes the close button. */
+.nav-toggle {
+  position: fixed;
+  z-index: 101;
+  display: flex;
+  align-items: center;
+  height: var(--toggle-size);
+  padding: 0 1.15rem 0 1rem;
+  border: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg) 55%, transparent);
+  box-shadow: inset 0 0 0 1px var(--rule);   /* the glass hairline; frees outline for focus */
+  backdrop-filter: blur(35px);
+  -webkit-backdrop-filter: blur(35px);
+  color: var(--text);
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: left 0.55s var(--ease-chrome), padding 0.55s var(--ease-chrome),
+              color 0.3s, background-color 0.3s, box-shadow 0.3s, transform 0.15s;
+}
+.nav-toggle:focus-visible { outline-offset: 3px; border-radius: 999px; }
+.nav-toggle:active { transform: scale(0.94); transition-duration: 0.08s; }
+
+.nav-toggle-label {
+  display: block;
+  max-width: 3em;
+  padding-left: 0.6rem;
+  overflow: hidden;
+  transition: max-width 0.45s var(--ease-chrome), padding 0.45s var(--ease-chrome), opacity 0.2s;
+}
+
+/* Two hairlines that cross into an × when open. */
+.nav-toggle-icon {
+  position: relative;
+  flex: none;
+  width: 0.75rem;
+  height: 12px;
+}
+.nav-toggle-icon::before,
+.nav-toggle-icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  border-radius: 1px;
+  background: currentColor;
+  transition: transform 0.5s var(--ease-chrome);
+}
+.nav-toggle-icon::before { top: 2.25px; }
+.nav-toggle-icon::after  { bottom: 2.25px; }
+
+.nav-toggle[aria-expanded="true"] {
+  padding: 0 calc((var(--toggle-size) - 0.75rem) / 2);
+  background-color: transparent;
+  box-shadow: none;
+  color: var(--muted);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-label { max-width: 0; padding-left: 0; opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon::before { transform: translateY(3px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon::after  { transform: translateY(-3px) rotate(-45deg); }
+
+@media (hover: hover) {
+  .nav-toggle:hover { background-color: color-mix(in srgb, var(--bg) 75%, transparent); }
+  .nav-toggle[aria-expanded="true"]:hover {
+    color: var(--text);
+    background-color: color-mix(in srgb, var(--text) 5%, transparent);
+  }
+}
+
+/* ── Desktop: a tall glass drawer, inset from the window, that glides in
+   from the left edge ── */
 @media (min-width: 769px) {
-  :root { --nav-inset: calc(var(--sidebar-w) + var(--sidebar-gap) * 2 + env(safe-area-inset-left, 0px)); }
-
-  body { padding-left: var(--nav-inset); }
-
   nav {
-    --item-radius: 0.9rem;
+    --enter: -0.5rem 0;
+    transform-origin: 1.5rem 1.5rem;
+    translate: -0.75rem 0;
+    scale: 0.97;
     top: var(--sidebar-gap);
     bottom: var(--sidebar-gap);
     left: calc(var(--sidebar-gap) + env(safe-area-inset-left, 0px));
     width: var(--sidebar-w);
-    flex-direction: column;
     padding: 1.75rem 1rem 1.25rem;
     border-radius: 1.75rem;
     overflow-y: auto;
     scrollbar-width: none;
   }
 
-  /* Masthead: the monogram alone, set apart from the contents below. It never
-     takes the capsule or dims — it's the title, not a row. (The doubled
-     a.nav-logo[href] out-ranks the aria-current/hover item rules.) */
   nav a.nav-logo[href] {
     padding: 0.25rem 0.75rem 1.5rem;
     margin-bottom: 1.25rem;
-    border-radius: 0;
-    color: var(--text);
-    background: none;
-    transform: none;
-  }
-  nav .nav-logo img { display: block; width: 2rem; height: 2rem; }
-  nav .nav-logo .nav-label {
-    position: absolute;
-    width: 1px; height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
   }
 
-  /* Contents fill the panel so Contact can sit at its foot. */
-  .nav-links {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.125rem;
-  }
-
-  /* Sections: type-only (no icons), big italic serif. */
-  .nav-links > a .nav-icon { display: none; }
-  .nav-links > a {
-    padding: 0.3rem 0.75rem 0.4rem;
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
-    font-size: 2rem;
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-  }
-
-  /* Project index under "Work": numbered like the home grid, set in Oxygen
-     so it reads as a list against the serif section heads. */
-  .nav-sub {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    margin: 0.3rem 0 0.9rem;
-  }
-  .nav-sub a {
-    align-items: baseline;
-    gap: 0.75rem;
-    padding: 0.45rem 0.75rem;
-    font-family: 'Oxygen', sans-serif;
-    font-size: 0.9375rem;
-    line-height: 1.2;
-    letter-spacing: 0.005em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .nav-num {
-    flex: none;
-    width: 1.6em;                  /* fixed column, so every title lines up */
-    font-family: 'Oxygen', sans-serif;
-    font-size: 0.6875rem;
-    letter-spacing: 0.06em;
-    font-variant-numeric: tabular-nums;
-    opacity: 0.75;
-  }
-
-  /* Contact sits at the foot of the panel, like a colophon. */
-  .nav-links > .nav-contact { margin-top: auto; }
-  /* Keep it apart even when a short window leaves no slack. */
-  .nav-links > a:has(+ .nav-contact) { margin-bottom: 2rem; }
-
-  /* ── Portfolio: the sidebar is a drawer ──
-     The work gets the whole window; the contents panel stays tucked away
-     until the Menu toggle (chrome.js) opens it over the page. Marginalia's
-     nav has no data-chrome, so it keeps the docked sidebar. */
-  :root:has(nav[data-chrome]) { --nav-inset: 0px; }
-
-  nav[data-chrome] {
-    transform-origin: 1.5rem 1.5rem;
-    translate: -0.75rem 0;
-    scale: 0.97;
-    opacity: 0;
-    visibility: hidden;
-    transition: translate 0.4s var(--ease-chrome), scale 0.4s var(--ease-chrome),
-                opacity 0.25s ease, visibility 0s 0.4s;
-  }
-  .nav-toggle[aria-expanded="true"] + nav[data-chrome] {
-    translate: 0 0;
-    scale: 1;
-    opacity: 1;
-    visibility: visible;
-    transition: translate 0.55s var(--ease-chrome), scale 0.55s var(--ease-chrome),
-                opacity 0.3s ease, visibility 0s;
-  }
-
-  /* The contents set themselves in a beat behind the glass, top to bottom
-     (--i is each row's position, from chrome.js). */
-  nav[data-chrome] :is(.nav-links > a, .nav-sub a) {
-    opacity: 0;
-    translate: -0.5rem 0;
-    transition: color 0.2s, background-color 0.2s, transform 0.15s,
-                opacity 0.2s ease, translate 0.2s ease;
-  }
-  .nav-toggle[aria-expanded="true"] + nav[data-chrome] :is(.nav-links > a, .nav-sub a) {
-    opacity: 1;
-    translate: 0 0;
-    transition: color 0.2s, background-color 0.2s, transform 0.15s,
-                opacity 0.45s ease calc(0.08s + var(--i, 0) * 0.022s),
-                translate 0.6s var(--ease-chrome) calc(0.08s + var(--i, 0) * 0.022s);
-  }
-
-  /* Menu toggle: a small glass capsule in the top-left corner. Opening the
-     panel glides it across to the masthead's far end, where it drops its
-     label and glass and becomes the panel's close button. Its top is set so
-     it centres on the masthead monogram either way. */
+  /* Top-left, centred on the masthead monogram either way. Opening the panel
+     glides it across to the masthead's far end. */
   .nav-toggle {
-    --size: 2.75rem;
-    position: fixed;
-    z-index: 101;
-    top: calc(var(--sidebar-gap) + 3rem - var(--size) / 2);
+    top: calc(var(--sidebar-gap) + 3rem - var(--toggle-size) / 2);
     left: calc(1.5rem + env(safe-area-inset-left, 0px));
-    display: flex;
-    align-items: center;
-    height: var(--size);
-    padding: 0 1.15rem 0 1rem;
-    border: 0;
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--bg) 55%, transparent);
-    box-shadow: inset 0 0 0 1px var(--rule);   /* the glass hairline; frees outline for focus */
-    backdrop-filter: blur(35px);
-    -webkit-backdrop-filter: blur(35px);
-    color: var(--text);
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
-    font-size: 1.25rem;
-    line-height: 1;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    transition: left 0.55s var(--ease-chrome), padding 0.55s var(--ease-chrome),
-                background-color 0.3s, box-shadow 0.3s, transform 0.15s;
   }
-  .nav-toggle:focus-visible { outline-offset: 3px; border-radius: 999px; }
-  .nav-toggle:active { transform: scale(0.94); transition-duration: 0.08s; }
-
-  .nav-toggle-label {
-    display: block;
-    max-width: 3em;
-    padding-left: 0.6rem;
-    overflow: hidden;
-    transition: max-width 0.45s var(--ease-chrome), padding 0.45s var(--ease-chrome), opacity 0.2s;
-  }
-
-  /* Two hairlines that cross into an × when open. */
-  .nav-toggle-icon {
-    position: relative;
-    flex: none;
-    width: 0.75rem;
-    height: 12px;
-  }
-  .nav-toggle-icon::before,
-  .nav-toggle-icon::after {
-    content: '';
-    position: absolute;
-    left: 0; right: 0;
-    height: 1.5px;
-    border-radius: 1px;
-    background: currentColor;
-    transition: transform 0.5s var(--ease-chrome);
-  }
-  .nav-toggle-icon::before { top: 2.25px; }
-  .nav-toggle-icon::after  { bottom: 2.25px; }
-
   .nav-toggle[aria-expanded="true"] {
-    left: calc(var(--sidebar-gap) + env(safe-area-inset-left, 0px) + var(--sidebar-w) - 1rem - var(--size));
-    padding: 0 calc((var(--size) - 0.75rem) / 2);
-    background-color: transparent;
-    box-shadow: none;
-    color: var(--muted);
+    left: calc(var(--sidebar-gap) + env(safe-area-inset-left, 0px) + var(--sidebar-w) - 1rem - var(--toggle-size));
   }
-  .nav-toggle[aria-expanded="true"] .nav-toggle-label { max-width: 0; padding-left: 0; opacity: 0; }
-  .nav-toggle[aria-expanded="true"] .nav-toggle-icon::before { transform: translateY(3px) rotate(45deg); }
-  .nav-toggle[aria-expanded="true"] .nav-toggle-icon::after  { transform: translateY(-3px) rotate(-45deg); }
-
-  @media (hover: hover) {
-    .nav-toggle:hover { background-color: color-mix(in srgb, var(--bg) 75%, transparent); }
-    .nav-toggle[aria-expanded="true"]:hover {
-      color: var(--text);
-      background-color: color-mix(in srgb, var(--text) 5%, transparent);
-    }
-  }
-}
-
-/* The toggle only exists for the desktop drawer. */
-@media (max-width: 768px) {
-  .nav-toggle { display: none; }
 }
 
 /* Short desktop windows: set the contents a touch tighter so Contact still
@@ -468,69 +450,58 @@ nav a:active { transform: scale(0.94); transition-duration: 0.08s; }
 @media (min-width: 769px) and (max-height: 640px) {
   .nav-sub { margin-block: 0.15rem 0.5rem; }
   .nav-sub a { padding-block: 0.15rem; }
-  .nav-links > a { font-size: 1.75rem; }
+  nav { --section-size: 1.75rem; }
 }
 
-/* Phones: floating tab bar — a glass capsule above the home indicator, icon
-   over label, like an iOS 26 tab bar. */
+/* ── Phones: a full-screen sheet ──
+   The toggle sits top-right, within reach of the thumb. The contents fill
+   the screen as one quiet page: the masthead level with the toggle, the
+   text on the page's own 1.5rem gutter, the sections set large, Contact at
+   the foot. The page underneath holds still while it's open. */
 @media (max-width: 768px) {
-  :root { --tabbar-clear: calc(4.5rem + env(safe-area-inset-bottom, 0px)); }
+  :root { --toggle-top: calc(1rem + env(safe-area-inset-top, 0px)); }
+
+  html:has(.nav-toggle[aria-expanded="true"]) { overflow: hidden; }
+
+  .nav-toggle {
+    top: var(--toggle-top);
+    right: calc(1rem + env(safe-area-inset-right, 0px));
+  }
 
   nav {
-    --item-radius: 999px;
-    left: 50%;
-    translate: -50% 0;
-    /* Float just above the home indicator in the home-screen app; in a Safari
-       tab the inset reads 0, so fall back to a fixed gap above its toolbar. */
-    bottom: max(0.75rem, calc(env(safe-area-inset-bottom, 0px) - 0.5rem));
-    width: min(calc(100% - 2rem), 24rem);
-    gap: 0.125rem;
-    padding: 0.3rem;
-    border-radius: 999px;
-    transition: translate 0.5s var(--ease-chrome), opacity 0.3s ease;
+    --enter: 0 0.75rem;
+    --section-size: clamp(2.25rem, 10.5vw, 2.75rem);
+    inset: 0;
+    padding: var(--toggle-top)
+             calc(0.75rem + env(safe-area-inset-right, 0px))
+             calc(1.5rem + env(safe-area-inset-bottom, 0px))
+             calc(0.75rem + env(safe-area-inset-left, 0px));
+    background: color-mix(in srgb, var(--bg) 80%, transparent);
+    outline: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: none;
   }
 
-  /* Scrolling down into the work tucks the bar away below the screen;
-     scrolling back up (or reaching either end of the page) brings it back.
-     chrome.js sets the class. */
-  nav.is-tucked {
-    translate: -50% calc(100% + 1.5rem);
-    opacity: 0;
-    pointer-events: none;
-    transition: translate 0.45s var(--ease-chrome), opacity 0.3s ease 0.1s;
+  nav a.nav-logo[href] {
+    height: var(--toggle-size);
+    padding: 0 0.75rem;
+    margin-bottom: clamp(1.5rem, 6vh, 3rem);
   }
+  nav .nav-logo img { width: 1.75rem; height: 1.75rem; }
 
-  /* Tabs share the capsule evenly, logo (Home) included. Three tabs: Home,
-     About, Resume. Work and Contact are sidebar-only: the work reel sits right
-     under the hero on Home, and the footer ends every page. */
-  .nav-links { display: contents; }
-  .nav-links > .nav-work,
-  .nav-links > .nav-contact { display: none; }
+  .nav-sub { margin: 0.5rem 0 1.25rem; }
+  .nav-sub a { padding-block: 0.6rem; font-size: 1rem; }
+}
 
-  nav .nav-logo,
-  .nav-links > a {
-    flex: 1 1 0;
-    min-width: 0;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.2rem;
-    padding: 0.45rem 0.25rem;
-    font-size: 0.625rem;
-    letter-spacing: 0.02em;
-  }
-
-  .nav-icon { width: 1.5rem; height: 1.5rem; }
-  /* The Z is a solid mark, so it reads bigger than the line icons — set it a
-     touch smaller, padded back to their height so the labels stay level. */
-  nav .nav-logo img { width: 1.3rem; height: 1.3rem; margin-block: 0.1rem; }
-
-  /* The monogram is a PNG, so it can't take currentColor — dim it instead
-     to match the muted tabs whenever Home isn't the highlighted tab. */
-  nav .nav-logo:not([aria-current]) img,
-  nav:has([aria-current="location"]) .nav-logo img { opacity: 0.6; }
-
-  /* Keep the end of every page scrollable clear of the floating bar. */
-  body { padding-bottom: var(--tabbar-clear); }
+/* Short phones (iPhone SE and the like): set it a touch tighter so the whole
+   contents page fits on one screen. */
+@media (max-width: 768px) and (max-height: 740px) {
+  nav { --section-size: 2rem; }
+  nav a.nav-logo[href] { margin-bottom: 1rem; }
+  .nav-sub { margin-block: 0.25rem 1rem; }
+  .nav-sub a { padding-block: 0.3rem; }
+  .nav-links > a:has(+ .nav-contact) { margin-bottom: 1.25rem; }
 }
 
 /* ── Footer ── */

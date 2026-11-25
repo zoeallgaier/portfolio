@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <!-- Draft: remove noindex (and add to sitemap.xml) when it goes live -->
+  <meta name="robots" content="noindex" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#e1e1e8" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0e0e15" media="(prefers-color-scheme: dark)" />
+  <title>Gallery — Marginalia</title>
+  <meta name="description" content="Photos from Zoe Allgaier’s Sony Cyber-shot." />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/icons/sig-180.png" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preload" href="/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/oxygen-300.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav data-chrome="nav"></nav>
+
+  <main id="main-content" tabindex="-1">
+    <article class="post-wrap post-wrap--gallery">
+
+      <a href="../" class="back-link">← All entries</a>
+
+      <h1 class="post-title">Gallery</h1>
+
+      <div class="post-meta">
+        <span class="post-date">Sony Cyber-shot</span>
+      </div>
+
+      <!-- Photos load from ../photos.json. To add one: put the web version
+           (2400px long edge) in /_projects/Cybershot/, a 900px copy in
+           /_projects/Cybershot/thumbs/, the full-res master in /_source/Cybershot/,
+           then add a line: { "src": "...", "thumb": "...", "date": "YYYY-MM-DD", "alt": "what's in it" }
+           ("caption" is optional and shows beside the date). -->
+      <div id="gallery" class="gallery" data-src="../photos.json"></div>
+
+    </article>
+  </main>
+
+  <footer id="contact">
+    <p class="footer-prompt">If you’ve got a project where graphic, motion, and web all need to show up as one thing, I’d love to hear about it.</p>
+    <a href="mailto:zoeallgaier@gmail.com" class="footer-email">zoeallgaier@gmail.com</a>
+    <div class="footer-bottom">
+      <span>Zoe Allgaier</span>
+      <span>© 2026</span>
+    </div>
+  </footer>
+
+  <script src="/js/chrome.js"></script>
+  <script src="../main.js"></script>
+
+  <script src="/js/footer.js"></script>
+</body>
+</html>

@@ -14,9 +14,15 @@
   --type-photo-stripe: #e8a33a;
 }
 
-/* —— Main —— (the nav is a sidebar / bottom tab bar, so no top offset) */
+/* —— Main —— */
 main {
   min-height: 100vh;
+}
+
+/* Desktop: the board starts clear of the Menu toggle in the top-left corner
+   (phones have the in-flow top bar for that). */
+@media (min-width: 769px) {
+  main:has(> .feed) { padding-top: 3.5rem; }
 }
 
 /* —— Feed (editorial masonry: shortest-column, up to 3 cols, built in JS) —— */
@@ -34,54 +40,11 @@ main {
 /* Board fades out for a beat while a filter change re-flows the columns. */
 .feed.is-switching { opacity: 0; }
 
-/* Filter tabs get an icon, a number and a label from main.js. Phones show the
-   icon (tab bar); the desktop sidebar sets them as a numbered sub-list under a
-   big serif "Marginalia" head — the same look as Work → projects on the home
-   sidebar (base.css .nav-sub). */
-@media (min-width: 769px) {
-  .nav-links { gap: 1px; }
-
-  .nav-head {
-    margin: 0 0 0.3rem;
-    padding: 0.3rem 0.75rem 0.4rem;
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
-    font-size: 2rem;
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    color: var(--text);
-  }
-
-  nav .nav-links > a {
-    align-items: baseline;
-    gap: 0.75rem;
-    padding: 0.45rem 0.75rem;
-    font-family: 'Oxygen', sans-serif;
-    font-style: normal;
-    font-size: 0.9375rem;
-    line-height: 1.2;
-    letter-spacing: 0.005em;
-  }
-}
-@media (min-width: 769px) and (max-height: 680px) {
-  nav .nav-links > a { padding-block: 0.34rem; }
-  .nav-head { font-size: 1.875rem; }
-}
-@media (max-width: 768px) {
-  .nav-head,
-  nav .nav-num { display: none; }
-}
-
 /* Phone-only top bar (monogram), injected by main.js. Off on desktop, where
-   the sidebar already carries the logo. */
+   the Menu toggle holds that corner. */
 .app-topbar { display: none; }
 
-/* —— Phones: nav chrome —— base.css turns the nav into the floating tab bar
-   (same breakpoint); marginalia's tab bar is purely the filter tabs, with the
-   monogram moved up into the in-flow top bar. */
 @media (max-width: 768px) {
-  nav .nav-logo { display: none; }
-
   /* —— Top bar —— The monogram (→ portfolio) sits top-left. It scrolls in-flow
      with the feed (not sticky) — it's a web app, so there's no need to keep
      the logo on screen the whole time. */
@@ -256,6 +219,86 @@ a.entry-caption { transition: color 0.2s; }
 .entry--photo .entry-type   { color: var(--type-photo); }
 .post-type                  { color: var(--type-post); }
 
+/* The type word is also the filter: on a card it narrows the board to that
+   type (main.js); on a post page it leads back to the board, filtered. A
+   quiet underline on hover; the hit area grows past the small type without
+   moving it, lifted over the card's stretched title link. */
+a.entry-type,
+a.post-type {
+  position: relative;
+  z-index: 1;
+  padding: 0.5em 0.3em;
+  margin: -0.5em -0.3em;
+  text-decoration: underline 1px transparent;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color 0.2s;
+}
+@media (hover: hover) {
+  a.entry-type:hover,
+  a.post-type:hover { text-decoration-color: currentColor; }
+}
+/* Photo captions let clicks fall through to the image; the type word keeps its own. */
+.entry-media-overlay a.entry-type { pointer-events: auto; }
+
+/* —— Filter chip —— Names the type the board is narrowed to; tapping it
+   brings everything back. Set like the Menu toggle (serif italic capsule),
+   the word in its type hue. */
+.feed-filter {
+  max-width: min(1560px, 94vw);
+  margin: 2.5rem auto -0.5rem;
+  padding-inline: 1rem;
+  animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.feed-filter[data-type="post"]    { --chip: var(--type-post); }
+.feed-filter[data-type="find"]    { --chip: var(--type-find); }
+.feed-filter[data-type="library"] { --chip: var(--type-library); }
+.feed-filter[data-type="photo"]   { --chip: var(--type-photo); }
+
+.feed-filter-clear {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: var(--toggle-size);
+  padding: 0 1.1rem 0 1.2rem;
+  border: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--text) 5%, transparent);
+  color: var(--chip, var(--text));
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.2s, transform 0.15s;
+}
+.feed-filter-clear:focus-visible { border-radius: 999px; }
+.feed-filter-clear:active { transform: scale(0.94); transition-duration: 0.08s; }
+@media (hover: hover) {
+  .feed-filter-clear:hover { background: color-mix(in srgb, var(--text) 9%, transparent); }
+}
+
+/* Two hairlines crossed into an ×, drawn like the Menu toggle's. */
+.feed-filter-x {
+  position: relative;
+  flex: none;
+  width: 0.7rem;
+  height: 0.7rem;
+  color: var(--muted);
+}
+.feed-filter-x::before,
+.feed-filter-x::after {
+  content: '';
+  position: absolute;
+  inset: 50% 0 auto;
+  height: 1.5px;
+  margin-top: -0.75px;
+  border-radius: 1px;
+  background: currentColor;
+  rotate: 45deg;
+}
+.feed-filter-x::after { rotate: -45deg; }
+
 
 /* —— Photo entries —— */
 .entry-image {
@@ -346,7 +389,10 @@ a.entry-caption { transition: color 0.2s; }
   max-height: 90vh;
   border-radius: 3px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  opacity: 0;                /* main.js adds .is-loaded once the file is in */
+  transition: opacity 0.2s ease;
 }
+.lightbox img.is-loaded { opacity: 1; }
 
 /* —— Post article —— */
 .post-wrap {
@@ -488,6 +534,71 @@ a.entry-caption { transition: color 0.2s; }
   color: var(--muted);
 }
 
+/* —— Gallery (photo gallery page) —— A compact post header, then the sheet
+   edge to edge like a project-page gallery: 1px seams in --rule, three
+   columns (two on phones). Photos keep their own shape; main.js packs each into
+   the shortest column so there are no gaps. The date sits on the photo. —— */
+.post-wrap--gallery {
+  max-width: none;
+  padding: clamp(1.5rem, 4vw, 3rem) 0 0;
+}
+.post-wrap--gallery > :not(.gallery) { margin-inline: clamp(1rem, 3vw, 2.5rem); }
+.post-wrap--gallery .back-link  { margin-bottom: 1.25rem; }
+.post-wrap--gallery .post-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  margin-bottom: 0.4rem;
+}
+.post-wrap--gallery .post-meta {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.gallery {
+  display: flex;
+  align-items: flex-start;
+  border-top: 1px solid var(--rule);
+}
+
+.gallery-col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule);     /* shows through the gaps as the seams */
+}
+.gallery-col + .gallery-col { border-left: 1px solid var(--rule); }
+
+.frame {
+  position: relative;
+  margin: 0;
+  background: var(--bg);
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.frame-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: color-mix(in srgb, var(--text) 5%, transparent);
+  cursor: zoom-in;
+}
+
+.frame-date {
+  position: absolute;
+  right: clamp(0.4rem, 1vw, 0.75rem);
+  bottom: clamp(0.3rem, 0.8vw, 0.6rem);
+  font-size: 0.75rem;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  pointer-events: none;        /* taps fall through to the photo (zoom) */
+}
+
+/* No photos yet: blank frames keep the sheet's shape. */
+.frame--blank .frame-img { aspect-ratio: 4 / 3; cursor: default; }
+
 .back-link {
   display: inline-block;
   font-size: 0.8125rem;
@@ -539,14 +650,35 @@ a.entry-caption { transition: color 0.2s; }
     padding-inline: 16px;
     margin-block: 0 2.5rem;
   }
-
-  .feed-col { gap: 10px; }
-
-  /* Media tiles keep their zero padding (image fills the card);
-     only text cards get the tighter mobile padding. */
-  .entry:not(.entry--media) {
-    padding: 1.2rem 1.3rem 1.15rem;
+  .feed-filter {
+    max-width: none;
+    padding-inline: 16px;
+    margin: 0 0 0.75rem;
   }
+
+  .feed-col { gap: 0; }
+
+  /* Text entries drop the card for a plain feed: no panel, a full-bleed
+     hairline between rows. They bleed past the 16px gutter so the rule and
+     the press tint run edge to edge. */
+  .entry:not(.entry--media) {
+    margin-inline: -16px;
+    padding: 1.25rem 16px 1.2rem;
+    border-radius: 0;
+    background: transparent;
+    border-bottom: 1px solid var(--rule);
+  }
+  .entry:not(.entry--media):last-child { border-bottom: none; }
+  .entry:not(.entry--media):active {
+    background: color-mix(in srgb, var(--text) 5%, transparent);
+    scale: 1;
+  }
+
+  /* The gallery tile stays a card, rounder on phones, with air around it
+     where it meets the list. */
+  .entry--media { border-radius: 28px; }
+  .entry--media:not(:last-child) { margin-bottom: 0.5rem; }
+  .entry:not(.entry--media) + .entry--media { margin-top: 1.25rem; }
 
   /* Smaller type on phones. */
   .entry-title { font-size: 1.5rem; }
@@ -557,4 +689,7 @@ a.entry-caption { transition: color 0.2s; }
   .post-wrap {
     padding: 3.5rem 1.5rem 4rem;
   }
+
+  .post-wrap--gallery { padding: 0.5rem 0 0; }
+  .frame-date { font-size: 0.625rem; }
 }

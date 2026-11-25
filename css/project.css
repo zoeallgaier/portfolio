@@ -817,15 +817,7 @@ video {
   border-color: var(--accent);
 }
 
-/* ── Desktop: header + next-project bookend run the full width of the window
-   under the glass sidebar (their text still starts clear of it). ── */
 @media (min-width: 769px) {
-  .project-title,
-  .next-project {
-    margin-left: calc(-1 * var(--nav-inset));
-    padding-left: calc(var(--gutter) + var(--nav-inset));
-  }
-
   /* The shared footer (base.css) follows the page's wider gutter here. */
   footer { padding-inline: var(--gutter); }
 }
