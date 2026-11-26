@@ -427,6 +427,7 @@
       // and title + caption + meta overlay the bottom
       // over a scrim. Linked images (a url) navigate; bare ones (photos) zoom.
       el.classList.add('entry--media');
+      if (item.gallery) el.classList.add('entry--gallery');
       el.innerHTML =
         `<div class="entry-media">` +
           imgHtml +
