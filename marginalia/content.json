@@ -2,7 +2,7 @@
     {
         "type": "photo",
         "pinned": true,
-        "title": "Gallery",
+        "title": "The Archive",
         "url": "posts/gallery.html",
         "gallery": "./photos.json",
         "note": "Everything I shoot on my Sony Cyber-shot.",
